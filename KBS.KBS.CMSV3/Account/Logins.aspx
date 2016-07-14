@@ -55,7 +55,7 @@
          <asp:TextBox ID="UserIDTxt" runat="server" width="50%"></asp:TextBox>
         <br />
     <br />
-        <div style="text-align:left">
+        <div style="text-align:left ">
         <dx:ASPxLabel ID="ASPxLabel2" runat="server" ForeColor="Red"  Text="Password"></dx:ASPxLabel>
         </div>
         <br/>
