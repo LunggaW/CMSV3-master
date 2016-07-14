@@ -39,16 +39,27 @@
         <br />
         <br />
         <dx:ASPxLabel ID="ASPxLabelMessage" runat="server" Font-Size="Large" 
-            Text="Message" Visible="False">
+            Text="Message" Visible="False" width="50%">
         </dx:ASPxLabel>
         <br />
         <br />
         
         <asp:image ID="Logo" runat="server" height="50%" width="50%"  />
         <br />
-    <asp:TextBox ID="UserIDTxt" runat="server" onfocus="javascript:if(this.value == 'User ID') this.value=''" onblur="javascript:if(this.value == '') this.value='User ID'" Text="User ID" width="50%"></asp:TextBox>
+        <div style="text-align:left">
+        <dx:ASPxLabel ID="ASPxLabel1" runat="server" ForeColor="Red" Text="User ID"></dx:ASPxLabel>
+         </div>
+        <br/>
+        
+    <%--<asp:TextBox ID="UserIDTxt" runat="server" onfocus="javascript:if(this.value == 'User ID') this.value=''" onblur="javascript:if(this.value == '') this.value='User ID'" Text="User ID" width="50%"></asp:TextBox>--%>
+         <asp:TextBox ID="UserIDTxt" runat="server" width="50%"></asp:TextBox>
         <br />
     <br />
+        <div style="text-align:left">
+        <dx:ASPxLabel ID="ASPxLabel2" runat="server" ForeColor="Red"  Text="Password"></dx:ASPxLabel>
+        </div>
+        <br/>
+        
     <asp:TextBox ID="PasswordTxt" runat="server" OnTextChanged="test"  AutoPostBack="true" width="50%" ToolTip="Password"  TextMode="Password"                        
             ></asp:TextBox>    <%--
             onfocus="javascript:if(this.value == 'Password') {this.value=''}   if(this.value != 'Password') {this.Type='Password'} " 

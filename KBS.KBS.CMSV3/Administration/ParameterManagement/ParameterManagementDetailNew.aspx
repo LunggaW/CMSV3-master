@@ -252,6 +252,13 @@
                         </CaptionCellStyle>
                     </dx:ASPxTextBox>
                 </td>
+                 <td class="table">
+                    <dx:ASPxTextBox runat="server" Width="50px" Caption=" Value 4" Visible="false" ID="ASPxTextBox1"
+                        onkeypress="return isNumberKey(event)">
+                        <CaptionCellStyle Width="80px">
+                        </CaptionCellStyle>
+                    </dx:ASPxTextBox>
+                </td>
             </tr>
             <tr>
                 <td class="table">
@@ -271,6 +278,13 @@
                         <CaptionCellStyle Width="80px">
                         </CaptionCellStyle>
                     </dx:ASPxDateEdit>
+                </td>
+                <td class="table">
+                    <dx:ASPxTextBox runat="server" Width="50px" Caption=" Value 4" Visible="false" ID="ASPxTextBox2"
+                        onkeypress="return isNumberKey(event)">
+                        <CaptionCellStyle Width="80px">
+                        </CaptionCellStyle>
+                    </dx:ASPxTextBox>
                 </td>
             </tr>
             <tr>

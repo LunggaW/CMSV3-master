@@ -67,6 +67,15 @@ namespace KBS.KBS.CMSV3.Account {
         protected global::System.Web.UI.WebControls.Image Logo;
         
         /// <summary>
+        /// ASPxLabel1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel ASPxLabel1;
+        
+        /// <summary>
         /// UserIDTxt control.
         /// </summary>
         /// <remarks>
@@ -74,6 +83,15 @@ namespace KBS.KBS.CMSV3.Account {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox UserIDTxt;
+        
+        /// <summary>
+        /// ASPxLabel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel ASPxLabel2;
         
         /// <summary>
         /// PasswordTxt control.

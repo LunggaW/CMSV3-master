@@ -283,6 +283,15 @@ namespace KBS.KBS.CMSV3.Administration.ParameterManagement {
         protected global::DevExpress.Web.ASPxTextBox ASPxTextBoxDetailParValChar3;
         
         /// <summary>
+        /// ASPxTextBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox ASPxTextBox1;
+        
+        /// <summary>
         /// ASPxDateEditPar1 control.
         /// </summary>
         /// <remarks>
@@ -308,6 +317,15 @@ namespace KBS.KBS.CMSV3.Administration.ParameterManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxDateEdit ASPxDateEditPar3;
+        
+        /// <summary>
+        /// ASPxTextBox2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox ASPxTextBox2;
         
         /// <summary>
         /// ASPxMemoComment control.

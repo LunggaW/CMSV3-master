@@ -107,7 +107,8 @@ namespace KBS.KBS.CMSV3.Account
             else
             {
                 ASPxLabelMessage.Visible = true;
-                ASPxLabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+                ASPxLabelMessage.BackColor = message.Code < 0 ? Color.Red : Color.White;
+                ASPxLabelMessage.ForeColor = message.Code < 0 ? Color.White : Color.Black;
                 ASPxLabelMessage.Text = message.Message;
             }
         }

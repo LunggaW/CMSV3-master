@@ -27,7 +27,7 @@
     <asp:Button ID="UploadButton" runat="server" Text="Upload" OnClick="UploadButton_Click" /><br />
     <br />
     <asp:Label ID="Info" runat="server"></asp:Label><br />
-    <asp:TextBox ID="ResultFile" runat="server" Height="63px" ReadOnly="True" TextMode="MultiLine" Width="341px" ></asp:TextBox>
+    <asp:TextBox ID="ResultFile" runat="server" Height="63px" ReadOnly="True" TextMode="MultiLine" Width="341px" Visible="false" Enabled="false" ></asp:TextBox>
     <br />
     <%--<asp:TextBox ID="ResultSub" runat="server" Height="63px" ReadOnly="True" TextMode="MultiLine" Width="341px" ></asp:TextBox>
      <br />

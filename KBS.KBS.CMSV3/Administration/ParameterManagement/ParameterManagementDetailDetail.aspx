@@ -93,7 +93,7 @@
         </span><span>
             <dx:ASPxButton ID="ClearBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/clear.png" ToolTip="Clear" BackColor="Transparent" OnClick="ClearBtn_Click">
+                Image-Url="~/image/clear.png" ToolTip="Clear" BackColor="Transparent" OnClick="ClearBtn_Click" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/clearDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -254,6 +254,13 @@
                         </CaptionCellStyle>
                     </dx:ASPxTextBox>
                 </td>
+                <td class="table">
+                    <dx:ASPxTextBox runat="server" Width="50px" Caption=" Value 4" Visible="false" ID="ASPxTextBox1"
+                        onkeypress="return isNumberKey(event)">
+                        <CaptionCellStyle Width="80px">
+                        </CaptionCellStyle>
+                    </dx:ASPxTextBox>
+                </td>
             </tr>
             <tr>
                 <td class="table">
@@ -273,6 +280,13 @@
                         <CaptionCellStyle Width="80px">
                         </CaptionCellStyle>
                     </dx:ASPxDateEdit>
+                </td>
+                <td class="table">
+                    <dx:ASPxTextBox runat="server" Width="50px" Caption=" Value 4" Visible="false" ID="ASPxTextBox2"
+                        onkeypress="return isNumberKey(event)">
+                        <CaptionCellStyle Width="80px">
+                        </CaptionCellStyle>
+                    </dx:ASPxTextBox>
                 </td>
             </tr>
             <tr>
