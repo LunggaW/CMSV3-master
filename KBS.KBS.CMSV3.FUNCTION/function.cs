@@ -9067,7 +9067,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.Parameters.Add("PPARDDATE3", OracleDbType.Date).Value = parDetail.Date3.HasValue
                    ? parDetail.Date3
                    : (object)DBNull.Value;
-                cmd.Parameters.Add("PPARDCOMM", OracleDbType.Varchar2, 50).Value = parDetail.Comment;
+                cmd.Parameters.Add("PPARDCOMM", OracleDbType.Varchar2, 1000).Value = parDetail.Comment;
                 cmd.Parameters.Add("PPARDINTF", OracleDbType.Varchar2, 50).Value = "0";
                 cmd.Parameters.Add("PPARDCRBY", OracleDbType.Varchar2, 50).Value = User;
                 cmd.Parameters.Add("PCOPY", OracleDbType.Int32).Value = Copy;
