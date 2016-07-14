@@ -93,7 +93,7 @@
         </span><span>
             <dx:ASPxButton ID="ClearBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/clear.png" ToolTip="Clear" BackColor="Transparent">
+                Image-Url="~/image/clear.png" ToolTip="Clear" BackColor="Transparent" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/clearDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -220,7 +220,7 @@
                 </tr>
                 <tr>
                     <td class="table" colspan="10" rowspan="3">
-                        <dx:ASPxMemo runat="server" Height="71px" Width="429px" Caption="Comment" ID="ASPxMemoURL">
+                        <dx:ASPxMemo runat="server" Height="71px" Width="429px" Caption="URL" ID="ASPxMemoURL">
                             <CaptionCellStyle Width="110px">
                             </CaptionCellStyle>
                         </dx:ASPxMemo>

@@ -45,7 +45,7 @@
             <dx:ASPxButton ID="ClearBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/clear.png" ToolTip="Clear" BackColor="Transparent" 
-            Enabled="False">
+                Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/clearDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -89,7 +89,7 @@
             <dx:ASPxButton ID="LprevBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/back2.png" BackColor="Transparent" 
-            ToolTip="First Page" Enabled="False">
+            ToolTip="First Page" >
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/back2Disable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -100,7 +100,7 @@
             <dx:ASPxButton ID="PrevBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/back.png" BackColor="Transparent" 
-            ToolTip="Previous Page" Enabled="False">
+            ToolTip="Previous Page" >
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/backDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -111,7 +111,7 @@
             <dx:ASPxButton ID="NextBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/next.png" BackColor="Transparent" 
-            ToolTip="Next Page" Enabled="False">
+            ToolTip="Next Page" >
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/nextDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -122,7 +122,7 @@
             <dx:ASPxButton ID="LnextBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/next2.png" BackColor="Transparent" 
-            ToolTip="Last Page" Enabled="False">
+            ToolTip="Last Page" >
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/next2Disable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
