@@ -1,0 +1,1207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{6F1FC745-BA1D-4F76-90B1-D1A2D8BC9C51}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>KBS.KBS.CMSV3</RootNamespace>
+    <AssemblyName>KBS.KBS.CMSV3</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="DevExpress.Charts.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Data.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Office.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.PivotGrid.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.RichEdit.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.SpellChecker.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Spreadsheet.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Utils.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxGauges.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxHtmlEditor.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxPivotGrid.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxScheduler.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxSpellChecker.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxSpreadsheet.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxThemes.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.ASPxTreeList.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Web.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraCharts.v15.1.Web, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraGauges.v15.1.Presets, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPivotGrid.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Sparkline.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraReports.v15.1.Web, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraScheduler.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NLog">
+      <HintPath>..\..\..\..\Dependency\NLog\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess, Version=4.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342, processorArchitecture=x86" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\ChangePassword.aspx" />
+    <Content Include="Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Account\Logins.aspx" />
+    <Content Include="Account\Register.aspx" />
+    <Content Include="Account\RegisterSuccess.aspx" />
+    <Content Include="Administration\AccessManagement\AccessProfileHeader.aspx" />
+    <Content Include="Administration\AccessManagement\AccessProfileHeaderDetail.aspx" />
+    <Content Include="Administration\AccessManagement\AccessProfileHeaderNew.aspx" />
+    <Content Include="Administration\AccessManagement\AccessProfileDetail.aspx" />
+    <Content Include="Image\back2Disable.png" />
+    <Content Include="Image\back3Disable.png" />
+    <Content Include="Image\backDisable.png" />
+    <Content Include="Image\clearDisable.png" />
+    <Content Include="Image\homebackDisable.png" />
+    <Content Include="Image\homeDisable.png" />
+    <Content Include="Image\minDisable.png" />
+    <Content Include="Image\next2Disable.png" />
+    <Content Include="Image\nextDisable.png" />
+    <Content Include="Image\plusDisable.png" />
+    <Content Include="Image\saveDisable.png" />
+    <Content Include="Image\searchDisable.png" />
+    <Content Include="Image\validDisable.png" />
+    <Content Include="MasterData\Assortment\ItemSearch.aspx" />
+    <Content Include="Administration\MenuManagement\MenuProfileHeader.aspx" />
+    <Content Include="Administration\MenuManagement\MenuProfileHeaderDetail.aspx" />
+    <Content Include="Administration\MenuManagement\MenuProfileLinkManagement.aspx" />
+    <Content Include="Administration\MenuManagement\MenuProfileLinkManagementNew.aspx" />
+    <Content Include="Administration\MenuMasterManagement\MenuMaster.aspx" />
+    <Content Include="Administration\MenuMasterManagement\MenuMasterDetail.aspx" />
+    <Content Include="Administration\MenuMasterManagement\MenuMasterNew.aspx" />
+    <Content Include="Administration\ParameterManagement\ParameterManagementDetailNew.aspx" />
+    <Content Include="Administration\ParameterManagement\ParameterManagementHeaderNew.aspx" />
+    <Content Include="Administration\ParameterManagement\ParameterManagementHeaderDetail.aspx" />
+    <Content Include="Administration\ParameterManagement\ParameterManagementDetailDetail.aspx" />
+    <Content Include="Administration\ParameterManagement\ParameterManagementDetail.aspx" />
+    <Content Include="Administration\ParameterManagement\ParameterManagementHeader.aspx" />
+    <Content Include="Administration\MenuManagement\MenuProfileHeaderNew.aspx" />
+    <Content Include="MasterData\Assortment\AssortmentManagement.aspx" />
+    <Content Include="MasterData\ItemManagement\VariantManagement\BarcodeManagement\BarcodeManagementHeader.aspx" />
+    <Content Include="MasterData\ItemManagement\VariantManagement\BarcodeManagement\BarcodeManagementHeaderNew.aspx" />
+    <Content Include="MasterData\ItemManagement\VariantManagement\BarcodeManagement\BarcodeManagementHeaderDetail.aspx" />
+    <Content Include="MasterData\ItemManagement\VariantManagement\VariantManagementDetail.aspx" />
+    <Content Include="MasterData\ItemManagement\VariantManagement\VariantManagementDetailNew.aspx" />
+    <Content Include="MasterData\ItemManagement\VariantManagement\VariantManagementHeaderNew.aspx" />
+    <Content Include="MasterData\ItemManagement\VariantManagement\VariantManagementHeaderDetail.aspx" />
+    <Content Include="MasterData\SKULinkMasterManagement\SKULinkMasterManagementEdit.aspx" />
+    <Content Include="MasterData\SKULinkMasterManagement\SKULinkMasterManagementHeader.aspx" />
+    <Content Include="MasterData\SKULinkMasterManagement\SKULinkMasterManagementNew.aspx" />
+    <Content Include="MasterData\ItemManagement\VariantManagement\VariantManagementHeader.aspx" />
+    <Content Include="Administration\SiteProfileManagement\SiteProfileHeader.aspx" />
+    <Content Include="Administration\SiteProfileManagement\SiteProfileHeaderDetail.aspx" />
+    <Content Include="Administration\SiteProfileManagement\SiteProfileHeaderNew.aspx" />
+    <Content Include="Administration\SiteProfileManagement\SiteProfileLinkManagement.aspx" />
+    <Content Include="Administration\SiteProfileManagement\SiteProfileLinkManagementDetail.aspx" />
+    <Content Include="Administration\SiteProfileManagement\SiteProfileLinkManagementNew.aspx" />
+    <Content Include="Administration\ProfileManagement.aspx" />
+    <Content Include="Administration\UserManagement\UserManagementHeaderNew.aspx" />
+    <Content Include="Administration\UserManagement\UserManagementHeaderDetail.aspx" />
+    <Content Include="Administration\UserManagement\UserManagementHeader.aspx" />
+    <Content Include="Content\New.css" />
+    <Content Include="Image\1.png" />
+    <Content Include="Image\back.png" />
+    <Content Include="Image\back2.png" />
+    <Content Include="Image\back3.png" />
+    <Content Include="Image\clear.png" />
+    <Content Include="Image\cms.png" />
+    <Content Include="Image\cmslogo.png" />
+    <Content Include="Image\ct.ico" />
+    <Content Include="Image\home.png" />
+    <Content Include="Image\homeback.png" />
+    <Content Include="Image\kds.png" />
+    <Content Include="Image\min.png" />
+    <Content Include="Image\next.png" />
+    <Content Include="Image\next2.png" />
+    <Content Include="Image\plus.png" />
+    <Content Include="Image\sales.png" />
+    <Content Include="Image\sales2.png" />
+    <Content Include="Image\save.png" />
+    <Content Include="Image\search.png" />
+    <Content Include="Image\transback.png" />
+    <Content Include="Image\valid.png" />
+    <Content Include="MasterData\ColorMasterManagement\ColorMasterManagementHeader.aspx" />
+    <Content Include="MasterData\ColorMasterManagement\ColorMasterManagementEdit.aspx" />
+    <Content Include="MasterData\ColorMasterManagement\ColorMasterManagementNew.aspx" />
+    <Content Include="MasterData\ColorMasterManagement\ColorDetailMasterManagement.aspx" />
+    <Content Include="MasterData\ColorMasterManagement\ColorDetailMasterManagementNew.aspx" />
+    <Content Include="MasterData\ColorMasterManagement\ColorDetailMasterManagementEdit.aspx" />
+    <Content Include="MasterData\BrandMasterManagement\BrandMasterManagementEdit.aspx" />
+    <Content Include="MasterData\BrandMasterManagement\BrandMasterManagementHeader.aspx" />
+    <Content Include="MasterData\BrandMasterManagement\BrandMasterManagementNew.aspx" />
+    <Content Include="MasterData\ItemManagement\ItemManagementHeaderNew.aspx" />
+    <Content Include="MasterData\ItemManagement\ItemManagementHeader.aspx" />
+    <Content Include="MasterData\ItemManagement\ItemManagementHeaderDetail.aspx" />
+    <Content Include="MasterData\SKUMasterManagement\SKUDetailMasterManagement.aspx" />
+    <Content Include="MasterData\SKUMasterManagement\SKUDetailMasterManagementEdit.aspx" />
+    <Content Include="MasterData\SKUMasterManagement\SKUDetailMasterManagementNew.aspx" />
+    <Content Include="MasterData\SKUMasterManagement\SKUMasterManagementEdit.aspx" />
+    <Content Include="MasterData\SKUMasterManagement\SKUMasterManagementHeader.aspx" />
+    <Content Include="MasterData\SKUMasterManagement\SKUMasterManagementNew.aspx" />
+    <Content Include="MasterData\PriceMasterManagement\SearchItemMasterManagement.aspx" />
+    <Content Include="MasterData\PriceMasterManagement\PriceMasterManagementEdit.aspx" />
+    <Content Include="MasterData\PriceMasterManagement\PriceMasterManagementHeader.aspx" />
+    <Content Include="MasterData\PriceMasterManagement\PriceMasterManagementNew.aspx" />
+    <Content Include="MasterData\StyleMasterManagement\StyleDetailMasterManagement.aspx" />
+    <Content Include="MasterData\StyleMasterManagement\StyleDetailMasterManagementEdit.aspx" />
+    <Content Include="MasterData\StyleMasterManagement\StyleDetailMasterManagementNew.aspx" />
+    <Content Include="MasterData\StyleMasterManagement\StyleMasterManagementEdit.aspx" />
+    <Content Include="MasterData\StyleMasterManagement\StyleMasterManagementHeader.aspx" />
+    <Content Include="MasterData\StyleMasterManagement\StyleMasterManagementNew.aspx" />
+    <Content Include="MasterData\SizeMasterManagement\SizeDetailMasterManagement.aspx" />
+    <Content Include="MasterData\SizeMasterManagement\SizeDetailMasterManagementEdit.aspx" />
+    <Content Include="MasterData\SizeMasterManagement\SizeDetailMasterManagementNew.aspx" />
+    <Content Include="MasterData\SizeMasterManagement\SizeMasterManagementEdit.aspx" />
+    <Content Include="MasterData\SizeMasterManagement\SizeMasterManagementHeader.aspx" />
+    <Content Include="MasterData\SizeMasterManagement\SizeMasterManagementNew.aspx" />
+    <Content Include="App_Data\NWind.mdf" />
+    <Content Include="App_Data\NWind_log.ldf">
+      <DependentUpon>NWind.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\SideMenu.xml" />
+    <Content Include="App_Data\TopMenu.xml" />
+    <Content Include="Content\Images\AquaHeader.jpg" />
+    <Content Include="Content\Images\BlackGlassHeader.jpg" />
+    <Content Include="Content\Images\GlassHeader.jpg" />
+    <Content Include="Content\Images\PlasticBlueHeader.jpg" />
+    <Content Include="Content\Images\RedWineHeader.jpg" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Default.aspx" />
+    <Content Include="Global.asax" />
+    <Content Include="MasterData\SiteMasterManagement\SiteMasterManagementHeader.aspx" />
+    <Content Include="MasterData\SiteMasterManagement\SiteMasterManagementHeaderDetail.aspx" />
+    <Content Include="MasterData\SiteMasterManagement\SiteMasterManagementHeaderNew.aspx" />
+    <Content Include="Report\Report\Report.aspx" />
+    <Content Include="SalesManagement\SalesReturn\SalesDetailReturn.aspx" />
+    <Content Include="SalesManagement\SalesReturn\SalesReturnEdit.aspx" />
+    <Content Include="SalesManagement\SalesReturn\SalesReturnHeader.aspx" />
+    <Content Include="SalesManagement\SalesInput\SalesDetailInput.aspx" />
+    <Content Include="SalesManagement\SalesInput\SalesDetailInputEdit.aspx" />
+    <Content Include="SalesManagement\SalesInput\SalesDetailInputNew.aspx" />
+    <Content Include="SalesManagement\SalesInput\SalesInputEdit.aspx" />
+    <Content Include="SalesManagement\SalesInput\SalesInputHeader.aspx" />
+    <Content Include="SalesManagement\SalesInput\SalesInputNew.aspx" />
+    <Content Include="SalesManagement\SalesInput\SearchItemMaster.aspx" />
+    <Content Include="SalesManagement\SalesValidation\SalesDetailValidation.aspx" />
+    <Content Include="SalesManagement\SalesValidation\SalesValidationEdit.aspx" />
+    <Content Include="SalesManagement\SalesValidation\SalesValidationHeader.aspx" />
+    <Content Include="Scripts\CustomJS.js" />
+    <Content Include="TransferOrder\Receive\TOReceiveDetail.aspx" />
+    <Content Include="TransferOrder\Receive\TOReceiveDetailEdit.aspx" />
+    <Content Include="TransferOrder\Receive\TOReceiveHeader.aspx" />
+    <Content Include="TransferOrder\Shipment\SearchItemMaster.aspx" />
+    <Content Include="TransferOrder\Shipment\TOShipmentDetail.aspx" />
+    <Content Include="TransferOrder\Shipment\TOShipmentDetailEdit.aspx" />
+    <Content Include="TransferOrder\Shipment\TOShipmentDetailNew.aspx" />
+    <Content Include="TransferOrder\Shipment\TOShipmentEdit.aspx" />
+    <Content Include="TransferOrder\Shipment\TOShipmentHeader.aspx" />
+    <Content Include="TransferOrder\Shipment\TOShipmentNew.aspx" />
+    <Content Include="WebForm1.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Light.master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Main.master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mobile\Account\ChangePassword.aspx" />
+    <Content Include="Mobile\Account\ChangePasswordSuccess.aspx" />
+    <Content Include="Mobile\Account\Login.aspx" />
+    <Content Include="Mobile\Account\Register.aspx" />
+    <Content Include="Mobile\Default.aspx" />
+    <Content Include="Mobile\Styles\Mobile.css" />
+    <Content Include="Mobile\TimeSheetView.aspx" />
+    <Content Include="Root.master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Account\Web.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\jquery-2.1.0-vsdoc.js" />
+    <Content Include="Scripts\jquery-2.1.0.js" />
+    <Content Include="Scripts\jquery-2.1.0.min.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\external\jquery\jquery.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\images\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\images\ui-icons_222222_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\images\ui-icons_228ef1_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\images\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\images\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\index.html" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\jquery-ui.css" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\jquery-ui.min.css" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\jquery-ui.min.js" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\jquery-ui.structure.css" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\jquery-ui.structure.min.css" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\jquery-ui.theme.css" />
+    <Content Include="Scripts\jquery-ui-1.11.4.custom\jquery-ui.theme.min.css" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\ChangePasswordSuccess.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Logins.aspx.cs">
+      <DependentUpon>Logins.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Logins.aspx.designer.cs">
+      <DependentUpon>Logins.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Account\RegisterSuccess.aspx.cs">
+      <DependentUpon>RegisterSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Account\RegisterSuccess.aspx.designer.cs">
+      <DependentUpon>RegisterSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\AccessManagement\AccessProfileHeader.aspx.cs">
+      <DependentUpon>AccessProfileHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\AccessManagement\AccessProfileHeader.aspx.designer.cs">
+      <DependentUpon>AccessProfileHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\AccessManagement\AccessProfileHeaderDetail.aspx.cs">
+      <DependentUpon>AccessProfileHeaderDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\AccessManagement\AccessProfileHeaderDetail.aspx.designer.cs">
+      <DependentUpon>AccessProfileHeaderDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\AccessManagement\AccessProfileHeaderNew.aspx.cs">
+      <DependentUpon>AccessProfileHeaderNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\AccessManagement\AccessProfileHeaderNew.aspx.designer.cs">
+      <DependentUpon>AccessProfileHeaderNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\AccessManagement\AccessProfileDetail.aspx.cs">
+      <DependentUpon>AccessProfileDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\AccessManagement\AccessProfileDetail.aspx.designer.cs">
+      <DependentUpon>AccessProfileDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\Assortment\ItemSearch.aspx.cs">
+      <DependentUpon>ItemSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\Assortment\ItemSearch.aspx.designer.cs">
+      <DependentUpon>ItemSearch.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\MenuManagement\MenuProfileHeader.aspx.cs">
+      <DependentUpon>MenuProfileHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\MenuManagement\MenuProfileHeader.aspx.designer.cs">
+      <DependentUpon>MenuProfileHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\MenuManagement\MenuProfileHeaderDetail.aspx.cs">
+      <DependentUpon>MenuProfileHeaderDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\MenuManagement\MenuProfileHeaderDetail.aspx.designer.cs">
+      <DependentUpon>MenuProfileHeaderDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\MenuManagement\MenuProfileLinkManagement.aspx.cs">
+      <DependentUpon>MenuProfileLinkManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\MenuManagement\MenuProfileLinkManagement.aspx.designer.cs">
+      <DependentUpon>MenuProfileLinkManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\MenuManagement\MenuProfileLinkManagementNew.aspx.cs">
+      <DependentUpon>MenuProfileLinkManagementNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\MenuManagement\MenuProfileLinkManagementNew.aspx.designer.cs">
+      <DependentUpon>MenuProfileLinkManagementNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\MenuMasterManagement\MenuMaster.aspx.cs">
+      <DependentUpon>MenuMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\MenuMasterManagement\MenuMaster.aspx.designer.cs">
+      <DependentUpon>MenuMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\MenuMasterManagement\MenuMasterDetail.aspx.cs">
+      <DependentUpon>MenuMasterDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\MenuMasterManagement\MenuMasterDetail.aspx.designer.cs">
+      <DependentUpon>MenuMasterDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\MenuMasterManagement\MenuMasterNew.aspx.cs">
+      <DependentUpon>MenuMasterNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\MenuMasterManagement\MenuMasterNew.aspx.designer.cs">
+      <DependentUpon>MenuMasterNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ParameterManagement\ParameterManagementDetailNew.aspx.cs">
+      <DependentUpon>ParameterManagementDetailNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ParameterManagement\ParameterManagementDetailNew.aspx.designer.cs">
+      <DependentUpon>ParameterManagementDetailNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ParameterManagement\ParameterManagementHeaderNew.aspx.cs">
+      <DependentUpon>ParameterManagementHeaderNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ParameterManagement\ParameterManagementHeaderNew.aspx.designer.cs">
+      <DependentUpon>ParameterManagementHeaderNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ParameterManagement\ParameterManagementHeaderDetail.aspx.cs">
+      <DependentUpon>ParameterManagementHeaderDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ParameterManagement\ParameterManagementHeaderDetail.aspx.designer.cs">
+      <DependentUpon>ParameterManagementHeaderDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ParameterManagement\ParameterManagementDetailDetail.aspx.cs">
+      <DependentUpon>ParameterManagementDetailDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ParameterManagement\ParameterManagementDetailDetail.aspx.designer.cs">
+      <DependentUpon>ParameterManagementDetailDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ParameterManagement\ParameterManagementDetail.aspx.cs">
+      <DependentUpon>ParameterManagementDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ParameterManagement\ParameterManagementDetail.aspx.designer.cs">
+      <DependentUpon>ParameterManagementDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ParameterManagement\ParameterManagementHeader.aspx.cs">
+      <DependentUpon>ParameterManagementHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ParameterManagement\ParameterManagementHeader.aspx.designer.cs">
+      <DependentUpon>ParameterManagementHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\MenuManagement\MenuProfileHeaderNew.aspx.cs">
+      <DependentUpon>MenuProfileHeaderNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\MenuManagement\MenuProfileHeaderNew.aspx.designer.cs">
+      <DependentUpon>MenuProfileHeaderNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\Assortment\AssortmentManagement.aspx.cs">
+      <DependentUpon>AssortmentManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\Assortment\AssortmentManagement.aspx.designer.cs">
+      <DependentUpon>AssortmentManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\VariantManagement\BarcodeManagement\BarcodeManagementHeader.aspx.cs">
+      <DependentUpon>BarcodeManagementHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\VariantManagement\BarcodeManagement\BarcodeManagementHeader.aspx.designer.cs">
+      <DependentUpon>BarcodeManagementHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\VariantManagement\BarcodeManagement\BarcodeManagementHeaderNew.aspx.cs">
+      <DependentUpon>BarcodeManagementHeaderNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\VariantManagement\BarcodeManagement\BarcodeManagementHeaderNew.aspx.designer.cs">
+      <DependentUpon>BarcodeManagementHeaderNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\VariantManagement\BarcodeManagement\BarcodeManagementHeaderDetail.aspx.cs">
+      <DependentUpon>BarcodeManagementHeaderDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\VariantManagement\BarcodeManagement\BarcodeManagementHeaderDetail.aspx.designer.cs">
+      <DependentUpon>BarcodeManagementHeaderDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\VariantManagement\VariantManagementDetail.aspx.cs">
+      <DependentUpon>VariantManagementDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\VariantManagement\VariantManagementDetail.aspx.designer.cs">
+      <DependentUpon>VariantManagementDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\VariantManagement\VariantManagementDetailNew.aspx.cs">
+      <DependentUpon>VariantManagementDetailNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\VariantManagement\VariantManagementDetailNew.aspx.designer.cs">
+      <DependentUpon>VariantManagementDetailNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\VariantManagement\VariantManagementHeaderNew.aspx.cs">
+      <DependentUpon>VariantManagementHeaderNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\VariantManagement\VariantManagementHeaderNew.aspx.designer.cs">
+      <DependentUpon>VariantManagementHeaderNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\VariantManagement\VariantManagementHeaderDetail.aspx.cs">
+      <DependentUpon>VariantManagementHeaderDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\VariantManagement\VariantManagementHeaderDetail.aspx.designer.cs">
+      <DependentUpon>VariantManagementHeaderDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\SKULinkMasterManagement\SKULinkMasterManagementEdit.aspx.cs">
+      <DependentUpon>SKULinkMasterManagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\SKULinkMasterManagement\SKULinkMasterManagementEdit.aspx.designer.cs">
+      <DependentUpon>SKULinkMasterManagementEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\SKULinkMasterManagement\SKULinkMasterManagementHeader.aspx.cs">
+      <DependentUpon>SKULinkMasterManagementHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\SKULinkMasterManagement\SKULinkMasterManagementHeader.aspx.designer.cs">
+      <DependentUpon>SKULinkMasterManagementHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\SKULinkMasterManagement\SKULinkMasterManagementNew.aspx.cs">
+      <DependentUpon>SKULinkMasterManagementNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\SKULinkMasterManagement\SKULinkMasterManagementNew.aspx.designer.cs">
+      <DependentUpon>SKULinkMasterManagementNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\VariantManagement\VariantManagementHeader.aspx.cs">
+      <DependentUpon>VariantManagementHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\VariantManagement\VariantManagementHeader.aspx.designer.cs">
+      <DependentUpon>VariantManagementHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\SiteProfileManagement\SiteProfileHeader.aspx.cs">
+      <DependentUpon>SiteProfileHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\SiteProfileManagement\SiteProfileHeader.aspx.designer.cs">
+      <DependentUpon>SiteProfileHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\SiteProfileManagement\SiteProfileHeaderDetail.aspx.cs">
+      <DependentUpon>SiteProfileHeaderDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\SiteProfileManagement\SiteProfileHeaderDetail.aspx.designer.cs">
+      <DependentUpon>SiteProfileHeaderDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\SiteProfileManagement\SiteProfileHeaderNew.aspx.cs">
+      <DependentUpon>SiteProfileHeaderNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\SiteProfileManagement\SiteProfileHeaderNew.aspx.designer.cs">
+      <DependentUpon>SiteProfileHeaderNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\SiteProfileManagement\SiteProfileLinkManagement.aspx.cs">
+      <DependentUpon>SiteProfileLinkManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\SiteProfileManagement\SiteProfileLinkManagement.aspx.designer.cs">
+      <DependentUpon>SiteProfileLinkManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\SiteProfileManagement\SiteProfileLinkManagementDetail.aspx.cs">
+      <DependentUpon>SiteProfileLinkManagementDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\SiteProfileManagement\SiteProfileLinkManagementDetail.aspx.designer.cs">
+      <DependentUpon>SiteProfileLinkManagementDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\SiteProfileManagement\SiteProfileLinkManagementNew.aspx.cs">
+      <DependentUpon>SiteProfileLinkManagementNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\SiteProfileManagement\SiteProfileLinkManagementNew.aspx.designer.cs">
+      <DependentUpon>SiteProfileLinkManagementNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\ProfileManagement.aspx.cs">
+      <DependentUpon>ProfileManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\ProfileManagement.aspx.designer.cs">
+      <DependentUpon>ProfileManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\UserManagement\UserManagementHeaderNew.aspx.cs">
+      <DependentUpon>UserManagementHeaderNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\UserManagement\UserManagementHeaderNew.aspx.designer.cs">
+      <DependentUpon>UserManagementHeaderNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\UserManagement\UserManagementHeaderDetail.aspx.cs">
+      <DependentUpon>UserManagementHeaderDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\UserManagement\UserManagementHeaderDetail.aspx.designer.cs">
+      <DependentUpon>UserManagementHeaderDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\UserManagement\UserManagementHeader.aspx.cs">
+      <DependentUpon>UserManagementHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\UserManagement\UserManagementHeader.aspx.designer.cs">
+      <DependentUpon>UserManagementHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\ColorMasterManagement\ColorMasterManagementHeader.aspx.cs">
+      <DependentUpon>ColorMasterManagementHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\ColorMasterManagement\ColorMasterManagementHeader.aspx.designer.cs">
+      <DependentUpon>ColorMasterManagementHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\ColorMasterManagement\ColorMasterManagementEdit.aspx.cs">
+      <DependentUpon>ColorMasterManagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\ColorMasterManagement\ColorMasterManagementEdit.aspx.designer.cs">
+      <DependentUpon>ColorMasterManagementEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\ColorMasterManagement\ColorMasterManagementNew.aspx.cs">
+      <DependentUpon>ColorMasterManagementNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\ColorMasterManagement\ColorMasterManagementNew.aspx.designer.cs">
+      <DependentUpon>ColorMasterManagementNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\ColorMasterManagement\ColorDetailMasterManagement.aspx.cs">
+      <DependentUpon>ColorDetailMasterManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\ColorMasterManagement\ColorDetailMasterManagement.aspx.designer.cs">
+      <DependentUpon>ColorDetailMasterManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\ColorMasterManagement\ColorDetailMasterManagementNew.aspx.cs">
+      <DependentUpon>ColorDetailMasterManagementNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\ColorMasterManagement\ColorDetailMasterManagementNew.aspx.designer.cs">
+      <DependentUpon>ColorDetailMasterManagementNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\ColorMasterManagement\ColorDetailMasterManagementEdit.aspx.cs">
+      <DependentUpon>ColorDetailMasterManagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\ColorMasterManagement\ColorDetailMasterManagementEdit.aspx.designer.cs">
+      <DependentUpon>ColorDetailMasterManagementEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\BrandMasterManagement\BrandMasterManagementEdit.aspx.cs">
+      <DependentUpon>BrandMasterManagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\BrandMasterManagement\BrandMasterManagementEdit.aspx.designer.cs">
+      <DependentUpon>BrandMasterManagementEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\BrandMasterManagement\BrandMasterManagementHeader.aspx.cs">
+      <DependentUpon>BrandMasterManagementHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\BrandMasterManagement\BrandMasterManagementHeader.aspx.designer.cs">
+      <DependentUpon>BrandMasterManagementHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\BrandMasterManagement\BrandMasterManagementNew.aspx.cs">
+      <DependentUpon>BrandMasterManagementNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\BrandMasterManagement\BrandMasterManagementNew.aspx.designer.cs">
+      <DependentUpon>BrandMasterManagementNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\ItemManagementHeaderNew.aspx.cs">
+      <DependentUpon>ItemManagementHeaderNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\ItemManagementHeaderNew.aspx.designer.cs">
+      <DependentUpon>ItemManagementHeaderNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\ItemManagementHeader.aspx.cs">
+      <DependentUpon>ItemManagementHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\ItemManagementHeader.aspx.designer.cs">
+      <DependentUpon>ItemManagementHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\ItemManagementHeaderDetail.aspx.cs">
+      <DependentUpon>ItemManagementHeaderDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\ItemManagement\ItemManagementHeaderDetail.aspx.designer.cs">
+      <DependentUpon>ItemManagementHeaderDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\SKUMasterManagement\SKUDetailMasterManagement.aspx.cs">
+      <DependentUpon>SKUDetailMasterManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\SKUMasterManagement\SKUDetailMasterManagement.aspx.designer.cs">
+      <DependentUpon>SKUDetailMasterManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\SKUMasterManagement\SKUDetailMasterManagementEdit.aspx.cs">
+      <DependentUpon>SKUDetailMasterManagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\SKUMasterManagement\SKUDetailMasterManagementEdit.aspx.designer.cs">
+      <DependentUpon>SKUDetailMasterManagementEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\SKUMasterManagement\SKUDetailMasterManagementNew.aspx.cs">
+      <DependentUpon>SKUDetailMasterManagementNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\SKUMasterManagement\SKUDetailMasterManagementNew.aspx.designer.cs">
+      <DependentUpon>SKUDetailMasterManagementNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\SKUMasterManagement\SKUMasterManagementEdit.aspx.cs">
+      <DependentUpon>SKUMasterManagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\SKUMasterManagement\SKUMasterManagementEdit.aspx.designer.cs">
+      <DependentUpon>SKUMasterManagementEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\SKUMasterManagement\SKUMasterManagementHeader.aspx.cs">
+      <DependentUpon>SKUMasterManagementHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\SKUMasterManagement\SKUMasterManagementHeader.aspx.designer.cs">
+      <DependentUpon>SKUMasterManagementHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\SKUMasterManagement\SKUMasterManagementNew.aspx.cs">
+      <DependentUpon>SKUMasterManagementNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\SKUMasterManagement\SKUMasterManagementNew.aspx.designer.cs">
+      <DependentUpon>SKUMasterManagementNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\PriceMasterManagement\SearchItemMasterManagement.aspx.cs">
+      <DependentUpon>SearchItemMasterManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\PriceMasterManagement\SearchItemMasterManagement.aspx.designer.cs">
+      <DependentUpon>SearchItemMasterManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\PriceMasterManagement\PriceMasterManagementEdit.aspx.cs">
+      <DependentUpon>PriceMasterManagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\PriceMasterManagement\PriceMasterManagementEdit.aspx.designer.cs">
+      <DependentUpon>PriceMasterManagementEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\PriceMasterManagement\PriceMasterManagementHeader.aspx.cs">
+      <DependentUpon>PriceMasterManagementHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\PriceMasterManagement\PriceMasterManagementHeader.aspx.designer.cs">
+      <DependentUpon>PriceMasterManagementHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\PriceMasterManagement\PriceMasterManagementNew.aspx.cs">
+      <DependentUpon>PriceMasterManagementNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\PriceMasterManagement\PriceMasterManagementNew.aspx.designer.cs">
+      <DependentUpon>PriceMasterManagementNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\StyleMasterManagement\StyleDetailMasterManagement.aspx.cs">
+      <DependentUpon>StyleDetailMasterManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\StyleMasterManagement\StyleDetailMasterManagement.aspx.designer.cs">
+      <DependentUpon>StyleDetailMasterManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\StyleMasterManagement\StyleDetailMasterManagementEdit.aspx.cs">
+      <DependentUpon>StyleDetailMasterManagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\StyleMasterManagement\StyleDetailMasterManagementEdit.aspx.designer.cs">
+      <DependentUpon>StyleDetailMasterManagementEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\StyleMasterManagement\StyleDetailMasterManagementNew.aspx.cs">
+      <DependentUpon>StyleDetailMasterManagementNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\StyleMasterManagement\StyleDetailMasterManagementNew.aspx.designer.cs">
+      <DependentUpon>StyleDetailMasterManagementNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\StyleMasterManagement\StyleMasterManagementEdit.aspx.cs">
+      <DependentUpon>StyleMasterManagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\StyleMasterManagement\StyleMasterManagementEdit.aspx.designer.cs">
+      <DependentUpon>StyleMasterManagementEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\StyleMasterManagement\StyleMasterManagementHeader.aspx.cs">
+      <DependentUpon>StyleMasterManagementHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\StyleMasterManagement\StyleMasterManagementHeader.aspx.designer.cs">
+      <DependentUpon>StyleMasterManagementHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\StyleMasterManagement\StyleMasterManagementNew.aspx.cs">
+      <DependentUpon>StyleMasterManagementNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\StyleMasterManagement\StyleMasterManagementNew.aspx.designer.cs">
+      <DependentUpon>StyleMasterManagementNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\SizeMasterManagement\SizeDetailMasterManagement.aspx.cs">
+      <DependentUpon>SizeDetailMasterManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\SizeMasterManagement\SizeDetailMasterManagement.aspx.designer.cs">
+      <DependentUpon>SizeDetailMasterManagement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\SizeMasterManagement\SizeDetailMasterManagementEdit.aspx.cs">
+      <DependentUpon>SizeDetailMasterManagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\SizeMasterManagement\SizeDetailMasterManagementEdit.aspx.designer.cs">
+      <DependentUpon>SizeDetailMasterManagementEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\SizeMasterManagement\SizeDetailMasterManagementNew.aspx.cs">
+      <DependentUpon>SizeDetailMasterManagementNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\SizeMasterManagement\SizeDetailMasterManagementNew.aspx.designer.cs">
+      <DependentUpon>SizeDetailMasterManagementNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\SizeMasterManagement\SizeMasterManagementEdit.aspx.cs">
+      <DependentUpon>SizeMasterManagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\SizeMasterManagement\SizeMasterManagementEdit.aspx.designer.cs">
+      <DependentUpon>SizeMasterManagementEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\SizeMasterManagement\SizeMasterManagementHeader.aspx.cs">
+      <DependentUpon>SizeMasterManagementHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\SizeMasterManagement\SizeMasterManagementHeader.aspx.designer.cs">
+      <DependentUpon>SizeMasterManagementHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\SizeMasterManagement\SizeMasterManagementNew.aspx.cs">
+      <DependentUpon>SizeMasterManagementNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\SizeMasterManagement\SizeMasterManagementNew.aspx.designer.cs">
+      <DependentUpon>SizeMasterManagementNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Light.master.cs">
+      <DependentUpon>Light.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Light.master.designer.cs">
+      <DependentUpon>Light.master</DependentUpon>
+    </Compile>
+    <Compile Include="Main.master.cs">
+      <DependentUpon>Main.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Main.master.designer.cs">
+      <DependentUpon>Main.master</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\SiteMasterManagement\SiteMasterManagementHeader.aspx.cs">
+      <DependentUpon>SiteMasterManagementHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\SiteMasterManagement\SiteMasterManagementHeader.aspx.designer.cs">
+      <DependentUpon>SiteMasterManagementHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\SiteMasterManagement\SiteMasterManagementHeaderDetail.aspx.cs">
+      <DependentUpon>SiteMasterManagementHeaderDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\SiteMasterManagement\SiteMasterManagementHeaderDetail.aspx.designer.cs">
+      <DependentUpon>SiteMasterManagementHeaderDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\SiteMasterManagement\SiteMasterManagementHeaderNew.aspx.cs">
+      <DependentUpon>SiteMasterManagementHeaderNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\SiteMasterManagement\SiteMasterManagementHeaderNew.aspx.designer.cs">
+      <DependentUpon>SiteMasterManagementHeaderNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mobile\Account\ChangePassword.aspx.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mobile\Account\ChangePassword.aspx.designer.cs">
+      <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mobile\Account\ChangePasswordSuccess.aspx.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mobile\Account\ChangePasswordSuccess.aspx.designer.cs">
+      <DependentUpon>ChangePasswordSuccess.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mobile\Account\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mobile\Account\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mobile\Account\Register.aspx.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mobile\Account\Register.aspx.designer.cs">
+      <DependentUpon>Register.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mobile\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mobile\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Mobile\Login.Master.cs">
+      <DependentUpon>Login.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mobile\Login.Master.designer.cs">
+      <DependentUpon>Login.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Mobile\Mobile.Master.cs">
+      <DependentUpon>Mobile.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mobile\Mobile.Master.designer.cs">
+      <DependentUpon>Mobile.Master</DependentUpon>
+    </Compile>
+    <Compile Include="Mobile\TimeSheetView.aspx.cs">
+      <DependentUpon>TimeSheetView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mobile\TimeSheetView.aspx.designer.cs">
+      <DependentUpon>TimeSheetView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Report\Report\Report.aspx.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Report\Report\Report.aspx.designer.cs">
+      <DependentUpon>Report.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Root.master.cs">
+      <DependentUpon>Root.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Root.master.designer.cs">
+      <DependentUpon>Root.master</DependentUpon>
+    </Compile>
+    <Compile Include="SalesManagement\SalesReturn\SalesDetailReturn.aspx.cs">
+      <DependentUpon>SalesDetailReturn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalesManagement\SalesReturn\SalesDetailReturn.aspx.designer.cs">
+      <DependentUpon>SalesDetailReturn.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SalesManagement\SalesReturn\SalesReturnEdit.aspx.cs">
+      <DependentUpon>SalesReturnEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalesManagement\SalesReturn\SalesReturnEdit.aspx.designer.cs">
+      <DependentUpon>SalesReturnEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SalesManagement\SalesReturn\SalesReturnHeader.aspx.cs">
+      <DependentUpon>SalesReturnHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalesManagement\SalesReturn\SalesReturnHeader.aspx.designer.cs">
+      <DependentUpon>SalesReturnHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SalesManagement\SalesInput\SalesDetailInput.aspx.cs">
+      <DependentUpon>SalesDetailInput.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalesManagement\SalesInput\SalesDetailInput.aspx.designer.cs">
+      <DependentUpon>SalesDetailInput.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SalesManagement\SalesInput\SalesDetailInputEdit.aspx.cs">
+      <DependentUpon>SalesDetailInputEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalesManagement\SalesInput\SalesDetailInputEdit.aspx.designer.cs">
+      <DependentUpon>SalesDetailInputEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SalesManagement\SalesInput\SalesDetailInputNew.aspx.cs">
+      <DependentUpon>SalesDetailInputNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalesManagement\SalesInput\SalesDetailInputNew.aspx.designer.cs">
+      <DependentUpon>SalesDetailInputNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SalesManagement\SalesInput\SalesInputEdit.aspx.cs">
+      <DependentUpon>SalesInputEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalesManagement\SalesInput\SalesInputEdit.aspx.designer.cs">
+      <DependentUpon>SalesInputEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SalesManagement\SalesInput\SalesInputHeader.aspx.cs">
+      <DependentUpon>SalesInputHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalesManagement\SalesInput\SalesInputHeader.aspx.designer.cs">
+      <DependentUpon>SalesInputHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SalesManagement\SalesInput\SalesInputNew.aspx.cs">
+      <DependentUpon>SalesInputNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalesManagement\SalesInput\SalesInputNew.aspx.designer.cs">
+      <DependentUpon>SalesInputNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SalesManagement\SalesInput\SearchItemMaster.aspx.cs">
+      <DependentUpon>SearchItemMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalesManagement\SalesInput\SearchItemMaster.aspx.designer.cs">
+      <DependentUpon>SearchItemMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SalesManagement\SalesValidation\SalesDetailValidation.aspx.cs">
+      <DependentUpon>SalesDetailValidation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalesManagement\SalesValidation\SalesDetailValidation.aspx.designer.cs">
+      <DependentUpon>SalesDetailValidation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SalesManagement\SalesValidation\SalesValidationEdit.aspx.cs">
+      <DependentUpon>SalesValidationEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalesManagement\SalesValidation\SalesValidationEdit.aspx.designer.cs">
+      <DependentUpon>SalesValidationEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SalesManagement\SalesValidation\SalesValidationHeader.aspx.cs">
+      <DependentUpon>SalesValidationHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalesManagement\SalesValidation\SalesValidationHeader.aspx.designer.cs">
+      <DependentUpon>SalesValidationHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TransferOrder\Receive\TOReceiveDetail.aspx.cs">
+      <DependentUpon>TOReceiveDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TransferOrder\Receive\TOReceiveDetail.aspx.designer.cs">
+      <DependentUpon>TOReceiveDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TransferOrder\Receive\TOReceiveDetailEdit.aspx.cs">
+      <DependentUpon>TOReceiveDetailEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TransferOrder\Receive\TOReceiveDetailEdit.aspx.designer.cs">
+      <DependentUpon>TOReceiveDetailEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TransferOrder\Receive\TOReceiveHeader.aspx.cs">
+      <DependentUpon>TOReceiveHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TransferOrder\Receive\TOReceiveHeader.aspx.designer.cs">
+      <DependentUpon>TOReceiveHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TransferOrder\Shipment\SearchItemMaster.aspx.cs">
+      <DependentUpon>SearchItemMaster.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TransferOrder\Shipment\SearchItemMaster.aspx.designer.cs">
+      <DependentUpon>SearchItemMaster.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TransferOrder\Shipment\TOShipmentDetail.aspx.cs">
+      <DependentUpon>TOShipmentDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TransferOrder\Shipment\TOShipmentDetail.aspx.designer.cs">
+      <DependentUpon>TOShipmentDetail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TransferOrder\Shipment\TOShipmentDetailEdit.aspx.cs">
+      <DependentUpon>TOShipmentDetailEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TransferOrder\Shipment\TOShipmentDetailEdit.aspx.designer.cs">
+      <DependentUpon>TOShipmentDetailEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TransferOrder\Shipment\TOShipmentDetailNew.aspx.cs">
+      <DependentUpon>TOShipmentDetailNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TransferOrder\Shipment\TOShipmentDetailNew.aspx.designer.cs">
+      <DependentUpon>TOShipmentDetailNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TransferOrder\Shipment\TOShipmentEdit.aspx.cs">
+      <DependentUpon>TOShipmentEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TransferOrder\Shipment\TOShipmentEdit.aspx.designer.cs">
+      <DependentUpon>TOShipmentEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TransferOrder\Shipment\TOShipmentHeader.aspx.cs">
+      <DependentUpon>TOShipmentHeader.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TransferOrder\Shipment\TOShipmentHeader.aspx.designer.cs">
+      <DependentUpon>TOShipmentHeader.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="TransferOrder\Shipment\TOShipmentNew.aspx.cs">
+      <DependentUpon>TOShipmentNew.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="TransferOrder\Shipment\TOShipmentNew.aspx.designer.cs">
+      <DependentUpon>TOShipmentNew.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\KBS.KBS.CMSV3.DATAMODEL\KBS.KBS.CMSV3.DATAMODEL.csproj">
+      <Project>{15DD25A4-047B-4B91-B9F2-5D2AC880F39D}</Project>
+      <Name>KBS.KBS.CMSV3.DATAMODEL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\KBS.KBS.CMSV3.FUNCTION\KBS.KBS.CMSV3.FUNCTION.csproj">
+      <Project>{5F47AE9E-3892-4E85-B2F8-6245E28EA489}</Project>
+      <Name>KBS.KBS.CMSV3.FUNCTION</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+    <None Include="Scripts\jquery-2.1.0.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Mobile\Account\Web.config" />
+    <Content Include="Mobile\Login.Master" />
+    <Content Include="Mobile\Mobile.Master" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>11291</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

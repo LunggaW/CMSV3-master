@@ -1,0 +1,80 @@
+﻿.container
+{
+    width: 100%;
+}
+
+.column
+{
+    width: 46%;
+    padding: 5px;
+    float: left;
+    color: white;
+    background-color: white;
+}
+
+.title
+{
+    padding: 5px;
+}
+
+.tableTop
+{
+    width: 95%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #9Da0aa;
+    background-color: white;
+}
+
+.tableTopPlain
+{
+    width: 95%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: white;
+    background-color: white;
+}
+
+.tableTopLabel
+{
+    width: 95%;
+    border-style: solid;
+    border-width: 1px;
+    border-color: #9Da0aa;
+    background-color: silver
+}
+
+.tableHeader2Column
+{
+    width: 50%;
+    padding: 7px;
+}
+
+.table
+{
+    padding: 7px;
+}
+
+.headerButton
+{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    z-index: 2;
+}
+
+.CheckBox
+{
+    padding-left: 100px;
+}
+
+.ASPXGridView
+{
+    width: 95%;
+}
+
+.AccessProfile
+{
+    padding-left: 20px;
+    width: 300px;
+}

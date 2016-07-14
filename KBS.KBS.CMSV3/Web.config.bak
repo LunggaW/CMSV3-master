@@ -1,0 +1,164 @@
+<!--
+  For more information on how to configure your ASP.NET application, please visit
+  http://go.microsoft.com/fwlink/?LinkId=169433
+  -->
+<configuration>
+	<configSections>
+		<sectionGroup name="devExpress">
+			<section name="themes" type="DevExpress.Web.ThemesConfigurationSection, DevExpress.Web.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" requirePermission="false"/>
+			<section name="compression" type="DevExpress.Web.CompressionConfigurationSection, DevExpress.Web.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" requirePermission="false"/>
+			<section name="settings" type="DevExpress.Web.SettingsConfigurationSection, DevExpress.Web.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" requirePermission="false"/>
+			<section name="errors" type="DevExpress.Web.ErrorsConfigurationSection, DevExpress.Web.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" requirePermission="false"/>
+		</sectionGroup>
+	</configSections>
+	<appSettings>
+		<!--<add key="ConnectionString" value="User Id=CMS;Password=kds2015;Data Source=//192.168.0.43/xe"/>-->
+    <!--<add key="ConnectionString" value="User Id=CMS;Password=kds2015;Data Source=//localhost/xe"/>-->
+    <add key="ConnectionString" value="User Id=CMS;Password=kds2015;Data Source=//Z400/xe"/>
+    
+    <!--MenuID Declaration-->
+    <add key="MenuIdUserManagement" value="1"/>
+    <add key="MenuIdDiscountManagement" value="10"/>
+    <add key="MenuIdSalesInput" value="11"/>
+    <add key="MenuIdSalesReturn" value="12"/>
+    <add key="MenuIdSalesValidation" value="13"/>
+    <add key="MenuIdTransferOrderShipment" value="14"/>
+    <add key="MenuIdTransferOrderReceive" value="15"/>
+    <add key="MenuIdSiteProfile" value="16"/>
+    <add key="MenuIdColorMasterManagement" value="17"/>
+    <add key="MenuIdSiteMasterManagement" value="18"/>
+    <add key="MenuIdMenuProfileManagement" value="19"/>
+    <add key="MenuIdSizeMasterManagement" value="20"/>
+    <add key="MenuIdAccessProfileManagement" value="21"/>
+    <add key="MenuIdStyleMasterManagement" value="22"/>
+    <add key="MenuIdBrandMasterManagement" value="23"/>
+    <add key="MenuIdPriceMasterManagement" value="24"/>
+    <add key="MenuIdItemMasterManagement" value="25"/>
+    <add key="MenuIdTransferOrderCreate" value="26"/>
+    <add key="MenuIdAssortmentManagement" value="27"/>
+    <add key="MenuIdReport" value="28"/>
+    <add key="MenuIdMenuMasterManagement" value="3"/>
+    <add key="MenuIdParameterManagement" value="4"/>
+    <add key="MenuIdSPGSPVManagement" value="5"/>
+    <add key="MenuIdLicense" value="6"/>
+    <add key="MenuIdMerchandiseStructure" value="7"/>
+    <add key="MenuIdDiscountSKULINK" value="9"/>
+		<!--<add key="MinutesToLogout" value="5"/>
+		<add key="ImageFooterMemoDiscount" value="Image\KDSLogo.gif"/>
+		<add key="DefaultPrintLabelFilePath" value="C:"/>
+		<add key="SSCFileLocation" value="C:"/>
+		<add key="V_SITE_BATCHFILE" value="\SSC\SSC_V_SITE.bat"/>
+		<add key="V_BRAND_BATCHFILE" value="\SSC\SSC_V_BRAND.bat"/>
+		<add key="MV_ARTICLES_BATCHFILE" value="\SSC\SSC_MV_ARTICLES.bat"/>
+		<add key="MV_ARTICLES_LST" value="\SSC\outgoing\MV_ARTICLES.lst"/>
+		<add key="V_BRAND_LST" value="\SSC\outgoing\V_BRAND.lst"/>
+		<add key="V_SITE_LST" value="\SSC\outgoing\V_SITE.lst"/>-->
+	</appSettings>
+	<connectionStrings>
+		<add name="ApplicationServices" connectionString="data source=(localdb)\v11.0;integrated security=SSPI;attachdbfilename=|DataDirectory|\aspnetdb.mdf" providerName="System.Data.SqlClient"/>
+		<add name="NWindConnectionString" connectionString="data source=(localdb)\v11.0;attachdbfilename=|DataDirectory|\NWind.mdf;integrated security=True;connect timeout=120" providerName="System.Data.SqlClient"/>
+	</connectionStrings>
+	<system.web>
+		<compilation debug="true" targetFramework="4.0">
+			<assemblies>
+				<add assembly="DevExpress.Data.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.Web.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.Web.ASPxHtmlEditor.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.Web.ASPxSpellChecker.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.Web.ASPxTreeList.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.Web.ASPxThemes.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.Web.ASPxPivotGrid.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.Utils.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.Office.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.RichEdit.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.SpellChecker.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.Charts.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.XtraCharts.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.XtraGauges.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.XtraGauges.v15.1.Presets, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.Web.ASPxGauges.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.XtraCharts.v15.1.Web, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.Printing.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.XtraReports.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.XtraReports.v15.1.Web, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.XtraPivotGrid.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.PivotGrid.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.XtraScheduler.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.Web.ASPxScheduler.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.Spreadsheet.v15.1.Core, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<add assembly="DevExpress.Web.ASPxSpreadsheet.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a"/>
+				<!--<add assembly="DevExpress.ExpressApp.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=B88D1754D700E49A"/>
+				<add assembly="DevExpress.ExpressApp.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=B88D1754D700E49A"/>-->
+				<add assembly="System.Design, Version=4.0.0.0, Culture=neutral, PublicKeyToken=B03F5F7F11D50A3A"/>
+				<!--<add assembly="DevExpress.Web.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=B88D1754D700E49A"/>
+				<add assembly="DevExpress.Data.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=B88D1754D700E49A"/>
+				<add assembly="DevExpress.Utils.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=B88D1754D700E49A"/>
+				<add assembly="DevExpress.Printing.v12.2.Core, Version=12.2.6.0, Culture=neutral, PublicKeyToken=B88D1754D700E49A"/>
+				<add assembly="DevExpress.Web.ASPxTreeList.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=B88D1754D700E49A"/>
+				<add assembly="DevExpress.Persistent.Base.v12.2, Version=12.2.6.0, Culture=neutral, PublicKeyToken=B88D1754D700E49A"/>-->
+      </assemblies>
+		</compilation>
+		<authentication mode="Forms">
+			<forms loginUrl="~/Account/Logins.aspx" timeout="2880"/></authentication>
+		<authorization>
+			<!--<deny users="?" />-->
+		</authorization>
+		<membership>
+			<providers>
+				<clear/>
+				<add name="AspNetSqlMembershipProvider" type="System.Web.Security.SqlMembershipProvider" connectionStringName="ApplicationServices" enablePasswordRetrieval="false" enablePasswordReset="true" requiresQuestionAndAnswer="false" requiresUniqueEmail="false" maxInvalidPasswordAttempts="5" minRequiredPasswordLength="6" minRequiredNonalphanumericCharacters="0" passwordAttemptWindow="10" applicationName="/"/>
+			</providers>
+		</membership>
+		<profile>
+			<providers>
+				<clear/>
+				<add name="AspNetSqlProfileProvider" type="System.Web.Profile.SqlProfileProvider" connectionStringName="ApplicationServices" applicationName="/"/>
+			</providers>
+		</profile>
+		<roleManager enabled="false">
+			<providers>
+				<clear/>
+				<add name="AspNetSqlRoleProvider" type="System.Web.Security.SqlRoleProvider" connectionStringName="ApplicationServices" applicationName="/"/>
+				<add name="AspNetWindowsTokenRoleProvider" type="System.Web.Security.WindowsTokenRoleProvider" applicationName="/"/>
+			</providers>
+		</roleManager>
+		<httpHandlers>
+			<add type="DevExpress.Web.ASPxUploadProgressHttpHandler, DevExpress.Web.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" verb="GET,POST" path="ASPxUploadProgressHandlerPage.ashx" validate="false"/>
+			<add type="DevExpress.Web.ASPxHttpHandlerModule, DevExpress.Web.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" verb="GET,POST" path="DX.ashx" validate="false"/>
+		</httpHandlers>
+		<httpModules>
+			<add type="DevExpress.Web.ASPxHttpHandlerModule, DevExpress.Web.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" name="ASPxHttpHandlerModule"/>
+		</httpModules>
+		<globalization culture="" uiCulture=""/>
+		<httpRuntime maxRequestLength="4096" requestValidationMode="4.0" executionTimeout="110"/>
+		<pages validateRequest="true" clientIDMode="AutoID"/>
+	</system.web>
+	<system.webServer>
+		<modules runAllManagedModulesForAllRequests="true">
+			<add type="DevExpress.Web.ASPxHttpHandlerModule, DevExpress.Web.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" name="ASPxHttpHandlerModule"/>
+		</modules>
+		<handlers>
+			<add type="DevExpress.Web.ASPxUploadProgressHttpHandler, DevExpress.Web.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" verb="GET,POST" path="ASPxUploadProgressHandlerPage.ashx" name="ASPxUploadProgressHandler" preCondition="integratedMode"/>
+			<add type="DevExpress.Web.ASPxHttpHandlerModule, DevExpress.Web.v15.1, Version=15.1.4.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" verb="GET,POST" path="DX.ashx" name="ASPxHttpHandlerModule" preCondition="integratedMode"/>
+		</handlers>
+		<validation validateIntegratedModeConfiguration="false"/>
+		<security>
+			<requestFiltering>
+				<requestLimits maxAllowedContentLength="30000000"/>
+			</requestFiltering>
+		</security>
+	</system.webServer>
+	<devExpress>
+		<themes enableThemesAssembly="true" styleSheetTheme="" theme="DevEx" customThemeAssemblies=""/>
+		<compression enableHtmlCompression="false" enableCallbackCompression="true" enableResourceCompression="true" enableResourceMerging="true"/>
+		<settings doctypeMode="Html5" rightToLeft="false" embedRequiredClientLibraries="true" ieCompatibilityVersion="edge"/>
+		<errors callbackErrorRedirectUrl=""/>
+	</devExpress>
+	<!--<location path="Mobile/Default.aspx" allowOverride="true">
+		<system.web>
+			<authorization>
+				<allow users="*"/>
+			</authorization>
+		</system.web>
+	</location>-->
+</configuration>

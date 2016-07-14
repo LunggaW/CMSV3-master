@@ -1,0 +1,1 @@
+<%@ Application Codebehind="Global.asax.cs" Inherits="KBS.KBS.CMSV3.Global_asax" Language="C#" %>

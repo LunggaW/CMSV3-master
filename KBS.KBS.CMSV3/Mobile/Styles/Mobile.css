@@ -1,0 +1,59 @@
+﻿body 
+{
+    background-color: #fff;
+    font-size: 0.9em;
+}
+
+.page
+{
+    width: auto;
+    margin: 0;
+    border-width: 0;
+}
+
+p
+{
+    margin-bottom: 0em;
+    line-height: 1.2em;
+}
+
+.header h1
+{
+    padding: 0 0 0 0.5em;
+    color: #f9f9f9;
+    line-height: 1.6em;
+    font-size: 1.4em;
+}
+
+.title 
+{
+    float: none;
+}
+
+.loginDisplay
+{
+    text-align: left;
+    padding: 0 0 0.5em 10px;
+    font-size: 0.8em;
+}
+
+.menu 
+{
+    font-size: 0.9em;
+}
+
+input.textEntry 
+{
+    width: auto;    
+}
+
+input.passwordEntry 
+{
+    border: 1px solid #ccc;
+    width: auto;    
+}
+
+div.accountInfo
+{
+    width: auto;
+}

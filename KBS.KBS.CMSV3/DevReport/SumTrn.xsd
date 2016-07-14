@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="SumTrn" targetNamespace="http://tempuri.org/SumTrn.xsd" xmlns:mstns="http://tempuri.org/SumTrn.xsd" xmlns="http://tempuri.org/SumTrn.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="CMSV3" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="CMSV3 (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.CMSV3.ConnectionString" Provider="System.Data.OracleClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="KDSCMSTRNTableAdapter" GeneratorDataComponentClassName="KDSCMSTRNTableAdapter" Name="KDSCMSTRN" UserDataComponentName="KDSCMSTRNTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="CMSV3 (Web.config)" DbObjectName="CMS.KDSCMSTRN" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        CMSTRNSITE AS SITE, SUM(CMSTRNQTY) AS TQTY, SUM(CMSTRNAMT) AS TAMT, COUNT(CMSTRNSEQ) AS "TRANSACTION"
+FROM            KDSCMSTRN
+GROUP BY CMSTRNSITE</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CMSTRNSITE" DataSetColumn="CMSTRNSITE" />
+              <Mapping SourceColumn="CMSTRNQTY" DataSetColumn="CMSTRNQTY" />
+              <Mapping SourceColumn="CMSTRNAMT" DataSetColumn="CMSTRNAMT" />
+              <Mapping SourceColumn="TRANSACTION" DataSetColumn="TRANSACTION" />
+              <Mapping SourceColumn="SITE" DataSetColumn="SITE" />
+              <Mapping SourceColumn="TQTY" DataSetColumn="TQTY" />
+              <Mapping SourceColumn="TAMT" DataSetColumn="TAMT" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="SumTrn" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="SumTrn" msprop:Generator_UserDSName="SumTrn">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="KDSCMSTRN" msprop:Generator_TableClassName="KDSCMSTRNDataTable" msprop:Generator_TableVarName="tableKDSCMSTRN" msprop:Generator_TablePropName="KDSCMSTRN" msprop:Generator_RowDeletingName="KDSCMSTRNRowDeleting" msprop:Generator_RowChangingName="KDSCMSTRNRowChanging" msprop:Generator_RowEvHandlerName="KDSCMSTRNRowChangeEventHandler" msprop:Generator_RowDeletedName="KDSCMSTRNRowDeleted" msprop:Generator_UserTableName="KDSCMSTRN" msprop:Generator_RowChangedName="KDSCMSTRNRowChanged" msprop:Generator_RowEvArgName="KDSCMSTRNRowChangeEvent" msprop:Generator_RowClassName="KDSCMSTRNRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CMSTRNSITE" msprop:Generator_ColumnVarNameInTable="columnCMSTRNSITE" msprop:Generator_ColumnPropNameInRow="CMSTRNSITE" msprop:Generator_ColumnPropNameInTable="CMSTRNSITEColumn" msprop:Generator_UserColumnName="CMSTRNSITE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CMSTRNQTY" msprop:Generator_ColumnVarNameInTable="columnCMSTRNQTY" msprop:Generator_ColumnPropNameInRow="CMSTRNQTY" msprop:Generator_ColumnPropNameInTable="CMSTRNQTYColumn" msprop:Generator_UserColumnName="CMSTRNQTY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CMSTRNAMT" msprop:Generator_ColumnVarNameInTable="columnCMSTRNAMT" msprop:Generator_ColumnPropNameInRow="CMSTRNAMT" msprop:Generator_ColumnPropNameInTable="CMSTRNAMTColumn" msprop:Generator_UserColumnName="CMSTRNAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TRANSACTION" msprop:Generator_ColumnVarNameInTable="columnTRANSACTION" msprop:Generator_ColumnPropNameInRow="TRANSACTION" msprop:Generator_ColumnPropNameInTable="TRANSACTIONColumn" msprop:Generator_UserColumnName="TRANSACTION" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SITE" msprop:Generator_ColumnVarNameInTable="columnSITE" msprop:Generator_ColumnPropNameInRow="SITE" msprop:Generator_ColumnPropNameInTable="SITEColumn" msprop:Generator_UserColumnName="SITE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TQTY" msprop:Generator_ColumnVarNameInTable="columnTQTY" msprop:Generator_ColumnPropNameInRow="TQTY" msprop:Generator_ColumnPropNameInTable="TQTYColumn" msprop:Generator_UserColumnName="TQTY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TAMT" msprop:Generator_ColumnVarNameInTable="columnTAMT" msprop:Generator_ColumnPropNameInRow="TAMT" msprop:Generator_ColumnPropNameInTable="TAMTColumn" msprop:Generator_UserColumnName="TAMT" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

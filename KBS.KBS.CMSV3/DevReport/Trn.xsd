@@ -1,0 +1,107 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="Trn" targetNamespace="http://tempuri.org/Trn.xsd" xmlns:mstns="http://tempuri.org/Trn.xsd" xmlns="http://tempuri.org/Trn.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="CMSV3" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="CMSV3 (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.CMSV3.ConnectionString" Provider="System.Data.OracleClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="KDSCMSTRNTableAdapter" GeneratorDataComponentClassName="KDSCMSTRNTableAdapter" Name="KDSCMSTRN" UserDataComponentName="KDSCMSTRNTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="CMSV3 (Web.config)" DbObjectName="CMS.KDSCMSTRN" DbObjectType="Table" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        CMSTRNOTA, CMSTRNITEMID, CMSTRNBRCD, CMSTRDESC, CMSTRNID, CMSTRNSITE, CMSTRNQTY, CMSTRNTYPE, CMSTRNAMT, CMSTRNCDAT, CMSTRNUSR
+FROM            KDSCMSTRN</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="CMSTRNOTA" DataSetColumn="CMSTRNOTA" />
+              <Mapping SourceColumn="CMSTRNITEMID" DataSetColumn="CMSTRNITEMID" />
+              <Mapping SourceColumn="CMSTRNBRCD" DataSetColumn="CMSTRNBRCD" />
+              <Mapping SourceColumn="CMSTRDESC" DataSetColumn="CMSTRDESC" />
+              <Mapping SourceColumn="CMSTRNID" DataSetColumn="CMSTRNID" />
+              <Mapping SourceColumn="CMSTRNSITE" DataSetColumn="CMSTRNSITE" />
+              <Mapping SourceColumn="CMSTRNQTY" DataSetColumn="CMSTRNQTY" />
+              <Mapping SourceColumn="CMSTRNTYPE" DataSetColumn="CMSTRNTYPE" />
+              <Mapping SourceColumn="CMSTRNAMT" DataSetColumn="CMSTRNAMT" />
+              <Mapping SourceColumn="CMSTRNCDAT" DataSetColumn="CMSTRNCDAT" />
+              <Mapping SourceColumn="CMSTRNUSR" DataSetColumn="CMSTRNUSR" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="Trn" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="Trn" msprop:Generator_UserDSName="Trn">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="KDSCMSTRN" msprop:Generator_TableClassName="KDSCMSTRNDataTable" msprop:Generator_TableVarName="tableKDSCMSTRN" msprop:Generator_TablePropName="KDSCMSTRN" msprop:Generator_RowDeletingName="KDSCMSTRNRowDeleting" msprop:Generator_RowChangingName="KDSCMSTRNRowChanging" msprop:Generator_RowEvHandlerName="KDSCMSTRNRowChangeEventHandler" msprop:Generator_RowDeletedName="KDSCMSTRNRowDeleted" msprop:Generator_UserTableName="KDSCMSTRN" msprop:Generator_RowChangedName="KDSCMSTRNRowChanged" msprop:Generator_RowEvArgName="KDSCMSTRNRowChangeEvent" msprop:Generator_RowClassName="KDSCMSTRNRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CMSTRNOTA" msprop:Generator_ColumnVarNameInTable="columnCMSTRNOTA" msprop:Generator_ColumnPropNameInRow="CMSTRNOTA" msprop:Generator_ColumnPropNameInTable="CMSTRNOTAColumn" msprop:Generator_UserColumnName="CMSTRNOTA" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CMSTRNITEMID" msprop:Generator_ColumnVarNameInTable="columnCMSTRNITEMID" msprop:Generator_ColumnPropNameInRow="CMSTRNITEMID" msprop:Generator_ColumnPropNameInTable="CMSTRNITEMIDColumn" msprop:Generator_UserColumnName="CMSTRNITEMID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CMSTRNBRCD" msprop:Generator_ColumnVarNameInTable="columnCMSTRNBRCD" msprop:Generator_ColumnPropNameInRow="CMSTRNBRCD" msprop:Generator_ColumnPropNameInTable="CMSTRNBRCDColumn" msprop:Generator_UserColumnName="CMSTRNBRCD" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="25" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CMSTRDESC" msprop:Generator_ColumnVarNameInTable="columnCMSTRDESC" msprop:Generator_ColumnPropNameInRow="CMSTRDESC" msprop:Generator_ColumnPropNameInTable="CMSTRDESCColumn" msprop:Generator_UserColumnName="CMSTRDESC" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="250" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CMSTRNID" msprop:Generator_ColumnVarNameInTable="columnCMSTRNID" msprop:Generator_ColumnPropNameInRow="CMSTRNID" msprop:Generator_ColumnPropNameInTable="CMSTRNIDColumn" msprop:Generator_UserColumnName="CMSTRNID" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CMSTRNSITE" msprop:Generator_ColumnVarNameInTable="columnCMSTRNSITE" msprop:Generator_ColumnPropNameInRow="CMSTRNSITE" msprop:Generator_ColumnPropNameInTable="CMSTRNSITEColumn" msprop:Generator_UserColumnName="CMSTRNSITE" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="CMSTRNQTY" msprop:Generator_ColumnVarNameInTable="columnCMSTRNQTY" msprop:Generator_ColumnPropNameInRow="CMSTRNQTY" msprop:Generator_ColumnPropNameInTable="CMSTRNQTYColumn" msprop:Generator_UserColumnName="CMSTRNQTY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CMSTRNTYPE" msprop:Generator_ColumnVarNameInTable="columnCMSTRNTYPE" msprop:Generator_ColumnPropNameInRow="CMSTRNTYPE" msprop:Generator_ColumnPropNameInTable="CMSTRNTYPEColumn" msprop:Generator_UserColumnName="CMSTRNTYPE" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CMSTRNAMT" msprop:Generator_ColumnVarNameInTable="columnCMSTRNAMT" msprop:Generator_ColumnPropNameInRow="CMSTRNAMT" msprop:Generator_ColumnPropNameInTable="CMSTRNAMTColumn" msprop:Generator_UserColumnName="CMSTRNAMT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CMSTRNCDAT" msprop:Generator_ColumnVarNameInTable="columnCMSTRNCDAT" msprop:Generator_ColumnPropNameInRow="CMSTRNCDAT" msprop:Generator_ColumnPropNameInTable="CMSTRNCDATColumn" msprop:Generator_UserColumnName="CMSTRNCDAT" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="CMSTRNUSR" msprop:Generator_ColumnVarNameInTable="columnCMSTRNUSR" msprop:Generator_ColumnPropNameInRow="CMSTRNUSR" msprop:Generator_ColumnPropNameInTable="CMSTRNUSRColumn" msprop:Generator_UserColumnName="CMSTRNUSR" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,169 @@
+<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Root.master.cs" Inherits="KBS.KBS.CMSV3.RootMaster" %>
+
+<%@ Register Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
+
+
+
+<%-- DXCOMMENT: Page Root.master is a master page that contains the root layout (it includes Header, Cental Area, and Footer) --%>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+
+    <title>PT. Kahar Duta Sarana Bussines Solutions</title>
+    <link id="Link2" rel="shortcut icon" type="image/x-icon" href="~/Image/ct.ico" runat="server" />
+    <link id="Link1" rel="icon" type="image/ico" href="~/Image/ct.ico" runat="server" />
+
+    <link rel="stylesheet" type="text/css" href="Content/Site.css" />
+    <link href="/Scripts/jquery-ui-1.11.4.custom/jquery-ui.css" rel="stylesheet" type="text/css" />    
+    <script src="/Scripts/jquery-2.1.0.min.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery-ui-1.11.4.custom/jquery-ui.js" type="text/javascript"></script>
+</head>
+<body runat="server" id="Body">
+    <form id="form1" runat="server" >
+    <dx:ASPxSplitter ID="ASPxSplitter1" runat="server" AllowResize="False" Orientation="Vertical"
+        FullscreenMode="True" SeparatorVisible="False" Height="100%" Width="100%">
+        <Styles>
+            <Pane>
+                <Paddings Padding="0px" />
+                <Border BorderWidth="0px" />
+            </Pane>
+        </Styles>
+        <Panes>
+            <dx:SplitterPane Name="Header" Size="83px" MinSize="83px">
+                <PaneStyle CssClass="headerPane">
+                    <BorderBottom BorderWidth="1px" />
+                </PaneStyle>
+                <ContentCollection>
+                    <dx:SplitterContentControl ID="SplitterContentControl1" runat="server">
+                        <div class="headerTop">
+                        <span>
+                            <div class="templateTitle">
+                                <a id="A1" href="~/Default.aspx" runat="server">
+                                <dx:ASPxImage ID="ASPxImage2" runat="server" ShowLoadingImage="True" 
+                                    Height="65px" ImageUrl="~/Image/cmslogo.png" Width="80px">
+                                </dx:ASPxImage></a>
+                            </div>
+                            </span>
+                            <div class="templateTitle">
+                                <a id="A2" href="~/Default.aspx" runat="server">
+                                <dx:ASPxImage ID="ASPxImage4" runat="server" ShowLoadingImage="True" 
+                                    Height="65px" Width="550px">
+                                </dx:ASPxImage></a>
+                            </div>
+                            <div class="templateTitle" style="margin-left:250PX; width: 220px;">
+                                
+                                <span>            
+                                <dx:ASPxComboBox ID="sitestore" Caption="Site"  runat="server" Width="200px" AutoPostBack=true
+                                 OnSelectedIndexChanged="GetSite"></dx:ASPxComboBox>
+                                </span> 
+                                <span>
+                                 <dx:ASPxLabel ID="State" runat="server" Visible="false"  style="margin-left:20PX" ForeColor="White" Text="" Font-Size="10pt"> </dx:ASPxLabel>
+                                 </span>
+                             </div>
+                                 <div class="templateTitle">
+                                <span>
+                                <dx:ASPxButton ID="Logout" runat="server" Text="Logout" Font-Size="10pt" OnClick="Logout_clicked" ></dx:ASPxButton>                                                                
+                             </span>
+                            
+                            
+                                <%--<a id="TitleLink" href="~/" runat="server">
+                                CMS Application</a>--%>
+                            </div>
+                            <%--<div class="loginControl">
+                                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                                    <AnonymousTemplate>
+                                        <a href="~/Account/Login.aspx" runat="server" id="loginLink">Log In</a> 
+                                        | 
+                                        <a href="~/Account/Register.aspx" runat="server" id="registerLink">Register</a>
+                                    </AnonymousTemplate>
+                                    <LoggedInTemplate>
+                                        Welcome <span class="bold">
+                                            <asp:LoginName ID="HeadLoginName" runat="server" />
+                                        </span>! [
+                                        <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
+                                            LogoutPageUrl="~/" />
+                                        ]
+                                    </LoggedInTemplate>
+                                </asp:LoginView>
+                            </div>--%>
+                        </div>
+                        <%-- DXCOMMENT: Configure the header menu --%>
+                        <%--<div class="headerMenu">                            
+                        <dx:ASPxMenu ID="ASPxMenu1" runat="server" ItemAutoWidth="False" RenderMode="Lightweight" Width="100%"
+                            DataSourceID="XmlDataSourceHeader">
+                            <Border BorderWidth="0px" />
+                            <BorderTop BorderWidth="1px" />
+                        </dx:ASPxMenu>
+                        </div>--%>
+                    </dx:SplitterContentControl>
+                </ContentCollection>
+            </dx:SplitterPane>
+            <dx:SplitterPane Name="Content" MinSize="375px">
+                <PaneStyle CssClass="mainContentPane">
+<BorderBottom BorderWidth="1px"></BorderBottom>
+                </PaneStyle>
+                <ContentCollection>
+                    <dx:SplitterContentControl ID="SplitterContentControl3" runat="server">
+                        <asp:ContentPlaceHolder ID="Content" runat="server">
+                        </asp:ContentPlaceHolder>
+                    </dx:SplitterContentControl>
+                </ContentCollection>
+                <PaneStyle BackColor="white">
+                    <BorderBottom BorderWidth="1px" />
+                </PaneStyle>
+            </dx:SplitterPane>
+            <dx:SplitterPane Name="Footer" Size="50px" PaneStyle-CssClass="footerPane">
+<PaneStyle CssClass="footerPane"></PaneStyle>
+                <ContentCollection>
+                    <dx:SplitterContentControl ID="SplitterContentControl4" runat="server">                        
+                    
+                        <div class="copyright" style="width : 100%" >        
+                        
+                        
+                            
+                            <div style="width : 100%; float:center; text-align:center">
+                            <span style="margin-right:20%">
+                                <asp:Label ID="Time" runat="server" Text="" Font-Size="10pt"></asp:Label>
+                                </span>
+                            <span >
+                            <a id="A3" href="~/Default.aspx" runat="server">
+                            <dx:ASPxImage ID=homeimg runat="server"  ImageUrl="~/Image/home.png" ImageAlign=Middle height="30px" Width="30px" >
+                            </dx:ASPxImage>
+                            </a>
+                            </span>
+                            <span>
+                            <dx:ASPxLabel ID="ASPxLabel1" runat="server" 
+                                Text="PT. Kahar Duta Sarana Bussines Solutions" Font-Bold="True" 
+                                Font-Size="12pt">
+                            </dx:ASPxLabel>
+                            </span>
+                            <span>                            
+                            <dx:ASPxImage ID=ASPxImage1 runat="server" ImageUrl="~/Image/kds.png"  ImageAlign=Middle
+                                height="30px" Width="30px" >
+                            </dx:ASPxImage>          
+                            
+                            </span>
+                            
+                                                                             
+                                
+                            <span style="margin-left:20%">
+                                <asp:Label ID="User" runat="server" Text="User Name" Font-Size="10pt"></asp:Label>
+                                </span>    
+                                </div>        
+                        </div>
+                    
+                        
+                    </dx:SplitterContentControl>
+                    </ContentCollection>
+                    </dx:SplitterPane>
+        </Panes>
+    </dx:ASPxSplitter>
+    
+<%-- DXCOMMENT: Configure a datasource for the header menu --%>
+<asp:XmlDataSource ID="XmlDataSourceHeader" runat="server" DataFile="~/App_Data/TopMenu.xml"
+    XPath="/items/*"></asp:XmlDataSource>
+
+    
+    </form>
+</body>
+</html>

@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataTO" targetNamespace="http://tempuri.org/DataTO.xsd" xmlns:mstns="http://tempuri.org/DataTO.xsd" xmlns="http://tempuri.org/DataTO.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="CMSV3" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="CMSV3 (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.CMSV3.ConnectionString" Provider="System.Data.OracleClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTOTableAdapter" GeneratorDataComponentClassName="DataTOTableAdapter" Name="DataTO" UserDataComponentName="DataTOTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="CMSV3 (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT        KDSCMSTRFD.TRFDTRFID, KDSCMSTRFD.TRFDTRFIDI, KDSCMSMSTITEM.ITEMITEMIDX, KDSCMSMSTVRNT.VRNTVRNTIDX, KDSCMSTRFD.TRFDBRCD, KDSCMSTRFD.TRFDQTY, KDSCMSTRFD.TRFDSHPQTY, 
+                         KDSCMSTRFD.TRFDRECQTY, KDSCMSTRFD.TRFDSCRQTY, KDSCMSTRFD.TRFDCOMM, KDSCMSTRFD.TRFDSTAT, KDSCMSTRFD.TRFDFLAG, KDSCMSTRFD.TRFDCDAT, KDSCMSTRFD.TRFDMDAT, 
+                         KDSCMSTRFD.TRFDCRBY, KDSCMSTRFD.TRFDMOBY, KDSCMSTRFH.TRFHTRFFR, KDSCMSTRFH.TRFHTRFTO
+FROM            KDSCMSMSTITEM, KDSCMSMSTVRNT, KDSCMSTRFD, KDSCMSTRFH
+WHERE        KDSCMSMSTITEM.ITEMITEMID = KDSCMSMSTVRNT.VRNTITEMID AND KDSCMSMSTVRNT.VRNTITEMID = KDSCMSTRFD.TRFDITEMID AND KDSCMSMSTITEM.ITEMITEMID = KDSCMSTRFD.TRFDITEMID AND 
+                         KDSCMSMSTVRNT.VRNTVRNTID = KDSCMSTRFD.TRFDVRNTID AND KDSCMSTRFD.TRFDTRFID = KDSCMSTRFH.TRFHTRFID</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="TRFDTRFID" DataSetColumn="TRFDTRFID" />
+              <Mapping SourceColumn="TRFDTRFIDI" DataSetColumn="TRFDTRFIDI" />
+              <Mapping SourceColumn="ITEMITEMIDX" DataSetColumn="ITEMITEMIDX" />
+              <Mapping SourceColumn="VRNTVRNTIDX" DataSetColumn="VRNTVRNTIDX" />
+              <Mapping SourceColumn="TRFDBRCD" DataSetColumn="TRFDBRCD" />
+              <Mapping SourceColumn="TRFDQTY" DataSetColumn="TRFDQTY" />
+              <Mapping SourceColumn="TRFDSHPQTY" DataSetColumn="TRFDSHPQTY" />
+              <Mapping SourceColumn="TRFDRECQTY" DataSetColumn="TRFDRECQTY" />
+              <Mapping SourceColumn="TRFDSCRQTY" DataSetColumn="TRFDSCRQTY" />
+              <Mapping SourceColumn="TRFDCOMM" DataSetColumn="TRFDCOMM" />
+              <Mapping SourceColumn="TRFDSTAT" DataSetColumn="TRFDSTAT" />
+              <Mapping SourceColumn="TRFDFLAG" DataSetColumn="TRFDFLAG" />
+              <Mapping SourceColumn="TRFDCDAT" DataSetColumn="TRFDCDAT" />
+              <Mapping SourceColumn="TRFDMDAT" DataSetColumn="TRFDMDAT" />
+              <Mapping SourceColumn="TRFDCRBY" DataSetColumn="TRFDCRBY" />
+              <Mapping SourceColumn="TRFDMOBY" DataSetColumn="TRFDMOBY" />
+              <Mapping SourceColumn="TRFHTRFFR" DataSetColumn="TRFHTRFFR" />
+              <Mapping SourceColumn="TRFHTRFTO" DataSetColumn="TRFHTRFTO" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataTO" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataTO" msprop:Generator_UserDSName="DataTO">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTO" msprop:Generator_TableClassName="DataTODataTable" msprop:Generator_TableVarName="tableDataTO" msprop:Generator_TablePropName="_DataTO" msprop:Generator_RowDeletingName="DataTORowDeleting" msprop:Generator_RowChangingName="DataTORowChanging" msprop:Generator_RowEvHandlerName="DataTORowChangeEventHandler" msprop:Generator_RowDeletedName="DataTORowDeleted" msprop:Generator_UserTableName="DataTO" msprop:Generator_RowChangedName="DataTORowChanged" msprop:Generator_RowEvArgName="DataTORowChangeEvent" msprop:Generator_RowClassName="DataTORow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="TRFDTRFID" msprop:Generator_ColumnVarNameInTable="columnTRFDTRFID" msprop:Generator_ColumnPropNameInRow="TRFDTRFID" msprop:Generator_ColumnPropNameInTable="TRFDTRFIDColumn" msprop:Generator_UserColumnName="TRFDTRFID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TRFDTRFIDI" msprop:Generator_ColumnVarNameInTable="columnTRFDTRFIDI" msprop:Generator_ColumnPropNameInRow="TRFDTRFIDI" msprop:Generator_ColumnPropNameInTable="TRFDTRFIDIColumn" msprop:Generator_UserColumnName="TRFDTRFIDI" type="xs:decimal" />
+              <xs:element name="ITEMITEMIDX" msprop:Generator_ColumnVarNameInTable="columnITEMITEMIDX" msprop:Generator_ColumnPropNameInRow="ITEMITEMIDX" msprop:Generator_ColumnPropNameInTable="ITEMITEMIDXColumn" msprop:Generator_UserColumnName="ITEMITEMIDX">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VRNTVRNTIDX" msprop:Generator_ColumnVarNameInTable="columnVRNTVRNTIDX" msprop:Generator_ColumnPropNameInRow="VRNTVRNTIDX" msprop:Generator_ColumnPropNameInTable="VRNTVRNTIDXColumn" msprop:Generator_UserColumnName="VRNTVRNTIDX">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TRFDBRCD" msprop:Generator_ColumnVarNameInTable="columnTRFDBRCD" msprop:Generator_ColumnPropNameInRow="TRFDBRCD" msprop:Generator_ColumnPropNameInTable="TRFDBRCDColumn" msprop:Generator_UserColumnName="TRFDBRCD">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TRFDQTY" msprop:Generator_ColumnVarNameInTable="columnTRFDQTY" msprop:Generator_ColumnPropNameInRow="TRFDQTY" msprop:Generator_ColumnPropNameInTable="TRFDQTYColumn" msprop:Generator_UserColumnName="TRFDQTY" type="xs:decimal" />
+              <xs:element name="TRFDSHPQTY" msprop:Generator_ColumnVarNameInTable="columnTRFDSHPQTY" msprop:Generator_ColumnPropNameInRow="TRFDSHPQTY" msprop:Generator_ColumnPropNameInTable="TRFDSHPQTYColumn" msprop:Generator_UserColumnName="TRFDSHPQTY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TRFDRECQTY" msprop:Generator_ColumnVarNameInTable="columnTRFDRECQTY" msprop:Generator_ColumnPropNameInRow="TRFDRECQTY" msprop:Generator_ColumnPropNameInTable="TRFDRECQTYColumn" msprop:Generator_UserColumnName="TRFDRECQTY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TRFDSCRQTY" msprop:Generator_ColumnVarNameInTable="columnTRFDSCRQTY" msprop:Generator_ColumnPropNameInRow="TRFDSCRQTY" msprop:Generator_ColumnPropNameInTable="TRFDSCRQTYColumn" msprop:Generator_UserColumnName="TRFDSCRQTY" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TRFDCOMM" msprop:Generator_ColumnVarNameInTable="columnTRFDCOMM" msprop:Generator_ColumnPropNameInRow="TRFDCOMM" msprop:Generator_ColumnPropNameInTable="TRFDCOMMColumn" msprop:Generator_UserColumnName="TRFDCOMM" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TRFDSTAT" msprop:Generator_ColumnVarNameInTable="columnTRFDSTAT" msprop:Generator_ColumnPropNameInRow="TRFDSTAT" msprop:Generator_ColumnPropNameInTable="TRFDSTATColumn" msprop:Generator_UserColumnName="TRFDSTAT" type="xs:decimal" />
+              <xs:element name="TRFDFLAG" msprop:Generator_ColumnVarNameInTable="columnTRFDFLAG" msprop:Generator_ColumnPropNameInRow="TRFDFLAG" msprop:Generator_ColumnPropNameInTable="TRFDFLAGColumn" msprop:Generator_UserColumnName="TRFDFLAG" type="xs:decimal" />
+              <xs:element name="TRFDCDAT" msprop:Generator_ColumnVarNameInTable="columnTRFDCDAT" msprop:Generator_ColumnPropNameInRow="TRFDCDAT" msprop:Generator_ColumnPropNameInTable="TRFDCDATColumn" msprop:Generator_UserColumnName="TRFDCDAT" type="xs:dateTime" />
+              <xs:element name="TRFDMDAT" msprop:Generator_ColumnVarNameInTable="columnTRFDMDAT" msprop:Generator_ColumnPropNameInRow="TRFDMDAT" msprop:Generator_ColumnPropNameInTable="TRFDMDATColumn" msprop:Generator_UserColumnName="TRFDMDAT" type="xs:dateTime" />
+              <xs:element name="TRFDCRBY" msprop:Generator_ColumnVarNameInTable="columnTRFDCRBY" msprop:Generator_ColumnPropNameInRow="TRFDCRBY" msprop:Generator_ColumnPropNameInTable="TRFDCRBYColumn" msprop:Generator_UserColumnName="TRFDCRBY">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TRFDMOBY" msprop:Generator_ColumnVarNameInTable="columnTRFDMOBY" msprop:Generator_ColumnPropNameInRow="TRFDMOBY" msprop:Generator_ColumnPropNameInTable="TRFDMOBYColumn" msprop:Generator_UserColumnName="TRFDMOBY">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TRFHTRFFR" msprop:Generator_ColumnVarNameInTable="columnTRFHTRFFR" msprop:Generator_ColumnPropNameInRow="TRFHTRFFR" msprop:Generator_ColumnPropNameInTable="TRFHTRFFRColumn" msprop:Generator_UserColumnName="TRFHTRFFR">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="TRFHTRFTO" msprop:Generator_ColumnVarNameInTable="columnTRFHTRFTO" msprop:Generator_ColumnPropNameInRow="TRFHTRFTO" msprop:Generator_ColumnPropNameInTable="TRFHTRFTOColumn" msprop:Generator_UserColumnName="TRFHTRFTO">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

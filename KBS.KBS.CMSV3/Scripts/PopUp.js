@@ -1,0 +1,4 @@
+﻿function Confirm() {
+    pcLogin.Show();    
+}
+
