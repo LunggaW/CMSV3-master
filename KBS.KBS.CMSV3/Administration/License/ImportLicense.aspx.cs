@@ -75,9 +75,9 @@ namespace KBS.KBS.CMSV3.Administration.License
                                 Info.Text = "License For : " + values[0] + "<br>" +
                                                   "Max Store   : " + values[1] + "<br>" +
                                                   "Valid Until : " + values[2] + "<br>" +
-                                                  "Other       : " + values[3] + "<br>" +
-                                                  "Other       : " + values[4] + "<br>" +
-                                                  "Other       : " + values[5];
+                                                  "" + values[3] + "<br>" +
+                                                  "" + values[4] + "<br>" +
+                                                  "" + values[5];
                             }
                             //string file = Path.GetFileNameWithoutExtension(a);
                             //string NewPath = a.Replace(file, file + DateTime.Today.ToString("ddMMMyy"));

@@ -5122,7 +5122,8 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.Parameters.Add("PTRFHTRFTO", OracleDbType.Varchar2, 50).Value = transferorderheader.TO;
                 cmd.Parameters.Add("PTRFHSTAT", OracleDbType.Int32).Value = transferorderheader.STATUS;
                 cmd.Parameters.Add("PTRFHFLAG", OracleDbType.Int32).Value = transferorderheader.STATUS;
-                cmd.Parameters.Add("PTRFHVALBY", OracleDbType.Varchar2, 50).Value = User;                
+                cmd.Parameters.Add("PTRFHVALBY", OracleDbType.Varchar2, 50).Value = User;
+                cmd.Parameters.Add("PTRFHINTF", OracleDbType.Int32).Value = 1;
                 cmd.Parameters.Add("PTRFHCRBY", OracleDbType.Varchar2, 50).Value = User;
                 cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
                 cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
@@ -5173,7 +5174,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   //"a.TRFHMOBY AS \"MODIFIED BY\", " +
                                   "a.TRFHNMOD AS \"COUNTER MODIFICATION\" " +
                                   "FROM KDSCMSTRFH a " +
-                                  "where a.TRFHINTF = 9 ";
+                                  "where a.TRFDINTF = 9 ";
                 // TRFHTRFID, TRFHTRDIDI, TRFHTRFDATE, TRFHTRFFR, TRFHTRFTO, TRFHSTAT, TRFHFLAG, TRFHVALBY, TRFHINTF, TRFHCDAT, TRFHMDAT, TRFHCRBY, TRFHMOBY, TRFHNMOD
                 if (!string.IsNullOrWhiteSpace(transferorderheader.ID))
                 {
@@ -5265,7 +5266,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   //"a.TRFHMOBY AS \"MODIFIED BY\", " +
                                   "a.TRFHNMOD AS \"COUNTER MODIFICATION\" " +
                                   "FROM KDSCMSTRFH a " +
-                                  "where a.TRFHSTAT = " + flag + " and a.TRFHINTF != '9' ";
+                                  "where a.TRFHSTAT = " + flag + " and a.TRFDINTF != '9' ";
                 // TRFHTRFID, TRFHTRDIDI, TRFHTRFDATE, TRFHTRFFR, TRFHTRFTO, TRFHSTAT, TRFHFLAG, TRFHVALBY, TRFHINTF, TRFHCDAT, TRFHMDAT, TRFHCRBY, TRFHMOBY, TRFHNMOD
                 if (!string.IsNullOrWhiteSpace(transferorderheader.ID))
                 {
@@ -5346,7 +5347,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.Connection = con;
 
 
-                cmd.CommandText = "SELECT a.TRFHTRFID ,a.TRFHTRDIDI ,a.TRFHTRFDATE , a.TRFHTRFFR , a.TRFHTRFTO,  a.TRFHINTF FROM KDSCMSTRFH a where a.TRFHTRFID = '" + id.ToString() + "'";
+                cmd.CommandText = "SELECT a.TRFHTRFID ,a.TRFHTRDIDI ,a.TRFHTRFDATE , a.TRFHTRFFR , a.TRFHTRFTO FROM KDSCMSTRFH a where a.TRFHTRFID = '" + id.ToString() + "'";
 
 
 
@@ -5362,7 +5363,6 @@ namespace KBS.KBS.CMSV3.FUNCTION
                     transferorderheader.DATE = Convert.ToDateTime(dr["TRFHTRFDATE"].ToString());
                     transferorderheader.FROM = dr["TRFHTRFFR"].ToString();
                     transferorderheader.TO = dr["TRFHTRFTO"].ToString();
-                    transferorderheader.STATUS = dr["TRFHINTF"].ToString();
 
                 }
                 return transferorderheader;
