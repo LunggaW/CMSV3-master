@@ -222,7 +222,7 @@
                 </tr>
                 <tr>
                     <td class="tableHeader2Column" colspan="5">
-                        <dx:ASPxTextBox ID="UserPassword" runat="server" Caption="Password" Width="170px">
+                        <dx:ASPxTextBox ID="UserPassword" runat="server" Caption="Password" Width="170px" Password="True">
                             <CaptionSettings ShowColon="False" />
                             <CaptionCellStyle Width="110px">
                             </CaptionCellStyle>

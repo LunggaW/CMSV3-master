@@ -127,12 +127,14 @@
     <Content Include="Image\back3Disable.png" />
     <Content Include="Image\backDisable.png" />
     <Content Include="Image\clearDisable.png" />
+    <Content Include="Image\edit.png" />
     <Content Include="Image\homebackDisable.png" />
     <Content Include="Image\homeDisable.png" />
     <Content Include="Image\minDisable.png" />
     <Content Include="Image\next2Disable.png" />
     <Content Include="Image\nextDisable.png" />
     <Content Include="Image\plusDisable.png" />
+    <Content Include="Image\question.png" />
     <Content Include="Image\saveDisable.png" />
     <Content Include="Image\searchDisable.png" />
     <Content Include="Image\validDisable.png" />

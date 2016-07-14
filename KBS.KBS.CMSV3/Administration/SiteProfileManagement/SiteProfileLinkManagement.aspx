@@ -104,7 +104,7 @@
         </span><span>
             <dx:ASPxButton ID="NextBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/next.png" BackColor="Transparent" ToolTip="Next Page" Enabled="False">
+                Image-Url="~/image/next.png" BackColor="Transparent" ToolTip="Next Page" >
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/nextDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -114,7 +114,7 @@
         </span><span>
             <dx:ASPxButton ID="LnextBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/next2.png" BackColor="Transparent" ToolTip="Last Page" Enabled="False">
+                Image-Url="~/image/next2.png" BackColor="Transparent" ToolTip="Last Page" >
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/next2Disable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
