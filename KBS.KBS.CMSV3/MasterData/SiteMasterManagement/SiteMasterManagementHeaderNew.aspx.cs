@@ -27,7 +27,6 @@ namespace KBS.KBS.CMSV3.MasterData.SiteMasterManagement
         protected void Page_Load(object sender, EventArgs e)
         {
             if (Session["UserID"] == null)
-            
             {
                 Response.Redirect("~/Account/logins.aspx");
             }
@@ -164,6 +163,20 @@ namespace KBS.KBS.CMSV3.MasterData.SiteMasterManagement
 
         }
 
+        protected void TextBoxSite_TextChanged(object sender, EventArgs e)
+        {
+            License license = new License();
+            int ValidSiteCount = Int32.Parse(CMSfunction.GetValidSiteCount());
 
+            String LicenseText = CMSfunction.GetLicense();
+            LicenseText = CMSfunction.Decrypt(LicenseText);
+
+            license = CMSfunction.ParseLicenseText(LicenseText);
+            if (ValidSiteCount >= Int32.Parse(license.StoreTotal))
+            {
+                TextBoxSite.Text = "";
+            }
+            
+        }
     }
 }

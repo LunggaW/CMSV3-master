@@ -186,7 +186,7 @@
             <table class="tableTop">
                 <tr>
                     <td class="tableHeader2Column" colspan="5">
-                        <dx:ASPxTextBox runat="server" Width="170px" Caption="Site" ID="TextBoxSite">
+                        <dx:ASPxTextBox runat="server" Width="170px" Caption="Site" ID="TextBoxSite" OnTextChanged="TextBoxSite_TextChanged" AutoPostBack="True">
                             <CaptionSettings ShowColon="False"></CaptionSettings>
                             <ReadOnlyStyle BackColor="Silver">
                             </ReadOnlyStyle>

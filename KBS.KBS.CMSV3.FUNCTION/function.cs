@@ -258,6 +258,43 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
         }
 
+        public string GetLicense()
+        {
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+                String Value = "";
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "select KDSCMSDLDESC from KDSCMSDL where KDSCMSDLID = 1";
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                OracleDataReader dr = cmd.ExecuteReader();
+                //OracleDataReader dr = cmd.ExecuteReader();
+                logger.Debug("End Execute Command");
+
+                while (dr.Read())
+                {
+                    Value = dr["KDSCMSDLDESC"].ToString();
+                }
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return Value;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetLicense");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
         public License ParseLicenseText(string DecryptedText)
         {
             string[] values = DecryptedText.Split("|".ToCharArray());
@@ -11816,6 +11853,45 @@ namespace KBS.KBS.CMSV3.FUNCTION
             catch (Exception e)
             {
                 logger.Error("GetDuplicateProfileName Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public string GetValidSiteCount()
+        {
+            try
+            {
+
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+
+                String Name = "";
+                cmd.Connection = con;
+
+                cmd.CommandText = "select count(1) as total from kdscmssite " +
+                                  "where sitesitestatus = 1 " +
+                                  "and sitesiteflag = 1 ";
+
+
+                logger.Debug(cmd.CommandText);
+
+
+                OracleDataReader dr = cmd.ExecuteReader();
+                while (dr.Read())
+                {
+                    Name = dr["total"].ToString(); ;
+
+                }
+
+
+                this.Close();
+                return Name;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetValidSiteCount Function");
                 logger.Error(e.Message);
                 this.Close();
                 return null;

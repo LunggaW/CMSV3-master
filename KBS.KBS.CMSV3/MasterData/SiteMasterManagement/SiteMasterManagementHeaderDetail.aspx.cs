@@ -40,6 +40,7 @@ namespace KBS.KBS.CMSV3.MasterData.SiteMasterManagement
                 if (!IsPostBack)
                 {
                     loadNavBar();
+                    
 
 
                     DTSiteClass = CMSfunction.GetParameterValueAndDescbyClassAndTabID(Session["Class"].ToString(), "3");
