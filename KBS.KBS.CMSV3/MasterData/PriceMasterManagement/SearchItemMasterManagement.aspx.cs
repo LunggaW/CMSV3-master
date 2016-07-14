@@ -50,7 +50,7 @@ namespace KBS.KBS.CMSV3.MasterData
         private void loadNavBar()
         {
 
-            List<Menu> listMenuGroup = CMSfunction.SelectMenuGroupByProfileID(Session["SiteProfile"].ToString());
+            List<Menu> listMenuGroup = CMSfunction.SelectMenuGroupByProfileID(Session["MenuProfile"].ToString());
             int i = 0;
 
             ASPxSplitter sp = Master.Master.FindControl("ASPxSplitter1").FindControl("Content").FindControl("ContentSplitter") as ASPxSplitter;
@@ -63,7 +63,7 @@ namespace KBS.KBS.CMSV3.MasterData
                     masterNav.Groups.Add(menuGroup.MenuGroupName, menuGroup.MenuGroupID);
 
 
-                    List<Menu> listMenu = CMSfunction.SelectMenuByProfileIDandMenuGroup(Session["SiteProfile"].ToString(),
+                    List<Menu> listMenu = CMSfunction.SelectMenuByProfileIDandMenuGroup(Session["MenuProfile"].ToString(),
                         menuGroup.MenuGroupID);
                     foreach (var menuItem in listMenu)
                     {
