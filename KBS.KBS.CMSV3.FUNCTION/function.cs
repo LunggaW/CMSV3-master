@@ -257,6 +257,23 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 return Hasil;
             }
         }
+
+        public License ParseLicenseText(string DecryptedText)
+        {
+            string[] values = DecryptedText.Split("|".ToCharArray());
+
+            License license = new License();
+
+            license.CompanyName = values[0];
+            license.StoreTotal = values[1];
+            license.Val1 = values[3];
+            license.Val2 = values[4];
+            license.Val3 = values[5];
+            license.EndDate = DateTime.Parse(values[2]);
+
+            return license;
+        }
+
         public OutputMessage License(string LicenseData, string user)
         {
 
