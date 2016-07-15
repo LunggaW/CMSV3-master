@@ -43,7 +43,7 @@
         </span><span>
             <dx:ASPxButton ID="ClearBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/clear.png" ToolTip="Clear" BackColor="Transparent">
+                Image-Url="~/image/clear.png" ToolTip="Clear" BackColor="Transparent" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/clearDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -52,7 +52,7 @@
             </dx:ASPxButton>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="TRUE"
+                Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="False"
                 OnClick="SearchBtn_Click">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
                 </Image>
