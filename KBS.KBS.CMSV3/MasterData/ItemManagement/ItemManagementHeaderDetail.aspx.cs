@@ -85,7 +85,7 @@ namespace KBS.KBS.CMSV3.MasterData.ItemManagement
 
         private void loadNavBar()
         {
-
+            string a = Session["MenuProfile"].ToString();
             List<Menu> listMenuGroup = CMSfunction.SelectMenuGroupByProfileID(Session["MenuProfile"].ToString());
             int i = 0;
 

@@ -869,7 +869,54 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 return null;
             }
         }
+        public String ItemTypeVariant(String ItemIDExternal)
+        {
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText =
+                    "select " +
+                    "itemtype " +
+                    "from kdscmsmstitem " +
+                    "where itemitemidx = :ItemIDExternal";
 
+
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new OracleParameter(":ItemIDExternal", OracleDbType.Varchar2)).Value = ItemIDExternal;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+
+
+                OracleDataReader dr = cmd.ExecuteReader();
+                logger.Debug("End Execute Command");
+                String Type = "";
+
+                while (dr.Read())
+                {
+                    Type = dr["itemtype"].ToString();
+                }
+
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return Type;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetItemIDByItemIDEx Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
         public String GetItemIDByItemIDEx(String ItemIDExternal)
         {
             logger.Debug("Start Connect");
@@ -7749,8 +7796,8 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "(SELECT Par.Pardldesc from Kdscmspardtable par where Par.Pardsclas = :SiteClass and Par.Pardtabid = 13 and Par.Pardtabent = ITEMTYPE) AS \"TYPE\", " +
                                   "ITEMSDESC AS \"SHORT DESCRIPTION\", " +
                                   "ITEMLDESC AS \"LONG DESCRIPTION\", " +
-                                  "ITEMBRNDID AS \"BRAND\" from Kdscmsmstitem " +
-                                  "where ITEMITEMID IS NOT NULL ";
+                                  "BRNDDESC  AS \"BRAND\" from Kdscmsmstitem , KDSCMSMSTBRND " +
+                                  "where ITEMITEMID IS NOT NULL and ITEMBRNDID = BRNDBRNDID ";
 
                 cmd.CommandType = CommandType.Text;
 

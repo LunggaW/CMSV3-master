@@ -85,7 +85,7 @@ namespace KBS.KBS.CMSV3.MasterData.ItemManagement
 
         private void loadNavBar()
         {
-
+            string a = Session["MenuProfile"].ToString();
             List<Menu> listMenuGroup = CMSfunction.SelectMenuGroupByProfileID(Session["MenuProfile"].ToString());
             int i = 0;
 
@@ -155,12 +155,27 @@ namespace KBS.KBS.CMSV3.MasterData.ItemManagement
 
         protected void ClearBtn_Click(object sender, EventArgs e)
         {
-            //ASPxTextBoxHeaderBlock.Text = "";
-            //ASPxTextBoxHeaderComment.Text = "";
-            //ASPxTextBoxHeaderCopy.Text = "";
-            //ASPxTextBoxHeaderID.Text = "";
-            //ASPxTextBoxHeaderName.Text = "";
-            //ASPxTextBoxHeaderSClas.Text = "";
+
+            TextBoxItemIdExternal.Text = "";
+            TextBoxShortDescription.Text = "";
+            TextBoxLongDescription.Text = "";
+            ComboItemType.Dispose();
+            DTItemType = CMSfunction.GetParameterValueAndDescbyClassAndTabID(Session["Class"].ToString(), "13");
+            ComboItemType.DataSource = DTItemType;
+            ComboItemType.ValueField = "PARVALUE";
+            ComboItemType.ValueType = typeof(string);
+            ComboItemType.TextField = "PARDESCRIPTION";
+            ComboItemType.DataBind();
+
+            ComboBrand.Dispose();
+            DTBrand = CMSfunction.GetAllBrand();
+            ComboBrand.DataSource = DTBrand;
+            ComboBrand.ValueField = "BRAND";
+            ComboBrand.ValueType = typeof(string);
+            ComboBrand.TextField = "DESCRIPTION";
+            ComboBrand.DataBind();
+
+            RefreshDataGrid();
         }
 
         protected void ASPxGridViewDetail_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
