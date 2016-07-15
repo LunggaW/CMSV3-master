@@ -192,7 +192,7 @@
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxComboBox runat="server" Caption="Item Type" ID="ComboItemType">
+                    <dx:ASPxComboBox runat="server" Caption="Item Type" ID="ComboItemType" Enabled="false" ReadOnly="false">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="110px">
                         </CaptionCellStyle>
@@ -208,7 +208,7 @@
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxComboBox runat="server" Caption="Brand" ID="ComboBrand">
+                    <dx:ASPxComboBox runat="server" Caption="Brand" ID="ComboBrand" Enabled="false" ReadOnly="false">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="110px">
                         </CaptionCellStyle>

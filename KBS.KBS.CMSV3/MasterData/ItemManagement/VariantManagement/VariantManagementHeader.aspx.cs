@@ -43,6 +43,17 @@ namespace KBS.KBS.CMSV3.MasterData.ItemManagement.VariantManagement
         protected void Page_Load(object sender, EventArgs e)
         {
             String ItemID = CMSfunction.GetItemIDByItemIDEx(Session["ItemIDExManagementVariant"].ToString());
+            String Type = CMSfunction.ItemTypeVariant(Session["ItemIDExManagementVariant"].ToString());
+            if (Type == "1")
+            {
+                ASPxButtonEntry.Visible = false;
+                ASPxButtonEntry.Enabled = false;
+            }
+            else
+            {
+                ASPxButtonEntry.Visible = true;
+                ASPxButtonEntry.Enabled = true;
+            }
             ASPxTextBoxItem.Text = Session["ItemIDExManagementVariant"].ToString() +" - "+CMSfunction.GetItemDescByItemID(ItemID);
             //Triger Valid Insert
             Session["DataValid"] = "0";
