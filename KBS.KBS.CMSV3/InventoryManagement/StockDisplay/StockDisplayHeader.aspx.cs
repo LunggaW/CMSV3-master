@@ -23,7 +23,7 @@ namespace KBS.KBS.CMSV3.InventoryManagement.StockDisplay
         private DataTable DTStock = new DataTable();
         private DataTable DTTransactionType = new DataTable();
         private DataTable DTSite = new DataTable();
-        private String MenuID = ConfigurationManager.AppSettings["MenuIdItemMasterManagement"];
+        private String MenuID = ConfigurationManager.AppSettings["MenuIdStockDisplay"];
 
         protected override void OnInit(EventArgs e)
         {

@@ -18,7 +18,7 @@ namespace KBS.KBS.CMSV3.MasterData
         private DataTable DTParameterDetail = new DataTable();
         private DataTable DTGridViewUser = new DataTable();
         private User user;
-        private String MenuID = ConfigurationManager.AppSettings["MenuIdDiscountManagement"];
+        private String MenuID = ConfigurationManager.AppSettings["MenuIdSKUManagement"];
 
         protected override void OnInit(EventArgs e)
         {
@@ -29,6 +29,7 @@ namespace KBS.KBS.CMSV3.MasterData
             else
             {
                 loadNavBar();
+                loadButton(MenuID);
             }
 
         }

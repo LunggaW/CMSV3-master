@@ -172,8 +172,7 @@ namespace KBS.KBS.CMSV3.MasterData.SiteMasterManagement
             LicenseText = CMSfunction.Decrypt(LicenseText);
 
             license = CMSfunction.ParseLicenseText(LicenseText);
-            if (ValidSiteCount >= Int32.Parse(license.StoreTotal))
-            {
+            if (ValidSiteCount >= Int32.Parse(license.StoreTotal)){
                 TextBoxSite.Text = "";
             }
             
