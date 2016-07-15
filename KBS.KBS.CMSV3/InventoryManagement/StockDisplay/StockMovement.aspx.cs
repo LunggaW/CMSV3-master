@@ -24,6 +24,8 @@ namespace KBS.KBS.CMSV3.InventoryManagement.StockDisplay
         private DataTable DTSite = new DataTable();
         private DataTable DTStock = new DataTable();
 
+        private String MenuID = ConfigurationManager.AppSettings["MenuIdStockMovement"];
+
         protected override void OnInit(EventArgs e)
         {
 
@@ -36,6 +38,7 @@ namespace KBS.KBS.CMSV3.InventoryManagement.StockDisplay
             else
             {
                 loadNavBar();
+                loadButton(MenuID);
             }
 
         }
@@ -115,6 +118,40 @@ namespace KBS.KBS.CMSV3.InventoryManagement.StockDisplay
                 }
             }
             masterNav.DataBind();
+        }
+
+        private void loadButton(String MenuID)
+        {
+
+            List<AccessContainer> listAccessCont =
+                CMSfunction.SelectAccessByProfileAndMenuID(Session["AccessProfile"].ToString(), MenuID);
+
+            foreach (var accessContainer in listAccessCont)
+            {
+                switch (accessContainer.FunctionId)
+                {
+                    case "1":
+                        AddBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        break;
+                    case "2":
+                        //Ed.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        if (accessContainer.Type == "0")
+                        {
+                            ASPxGridViewStockMovement.ClientSideEvents.RowDblClick = null;
+                        }
+
+                        break;
+                    case "3":
+                        SearchBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        break;
+                    case "4":
+                        DelBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        break;
+                    default:
+                        break;
+
+                }
+            }
         }
 
 

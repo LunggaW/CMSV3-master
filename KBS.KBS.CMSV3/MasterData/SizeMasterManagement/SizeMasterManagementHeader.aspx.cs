@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Drawing;
 using DevExpress.Web;
@@ -17,6 +18,7 @@ namespace KBS.KBS.CMSV3.MasterData
         private DataTable DTParameterDetail = new DataTable();
         private DataTable DTGridViewUser = new DataTable();
         private User user;
+        private String MenuID = ConfigurationManager.AppSettings["MenuIdSizeMasterManagement"];
 
         protected override void OnInit(EventArgs e)
         {
@@ -27,6 +29,7 @@ namespace KBS.KBS.CMSV3.MasterData
             else
             {
                 loadNavBar();
+                loadButton(MenuID);
             }
 
         }
@@ -120,6 +123,40 @@ namespace KBS.KBS.CMSV3.MasterData
                 }
             }
             masterNav.DataBind();
+        }
+
+        private void loadButton(String MenuID)
+        {
+
+            List<AccessContainer> listAccessCont =
+                CMSfunction.SelectAccessByProfileAndMenuID(Session["AccessProfile"].ToString(), MenuID);
+
+            foreach (var accessContainer in listAccessCont)
+            {
+                switch (accessContainer.FunctionId)
+                {
+                    case "1":
+                        AddBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        break;
+                    case "2":
+                        //Ed.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        if (accessContainer.Type == "0")
+                        {
+                            ASPxGridViewHeader.ClientSideEvents.RowDblClick = null;
+                        }
+
+                        break;
+                    case "3":
+                        SearchBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        break;
+                    case "4":
+                        DelBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        break;
+                    default:
+                        break;
+
+                }
+            }
         }
 
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
