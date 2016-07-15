@@ -12,6 +12,7 @@ using KBS.KBS.CMSV3.DATAMODEL;
 using KBS.KBS.CMSV3.FUNCTION;
 using Menu = KBS.KBS.CMSV3.DATAMODEL.Menu;
 using KBS.KBS.CMSV3.Administration;
+using System.Configuration;
 
 namespace KBS.KBS.CMSV3.InventoryManagement.StockDisplay
 {
