@@ -158,19 +158,51 @@ namespace KBS.KBS.CMSV3.MasterData.SiteMasterManagement
 
         private void processUpdate()
         {
+            License license = new License();
+            int ValidSiteCount = Int32.Parse(CMSfunction.GetValidSiteCount());
+
+            String LicenseText = CMSfunction.GetLicense();
+            LicenseText = CMSfunction.Decrypt(LicenseText);
+
+            license = CMSfunction.ParseLicenseText(LicenseText);
+            
             SiteMaster siteMaster = new SiteMaster();
 
+            
 
-            siteMaster.Site = !string.IsNullOrWhiteSpace(TextBoxSite.Text) ? TextBoxSite.Text : "";
-            siteMaster.SiteName = !string.IsNullOrWhiteSpace(TextBoxSiteName.Text) ? TextBoxSiteName.Text : "";
+            siteMaster = CMSfunction.GetSiteFromSiteCode(Session["Site"].ToString());
+
+
+            
             if (SiteEnable.Checked == true)
             {
                 siteMaster.Enable = 1;
+                if (ValidSiteCount >= Int32.Parse(license.StoreTotal))
+                {
+                    message.Code = -1;
+                    message.Message = "Store Total Exceeded License Data";
+                    siteMaster.Enable = 0;
+                }
+                else
+                {
+                    siteMaster.Enable = 1;
+                    UpdateSite(siteMaster);
+                }
             }
             else
             {
                 siteMaster.Enable = 0;
+                UpdateSite(siteMaster);
             }
+
+            
+
+        }
+
+        private void UpdateSite(SiteMaster siteMaster)
+        {
+            siteMaster.Site = !string.IsNullOrWhiteSpace(TextBoxSite.Text) ? TextBoxSite.Text : "";
+            siteMaster.SiteName = !string.IsNullOrWhiteSpace(TextBoxSiteName.Text) ? TextBoxSiteName.Text : "";
 
             siteMaster.SiteClass = ComboSiteClas.Value != null
                 ? (int?)Int32.Parse(ComboSiteClas.Value.ToString())
