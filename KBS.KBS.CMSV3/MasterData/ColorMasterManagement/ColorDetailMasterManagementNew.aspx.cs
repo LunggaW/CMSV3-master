@@ -38,7 +38,7 @@ namespace KBS.KBS.CMSV3.MasterData.ColorMasterManagement
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            Session["ColorSave"] = "";
         }
 
 
@@ -98,18 +98,53 @@ namespace KBS.KBS.CMSV3.MasterData.ColorMasterManagement
 
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
-            ProcessInsert();
+            String ColorGroup = Session["ColorIDforUpdate"].ToString();
+            //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+            string CekData = CMSfunction.cekColor(ColorGroup, TextBoxId.Text, TextBoxColorOrder.Text);
 
-            ASPxLabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+            if (CekData == "NO")
+            {
+                string script = "alert('Color Order Already Exists, please try another color order');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+            }
+            else
+            {
+                ProcessInsert();
 
-            ASPxLabelMessage.Visible = true;
-            ASPxLabelMessage.Text = message.Message;
+                ASPxLabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+                if (message.Code > 0)
+                { Session["ColorSave"] = "Sukses"; }
+                ASPxLabelMessage.Visible = true;
+                ASPxLabelMessage.Text = message.Message;
+            }
         }
 
         protected void ValidateBtn_Click(object sender, EventArgs e)
         {
-            ProcessInsert();
-            Response.Redirect("ColorDetailMasterManagement.aspx");
+            String ColorGroup = Session["ColorIDforUpdate"].ToString();
+            //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+            string CekData = CMSfunction.cekColor(ColorGroup, TextBoxId.Text, TextBoxColorOrder.Text);
+
+            if (Session["ColorSave"].ToString() != "Sukses")
+            {
+                if (CekData == "NO")
+                {
+                    string script = "alert('Color Group ID Already Exists, please try another color order');";
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                }
+                else
+                {
+                    ProcessInsert();
+                    Response.Redirect("ColorDetailMasterManagement.aspx");
+                }
+            }
+            else
+            {
+                ProcessInsert();
+                if (message.Code > 0)
+                { Response.Redirect("ColorDetailMasterManagement.aspx"); }
+
+            }
         }
 
         private void ProcessInsert()

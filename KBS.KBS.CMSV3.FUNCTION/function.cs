@@ -2390,7 +2390,50 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
 
         }
+        public string cekBrand(string brandid, string datacek)
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
 
+                if (datacek == "1")
+                {
+                    cmd.CommandText =
+                                     " select ROWNUM, 'NO' as Fail from KDSCMSMSTBRND " +
+                                     " where rownum = 1 and BRNDBRNDID = '" + brandid + "' and BRNDBRNDID in (select distinct ITEMBRNDID from KDSCMSMSTITEM) ";
+
+                }
+                else
+                {
+                    cmd.CommandText =
+                                      " select ROWNUM, 'NO' as Fail from KDSCMSMSTBRND " +
+                                      " where rownum = 1 and BRNDBRNDID = '" + brandid + "' OR BRNDDESC = '" + datacek + "' ";
+                }
+                logger.Debug(cmd.CommandText);
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                string Result = "";
+
+                while (dr.Read())
+                {
+
+                    Result = dr["Fail"].ToString();
+
+                }
+                return Result;
+
+            }
+            catch (Exception e)
+            {
+                logger.Error("Get Brand ID Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
 
         //End Brand
 
@@ -2401,6 +2444,56 @@ namespace KBS.KBS.CMSV3.FUNCTION
         /// </summary>
         /// <returns></returns>
         /// 
+        public string cekColor(string ColorId, string datacek, string  status )
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+
+                if (status == "Delete")
+                {
+                    cmd.CommandText =
+                                     " select ROWNUM, 'NO' as Fail from KDSCMSCOLGRP " +
+                                     " where rownum = 1 and COGRCOGID = '" + ColorId + "' and COGRCOGID in (select distinct COLRCOGID from KDSCMSCOLTBL) ";
+                   
+                }
+                else if (status == "Insert")
+                {
+                    cmd.CommandText =
+                                      " select ROWNUM, 'NO' as Fail from KDSCMSCOLGRP " +
+                                      " where rownum = 1 and COGRCOGID = '" + ColorId + "' ";
+                }
+                else
+                {
+                    cmd.CommandText =
+                                      " select ROWNUM, 'NO' as Fail from KDSCMSCOLTBL " +
+                                      " where rownum = 1 and COLRCOGID = '" + ColorId + "' and (COLRORDR = '" + status + "' or COLRCOLID = '" + datacek + "' ) ";
+                }
+                logger.Debug(cmd.CommandText);
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                string Result = "";
+
+                while (dr.Read())
+                {
+
+                    Result = dr["Fail"].ToString();
+
+                }
+                return Result;
+
+            }
+            catch (Exception e)
+            {
+                logger.Error("Get Brand ID Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
 
         public SKULink Cekdataskulink(SKULink skulink)
         {
@@ -6243,8 +6336,8 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 this.Connect();
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "SELECT COGRCOGID AS \"ID\", " +
-                                  "COGRDESC AS \"COLOR\", " +
+                cmd.CommandText = "SELECT COGRCOGID AS \"COLOR GROUP ID\", " +
+                                  "COGRDESC AS \"COLOR GROUP DESC\", " +
                                   //"COGRCDAT AS \"CREATED DATE\", " +
                                   //"COGRMDAT AS \"MODIFIED DATE\", " +
                                   //"COGRCRBY AS \"CREATED BY\", " +

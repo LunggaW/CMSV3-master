@@ -210,20 +210,7 @@ namespace KBS.KBS.CMSV3.MasterData
 
         }
 
-
-        //protected void ASPxButtonEntry_Click(object sender, EventArgs e)
-        //{
-        //    if (ASPxGridViewHeader.FocusedRowIndex != -1)
-        //    {
-
-        //        Session["BrandIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
-        //        Session["BrandDescforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BRAND DESC").ToString();
-
-        //        Response.Redirect("BrandDetailMasterManagement.aspx");
-        //    }
-
-
-        //}
+        
 
         protected void AddBtn_Click(object sender, EventArgs e)
         {
@@ -234,20 +221,34 @@ namespace KBS.KBS.CMSV3.MasterData
         {
             if (ASPxGridViewHeader.FocusedRowIndex != -1)
             {
-                String PBRNDBRNDID = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
-                //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+                
+                    //this.Page.ClientScript.RegisterStartupScript(this.GetType(), "alert", "alert('You clicked YES!')", true);
+              
+                    String PBRNDBRNDID = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
+                    //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+                    string CekData = CMSfunction.cekBrand(PBRNDBRNDID, "1");
 
+                    if (CekData == "NO")
+                    {
+                        string script = "alert('Brand cannot delete, because already item using this brand');";
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                    }
+                    else
+                    {
+                        OutputMessage message = new OutputMessage();
 
-                OutputMessage message = new OutputMessage();
+                        message = CMSfunction.DeleteBrandHeader(PBRNDBRNDID);
 
-                message = CMSfunction.DeleteBrandHeader(PBRNDBRNDID);
+                        LabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
 
-                LabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
-
-                LabelMessage.Visible = true;
-                LabelMessage.Text = message.Message;
+                        LabelMessage.Visible = true;
+                        LabelMessage.Text = message.Message;
+                        Response.Redirect("BrandMasterManagementHeader.aspx");
+                    }
+                
+                
             }
-            Response.Redirect("BrandMasterManagementHeader.aspx");
+            
         }
 
 

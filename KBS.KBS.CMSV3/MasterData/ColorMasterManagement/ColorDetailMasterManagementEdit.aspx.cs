@@ -152,22 +152,38 @@ namespace KBS.KBS.CMSV3.MasterData.ColorMasterManagement
         protected void ValidateBtn_Click(object sender, EventArgs e)
         {
             ProcessUpdate();
-            Response.Redirect("ColorDetailMasterManagement.aspx");
+            if (message.Code > 0)
+            { Response.Redirect("ColorDetailMasterManagement.aspx"); }
+            
         }
 
 
         private void ProcessUpdate()
         {
-            ColorGroupDetail colorgroupdetail = new ColorGroupDetail();
+            String ColorGroup = Session["ColorDetailGrpforUpdate"].ToString();
+            String ColorID = Session["ColorDetailIDforUpdate"].ToString();
+            //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+            string CekData = CMSfunction.cekColor(ColorGroup, ColorID, TextBoxColorOrder.Text);
 
-            colorgroupdetail.GID = Session["ColorDetailGrpforUpdate"].ToString();
-            colorgroupdetail.ID = Session["ColorDetailIDforUpdate"].ToString();
-            colorgroupdetail.ColorOrder = TextBoxColorOrder.Text;
-            colorgroupdetail.ColorSDesc = TextBoxSDesc.Text;
-            colorgroupdetail.ColorLDesc = TextBoxLDesc.Text;
+            if (CekData == "NO")
+            {
+                string script = "alert('Color Order Already Exists, please try another color order');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+            }
+            else
+            {
+                ColorGroupDetail colorgroupdetail = new ColorGroupDetail();
+
+                colorgroupdetail.GID = Session["ColorDetailGrpforUpdate"].ToString();
+                colorgroupdetail.ID = Session["ColorDetailIDforUpdate"].ToString();
+                colorgroupdetail.ColorOrder = TextBoxColorOrder.Text;
+                colorgroupdetail.ColorSDesc = TextBoxSDesc.Text;
+                colorgroupdetail.ColorLDesc = TextBoxLDesc.Text;
 
 
-            message = CMSfunction.UpdateColorDetail(colorgroupdetail, Session["UserID"].ToString());
+
+                message = CMSfunction.UpdateColorDetail(colorgroupdetail, Session["UserID"].ToString());
+            }
         }
 
     }

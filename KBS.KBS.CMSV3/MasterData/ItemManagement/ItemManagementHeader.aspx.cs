@@ -159,23 +159,11 @@ namespace KBS.KBS.CMSV3.MasterData.ItemManagement
             TextBoxItemIdExternal.Text = "";
             TextBoxShortDescription.Text = "";
             TextBoxLongDescription.Text = "";
-            ComboItemType.Dispose();
-            DTItemType = CMSfunction.GetParameterValueAndDescbyClassAndTabID(Session["Class"].ToString(), "13");
-            ComboItemType.DataSource = DTItemType;
-            ComboItemType.ValueField = "PARVALUE";
-            ComboItemType.ValueType = typeof(string);
-            ComboItemType.TextField = "PARDESCRIPTION";
-            ComboItemType.DataBind();
 
-            ComboBrand.Dispose();
-            DTBrand = CMSfunction.GetAllBrand();
-            ComboBrand.DataSource = DTBrand;
-            ComboBrand.ValueField = "BRAND";
-            ComboBrand.ValueType = typeof(string);
-            ComboBrand.TextField = "DESCRIPTION";
-            ComboBrand.DataBind();
-
+            ComboItemType.SelectedIndex = -1;
+            ComboBrand.SelectedIndex = -1;
             RefreshDataGrid();
+
         }
 
         protected void ASPxGridViewDetail_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)

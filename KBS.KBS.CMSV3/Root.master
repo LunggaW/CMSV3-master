@@ -54,7 +54,7 @@
                                 
                                 <span>            
                                 <dx:ASPxComboBox ID="sitestore" Caption="Site"  runat="server" Width="200px" AutoPostBack=true
-                                 OnSelectedIndexChanged="GetSite"></dx:ASPxComboBox>
+                                 OnSelectedIndexChanged="GetSite" Height="27px"></dx:ASPxComboBox>
                                 </span> 
                                 <span>
                                  <dx:ASPxLabel ID="State" runat="server" Visible="false"  style="margin-left:20PX" ForeColor="White" Text="" Font-Size="10pt"> </dx:ASPxLabel>
@@ -62,7 +62,7 @@
                              </div>
                                  <div class="templateTitle">
                                 <span>
-                                <dx:ASPxButton ID="Logout" runat="server" Text="Logout" Font-Size="10pt" OnClick="Logout_clicked" ></dx:ASPxButton>                                                                
+                                <dx:ASPxButton ID="Logout" runat="server" Text="Logout" Font-Size="10pt" OnClick="Logout_clicked" Height="27px" ></dx:ASPxButton>                                                                
                              </span>
                             
                             
