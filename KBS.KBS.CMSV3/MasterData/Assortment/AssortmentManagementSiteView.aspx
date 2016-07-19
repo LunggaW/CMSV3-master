@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
-    CodeBehind="AssortmentManagement.aspx.cs" Inherits="KBS.KBS.CMSV3.MasterData.Assortment.AssortmentManagement" %>
+    CodeBehind="AssortmentManagementSiteView.aspx.cs" Inherits="KBS.KBS.CMSV3.MasterData.Assortment.AssortmentManagementSiteView" %>
 
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
@@ -38,8 +38,7 @@
                 <Image Height="20px" Width="20px">
                 </Image>
                 <Border BorderColor="Transparent" />
-            </dx:ASPxButton>
-        </span><span>
+            </dx:ASPxButton></span><span>
             <dx:ASPxButton ID="ClearBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/clear.png" ToolTip="Clear" BackColor="Transparent" Enabled="False">
@@ -51,7 +50,7 @@
             </dx:ASPxButton>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="False">
+                Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="True">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -118,60 +117,40 @@
             Text="Assortment Management"></asp:Label>
     </div>
     <br />
-    <table class="tableTopPlain">
-        <tr>
-            <td class="tableHeader2Column" colspan="10">
-                <dx:ASPxTextBox runat="server" Width="500px" Caption="ITEM" ID="TextBoxItem"
-                    ReadOnly="True">
-                    <ReadOnlyStyle BackColor="Silver">
-                    </ReadOnlyStyle>
-                    <CaptionSettings ShowColon="False"></CaptionSettings>
-                    <CaptionCellStyle Width="110px">
-                    </CaptionCellStyle>
-                </dx:ASPxTextBox>
-            </td>
-        </tr>
-    </table>
-    <br/>
-    <table class="tableTopPlain">
-        <tr>
-            <td class="tableHeader2Column" colspan="10">
-                <dx:ASPxTextBox runat="server" Width="500px" Caption="VARIANT" ID="TextBoxVariant"
-                    ReadOnly="True">
-                    <ReadOnlyStyle BackColor="Silver">
-                    </ReadOnlyStyle>
-                    <CaptionSettings ShowColon="False"></CaptionSettings>
-                    <CaptionCellStyle Width="110px">
-                    </CaptionCellStyle>
-                </dx:ASPxTextBox>
-            </td>
-        </tr>
-    </table>
     <br/>
     <br/>
     <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Visible="False"></asp:Label>
     <br/>
     <br/>
-     <dx:ASPxComboBox ID="ComboBoxSite" runat="server" ValueType="System.String" CssClass="AccessProfile"
-        Caption="Choose Site"
-        AutoPostBack="True" 
-        onselectedindexchanged="ComboBoxSite_SelectedIndexChanged">
-        <CaptionCellStyle Width="110px">
-        </CaptionCellStyle>
-    </dx:ASPxComboBox>
     
-    <br />
+    <div>
+        <table class="tableTop">
+            <tr>
+                <td class="tableHeader2Column" colspan="5">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Site" ID="TextBoxSite" >
+                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                        <ReadOnlyStyle BackColor="Silver">
+                        </ReadOnlyStyle>
+                        <CaptionCellStyle Width="110px">
+                        </CaptionCellStyle>
+                    </dx:ASPxTextBox></td>
+                <td class="tableHeader2Column" colspan="5">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Site Name" ID="TextBoxSiteName">
+                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                        <CaptionCellStyle Width="110px">
+                        </CaptionCellStyle>
+                    </dx:ASPxTextBox>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br/>
     <dx:ASPxGridView runat="server" ClientInstanceName="detailGridView" CssClass="ASPXGridView"
-        ID="ASPxGridViewAssortment" >
+        ID="ASPxGridViewAssortment" OnCustomCallback="ASPxGridViewAssortment_CustomCallback" >
         <ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>
         <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True">
         </SettingsBehavior>
     </dx:ASPxGridView>
     <br />
-     <div align="center">
-        <dx:ASPxButton ID="ButtonChangeStatus" runat="server" Visible="false"
-            Text="Change Status" Font-Size="Medium" onclick="ButtonChangeStatus_Click">
-        </dx:ASPxButton>
-    </div>
     <br/>
 </asp:Content>

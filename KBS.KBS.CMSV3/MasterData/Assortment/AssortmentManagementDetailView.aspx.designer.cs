@@ -10,7 +10,7 @@
 namespace KBS.KBS.CMSV3.MasterData.Assortment {
     
     
-    public partial class ItemSearch {
+    public partial class AssortmentManagementDetailView {
         
         /// <summary>
         /// BackhomeBtn control.
@@ -112,66 +112,48 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment {
         protected global::DevExpress.Web.ASPxButton LnextBtn;
         
         /// <summary>
-        /// Label1 control.
+        /// LabelTitle control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label1;
+        protected global::System.Web.UI.WebControls.Label LabelTitle;
         
         /// <summary>
-        /// TextBoxItemIdExternal control.
+        /// LabelMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxItemIdExternal;
+        protected global::System.Web.UI.WebControls.Label LabelMessage;
         
         /// <summary>
-        /// TextBoxVariantIdExternal control.
+        /// TextBoxItemID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxVariantIdExternal;
+        protected global::DevExpress.Web.ASPxTextBox TextBoxItemID;
         
         /// <summary>
-        /// TextBoxShortDescription control.
+        /// TextBoxVariant control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxShortDescription;
+        protected global::DevExpress.Web.ASPxTextBox TextBoxVariant;
         
         /// <summary>
-        /// TextBoxLongDescription control.
+        /// ASPxGridViewAssortment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxLongDescription;
-        
-        /// <summary>
-        /// ASPxGridViewItemVariant control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxGridView ASPxGridViewItemVariant;
-        
-        /// <summary>
-        /// ASPxButtonOK control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ASPxButtonOK;
+        protected global::DevExpress.Web.ASPxGridView ASPxGridViewAssortment;
     }
 }
