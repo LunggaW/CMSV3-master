@@ -248,7 +248,7 @@ namespace KBS.KBS.CMSV3.MasterData
 
                 if (CekData == "NO")
                 {
-                    string script = "alert('Record already detail , please delete color detail');";
+                    string script = "alert('Record already detail , please delete Style detail');";
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
                 }
                 else

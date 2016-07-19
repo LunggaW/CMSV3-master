@@ -193,13 +193,13 @@ namespace KBS.KBS.CMSV3.MasterData.SizeMasterManagement {
         protected global::DevExpress.Web.ASPxTextBox TextBoxId;
         
         /// <summary>
-        /// TextBoxColorOrder control.
+        /// TextBoxSizeOrder control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxColorOrder;
+        protected global::DevExpress.Web.ASPxTextBox TextBoxSizeOrder;
         
         /// <summary>
         /// TextBoxSDesc control.

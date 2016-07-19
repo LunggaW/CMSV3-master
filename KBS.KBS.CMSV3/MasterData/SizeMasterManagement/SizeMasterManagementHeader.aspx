@@ -137,11 +137,11 @@ Inherits="KBS.KBS.CMSV3.MasterData.SizeMasterManagementHeader" %>
         <table class="tableTop">
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" Caption="ID" ID="ASPxTextBoxHeaderID">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Size Group ID" ID="ASPxTextBoxHeaderID">
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Size Desc" ID="ASPxTextBoxHeaderName">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Size Group Desc" ID="ASPxTextBoxHeaderName">
                     </dx:ASPxTextBox>
                 </td>
             </tr>

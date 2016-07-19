@@ -53,7 +53,7 @@ namespace KBS.KBS.CMSV3.MasterData.SizeMasterManagement
                 sizegroupdetail = CMSfunction.GetSizeDetailUpdate(sizegroupdetail);
 
                  TextBoxId.Text = Session["SizeDetailIDforUpdate"].ToString();
-                 TextBoxColorOrder.Text = sizegroupdetail.SizeOrder;
+                TextBoxSizeOrder.Text = sizegroupdetail.SizeOrder;
                  TextBoxSDesc.Text = sizegroupdetail.SizeSDesc;
                  TextBoxLDesc.Text = sizegroupdetail.SizeLDesc;
 
@@ -158,16 +158,30 @@ namespace KBS.KBS.CMSV3.MasterData.SizeMasterManagement
 
         private void ProcessUpdate()
         {
-            SizeGroupDetail sizegroupdetail = new SizeGroupDetail();
+            String SizeGroup = Session["SizeDetailGrpforUpdate"].ToString();
+            String SizeID = Session["SizeDetailIDforUpdate"].ToString();
+            //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+            string CekData = CMSfunction.cekSize(SizeGroup, SizeID, TextBoxSizeOrder.Text);
 
-            sizegroupdetail.GID = Session["SizeDetailGrpforUpdate"].ToString();
-            sizegroupdetail.ID = Session["SizeDetailIDforUpdate"].ToString();
-            sizegroupdetail.SizeOrder = TextBoxColorOrder.Text;
-            sizegroupdetail.SizeSDesc = TextBoxSDesc.Text;
-            sizegroupdetail.SizeLDesc = TextBoxLDesc.Text;
+            if (CekData == "NO")
+            {
+                string script = "alert('Size Order Already Exists, please try another Size order');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+            }
+            else
+            {
+                SizeGroupDetail sizegroupdetail = new SizeGroupDetail();
+
+                sizegroupdetail.GID = Session["SizeDetailGrpforUpdate"].ToString();
+                sizegroupdetail.ID = Session["SizeDetailIDforUpdate"].ToString();
+                sizegroupdetail.SizeOrder = TextBoxSizeOrder.Text;
+                sizegroupdetail.SizeSDesc = TextBoxSDesc.Text;
+                sizegroupdetail.SizeLDesc = TextBoxLDesc.Text;
 
 
-            message = CMSfunction.UpdateSizeDetail(sizegroupdetail, Session["UserID"].ToString());
+                message = CMSfunction.UpdateSizeDetail(sizegroupdetail, Session["UserID"].ToString());
+            }
+            
         }
 
     }

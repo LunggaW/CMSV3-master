@@ -191,7 +191,7 @@
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Caption="Color Order" ID="TextBoxColorOrder">
+                    <dx:ASPxTextBox runat="server" Caption="Color Order" ID="TextBoxSizeOrder">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>

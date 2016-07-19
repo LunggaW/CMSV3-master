@@ -162,8 +162,8 @@ namespace KBS.KBS.CMSV3.MasterData
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
           
-            Session["SizeIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
-            Session["SizeDescforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SIZE DESC").ToString();
+            Session["SizeIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SIZE GROUP ID").ToString();
+            Session["SizeDescforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SIZE GROUP DESC").ToString();
             
 
             if (Page.IsCallback)
@@ -212,8 +212,8 @@ namespace KBS.KBS.CMSV3.MasterData
             if (ASPxGridViewHeader.FocusedRowIndex != -1)
             {
 
-                Session["SizeIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
-                Session["SizeDescforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SIZE DESC").ToString();
+                Session["SizeIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SIZE GROUP ID").ToString();
+                Session["SizeDescforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SIZE GROUP DESC").ToString();
             
                 Response.Redirect("SizeDetailMasterManagement.aspx");
             }
@@ -230,19 +230,32 @@ namespace KBS.KBS.CMSV3.MasterData
         {
             if (ASPxGridViewHeader.FocusedRowIndex != -1)
             {
-                String ID = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
-                
+                String SizeGroup = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SIZE GROUP ID").ToString();
+                //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+                string CekData = CMSfunction.cekSize(SizeGroup, "Delete", "Delete");
+
+                if (CekData == "NO")
+                {
+                    string script = "alert('Record already detail , please delete Size detail');";
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                }
+                else
+                {
+                    String ID = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SIZE GROUP ID").ToString();
 
 
-                OutputMessage message = new OutputMessage();
 
-                message = CMSfunction.DeleteSizeHeader(ID);
+                    OutputMessage message = new OutputMessage();
 
-                LabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+                    message = CMSfunction.DeleteSizeHeader(ID);
 
-                LabelMessage.Visible = true;
-                LabelMessage.Text = message.Message;
+                    LabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+
+                    LabelMessage.Visible = true;
+                    LabelMessage.Text = message.Message;
+                }
             }
+           
         }
         protected void BackhomeBtn_Click(object sender, EventArgs e)
         {

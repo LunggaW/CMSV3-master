@@ -38,7 +38,8 @@ namespace KBS.KBS.CMSV3.MasterData.ColorMasterManagement
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            Session["ColorSave"] = "";
+            if (!IsPostBack)
+            { Session["ColorSave"] = ""; }
         }
 
 
@@ -132,14 +133,14 @@ namespace KBS.KBS.CMSV3.MasterData.ColorMasterManagement
                 else
                 {
                     ProcessInsert();
-                    Response.Redirect("ColorMasterManagementHeader.aspx");
+                    if (message.Code > 0)
+                    { Response.Redirect("ColorMasterManagementHeader.aspx"); }
+                
                 }
             }
             else
             {
-                ProcessInsert();
-                if (message.Code > 0)
-                { Response.Redirect("ColorMasterManagementHeader.aspx"); }
+                 Response.Redirect("ColorMasterManagementHeader.aspx"); 
                 
             }
         }

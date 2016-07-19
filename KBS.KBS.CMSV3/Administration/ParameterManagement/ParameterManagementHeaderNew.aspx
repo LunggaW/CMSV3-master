@@ -173,7 +173,7 @@
     </div>
     <br />
     <div align="center" class="title">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Parameter Header"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="New Parameter Header"></asp:Label>
     </div>
     <br />
     <span>
