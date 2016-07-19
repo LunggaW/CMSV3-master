@@ -50,14 +50,17 @@
                                     Height="65px" Width="550px">
                                 </dx:ASPxImage></a>
                             </div>
+                            <div class="templateTitle" style="margin-left:250PX; width: 220px;>
+                                 <dx:ASPxLabel ID="ASPxLabel2" runat="server"  ForeColor="White"  Text="SITE" Font-Size="10pt"> </dx:ASPxLabel>
+                                 </div>
                             <div class="templateTitle" style="margin-left:250PX; width: 220px;">
                                 
                                 <span>            
-                                <dx:ASPxComboBox ID="sitestore" Caption="Site"  runat="server" Width="200px" AutoPostBack=true
+                                <dx:ASPxComboBox ID="sitestore" Caption="Site"  runat="server" Width="200px" ForeColor="White" BackColor="WhiteSmoke" AutoPostBack=true
                                  OnSelectedIndexChanged="GetSite" Height="27px"></dx:ASPxComboBox>
                                 </span> 
                                 <span>
-                                 <dx:ASPxLabel ID="State" runat="server" Visible="false"  style="margin-left:20PX" ForeColor="White" Text="" Font-Size="10pt"> </dx:ASPxLabel>
+                                 <dx:ASPxLabel ID="State" runat="server" Visible="false"  style="margin-left:20PX" ForeColor="Black" BackColor="White" Text="" Font-Size="10pt"> </dx:ASPxLabel>
                                  </span>
                              </div>
                                  <div class="templateTitle">

@@ -103,6 +103,15 @@ namespace KBS.KBS.CMSV3 {
         protected global::DevExpress.Web.ASPxImage ASPxImage4;
         
         /// <summary>
+        /// ASPxLabel2 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxLabel ASPxLabel2;
+        
+        /// <summary>
         /// sitestore control.
         /// </summary>
         /// <remarks>

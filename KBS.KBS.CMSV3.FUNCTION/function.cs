@@ -2494,7 +2494,56 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
 
         }
+        public string cekStyle(string GroupId, string datacek, string status)
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
 
+                if (status == "Delete")
+                {
+                    cmd.CommandText =
+                                     " select ROWNUM, 'NO' as Fail from KDSCMSSTLGRP " +
+                                     " where rownum = 1 and STGRSTGID = '" + GroupId + "' and STGRSTGID in (select distinct STYLSTGID from KDSCMSSTLTBL) ";
+
+                }
+                else if (status == "Insert")
+                {
+                    cmd.CommandText =
+                                      " select ROWNUM, 'NO' as Fail from KDSCMSSTLGRP " +
+                                      " where rownum = 1 and STGRSTGID = '" + GroupId + "' ";
+                }
+                else
+                {
+                    cmd.CommandText =
+                                      " select ROWNUM, 'NO' as Fail from KDSCMSSTLGRP " +
+                                      " where rownum = 1 and STGRSTGID = '" + GroupId + "' and (COLRORDR = '" + status + "' or COLRCOLID = '" + datacek + "' ) ";
+                }
+                logger.Debug(cmd.CommandText);
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                string Result = "";
+
+                while (dr.Read())
+                {
+
+                    Result = dr["Fail"].ToString();
+
+                }
+                return Result;
+
+            }
+            catch (Exception e)
+            {
+                logger.Error("Get Brand ID Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
         public SKULink Cekdataskulink(SKULink skulink)
         {
             try
@@ -4949,8 +4998,8 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 this.Connect();
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "SELECT STGRSTGID AS \"ID\", " +
-                                  "STGRDESC AS \"STYLE DESC\" " +
+                cmd.CommandText = "SELECT STGRSTGID AS \"STYLE GROUP ID\", " +
+                                  "STGRDESC AS \"STYLE GROUP DESC\" " +
                                   // "STGRCDAT AS \"CREATED DATE\", " +
                                   //"STGRMDAT AS \"MODIFIED DATE\", " +
                                   //"STGRCRBY AS \"CREATED BY\", " +
