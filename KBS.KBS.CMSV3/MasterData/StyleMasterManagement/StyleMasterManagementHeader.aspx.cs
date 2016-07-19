@@ -83,7 +83,7 @@ namespace KBS.KBS.CMSV3.MasterData
 
             DTStyleHeader = CMSfunction.GetStyleHeaderDataTable(stylegroup);
             ASPxGridViewHeader.DataSource = DTStyleHeader;
-            ASPxGridViewHeader.KeyFieldName = "ID";
+            ASPxGridViewHeader.KeyFieldName = "STYLE GROUP ID";
             ASPxGridViewHeader.DataBind();
         }
 
@@ -180,8 +180,8 @@ namespace KBS.KBS.CMSV3.MasterData
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
 
-            Session["StyleIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
-            Session["StyleDescforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "STYLE DESC").ToString();
+            Session["StyleIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "STYLE GROUP ID").ToString();
+            Session["StyleDescforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "STYLE GROUP DESC").ToString();
             
 
             if (Page.IsCallback)
@@ -221,8 +221,8 @@ namespace KBS.KBS.CMSV3.MasterData
             if (ASPxGridViewHeader.FocusedRowIndex != -1)
             {
 
-                Session["StyleIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
-                Session["StyleDescforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "STYLE DESC").ToString();
+                Session["StyleIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "STYLE GROUP ID").ToString();
+                Session["StyleDescforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "STYLE GROUP DESC").ToString();
             
                 Response.Redirect("StyleDetailMasterManagement.aspx");
             }
@@ -242,20 +242,33 @@ namespace KBS.KBS.CMSV3.MasterData
         {
             if (ASPxGridViewHeader.FocusedRowIndex != -1)
             {
-                String IDGRP = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
+                String StyleGroup = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "STYLE GROUP ID").ToString();
+                //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+                string CekData = CMSfunction.cekStyle(StyleGroup, "Delete", "Delete");
+
+                if (CekData == "NO")
+                {
+                    string script = "alert('Record already detail , please delete Style detail');";
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                }
+                else
+                {
+                    String IDGRP = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "STYLE GROUP ID").ToString();
 
 
 
-                OutputMessage message = new OutputMessage();
+                    OutputMessage message = new OutputMessage();
 
-                message = CMSfunction.DeleteStyleHeader(IDGRP);
+                    message = CMSfunction.DeleteStyleHeader(IDGRP);
 
-                LabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+                    LabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
 
-                LabelMessage.Visible = true;
-                LabelMessage.Text = message.Message;
+                    LabelMessage.Visible = true;
+                    LabelMessage.Text = message.Message;
+                    Response.Redirect("StyleMasterManagementHeader.aspx");
+                }
             }
-            Response.Redirect("StyleMasterManagementHeader.aspx");
+           
         }
 
 

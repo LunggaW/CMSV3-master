@@ -158,16 +158,29 @@ namespace KBS.KBS.CMSV3.MasterData.StyleMasterManagement
 
         private void ProcessUpdate()
         {
-            StyleGroupDetail stylegroupdetail = new StyleGroupDetail();
+            String StyleGroup = Session["StyleDetailGrpforUpdate"].ToString();
+            String StyleID = Session["StyleDetailIDforUpdate"].ToString();
+            //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+            string CekData = CMSfunction.cekStyle(StyleGroup, StyleID, TextBoxStyleOrder.Text);
 
-            stylegroupdetail.GID = Session["StyleDetailGrpforUpdate"].ToString();
-            stylegroupdetail.ID = Session["StyleDetailIDforUpdate"].ToString();
-            stylegroupdetail.StyleOrder = TextBoxStyleOrder.Text;
-            stylegroupdetail.StyleSDesc = TextBoxSDesc.Text;
-            stylegroupdetail.StyleLDesc = TextBoxLDesc.Text;
+            if (CekData == "NO")
+            {
+                string script = "alert('Style Order Already Exists, please try another Style order');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+            }
+            else
+            {
+                StyleGroupDetail stylegroupdetail = new StyleGroupDetail();
+
+                stylegroupdetail.GID = Session["StyleDetailGrpforUpdate"].ToString();
+                stylegroupdetail.ID = Session["StyleDetailIDforUpdate"].ToString();
+                stylegroupdetail.StyleOrder = TextBoxStyleOrder.Text;
+                stylegroupdetail.StyleSDesc = TextBoxSDesc.Text;
+                stylegroupdetail.StyleLDesc = TextBoxLDesc.Text;
 
 
-            message = CMSfunction.UpdateStyleDetail(stylegroupdetail, Session["UserID"].ToString());
+                message = CMSfunction.UpdateStyleDetail(stylegroupdetail, Session["UserID"].ToString());
+            }
         }
 
     }

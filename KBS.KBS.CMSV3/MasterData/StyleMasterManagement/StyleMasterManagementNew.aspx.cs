@@ -38,7 +38,8 @@ namespace KBS.KBS.CMSV3.MasterData.StyleMasterManagement
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!IsPostBack)
+            { Session["StyleSave"] = ""; }
         }
 
 
@@ -96,18 +97,53 @@ namespace KBS.KBS.CMSV3.MasterData.StyleMasterManagement
 
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
-            ProcessInsert();
+            String StyleGroup = ASPxTextBoxId.Text;
+            //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+            string CekData = CMSfunction.cekStyle(StyleGroup, "Insert", "Insert");
 
-            ASPxLabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+            if (CekData == "NO")
+            {
+                string script = "alert('Style Group ID Already Exists, please try other ID');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+            }
+            else
+            {
+                ProcessInsert();
 
-            ASPxLabelMessage.Visible = true;
-            ASPxLabelMessage.Text = message.Message;
+                ASPxLabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+
+                if (message.Code > 0)
+                { Session["StyleSave"] = "Sukses"; }
+                ASPxLabelMessage.Visible = true;
+                ASPxLabelMessage.Text = message.Message;
+            }
         }
 
         protected void ValidateBtn_Click(object sender, EventArgs e)
         {
-            ProcessInsert();
-            Response.Redirect("StyleMasterManagementHeader.aspx");
+            String StyleGroup = ASPxTextBoxId.Text;
+            //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+            string CekData = CMSfunction.cekStyle(StyleGroup, "Insert", "Insert");
+            if (Session["StyleSave"].ToString() != "Sukses")
+            {
+                string abc = Session["StyleSave"].ToString();
+                if (CekData == "NO")
+                {
+                    string script = "alert('Style Group ID Already Exists, please try other ID');";
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                }
+                else
+                {
+                    ProcessInsert();
+                    if (message.Code > 0)
+                    { Response.Redirect("StyleMasterManagementHeader.aspx"); }
+                }
+            }
+            else
+            {
+                 Response.Redirect("StyleMasterManagementHeader.aspx"); 
+
+            }
         }
 
         private void ProcessInsert()

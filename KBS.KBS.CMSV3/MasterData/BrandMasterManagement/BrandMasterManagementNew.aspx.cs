@@ -38,7 +38,7 @@ namespace KBS.KBS.CMSV3.MasterData.BrandMasterManagement
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            Session["SaveBrand"] = "0";
         }
 
 
@@ -96,18 +96,54 @@ namespace KBS.KBS.CMSV3.MasterData.BrandMasterManagement
 
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
-            ProcessInsert();
+            string CekData = CMSfunction.cekBrand(ASPxTextBoxId.Text, BrandDesc.Text);
 
-            ASPxLabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+            if (CekData == "NO")
+            {
+                string script = "alert('Brand ID or Desc already exists, please try other ID or Desc');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+            }
+            else
+            {
+                ProcessInsert();
+                if (message.Code >= 0)
+                {
+                    Session["SaveBrand"] = "OK";
+                }
+                
+                ASPxLabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
 
-            ASPxLabelMessage.Visible = true;
-            ASPxLabelMessage.Text = message.Message;
+                ASPxLabelMessage.Visible = true;
+                ASPxLabelMessage.Text = message.Message;
+            }
+          
+
         }
 
         protected void ValidateBtn_Click(object sender, EventArgs e)
         {
-            ProcessInsert();
-            Response.Redirect("BrandMasterManagementHeader.aspx");
+            string CekData = CMSfunction.cekBrand(ASPxTextBoxId.Text, BrandDesc.Text);
+            if (Session["SaveBrand"] == "OK")
+            {
+                Response.Redirect("BrandMasterManagementHeader.aspx");                
+            }
+            else
+            {
+                if (CekData == "NO")
+                {
+                    string script = "alert('Brand ID or Desc already exists, please try other ID or Desc');";
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                }
+                else
+                {
+                    ProcessInsert();
+                    if (message.Code >= 0)
+                    {
+                        Response.Redirect("BrandMasterManagementHeader.aspx");
+                    }
+
+                }
+            }
         }
 
         private void ProcessInsert()
@@ -115,8 +151,15 @@ namespace KBS.KBS.CMSV3.MasterData.BrandMasterManagement
             BrandGroup brandgroup = new BrandGroup();
             brandgroup.ID = ASPxTextBoxId.Text;
             brandgroup.Brand = BrandDesc.Text;
-
-            message = CMSfunction.InsertBrandGroup(brandgroup, Session["UserID"].ToString());
+            if ((ASPxTextBoxId.Text == "") || (BrandDesc.Text == ""))
+            {
+                string script = "alert('Please Fill All Field');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+            }
+            else
+            {
+                message = CMSfunction.InsertBrandGroup(brandgroup, Session["UserID"].ToString());
+            }
 
         }
 

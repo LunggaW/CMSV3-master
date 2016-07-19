@@ -38,7 +38,8 @@ namespace KBS.KBS.CMSV3.MasterData.ColorMasterManagement
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!IsPostBack)
+            { Session["ColorSave"] = ""; }
         }
 
 
@@ -96,18 +97,52 @@ namespace KBS.KBS.CMSV3.MasterData.ColorMasterManagement
 
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
-            ProcessInsert();
+            String ColorGroup = ASPxTextBoxId.Text;
+            //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+            string CekData = CMSfunction.cekColor(ColorGroup, "Insert", "Insert");
 
-            ASPxLabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+            if (CekData == "NO")
+            {
+                string script = "alert('Color Group ID Already Exists, please try other ID');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+            }
+            else
+            {
+                ProcessInsert();
 
-            ASPxLabelMessage.Visible = true;
-            ASPxLabelMessage.Text = message.Message;
+                ASPxLabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+                if (message.Code > 0)
+                { Session["ColorSave"] = "Sukses"; }
+                ASPxLabelMessage.Visible = true;
+                ASPxLabelMessage.Text = message.Message;
+            }
         }
 
         protected void ValidateBtn_Click(object sender, EventArgs e)
         {
-            ProcessInsert();
-            Response.Redirect("ColorMasterManagementHeader.aspx");
+            String ColorGroup = ASPxTextBoxId.Text;
+            //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+            string CekData = CMSfunction.cekColor(ColorGroup, "Insert", "Insert");
+            if (Session["ColorSave"].ToString() != "Sukses")
+            {
+                if (CekData == "NO")
+                {
+                    string script = "alert('Color Group ID Already Exists, please try other ID');";
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                }
+                else
+                {
+                    ProcessInsert();
+                    if (message.Code > 0)
+                    { Response.Redirect("ColorMasterManagementHeader.aspx"); }
+                
+                }
+            }
+            else
+            {
+                 Response.Redirect("ColorMasterManagementHeader.aspx"); 
+                
+            }
         }
 
         private void ProcessInsert()

@@ -38,7 +38,8 @@ namespace KBS.KBS.CMSV3.MasterData.SizeMasterManagement
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!IsPostBack)
+            { Session["SizeSave"] = ""; }
         }
 
 
@@ -96,18 +97,54 @@ namespace KBS.KBS.CMSV3.MasterData.SizeMasterManagement
 
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
-            ProcessInsert();
+            String SizeGroup = ASPxTextBoxId.Text;
+            //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+            string CekData = CMSfunction.cekSize(SizeGroup, "Insert", "Insert");
 
-            ASPxLabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+            if (CekData == "NO")
+            {
+                string script = "alert('Size Group ID Already Exists, please try other ID');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+            }
+            else
+            {
+                ProcessInsert();
 
-            ASPxLabelMessage.Visible = true;
-            ASPxLabelMessage.Text = message.Message;
+                ASPxLabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+                if (message.Code > 0)
+                { Session["SizeSave"] = "Sukses"; }
+                ASPxLabelMessage.Visible = true;
+                ASPxLabelMessage.Text = message.Message;
+            }
         }
 
         protected void ValidateBtn_Click(object sender, EventArgs e)
         {
-            ProcessInsert();
-            Response.Redirect("SizeMasterManagementHeader.aspx");
+            String SizeGroup = ASPxTextBoxId.Text;
+            //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+            string CekData = CMSfunction.cekSize(SizeGroup, "Insert", "Insert");
+            if (Session["SizeSave"].ToString() != "Sukses")
+            {
+                string abc = Session["SizeSave"].ToString();
+                if (CekData == "NO")
+                {
+                    string script = "alert('Size Group ID Already Exists, please try other ID');";
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                }
+                else
+                {
+                    ProcessInsert();
+                    if (message.Code > 0)
+                    { Response.Redirect("SizeMasterManagementHeader.aspx"); }
+                }
+            }
+            else
+            {
+                Response.Redirect("SizeMasterManagementHeader.aspx");
+
+            }
+            
+            
         }
 
         private void ProcessInsert()

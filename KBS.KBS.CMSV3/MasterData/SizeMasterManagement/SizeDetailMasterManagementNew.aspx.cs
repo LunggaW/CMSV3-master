@@ -38,7 +38,8 @@ namespace KBS.KBS.CMSV3.MasterData.SizeMasterManagement
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!IsPostBack)
+            { Session["SizeSave"] = ""; }
         }
 
 
@@ -98,18 +99,56 @@ namespace KBS.KBS.CMSV3.MasterData.SizeMasterManagement
 
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
-            ProcessInsert();
+            String SizeGroup = Session["SizeIDforUpdate"].ToString();
+            //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+            string CekData = CMSfunction.cekSize(SizeGroup, TextBoxId.Text, TextBoxSizeOrder.Text);
 
-            ASPxLabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+            if (CekData == "NO")
+            {
+                string script = "alert('Size Order Already Exists, please try another Size order');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+            }
+            else
+            {
+                ProcessInsert();
 
-            ASPxLabelMessage.Visible = true;
-            ASPxLabelMessage.Text = message.Message;
+                ASPxLabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+
+                if (message.Code > 0)
+                { Session["SizeSave"] = "Sukses"; }
+                ASPxLabelMessage.Visible = true;
+                ASPxLabelMessage.Text = message.Message;
+            }
+           
         }
 
         protected void ValidateBtn_Click(object sender, EventArgs e)
         {
-            ProcessInsert();
-            Response.Redirect("SizeDetailMasterManagement.aspx");
+            String SizeGroup = Session["SizeIDforUpdate"].ToString();
+            //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+            string CekData = CMSfunction.cekSize(SizeGroup, TextBoxId.Text, TextBoxSizeOrder.Text);
+
+            if (Session["SizeSave"].ToString() != "Sukses")
+            {
+                if (CekData == "NO")
+                {
+                    string script = "alert('Size Group ID Already Exists, please try another Size order');";
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                }
+                else
+                {
+                    ProcessInsert();
+                    if (message.Code > 0)
+                    { Response.Redirect("SizeDetailMasterManagement.aspx"); }
+                }
+            }
+            else
+            {
+                Response.Redirect("SizeDetailMasterManagement.aspx");
+
+            }
+            
+            
         }
 
         private void ProcessInsert()

@@ -168,8 +168,8 @@ namespace KBS.KBS.CMSV3.MasterData
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
 
-            Session["ColorIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
-            Session["ColorGrpforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COLOR").ToString();
+            Session["ColorIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COLOR GROUP ID").ToString();
+            Session["ColorGrpforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COLOR GROUP DESC").ToString();
             
 
             if (Page.IsCallback)
@@ -198,7 +198,7 @@ namespace KBS.KBS.CMSV3.MasterData
 
             DTColorHeader = CMSfunction.GetColorHeaderDataTable(color);
             ASPxGridViewHeader.DataSource = DTColorHeader;
-            ASPxGridViewHeader.KeyFieldName = "ID";
+            ASPxGridViewHeader.KeyFieldName = "COLOR GROUP ID";
             ASPxGridViewHeader.DataBind();
         }
 
@@ -219,8 +219,8 @@ namespace KBS.KBS.CMSV3.MasterData
             if (ASPxGridViewHeader.FocusedRowIndex != -1)
             {
                 
-                Session["ColorIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
-                Session["ColorforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COLOR").ToString();
+                Session["ColorIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COLOR GROUP ID").ToString();
+                Session["ColorforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COLOR GROUP DESC").ToString();
                 
                 Response.Redirect("ColorDetailMasterManagement.aspx");
             }
@@ -237,20 +237,31 @@ namespace KBS.KBS.CMSV3.MasterData
         {
             if (ASPxGridViewHeader.FocusedRowIndex != -1)
             {
-                String GRPID = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
-               
+                String ColorGroup = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COLOR GROUP ID").ToString();
+                //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+                string CekData = CMSfunction.cekColor(ColorGroup, "Delete","Delete");
 
+                if (CekData == "NO")
+                {
+                    string script = "alert('Record already detail , please delete color detail');";
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                }
+                else
+                {
+                    String GRPID = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COLOR GROUP ID").ToString();
 
-                OutputMessage message = new OutputMessage();
+                    OutputMessage message = new OutputMessage();
 
-                message = CMSfunction.DeleteColorHeader(GRPID);
+                    message = CMSfunction.DeleteColorHeader(GRPID);
 
-                LabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+                    LabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
 
-                LabelMessage.Visible = true;
-                LabelMessage.Text = message.Message;
+                    LabelMessage.Visible = true;
+                    LabelMessage.Text = message.Message;
+                    Response.Redirect("ColorMasterManagementHeader.aspx");
+                }
             }
-            Response.Redirect("ColorMasterManagementHeader.aspx");
+           
         }
 
 

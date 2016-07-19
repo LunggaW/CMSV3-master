@@ -171,7 +171,11 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
                 processInsert();
 
                 LabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
-
+                if (message.Code < 0)
+                {
+                    string script = "alert('Record already detail , please delete color detail');";
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                }
                 LabelMessage.Text = message.Message;
 
                 LabelMessage.Visible = true;
@@ -182,7 +186,16 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
         {
 
             processInsert();
-            Response.Redirect("UserManagementHeader.aspx");
+            if (message.Code < 0)
+            {
+                string script = "alert('Record already detail , please delete color detail');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+            }
+            else
+            {
+                Response.Redirect("UserManagementHeader.aspx");
+            }
+           
         }
 
         private void processInsert()

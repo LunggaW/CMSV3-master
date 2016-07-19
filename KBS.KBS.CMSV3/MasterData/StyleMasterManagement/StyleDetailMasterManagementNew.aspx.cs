@@ -38,7 +38,8 @@ namespace KBS.KBS.CMSV3.MasterData.StyleMasterManagement
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!IsPostBack)
+            { Session["StyleSave"] = ""; }
         }
 
 
@@ -98,18 +99,53 @@ namespace KBS.KBS.CMSV3.MasterData.StyleMasterManagement
 
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
-            ProcessInsert();
+            String StyleGroup = Session["StyleIDforUpdate"].ToString();
+            //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+            string CekData = CMSfunction.cekStyle(StyleGroup, TextBoxId.Text, TextBoxStyleOrder.Text);
 
-            ASPxLabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+            if (CekData == "NO")
+            {
+                string script = "alert('Style Order Already Exists, please try another Style order');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+            }
+            else
+            {
+                ProcessInsert();
 
-            ASPxLabelMessage.Visible = true;
-            ASPxLabelMessage.Text = message.Message;
+                ASPxLabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+
+                if (message.Code > 0)
+                { Session["StyleSave"] = "Sukses"; }
+                ASPxLabelMessage.Visible = true;
+                ASPxLabelMessage.Text = message.Message;
+            }
         }
 
         protected void ValidateBtn_Click(object sender, EventArgs e)
         {
-            ProcessInsert();
-            Response.Redirect("StyleDetailMasterManagement.aspx");
+            String StyleGroup = Session["StyleIDforUpdate"].ToString();
+            //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+            string CekData = CMSfunction.cekStyle(StyleGroup, TextBoxId.Text, TextBoxStyleOrder.Text);
+
+            if (Session["StyleSave"].ToString() != "Sukses")
+            {
+                if (CekData == "NO")
+                {
+                    string script = "alert('Style Group ID Already Exists, please try another Style order');";
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                }
+                else
+                {
+                    ProcessInsert();
+                    if (message.Code > 0)
+                    { Response.Redirect("StyleDetailMasterManagement.aspx"); }
+                }
+            }
+            else
+            {
+                Response.Redirect("StyleDetailMasterManagement.aspx"); 
+
+            }
         }
 
         private void ProcessInsert()
