@@ -175,10 +175,10 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="LabelTitleSiteProfile" runat="server" Font-Size="Large" Text="Site Profile Header"></asp:Label>
+        <asp:Label ID="LabelTitleSiteProfile" runat="server" Font-Size="Large" Text="Menu Profile Header"></asp:Label>
     </div>
     <br />
-    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Parameter Header"
+    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Menu Profile Header"
         Visible="false">
         
     </asp:Label>

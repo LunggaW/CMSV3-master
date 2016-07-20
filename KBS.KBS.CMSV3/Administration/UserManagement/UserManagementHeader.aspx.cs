@@ -370,6 +370,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             ASPxGridViewUser.DataSource = DTGridViewUser;
             ASPxGridViewUser.KeyFieldName = "USER ID";
             ASPxGridViewUser.DataBind();
+            
         }
 
         protected void BackhomeBtn_Click(object sender, EventArgs e)

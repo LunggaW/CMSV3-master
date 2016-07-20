@@ -105,7 +105,7 @@ namespace KBS.KBS.CMSV3.MasterData.StyleMasterManagement
 
             if (CekData == "NO")
             {
-                string script = "alert('Style Order Already Exists, please try another Style order');";
+                string script = "alert('Style ID Or Order Already Exists, please try another Style ID Or Order');";
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
             }
             else
@@ -131,7 +131,7 @@ namespace KBS.KBS.CMSV3.MasterData.StyleMasterManagement
             {
                 if (CekData == "NO")
                 {
-                    string script = "alert('Style Group ID Already Exists, please try another Style order');";
+                    string script = "alert('Style ID Or Order Already Exists, please try another Style ID Or Order');";
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
                 }
                 else

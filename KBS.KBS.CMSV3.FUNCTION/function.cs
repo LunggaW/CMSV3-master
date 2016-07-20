@@ -3587,7 +3587,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
 
-                cmd.CommandText = "SELECT SKUHSKUID AS \"ID\", " +
+                cmd.CommandText = "SELECT SKUHSKUID AS \"INTERNAL ID\", " +
                                   "SKUHSKUIDX AS \"EXTERNAL ID\", " +
                                   "SKUHSDES AS \"SHORT DESC\", " +
                                   "SKUHLDES AS \"LONG DESC\", " +
@@ -3639,7 +3639,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 }
 
                 //cmd.Parameters.Add(new OracleParameter(":ProfileId", OracleDbType.Varchar2)).Value = ProfileID;
-
+                cmd.CommandText = cmd.CommandText + " order by SKUHSKUID asc  ";
 
 
 
@@ -3861,6 +3861,8 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                       "and SKUDTYPE like '%' || :TYPE || '%' ";
                     cmd.Parameters.Add(new OracleParameter(":TYPE", OracleDbType.Varchar2)).Value = skugroupdetail.TYPE;
                 }
+                cmd.CommandText = cmd.CommandText +
+                                      " order by SKUDSKUIDD asc";
 
 
                 logger.Debug(cmd.CommandText);
@@ -7713,7 +7715,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.Connection = con;
                 cmd.CommandText = "SELECT USERCMS.USERUSID AS \"USER ID\", " +
                                   "USERCMS.USERUSNM AS \"USER NAME\", " +
-                                  "USERCMS.USERPASW AS PASSWORD, " +
+                                  //"USERCMS.USERPASW AS PASSWORD, " +
                                   "USERCMS.USERUSDSC AS DESCRIPTION, " +
                                   "DECODE (USERCMS.USERSTAT, " +
                                   "1, 'Active', " +

@@ -59,6 +59,14 @@ namespace KBS.KBS.CMSV3.MasterData.SKUMasterManagement
             BASEBOX.ValueType = typeof(string);
             BASEBOX.TextField = "BASE";
             BASEBOX.DataBind();
+            if (!IsPostBack)
+            {
+               
+                VALUETXT.Text = "0";
+                PARTTXT.Text = "0";
+                
+                
+            }
 
         }
 
@@ -131,20 +139,37 @@ namespace KBS.KBS.CMSV3.MasterData.SKUMasterManagement
 
         private void ProcessInsert()
         {
+            if (VALUETXT.Text == "")
+            {
+                VALUETXT.Text = "0";
+                
+            }
+            if (PARTTXT.Text == "")
+            {
+               
+                PARTTXT.Text = "0";
+            }
             
-            SKUGroupDetail skugroupdetail = new SKUGroupDetail();
-            skugroupdetail.IDGRP = Session["SKUIDforUpdate"].ToString();
-            skugroupdetail.ID = IDTXT.Text;
-            skugroupdetail.EXID = EXIDTXT.Text;
-            skugroupdetail.NAME = NAMEBOX.Text;            
-            skugroupdetail.VALUE = VALUETXT.Text;
-            skugroupdetail.PARTISIPASI = PARTTXT.Text;
-            skugroupdetail.BASEON = BASEBOX.Text;
-            skugroupdetail.TYPE = TYPEBOX.Value.ToString();
+            if ((IDTXT.Text == "") || (EXIDTXT.Text == "") || (NAMEBOX.Text == "") || (VALUETXT.Text == "") || (PARTTXT.Text == "") || (BASEBOX.Text == "") || (TYPEBOX.Value.ToString() == ""))
+            {
+                string script = "alert('Please Fill All Field');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+            }
+            else
+            {
+                SKUGroupDetail skugroupdetail = new SKUGroupDetail();
+                skugroupdetail.IDGRP = Session["SKUIDforUpdate"].ToString();
+                skugroupdetail.ID = IDTXT.Text;
+                skugroupdetail.EXID = EXIDTXT.Text;
+                skugroupdetail.NAME = NAMEBOX.Text;
+                skugroupdetail.VALUE = VALUETXT.Text;
+                skugroupdetail.PARTISIPASI = PARTTXT.Text;
+                skugroupdetail.BASEON = BASEBOX.Text;
+                skugroupdetail.TYPE = TYPEBOX.Value.ToString();
 
 
-            message = CMSfunction.InsertSKUDetail(skugroupdetail, Session["UserID"].ToString());
-
+                message = CMSfunction.InsertSKUDetail(skugroupdetail, Session["UserID"].ToString());
+            }
         }
 
     }

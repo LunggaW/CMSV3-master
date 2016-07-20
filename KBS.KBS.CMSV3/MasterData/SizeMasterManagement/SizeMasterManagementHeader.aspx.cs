@@ -193,7 +193,7 @@ namespace KBS.KBS.CMSV3.MasterData
 
             DTSizeHeader = CMSfunction.GetSizeHeaderDataTable(sizegroup);
             ASPxGridViewHeader.DataSource = DTSizeHeader;
-            ASPxGridViewHeader.KeyFieldName = "ID";
+            ASPxGridViewHeader.KeyFieldName = "SIZE GROUP ID";
             ASPxGridViewHeader.DataBind();
         }
         protected void ClearBtn_Click(object sender, EventArgs e)

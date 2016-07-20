@@ -153,7 +153,10 @@ namespace KBS.KBS.CMSV3.MasterData.SiteMasterManagement
         protected void ValidateBtn_Click(object sender, EventArgs e)
         {
             processUpdate();
-            Response.Redirect("SiteMasterManagementHeader.aspx");
+            if (message.Code == -1)
+            {
+                Response.Redirect("SiteMasterManagementHeader.aspx");
+            }
         }
 
         private void processUpdate()
@@ -182,6 +185,8 @@ namespace KBS.KBS.CMSV3.MasterData.SiteMasterManagement
                     message.Code = -1;
                     message.Message = "Store Total Exceeded License Data";
                     siteMaster.Enable = 0;
+                    string script = "alert('License Have Maximal Site, Please Update License For More Site ');";
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
                 }
                 else
                 {

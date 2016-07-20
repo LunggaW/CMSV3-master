@@ -39,7 +39,7 @@ namespace KBS.KBS.CMSV3.MasterData
             SKUGroup skugroup = new SKUGroup();
             DTSKUHeader = CMSfunction.GetSKUHeaderDataTable(skugroup);
             ASPxGridViewHeader.DataSource = DTSKUHeader;
-            ASPxGridViewHeader.KeyFieldName = "ID";
+            ASPxGridViewHeader.KeyFieldName = "INTERNAL ID";
             ASPxGridViewHeader.DataBind();
             string Compare = Session["Filter"].ToString();
             if (Compare != "")
@@ -170,7 +170,7 @@ namespace KBS.KBS.CMSV3.MasterData
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
 
-            Session["SKUIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
+            Session["SKUIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
             Session["SKUEXIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "EXTERNAL ID").ToString();
             Session["SKUSDESCforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SHORT DESC").ToString();
             Session["SKULDESCforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "LONG DESC").ToString();
@@ -213,7 +213,7 @@ namespace KBS.KBS.CMSV3.MasterData
 
             DTSKUHeader = CMSfunction.GetSKUHeaderDataTable(skugroup);
             ASPxGridViewHeader.DataSource = DTSKUHeader;
-            ASPxGridViewHeader.KeyFieldName = "ID";
+            ASPxGridViewHeader.KeyFieldName = "INTERNAL ID";
             ASPxGridViewHeader.DataBind();
         }
         protected void ClearBtn_Click(object sender, EventArgs e)
@@ -239,7 +239,7 @@ namespace KBS.KBS.CMSV3.MasterData
             if (ASPxGridViewHeader.FocusedRowIndex != -1)
             {
 
-                Session["SKUIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
+                Session["SKUIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
                 
             
                 Response.Redirect("SKUDetailMasterManagement.aspx");
@@ -258,7 +258,7 @@ namespace KBS.KBS.CMSV3.MasterData
             if (ASPxGridViewHeader.FocusedRowIndex != -1)
             {
                 SKUGroup skugroup = new SKUGroup();
-                skugroup.ID = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
+                skugroup.ID = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
 
                 skugroup = CMSfunction.Cekdatasku(skugroup);
                 if (skugroup.LDesc == "NO")
@@ -276,7 +276,7 @@ namespace KBS.KBS.CMSV3.MasterData
                 }
                 else
                 {
-                    String SKUID = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
+                    String SKUID = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
                     OutputMessage message = new OutputMessage();
 
                     message = CMSfunction.DeleteSKUHeader(SKUID);

@@ -197,11 +197,11 @@
             </tr>
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon=false Caption="SHORT DESC" ID="SDESCTXT">
+                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon=false Caption="SHORT DESC" ID="SDESCTXT" MaxLength="20">
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon=false Caption="LONG DESC" ID="LDESCTXT">
+                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon=false Caption="LONG DESC" ID="LDESCTXT" MaxLength="50">
                     </dx:ASPxTextBox>
                 </td>
             </tr>
