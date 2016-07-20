@@ -10,7 +10,7 @@
 namespace KBS.KBS.CMSV3.MasterData.Assortment {
     
     
-    public partial class AssortmentManagement {
+    public partial class AssortmentManagementSiteView {
         
         /// <summary>
         /// BackhomeBtn control.
@@ -121,24 +121,6 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment {
         protected global::System.Web.UI.WebControls.Label LabelTitle;
         
         /// <summary>
-        /// TextBoxItem control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxItem;
-        
-        /// <summary>
-        /// TextBoxVariant control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxVariant;
-        
-        /// <summary>
         /// LabelMessage control.
         /// </summary>
         /// <remarks>
@@ -148,13 +130,22 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment {
         protected global::System.Web.UI.WebControls.Label LabelMessage;
         
         /// <summary>
-        /// ComboBoxSite control.
+        /// TextBoxSite control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox ComboBoxSite;
+        protected global::DevExpress.Web.ASPxTextBox TextBoxSite;
+        
+        /// <summary>
+        /// TextBoxSiteName control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox TextBoxSiteName;
         
         /// <summary>
         /// ASPxGridViewAssortment control.
@@ -164,14 +155,5 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView ASPxGridViewAssortment;
-        
-        /// <summary>
-        /// ButtonChangeStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ButtonChangeStatus;
     }
 }

@@ -1291,28 +1291,41 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
         }
 
-        public DataTable GetAllStoreAssortment(String ItemID, String VariantID)
+        public DataTable GetAllStoreAssortment(String SiteProfile, SiteMaster siteMaster)
         {
             try
             {
                 this.Connect();
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "select SITESITE, " +
-                                  "SITESITE || ' - ' || SITESITENAME as SITESITENAME " +
-                                  "from KDSCMSSITE " +
-                                  "where sitesclas = 1 " +
-                                  "AND NOT EXISTS(" +
-                                    "SELECT 1 " +
-                                    "FROM Kdscmssass ASSORTMENT " +
-                                    "WHERE Assortment.Sasssiteid = KDSCMSSITE.Sitesite " +
-                                    "AND Assortment.Sassitemid = :ItemID " +
-                                    "and Assortment.Sassvrnt = :VariantID) ";
-
+                cmd.CommandText =
+                    "select KDSCMSSASS.SASSSITEID as SITE, KDSCMSSITE.SITESITENAME, COUNT(KDSCMSSASS.SASSITEMID) as \"TOTAL STORE\" " +
+                    "from KDSCMSSASS " +
+                    "inner join KDSCMSSITE on KDSCMSSASS.SASSSITEID = KDSCMSSITE.SITESITE " +
+                    "WHERE not exists(select 1 from Kdscmsprofsitelink where prstsite = KDSCMSSASS.SASSSITEID and Kdscmsprofsitelink.Prststprof = :SiteProfile) ";
+                    
                 cmd.CommandType = CommandType.Text;
 
-                cmd.Parameters.Add(new OracleParameter(":ItemID", OracleDbType.Int32)).Value = ItemID;
-                cmd.Parameters.Add(new OracleParameter(":VariantID", OracleDbType.Varchar2, 20)).Value = VariantID;
+                cmd.Parameters.Add(new OracleParameter(":SiteProfile", OracleDbType.Varchar2)).Value = SiteProfile;
+
+                if (!string.IsNullOrWhiteSpace(siteMaster.Site))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and KDSCMSSASS.SASSSITEID like '%' || :Site || '%' ";
+                    cmd.Parameters.Add(new OracleParameter(":Site", OracleDbType.Varchar2)).Value = siteMaster.Site;
+                }
+
+                if (!string.IsNullOrWhiteSpace(siteMaster.SiteName))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and KDSCMSSITE.SITESITENAME like '%' || :SiteName || '%' ";
+                    cmd.Parameters.Add(new OracleParameter(":SiteName", OracleDbType.Varchar2)).Value = siteMaster.SiteName;
+                }
+
+                cmd.CommandText = cmd.CommandText + "GROUP BY KDSCMSSASS.SASSSITEID, KDSCMSSITE.SITESITENAME";
+
+
+                
 
                 logger.Debug(cmd.CommandText);
 
@@ -1535,21 +1548,41 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
         }
 
-        public DataTable GetAllAssortmentByVarIDandItemID(String ItemID, string VariantID, string SiteClass)
+        public DataTable GetAllAssortment(string SiteClass, AssortmentMaster assortment)
         {
             try
             {
+                
                 this.Connect();
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "SELECT Assortment.Sasssiteid as SITE, " +
-                                  "(SELECT Par.Pardldesc from Kdscmspardtable par where Par.Pardsclas = '" +SiteClass +"' and Par.Pardtabid = 18 and Par.Pardtabent = Assortment.Sassstat) as STATUS " +
-                                  "FROM Kdscmssass ASSORTMENT " +
-                                  "WHERE Assortment.Sassitemid = '"+ItemID+"' " +
-                                  "and Assortment.Sassvrnt = '" +VariantID +"'";
+                cmd.CommandText = "select KDSCMSSASS.SASSITEMID as \"ITEM ID\", " +
+                                  "KDSCMSMSTVRNT.VRNTVRNTIDX as VARIANT, " +
+                                  "(SELECT Par.Pardldesc from Kdscmspardtable par where Par.Pardsclas = :SiteClas and Par.Pardtabid = 20 and Par.Pardtabent = KDSCMSSASS.Sassstat) as STATUS " +
+                                  "from KDSCMSSASS inner join KDSCMSMSTVRNT on KDSCMSMSTVRNT.VRNTVRNTID = KDSCMSSASS.SASSVRNT " +
+                                  "where KDSCMSMSTVRNT.VRNTITEMID = KDSCMSSASS.SASSITEMID " +
+                                  "and KDSCMSSASS.SASSSITEID = :Site ";
 
                 cmd.CommandType = CommandType.Text;
-                
+
+                cmd.Parameters.Add(new OracleParameter(":SiteClas", OracleDbType.Varchar2)).Value = SiteClass;
+                cmd.Parameters.Add(new OracleParameter(":Site", OracleDbType.Varchar2)).Value = assortment.Site;
+
+
+                if (!string.IsNullOrWhiteSpace(assortment.ItemID))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and KDSCMSSASS.SASSITEMID like '%' || :ItemID || '%' ";
+                    cmd.Parameters.Add(new OracleParameter(":ItemID", OracleDbType.Varchar2)).Value = assortment.ItemID;
+                }
+
+                if (!string.IsNullOrWhiteSpace(assortment.VariantID))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and KDSCMSMSTVRNT.VRNTVRNTIDX like '%' || :Variant || '%' ";
+                    cmd.Parameters.Add(new OracleParameter(":Variant", OracleDbType.Varchar2)).Value = assortment.VariantID;
+                }
+
 
                 logger.Debug(cmd.CommandText);
 

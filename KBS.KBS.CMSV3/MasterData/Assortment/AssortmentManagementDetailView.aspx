@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
-    CodeBehind="ItemSearch.aspx.cs" Inherits="KBS.KBS.CMSV3.MasterData.Assortment.ItemSearch" %>
+    CodeBehind="AssortmentManagementDetailView.aspx.cs" Inherits="KBS.KBS.CMSV3.MasterData.Assortment.AssortmentManagementDetailView" %>
 
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
@@ -20,7 +20,7 @@
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
         </span><span>
-            <dx:ASPxButton ID="ValidateBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+          <dx:ASPxButton ID="ValidateBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/valid.png" BackColor="Transparent" ToolTip="Valid" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/validDisable.png">
@@ -42,15 +42,18 @@
         </span><span>
             <dx:ASPxButton ID="ClearBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/clear.png" ToolTip="Clear" BackColor="Transparent" OnClick="ClearBtn_Click">
+                Image-Url="~/image/clear.png" ToolTip="Clear" BackColor="Transparent" Enabled="False">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/clearDisable.png">
+                </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="True"
-                OnClick="SearchBtn_Click">
+                Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="True">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
+                </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
                 <Border BorderColor="Transparent" />
@@ -69,10 +72,8 @@
         </span><span>
             <dx:ASPxButton ID="DelBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/min.png" ToolTip="Delete" BackColor="Transparent" Enabled="False"
+                Image-Url="~/image/min.png" ToolTip="Delete" BackColor="Transparent" Enabled="True"
                 OnClick="DelBtn_Click">
-                <Image Height="20px" Width="20px" UrlDisabled="~/image/minDisable.png">
-                </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
                 <Border BorderColor="Transparent" />
@@ -112,65 +113,45 @@
             </dx:ASPxButton>
         </span>
     </div>
-    <div id="Item">
-        <div align="center">
-            <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Item Search"></asp:Label>
-            <br />
-        </div>
-        <div>
-            <table class="tableTop">
-                <tr>
-                    <td class="tableHeader2Column" colspan="5">
-                        <dx:ASPxTextBox runat="server" Width="170px" Caption="Item ID" ID="TextBoxItemIdExternal">
-                            <CaptionSettings ShowColon="False"></CaptionSettings>
-                            <CaptionCellStyle Width="110px">
-                            </CaptionCellStyle>
-                        </dx:ASPxTextBox>
-                    </td>
-                    <td class="tableHeader2Column" colspan="10">
-                        <dx:ASPxTextBox runat="server" Width="170px" Caption="Variant ID" 
-                            ID="TextBoxVariantIdExternal">
-                            <CaptionSettings ShowColon="False"></CaptionSettings>
-                            <CaptionCellStyle Width="110px">
-                            </CaptionCellStyle>
-                        </dx:ASPxTextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="tableHeader2Column" colspan="10">
-                        <dx:ASPxTextBox runat="server" Width="300px" Caption="Short Description" ID="TextBoxShortDescription">
-                            <CaptionSettings ShowColon="False"></CaptionSettings>
-                            <CaptionCellStyle Width="110px">
-                            </CaptionCellStyle>
-                        </dx:ASPxTextBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="tableHeader2Column" colspan="10">
-                        <dx:ASPxTextBox runat="server" Width="500px" Caption="Long Description" ID="TextBoxLongDescription">
-                            <CaptionSettings ShowColon="False"></CaptionSettings>
-                            <CaptionCellStyle Width="110px">
-                            </CaptionCellStyle>
-                        </dx:ASPxTextBox>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <br />
-        <dx:ASPxGridView runat="server" ClientInstanceName="detailGridView" CssClass="ASPXGridView"
-            ID="ASPxGridViewItemVariant">
-            <ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>
-            <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True">
-            </SettingsBehavior>
-            <SettingsDataSecurity AllowDelete="False" AllowEdit="False" AllowInsert="False" />
-        </dx:ASPxGridView>
-        <br />
-        <div align="center">
-            <br />
-            <dx:ASPxButton ID="ASPxButtonOK" runat="server" 
-                Text="OK" Font-Size="Medium" onclick="ASPxButtonOK_Click">
-            </dx:ASPxButton>
-            <br />
-        </div>
+    <div align="center">
+        <asp:Label ID="LabelTitle" runat="server" Font-Size="Large" 
+            Text="Assortment Management"></asp:Label>
     </div>
+    <br />
+    <br/>
+    <br/>
+    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Visible="False"></asp:Label>
+    <br/>
+    <br/>
+    
+    <div>
+        <table class="tableTop">
+            <tr>
+                <td class="tableHeader2Column" colspan="5">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Item ID" ID="TextBoxItemID" >
+                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                        <ReadOnlyStyle BackColor="Silver">
+                        </ReadOnlyStyle>
+                        <CaptionCellStyle Width="110px">
+                        </CaptionCellStyle>
+                    </dx:ASPxTextBox></td>
+                <td class="tableHeader2Column" colspan="5">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Variant" ID="TextBoxVariant">
+                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                        <CaptionCellStyle Width="110px">
+                        </CaptionCellStyle>
+                    </dx:ASPxTextBox>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <br/>
+    <dx:ASPxGridView runat="server" ClientInstanceName="detailGridView" CssClass="ASPXGridView"
+        ID="ASPxGridViewAssortment" OnCustomCallback="ASPxGridViewAssortment_CustomCallback" >
+        <ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>
+        <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True">
+        </SettingsBehavior>
+    </dx:ASPxGridView>
+    <br />
+    <br/>
 </asp:Content>

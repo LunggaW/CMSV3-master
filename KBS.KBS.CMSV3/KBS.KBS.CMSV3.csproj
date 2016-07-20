@@ -140,7 +140,8 @@
     <Content Include="Image\validDisable.png" />
     <Content Include="InventoryManagement\StockDisplay\StockDisplayHeader.aspx" />
     <Content Include="InventoryManagement\StockDisplay\StockMovement.aspx" />
-    <Content Include="MasterData\Assortment\ItemSearch.aspx" />
+    <Content Include="MasterData\Assortment\AssortmentManagementDetailView.aspx" />
+    <Content Include="MasterData\Assortment\AssortmentManagementSiteView.aspx" />
     <Content Include="Administration\MenuManagement\MenuProfileHeader.aspx" />
     <Content Include="Administration\MenuManagement\MenuProfileHeaderDetail.aspx" />
     <Content Include="Administration\MenuManagement\MenuProfileLinkManagement.aspx" />
@@ -155,7 +156,6 @@
     <Content Include="Administration\ParameterManagement\ParameterManagementDetail.aspx" />
     <Content Include="Administration\ParameterManagement\ParameterManagementHeader.aspx" />
     <Content Include="Administration\MenuManagement\MenuProfileHeaderNew.aspx" />
-    <Content Include="MasterData\Assortment\AssortmentManagement.aspx" />
     <Content Include="MasterData\ItemManagement\VariantManagement\BarcodeManagement\BarcodeManagementHeader.aspx" />
     <Content Include="MasterData\ItemManagement\VariantManagement\BarcodeManagement\BarcodeManagementHeaderNew.aspx" />
     <Content Include="MasterData\ItemManagement\VariantManagement\BarcodeManagement\BarcodeManagementHeaderDetail.aspx" />
@@ -503,12 +503,19 @@
     <Compile Include="InventoryManagement\StockDisplay\StockMovement.aspx.designer.cs">
       <DependentUpon>StockMovement.aspx</DependentUpon>
     </Compile>
-    <Compile Include="MasterData\Assortment\ItemSearch.aspx.cs">
-      <DependentUpon>ItemSearch.aspx</DependentUpon>
+    <Compile Include="MasterData\Assortment\AssortmentManagementDetailView.aspx.cs">
+      <DependentUpon>AssortmentManagementDetailView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="MasterData\Assortment\ItemSearch.aspx.designer.cs">
-      <DependentUpon>ItemSearch.aspx</DependentUpon>
+    <Compile Include="MasterData\Assortment\AssortmentManagementDetailView.aspx.designer.cs">
+      <DependentUpon>AssortmentManagementDetailView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\Assortment\AssortmentManagementSiteView.aspx.cs">
+      <DependentUpon>AssortmentManagementSiteView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\Assortment\AssortmentManagementSiteView.aspx.designer.cs">
+      <DependentUpon>AssortmentManagementSiteView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administration\MenuManagement\MenuProfileHeader.aspx.cs">
       <DependentUpon>MenuProfileHeader.aspx</DependentUpon>
@@ -607,13 +614,6 @@
     </Compile>
     <Compile Include="Administration\MenuManagement\MenuProfileHeaderNew.aspx.designer.cs">
       <DependentUpon>MenuProfileHeaderNew.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="MasterData\Assortment\AssortmentManagement.aspx.cs">
-      <DependentUpon>AssortmentManagement.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="MasterData\Assortment\AssortmentManagement.aspx.designer.cs">
-      <DependentUpon>AssortmentManagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterData\ItemManagement\VariantManagement\BarcodeManagement\BarcodeManagementHeader.aspx.cs">
       <DependentUpon>BarcodeManagementHeader.aspx</DependentUpon>
