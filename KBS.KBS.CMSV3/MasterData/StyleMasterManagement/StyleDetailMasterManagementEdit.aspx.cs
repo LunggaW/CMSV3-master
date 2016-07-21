@@ -20,7 +20,7 @@ namespace KBS.KBS.CMSV3.MasterData.StyleMasterManagement
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
         OutputMessage message = new OutputMessage();
-
+        
         protected override void OnInit(EventArgs e)
         {
 
@@ -56,7 +56,7 @@ namespace KBS.KBS.CMSV3.MasterData.StyleMasterManagement
                  TextBoxStyleOrder.Text = stylegroupdetail.StyleOrder;
                  TextBoxSDesc.Text = stylegroupdetail.StyleSDesc;
                  TextBoxLDesc.Text = stylegroupdetail.StyleLDesc;
-
+                 Session["OrderData"] = stylegroupdetail.StyleOrder;
 
 
 
@@ -159,10 +159,16 @@ namespace KBS.KBS.CMSV3.MasterData.StyleMasterManagement
         private void ProcessUpdate()
         {
             String StyleGroup = Session["StyleDetailGrpforUpdate"].ToString();
-            String StyleID = Session["StyleDetailIDforUpdate"].ToString();
-            //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
-            string CekData = CMSfunction.cekStyle(StyleGroup, StyleID, TextBoxStyleOrder.Text);
-
+            String StyleID = "899";
+            string CekData;
+            if (Session["OrderData"].ToString() != TextBoxStyleOrder.Text)
+            {
+                CekData = CMSfunction.cekStyle(StyleGroup, StyleID, TextBoxStyleOrder.Text);
+            }
+            else
+            {
+                CekData = "YES";
+            }
             if (CekData == "NO")
             {
                 string script = "alert('Style Order Already Exists, please try another Style order');";

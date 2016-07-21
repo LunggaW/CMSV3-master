@@ -124,6 +124,10 @@ namespace KBS.KBS.CMSV3.MasterData.ItemManagement.VariantManagement
                     if (!string.IsNullOrWhiteSpace(variantDetail.ColorDetail))
                     {
                         ComboDetailColor.SelectedItem = ComboDetailColor.Items.FindByValue(variantDetail.ColorDetail);
+                        ComboGroupColor.ReadOnly = true;
+                        ComboDetailColor.ReadOnly = true;
+                        ComboGroupColor.Enabled = false;
+                        ComboDetailColor.Enabled = false;
                     }
                 }
 
@@ -139,6 +143,10 @@ namespace KBS.KBS.CMSV3.MasterData.ItemManagement.VariantManagement
                     if (!string.IsNullOrWhiteSpace(variantDetail.SizeDetail))
                     {
                         ComboDetailSize.SelectedItem = ComboDetailSize.Items.FindByValue(variantDetail.SizeDetail);
+                        ComboGroupSize.ReadOnly = true;
+                        ComboDetailSize.ReadOnly = true;
+                        ComboGroupSize.Enabled = false;
+                        ComboDetailSize.Enabled = false;
                     }
                 }
 
@@ -154,6 +162,10 @@ namespace KBS.KBS.CMSV3.MasterData.ItemManagement.VariantManagement
                     if (!string.IsNullOrWhiteSpace(variantDetail.StyleDetail))
                     {
                         ComboDetailStyle.SelectedItem = ComboDetailStyle.Items.FindByValue(variantDetail.StyleDetail);
+                        ComboDetailStyle.ReadOnly = true;
+                        ComboGroupStyle.ReadOnly = true;
+                        ComboDetailStyle.Enabled = false;
+                        ComboGroupStyle.Enabled = false;
                     }
                 } 
             }

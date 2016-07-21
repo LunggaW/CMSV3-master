@@ -128,9 +128,9 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Brand Group"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Brand"></asp:Label>
     </div>
-    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Brand Group"
+    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Brand"
         Visible="false"></asp:Label>
     <div>
         <table class="tableTop">

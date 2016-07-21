@@ -380,6 +380,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
         public void ClearDataSeasson()
         {
             //Assortment
+            Session.Remove("OrderData"); 
             try
             {
                 Session.Remove("VariantIDExAssortment");

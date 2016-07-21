@@ -173,11 +173,11 @@
     </div>
     <br />
     <div align="center" class="title">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Brand Group Header" ></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="New Brand" ></asp:Label>
     </div>
     <br />
     <span>
-        <dx:ASPxLabel ID="ASPxLabelMessage" runat="server" Font-Size="Large" Text="Brand Group Heade"
+        <dx:ASPxLabel ID="ASPxLabelMessage" runat="server" Font-Size="Large" Text="New Brand"
             Visible="False">
         </dx:ASPxLabel>
         <br />

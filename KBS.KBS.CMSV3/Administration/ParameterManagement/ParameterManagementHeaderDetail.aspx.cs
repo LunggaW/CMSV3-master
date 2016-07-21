@@ -49,13 +49,28 @@ namespace KBS.KBS.CMSV3.Administration
                 parHeader.ID = Session["ParamHeaderIDforUpdate"].ToString();
                 parHeader.SClass = Session["ParamHeaderSClassforUpdate"].ToString();
                 parHeader = CMSfunction.GetParameterHeader(parHeader);
-
+               
                 ASPxMemoComment.Text = parHeader.Comment;
                 ASPxCopy.Checked = Convert.ToBoolean(int.Parse(parHeader.Copy));
                 ASPxTextBoxId.Text = parHeader.ID;
-                ASPxLock.Checked = Convert.ToBoolean(int.Parse(parHeader.Copy));
+                ASPxLock.Checked = Convert.ToBoolean(int.Parse(parHeader.Lock));
                 ASPxTextBoxName.Text = parHeader.Name;
                 ASPxTextBoxSClass.Text = parHeader.SClass;
+                if (int.Parse(parHeader.Lock) == 1)
+                {
+                    ASPxMemoComment.Enabled = false;
+                    ASPxCopy.Enabled = false;
+                    ASPxTextBoxId.Enabled = false;
+                    ASPxLock.Enabled = false;
+                    ASPxTextBoxName.Enabled = false;
+                    ASPxTextBoxSClass.Enabled = false;
+                    ASPxMemoComment.ReadOnly = true;
+                    ASPxCopy.ReadOnly = true;
+                    ASPxTextBoxId.ReadOnly = true;
+                    ASPxLock.ReadOnly = true;
+                    ASPxTextBoxName.ReadOnly = true;
+                    ASPxTextBoxSClass.ReadOnly = true;
+                }
             }
             
 

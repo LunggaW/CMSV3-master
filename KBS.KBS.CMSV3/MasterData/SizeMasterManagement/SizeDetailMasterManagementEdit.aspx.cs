@@ -20,7 +20,7 @@ namespace KBS.KBS.CMSV3.MasterData.SizeMasterManagement
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
         OutputMessage message = new OutputMessage();
-
+        
         protected override void OnInit(EventArgs e)
         {
 
@@ -56,7 +56,7 @@ namespace KBS.KBS.CMSV3.MasterData.SizeMasterManagement
                 TextBoxSizeOrder.Text = sizegroupdetail.SizeOrder;
                  TextBoxSDesc.Text = sizegroupdetail.SizeSDesc;
                  TextBoxLDesc.Text = sizegroupdetail.SizeLDesc;
-
+                Session["OrderData"] = sizegroupdetail.SizeOrder;
 
 
 
@@ -159,10 +159,16 @@ namespace KBS.KBS.CMSV3.MasterData.SizeMasterManagement
         private void ProcessUpdate()
         {
             String SizeGroup = Session["SizeDetailGrpforUpdate"].ToString();
-            String SizeID = Session["SizeDetailIDforUpdate"].ToString();
-            //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
-            string CekData = CMSfunction.cekSize(SizeGroup, SizeID, TextBoxSizeOrder.Text);
-
+            String SizeID = "899";
+            string CekData;
+            if (Session["OrderData"].ToString() != TextBoxSizeOrder.Text)
+            {
+                CekData = CMSfunction.cekSize(SizeGroup, SizeID, TextBoxSizeOrder.Text);
+            }
+            else
+            {
+                CekData = "YES";
+            }
             if (CekData == "NO")
             {
                 string script = "alert('Size Order Already Exists, please try another Size order');";

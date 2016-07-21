@@ -20,6 +20,7 @@ namespace KBS.KBS.CMSV3.MasterData.ColorMasterManagement
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
         OutputMessage message = new OutputMessage();
+        
 
         protected override void OnInit(EventArgs e)
         {
@@ -52,11 +53,11 @@ namespace KBS.KBS.CMSV3.MasterData.ColorMasterManagement
 
                 colorgroupdetail = CMSfunction.GetColorDetailUpdate(colorgroupdetail);
 
-                   TextBoxId.Text = Session["ColorDetailIDforUpdate"].ToString();
+                 TextBoxId.Text = Session["ColorDetailIDforUpdate"].ToString();
                  TextBoxColorOrder.Text = colorgroupdetail.ColorOrder ;
                  TextBoxSDesc.Text = colorgroupdetail.ColorSDesc;
                  TextBoxLDesc.Text = colorgroupdetail.ColorLDesc;
-
+                 Session["OrderData"] = colorgroupdetail.ColorOrder;
 
 
 
@@ -98,27 +99,12 @@ namespace KBS.KBS.CMSV3.MasterData.ColorMasterManagement
 
         protected void SearchBtn_Click(object sender, EventArgs e)
         {
-            //ParameterDetail parDetail = new ParameterDetail();
-
-            //parHeader.Lock = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderBlock.Text) ? ASPxTextBoxHeaderBlock.Text : "";
-            //parHeader.Comment = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderComment.Text) ? ASPxTextBoxHeaderComment.Text : "";
-            //parHeader.Copy = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderCopy.Text) ? ASPxTextBoxHeaderCopy.Text : "";
-            //parHeader.ID = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderID.Text) ? ASPxTextBoxHeaderID.Text : "";
-            //parHeader.Name = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderName.Text) ? ASPxTextBoxHeaderName.Text : "";
-
-            //DTParameterHeader = CMSfunction.GetParameterHeaderData(parHeader);
-            //ASPxGridViewDetail.DataSource = DTParameterHeader;
-            //ASPxGridViewDetail.KeyFieldName = "ID"; ASPxGridViewHeader.DataBind();
+          
         }
 
         protected void ClearBtn_Click(object sender, EventArgs e)
         {
-            //ASPxTextBoxHeaderBlock.Text = "";
-            //ASPxTextBoxHeaderComment.Text = "";
-            //ASPxTextBoxHeaderCopy.Text = "";
-            //ASPxTextBoxHeaderID.Text = "";
-            //ASPxTextBoxHeaderName.Text = "";
-            //ASPxTextBoxHeaderSClas.Text = "";
+            
         }
 
         protected void BackhomeBtn_Click(object sender, EventArgs e)
@@ -161,10 +147,16 @@ namespace KBS.KBS.CMSV3.MasterData.ColorMasterManagement
         private void ProcessUpdate()
         {
             String ColorGroup = Session["ColorDetailGrpforUpdate"].ToString();
-            String ColorID = Session["ColorDetailIDforUpdate"].ToString();
-            //String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
-            string CekData = CMSfunction.cekColor(ColorGroup, ColorID, TextBoxColorOrder.Text);
-
+            String ColorID = "899";
+            string CekData;
+            if (Session["OrderData"].ToString() != TextBoxColorOrder.Text)
+            {            
+                CekData = CMSfunction.cekColor(ColorGroup, ColorID, TextBoxColorOrder.Text);
+            }
+            else
+            {
+                CekData = "YES";
+            }
             if (CekData == "NO")
             {
                 string script = "alert('Color Order Already Exists, please try another color order');";
