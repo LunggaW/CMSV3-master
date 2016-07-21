@@ -157,9 +157,11 @@ Inherits="KBS.KBS.CMSV3.MasterData.StyleDetailMasterManagement" %>
             </tr>
         </table>--%>
     </div>
+    
     <br />
+    
     <dx:ASPxGridView runat="server" ClientInstanceName="headerGridView" CssClass="ASPXGridView"
-        ID="ASPxGridViewHeader" OnCustomCallback="ASPxGridViewHeader_CustomCallback">
+        ID="ASPxGridViewHeader" OnCustomCallback="ASPxGridViewHeader_CustomCallback" Width="100%">
         <ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>
         <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True">
         </SettingsBehavior>

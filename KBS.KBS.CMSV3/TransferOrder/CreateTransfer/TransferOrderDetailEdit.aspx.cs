@@ -17,6 +17,7 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
 {
     public partial class TransferOrderDetailEdit : System.Web.UI.Page
     {
+
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
         OutputMessage message = new OutputMessage();
@@ -24,9 +25,9 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
         protected override void OnInit(EventArgs e)
         {
 
-            if (Session["ColorDetailIDforUpdate"] == null)
+            if (Session["TOIDforUpdate"] == null)
             {
-                Response.Redirect("ColorDetailMasterManagement.aspx");
+                Response.Redirect("TransferOrderD.aspx");
             }
             else if (Session["UserID"] == null)
             {
@@ -44,24 +45,16 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
         {
             if (!IsPostBack)
             {
-                ColorGroupDetail colorgroupdetail = new ColorGroupDetail();
-
-                colorgroupdetail.GID = Session["ColorDetailGrpforUpdate"].ToString();
-                colorgroupdetail.ID = Session["ColorDetailIDforUpdate"].ToString();
-
-
-                colorgroupdetail = CMSfunction.GetColorDetailUpdate(colorgroupdetail);
-
-                   TextBoxId.Text = Session["ColorDetailIDforUpdate"].ToString();
-                 TextBoxColorOrder.Text = colorgroupdetail.ColorOrder ;
-                 TextBoxSDesc.Text = colorgroupdetail.ColorSDesc;
-                 TextBoxLDesc.Text = colorgroupdetail.ColorLDesc;
-
-
+                ITEMTXT.Text = Session["TOITEMIDforUpdate"].ToString();
+                VID.Text = Session["TOVARIANTIDforUpdate"].ToString();
+                BARCODETXT.Text = Session["TOBARCODEforUpdate"].ToString();
+                QTYTXT.Text = Session["TOQTYforUpdate"].ToString();
+                SHIPTXT.Text = Session["TOSHIPforUpdate"].ToString();
+                COMENTEXT.Text = Session["TOCMTforUpdate"].ToString();
 
 
             }
-         
+
         }
 
 
@@ -126,10 +119,10 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
             Session.Remove("ParamHeaderIDforUpdate");
 
             if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("ColorDetailMasterManagement.aspx");
+                ASPxWebControl.RedirectOnCallback("TransferOrderD.aspx");
             else
 
-                Response.Redirect("ColorDetailMasterManagement.aspx");
+                Response.Redirect("TransferOrderD.aspx");
             //Session.Remove("ParamHeaderID");
         }
 
@@ -152,22 +145,24 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
         protected void ValidateBtn_Click(object sender, EventArgs e)
         {
             ProcessUpdate();
-            Response.Redirect("ColorDetailMasterManagement.aspx");
+            Response.Redirect("TransferOrderD.aspx");
         }
 
 
         private void ProcessUpdate()
         {
-            ColorGroupDetail colorgroupdetail = new ColorGroupDetail();
+            TransferOrderDetail transferorderdetail = new TransferOrderDetail();
+            transferorderdetail.ID = Session["TOIDforUpdate"].ToString();
+            transferorderdetail.IID = Session["TOIIDforUpdate"].ToString();
+            transferorderdetail.ITEMID = ITEMTXT.Text;
+            transferorderdetail.VARIANT = VID.Text;
+            transferorderdetail.BARCODE = BARCODETXT.Text;
+            transferorderdetail.QTY = QTYTXT.Text;
+            transferorderdetail.SHIP = SHIPTXT.Text;
+            transferorderdetail.COMMENT = COMENTEXT.Text;
 
-            colorgroupdetail.GID = Session["ColorDetailGrpforUpdate"].ToString();
-            colorgroupdetail.ID = Session["ColorDetailIDforUpdate"].ToString();
-            colorgroupdetail.ColorOrder = TextBoxColorOrder.Text;
-            colorgroupdetail.ColorSDesc = TextBoxSDesc.Text;
-            colorgroupdetail.ColorLDesc = TextBoxLDesc.Text;
+            message = CMSfunction.UpdateTOShipmentDetail(transferorderdetail, Session["UserID"].ToString());
 
-
-            message = CMSfunction.UpdateColorDetail(colorgroupdetail, Session["UserID"].ToString());
         }
 
     }

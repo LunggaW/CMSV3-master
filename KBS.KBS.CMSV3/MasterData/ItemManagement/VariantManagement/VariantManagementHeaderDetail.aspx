@@ -210,7 +210,7 @@
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="10">
-                    <dx:ASPxComboBox runat="server" Caption="Status" ID="ComboStatus" Width="170px">
+                    <dx:ASPxComboBox runat="server" Caption="Status" ID="ComboStatus" Width="170px" >
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="110px">
                         </CaptionCellStyle>
@@ -219,7 +219,9 @@
             </tr>
             <tr>
                 <td class="tableHeader2Column" colspan="10">
-                    <dx:ASPxTextBox runat="server" Width="300px" Caption="Short Description" ID="TextBoxShortDescription">
+                    <dx:ASPxTextBox runat="server" Width="300px" Caption="Short Description" ID="TextBoxShortDescription"  ReadOnly="True">
+                          <ReadOnlyStyle BackColor="Silver">
+                    </ReadOnlyStyle>
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="110px">
                         </CaptionCellStyle>
@@ -228,8 +230,10 @@
             </tr>
             <tr>
                 <td class="tableHeader2Column" colspan="10">
-                    <dx:ASPxTextBox runat="server" Width="500px" Caption="Long Description" ID="TextBoxLongDescription">
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                    <dx:ASPxTextBox runat="server" Width="500px" Caption="Long Description" ID="TextBoxLongDescription"  ReadOnly="True">
+                         <ReadOnlyStyle BackColor="Silver">
+                    </ReadOnlyStyle>
+                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="110px">
                         </CaptionCellStyle>
                     </dx:ASPxTextBox>

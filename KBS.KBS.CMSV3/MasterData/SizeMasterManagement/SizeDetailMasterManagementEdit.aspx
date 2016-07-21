@@ -200,7 +200,7 @@
             </tr>
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="ShortDesc" ID="TextBoxSDesc">
+                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="True" Caption="ShortDesc" ID="TextBoxSDesc">
                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="100px">
@@ -208,7 +208,9 @@
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Caption="Long Desc" ID="TextBoxLDesc">
+                    <dx:ASPxTextBox runat="server" ReadOnly="True" Caption="Long Desc" ID="TextBoxLDesc">
+                         <ReadOnlyStyle BackColor="Silver">
+                        </ReadOnlyStyle>
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
