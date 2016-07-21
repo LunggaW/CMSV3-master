@@ -11134,7 +11134,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
         }
 
-        public string deleteAssortment(String Item, String Variant, String Site)
+        public OutputMessage deleteAssortment(AssortmentMaster assortment)
         {
             logger.Debug("Start Connect");
             this.Connect();
@@ -11142,28 +11142,50 @@ namespace KBS.KBS.CMSV3.FUNCTION
             try
             {
 
-                this.Connect();
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "delete KDSCMSSASS where SASSITEMID = '" + Item + "' and SASSVRNT = '"+ Variant + "' and SASSSITEID = '" + Site + "' ";
+                cmd.CommandText = "PKKDSCMSSASS.DEL_DATA";
+                cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.CommandType = CommandType.Text;
-                
-                logger.Debug(cmd.CommandText);
+            //    PSASSITEMID NUMBER,
+            //PSASSSITEID VARCHAR2,
+            //PSASSVRNT VARCHAR2,
+            //POUTRSNCODE OUT NUMBER,
+            //POUTRSNMSG OUT VARCHAR2) A
 
+
+                cmd.Parameters.Add("PSASSITEMID", OracleDbType.Int32).Value = assortment.ItemID;
+                cmd.Parameters.Add("PSASSSITEID", OracleDbType.Varchar2, 20).Value = assortment.Site;
+                cmd.Parameters.Add("PSASSVRNT", OracleDbType.Varchar2, 20).Value = assortment.VariantID;
+                cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
                 cmd.ExecuteNonQuery();
 
+                outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["POUTRSNMSG"].Value.ToString();
+
+
+                logger.Debug("Start Close Connection");
                 this.Close();
-                ResultString = "Success";
-                return ResultString;
+                logger.Debug("End Close Connection");
+                return outputMsg;
             }
             catch (Exception e)
             {
                 logger.Error("Login Function");
                 logger.Error(e.Message);
                 this.Close();
-                ResultString = "Failed";
-                return ResultString;
+                outputMsg.Message = e.Message;
+                 outputMsg.Code = -99;
+                return outputMsg;
+
             }
         }
 
