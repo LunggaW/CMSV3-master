@@ -34,8 +34,8 @@ namespace KBS.KBS.CMSV3.TransferOrder
         protected void Page_Load(object sender, EventArgs e)
         {
             TransferOrderDetail transferorderdetail = new TransferOrderDetail();
-            transferorderdetail.ID = Session["TOShipIDforUpdate"].ToString();
-            transferorderdetail.IID = Session["TOShipIIDforUpdate"].ToString();
+            transferorderdetail.ID = Session["TRANSFERID"].ToString();
+            transferorderdetail.IID = Session["INTERNALID"].ToString();
 
             DTTransferDetail = CMSfunction.GetTOShipmentDetailDataTable(transferorderdetail);
             ASPxGridViewHeader.DataSource = DTTransferDetail;
@@ -78,22 +78,21 @@ namespace KBS.KBS.CMSV3.TransferOrder
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
 
-            Session["TOShipIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TRANSFER ID").ToString();
-            Session["TOShipIIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
-            Session["TOShipITEMIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ITEM ID").ToString();
-            Session["TOShipVARIANTIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VARIANT ID").ToString();
-            Session["TOShipBARCODEforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BARCODE").ToString();
-            Session["TOShipQTYforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "QTY").ToString();
-            Session["TOShipSHIPforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SHIP").ToString();
-            Session["TOShipCMTforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COMMENT").ToString();
-            Session["TOShipIDforUpdate"] = Session["TOShipIDforUpdate"].ToString();
-            Session["TOShipIIDforUpdate"] = Session["TOShipIIDforUpdate"].ToString();
+            Session["TOIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TRANSFER ID").ToString();
+            Session["TOIIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
+            Session["TOITEMIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ITEM ID").ToString();
+            Session["TOVARIANTIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VARIANT ID").ToString();
+            Session["TOBARCODEforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BARCODE").ToString();
+            Session["TOQTYforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "QTY").ToString();
+            Session["TOforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SHIP").ToString();
+            Session["TOCMTforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COMMENT").ToString();
+            
 
             if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("TOShipmentDetailEdit.aspx");
+                ASPxWebControl.RedirectOnCallback("TransferOrderDetailEdit.aspx");
             else
 
-                Response.Redirect("TOShipmentDetailEdit.aspx");
+                Response.Redirect("TransferOrderDetailEdit.aspx");
         }
 
         protected void SearchBtn_Click(object sender, EventArgs e)
@@ -133,12 +132,12 @@ namespace KBS.KBS.CMSV3.TransferOrder
 
         protected void AddBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("TOShipmentDetailNew.aspx");
+            Response.Redirect("TransferOrderDetailNew.aspx");
         }
 
         protected void BackhomeBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("TOShipmentHeader.aspx");
+            Response.Redirect("TransferOrder.aspx");
         }
 
         protected void DelBtn_Click(object sender, EventArgs e)
@@ -158,7 +157,7 @@ namespace KBS.KBS.CMSV3.TransferOrder
                 LabelMessage.Visible = true;
                 LabelMessage.Text = message.Message;
             }
-            Response.Redirect("ColorDetailMasterManagement.aspx");
+            Response.Redirect("TransferOrderD.aspx");
         }
 
 

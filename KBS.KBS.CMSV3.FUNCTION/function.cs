@@ -5573,7 +5573,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   //"a.TRFHMOBY AS \"MODIFIED BY\", " +
                                   "a.TRFHNMOD AS \"COUNTER MODIFICATION\" " +
                                   "FROM KDSCMSTRFH a " +
-                                  "where a.TRFDINTF = 9 ";
+                                  "where a.TRFHINTF = 9 ";
                 // TRFHTRFID, TRFHTRDIDI, TRFHTRFDATE, TRFHTRFFR, TRFHTRFTO, TRFHSTAT, TRFHFLAG, TRFHVALBY, TRFHINTF, TRFHCDAT, TRFHMDAT, TRFHCRBY, TRFHMOBY, TRFHNMOD
                 if (!string.IsNullOrWhiteSpace(transferorderheader.ID))
                 {
@@ -5957,6 +5957,125 @@ namespace KBS.KBS.CMSV3.FUNCTION
         }
 
         public DataTable GetTOShipmentDetailDataTable(TransferOrderDetail transferorderdetail)
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = "SELECT TRFDTRFID AS \"TRANSFER ID\", " +
+                                  "TRFDTRFIDI AS \"INTERNAL ID\", " +
+                                  "TRFDITEMID AS \"ITEM ID\", " +
+                                  "TRFDVRNTID AS \"VARIANT ID\", " +
+                                  "TRFDBRCD AS \"BARCODE\", " +
+                                  "TRFDQTY AS \"QTY\", " +
+                                  "TRFDSHPQTY AS \"SHIP\", " +
+                                  "TRFDSCRQTY AS \"SCRAP\", " +
+                                  "TRFDCOMM AS \"COMMENT\", " +
+
+                                  //"TRFDCDAT AS \"CREATED DATE\", " +
+                                  //"TRFDMDAT AS \"MODIFIED DATE\", " +
+                                  //"TRFDCRBY AS \"CREATED BY\", " +
+                                  //"TRFDMOBY AS \"MODIFIED BY\", " +
+                                  "TRFDNMOD AS \"COUNTER MODIFICATION\" " +
+                                  "FROM KDSCMSTRFD " +
+                                  "where TRFDTRFID is not null ";
+
+                // cmd.Parameters.Add(new OracleParameter(":SiteClass", OracleDbType.Int32)).Value = SiteClass;
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.ID))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDTRFID = :ID  ";
+                    cmd.Parameters.Add(new OracleParameter(":ID", OracleDbType.Varchar2)).Value = transferorderdetail.ID;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.IID))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDTRFIDI = :IID  ";
+                    cmd.Parameters.Add(new OracleParameter(":IID", OracleDbType.Int32)).Value = transferorderdetail.IID;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.ITEMID))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDITEMID = :ITEMID  ";
+                    cmd.Parameters.Add(new OracleParameter(":ITEMID", OracleDbType.Int32)).Value = transferorderdetail.ITEMID;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.ITEMID))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDVRNTID = :ITEMID  ";
+                    cmd.Parameters.Add(new OracleParameter(":ITEMID", OracleDbType.Int32)).Value = transferorderdetail.VARIANT;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.BARCODE))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDBRCD = :BARCODE  ";
+                    cmd.Parameters.Add(new OracleParameter(":BARCODE", OracleDbType.Varchar2)).Value = transferorderdetail.BARCODE;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.QTY))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDQTY = :QTY  ";
+                    cmd.Parameters.Add(new OracleParameter(":QTY", OracleDbType.Int32)).Value = transferorderdetail.QTY;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.SHIP))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDSHPQTY = :SHIP  ";
+                    cmd.Parameters.Add(new OracleParameter(":SHIP", OracleDbType.Int32)).Value = transferorderdetail.SHIP;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.RECEIVE))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDRECQTY = :RECEIVE  ";
+                    cmd.Parameters.Add(new OracleParameter(":RECEIVE", OracleDbType.Int32)).Value = transferorderdetail.RECEIVE;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.SCRAP))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDSCRQTY = :SCRAP  ";
+                    cmd.Parameters.Add(new OracleParameter(":SCRAP", OracleDbType.Int32)).Value = transferorderdetail.SCRAP;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.COMMENT))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDCOMM = :COMMENT  ";
+                    cmd.Parameters.Add(new OracleParameter(":COMMENT", OracleDbType.Varchar2)).Value = transferorderdetail.COMMENT;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.STATUS))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDSTAT = :STATUS  ";
+                    cmd.Parameters.Add(new OracleParameter(":STATUS", OracleDbType.Int32)).Value = transferorderdetail.STATUS;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.FLAG))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDFLAG = :FLAG  ";
+                    cmd.Parameters.Add(new OracleParameter(":FLAG", OracleDbType.Int32)).Value = transferorderdetail.FLAG;
+                }
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+                DataTable DT = new DataTable();
+                DT.Load(dr);
+                this.Close();
+                return DT;
+            }
+            catch (Exception e)
+            {
+                logger.Error("Get TO Detail Data Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+        public DataTable GetCreatedDetailDataTable(TransferOrderDetail transferorderdetail)
         {
             try
             {

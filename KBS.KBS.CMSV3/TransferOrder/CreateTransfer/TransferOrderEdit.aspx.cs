@@ -19,6 +19,7 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
     {
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
+        private DataTable DTTOShipment = new DataTable();
         OutputMessage message = new OutputMessage();
 
         protected override void OnInit(EventArgs e)
@@ -49,12 +50,26 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
 
                 transferorder = CMSfunction.GetTOShipmentUpdate(transferorder, sesi);
 
+                DTTOShipment = CMSfunction.GetSITEBox();
+                FROMBOX.DataSource = DTTOShipment;
+                FROMBOX.ValueField = "VALUE";
+                FROMBOX.ValueType = typeof(string);
+                FROMBOX.TextField = "DESCRIPTION";
+                FROMBOX.DataBind();
+
+                DTTOShipment = CMSfunction.GetSITEBox();
+                TOBOX.DataSource = DTTOShipment;
+                TOBOX.ValueField = "VALUE";
+                TOBOX.ValueType = typeof(string);
+                TOBOX.TextField = "DESCRIPTION";
+                TOBOX.DataBind();
+
                 IDTXT.Text = Session["TRANSFERID"].ToString();
                 IIDTXT.Text = transferorder.IID;
                 TDATE.Text = transferorder.DATE.ToString();
                 TDATE.Date = Convert.ToDateTime(transferorder.DATE.ToString());
-                FROMBOX.Text = transferorder.FROM;
-                TOBOX.Text = transferorder.TO;
+                FROMBOX.Value = transferorder.FROM;
+                TOBOX.Value = transferorder.TO;
                 STATUSBOX.Items.Clear();
                 STATUSBOX.Items.Add("CREATION");
                 STATUSBOX.Items.Add("SHIPMENT");
