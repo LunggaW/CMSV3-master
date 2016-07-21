@@ -2527,6 +2527,77 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
 
         }
+        public string CekAccess(string Data)
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+
+               
+                    cmd.CommandText =
+                                      " select ROWNUM, 'NO' as Fail from KDSCMSACCPROFH " +
+                                      " where rownum = 1 and ACPRHACPROF = '" + Data + "' and ACPRHACPROF in (select distinct USERACPROF from KDSCMSUSER )";
+                
+                logger.Debug(cmd.CommandText);
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                string Result = "";
+
+                while (dr.Read())
+                {
+
+                    Result = dr["Fail"].ToString();
+
+                }
+                return Result;
+
+            }
+            catch (Exception e)
+            {
+                logger.Error("Get Brand ID Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+        public string CekVATParam (string status)
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+
+                
+                    cmd.CommandText =
+                                      " select PARDVAN2 from KDSCMSPARDTABLE WHERE PARDLDESC = 'VAT' and PARDTABID = '17' ";
+                
+                logger.Debug(cmd.CommandText);
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                string Result = "0";
+
+                while (dr.Read())
+                {
+
+                    Result = dr["PARDVAN2"].ToString();
+
+                }
+                return Result;
+
+            }
+            catch (Exception e)
+            {
+                logger.Error("Get VAT Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
         public string cekStyle(string GroupId, string datacek, string status)
         {
             try

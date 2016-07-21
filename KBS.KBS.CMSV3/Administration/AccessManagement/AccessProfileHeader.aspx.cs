@@ -129,24 +129,35 @@ namespace KBS.KBS.CMSV3.Administration.AccessManagement
         
         protected void DelBtn_Click(object sender, EventArgs e)
         {
-            if (ASPxGridViewAccessProfile.FocusedRowIndex != -1)
+           string accessdata = ASPxGridViewAccessProfile.GetRowValues(ASPxGridViewAccessProfile.FocusedRowIndex, "ACCESS PROFILE").ToString();
+            string ResultData = CMSfunction.CekAccess(accessdata);
+            
+            if (ResultData == "NO")
             {
-                OutputMessage message = new OutputMessage();
+                string script = "alert('Cannot Be Delete, Because Access Already Using By User');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+            }
+            else
+            {
+                if (ASPxGridViewAccessProfile.FocusedRowIndex != -1)
+                {
+                    OutputMessage message = new OutputMessage();
 
-                DATAMODEL.AccessProfileHeader accessProfile = new DATAMODEL.AccessProfileHeader();
+                    DATAMODEL.AccessProfileHeader accessProfile = new DATAMODEL.AccessProfileHeader();
 
-                accessProfile.Profile =
-                    ASPxGridViewAccessProfile.GetRowValues(ASPxGridViewAccessProfile.FocusedRowIndex, "ACCESS PROFILE")
-                        .ToString();
+                    accessProfile.Profile =
+                        ASPxGridViewAccessProfile.GetRowValues(ASPxGridViewAccessProfile.FocusedRowIndex, "ACCESS PROFILE")
+                            .ToString();
 
-                message = CMSfunction.DeleteAccessProfileHeader(accessProfile);
+                    message = CMSfunction.DeleteAccessProfileHeader(accessProfile);
 
-                LabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+                    LabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
 
-                LabelMessage.Visible = true;
-                LabelMessage.Text = message.Message;
+                    LabelMessage.Visible = true;
+                    LabelMessage.Text = message.Message;
 
-                RefreshDataGrid();
+                    RefreshDataGrid();
+                }
             }
         }
 

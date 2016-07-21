@@ -206,7 +206,7 @@
             </tr>
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxComboBox runat="server" Width="170px" ReadOnly="False" Caption="NAME" ID="NAMEBOX">
+                    <dx:ASPxComboBox runat="server" Width="170px" ReadOnly="False" Caption="NAME" ID="NAMEBOX" OnSelectedIndexChanged="NAMEBOX_SelectedIndexChanged">
                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="100px">

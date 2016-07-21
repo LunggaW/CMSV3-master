@@ -61,11 +61,11 @@ namespace KBS.KBS.CMSV3.MasterData.SKUMasterManagement
             BASEBOX.DataBind();
             if (!IsPostBack)
             {
-               
+
                 VALUETXT.Text = "0";
                 PARTTXT.Text = "0";
-                
-                
+
+
             }
 
         }
@@ -105,7 +105,7 @@ namespace KBS.KBS.CMSV3.MasterData.SKUMasterManagement
 
         protected void ClearBtn_Click(object sender, EventArgs e)
         {
-           
+
             //ASPxTextBoxSClass.Text = "";
         }
 
@@ -142,14 +142,14 @@ namespace KBS.KBS.CMSV3.MasterData.SKUMasterManagement
             if (VALUETXT.Text == "")
             {
                 VALUETXT.Text = "0";
-                
+
             }
             if (PARTTXT.Text == "")
             {
-               
+
                 PARTTXT.Text = "0";
             }
-            
+
             if ((IDTXT.Text == "") || (EXIDTXT.Text == "") || (NAMEBOX.Text == "") || (VALUETXT.Text == "") || (PARTTXT.Text == "") || (BASEBOX.Text == "") || (TYPEBOX.Value.ToString() == ""))
             {
                 string script = "alert('Please Fill All Field');";
@@ -172,5 +172,13 @@ namespace KBS.KBS.CMSV3.MasterData.SKUMasterManagement
             }
         }
 
+        protected void NAMEBOX_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (NAMEBOX.Text == "VAT")
+            {
+                string Results = CMSfunction.CekVATParam("VAT");
+                VALUETXT.Text = Results;
+            }
+        }
     }
 }

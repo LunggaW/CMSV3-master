@@ -123,6 +123,117 @@
     <Content Include="DevReport\SalesDetail.aspx" />
     <Content Include="DevReport\SalesSummary.aspx" />
     <Content Include="DevReport\TransferDetail.aspx" />
+    <Content Include="Help\Administration\accessmanagement.aspx" />
+    <Content Include="Help\Administration\accessmanagementAdd.aspx" />
+    <Content Include="Help\Administration\accessmanagementDetail.aspx" />
+    <Content Include="Help\Administration\accessmanagementEdit.aspx" />
+    <Content Include="Help\Administration\Introduction.aspx" />
+    <Content Include="Help\Administration\menumanagement.aspx" />
+    <Content Include="Help\Administration\menumanagementAdd.aspx" />
+    <Content Include="Help\Administration\menumanagementDetail.aspx" />
+    <Content Include="Help\Administration\menumanagementDetailAdd.aspx" />
+    <Content Include="Help\Administration\menumanagementEdit.aspx" />
+    <Content Include="Help\Administration\menumastermanagement.aspx" />
+    <Content Include="Help\Administration\parametermanagement.aspx" />
+    <Content Include="Help\Administration\parametermanagementAdd.aspx" />
+    <Content Include="Help\Administration\parametermanagementDelete.aspx" />
+    <Content Include="Help\Administration\parametermanagementDetail.aspx" />
+    <Content Include="Help\Administration\parametermanagementDetailAdd.aspx" />
+    <Content Include="Help\Administration\parametermanagementEdit.aspx" />
+    <Content Include="Help\Administration\siteprofilemanagement.aspx" />
+    <Content Include="Help\Administration\siteprofilemanagementAdd.aspx" />
+    <Content Include="Help\Administration\siteprofilemanagementDetail.aspx" />
+    <Content Include="Help\Administration\siteprofilemanagementDetailAdd.aspx" />
+    <Content Include="Help\Administration\siteprofilemanagementDetailEdit.aspx" />
+    <Content Include="Help\Administration\siteprofilemanagementEdit.aspx" />
+    <Content Include="Help\Administration\usermanagement.aspx" />
+    <Content Include="Help\Administration\usermanagementAdd.aspx" />
+    <Content Include="Help\Administration\usermanagementDelete.aspx" />
+    <Content Include="Help\Administration\usermanagementEdit.aspx" />
+    <Content Include="Help\Images\accessmanagement.png" />
+    <Content Include="Help\Images\accessmanagement1.png" />
+    <Content Include="Help\Images\accessmanagementAdd.png" />
+    <Content Include="Help\Images\accessmanagementAddDone.png" />
+    <Content Include="Help\Images\accessmanagementAddDone1.png" />
+    <Content Include="Help\Images\accessmanagementDetail.png" />
+    <Content Include="Help\Images\accessmanagementDetailProses.png" />
+    <Content Include="Help\Images\accessmanagementDetailProses1.png" />
+    <Content Include="Help\Images\accessmanagementEdit.png" />
+    <Content Include="Help\Images\accessmanagementEditDone.png" />
+    <Content Include="Help\Images\accessmanagementSearch.png" />
+    <Content Include="Help\Images\cmslogin.png" />
+    <Content Include="Help\Images\KDS.png" />
+    <Content Include="Help\Images\keteranganmenumanagementDetail.png" />
+    <Content Include="Help\Images\keterangannavigasi.png" />
+    <Content Include="Help\Images\keteranganparametermanagementDetail.png" />
+    <Content Include="Help\Images\keteranganparametermanagementDetailAdd.png" />
+    <Content Include="Help\Images\keteranganparametermanagementHeader.png" />
+    <Content Include="Help\Images\keteranganparametermanagementHeaderAdd.png" />
+    <Content Include="Help\Images\keterangansiteprofilemanagementDetail.png" />
+    <Content Include="Help\Images\keteranganusermanagement.png" />
+    <Content Include="Help\Images\keteranganusermanagementAdd.png" />
+    <Content Include="Help\Images\keteranganusermanagementAdd1024.png" />
+    <Content Include="Help\Images\menumanagement.png" />
+    <Content Include="Help\Images\menumanagement1.png" />
+    <Content Include="Help\Images\menumanagementAdd.png" />
+    <Content Include="Help\Images\menumanagementAddDone.png" />
+    <Content Include="Help\Images\menumanagementAddProses.png" />
+    <Content Include="Help\Images\menumanagementDeleteDone.png" />
+    <Content Include="Help\Images\menumanagementDeleteProses.png" />
+    <Content Include="Help\Images\menumanagementDetail.png" />
+    <Content Include="Help\Images\menumanagementDetailAdd.png" />
+    <Content Include="Help\Images\menumanagementDetailAddDone.png" />
+    <Content Include="Help\Images\menumanagementDetailAddProses.png" />
+    <Content Include="Help\Images\menumanagementDetailDeleteDone.png" />
+    <Content Include="Help\Images\menumanagementEdit.png" />
+    <Content Include="Help\Images\menumanagementEditDone.png" />
+    <Content Include="Help\Images\menumanagementSearch.png" />
+    <Content Include="Help\Images\menuutama.png" />
+    <Content Include="Help\Images\navigasi.png" />
+    <Content Include="Help\Images\navigasiDelete.png" />
+    <Content Include="Help\Images\navigasiValidasi.png" />
+    <Content Include="Help\Images\parametermanagement.png" />
+    <Content Include="Help\Images\parametermanagementAdd.png" />
+    <Content Include="Help\Images\parametermanagementAddDone.png" />
+    <Content Include="Help\Images\parametermanagementAddDone1.png" />
+    <Content Include="Help\Images\parametermanagementDetail.png" />
+    <Content Include="Help\Images\parametermanagementDetailAdd.png" />
+    <Content Include="Help\Images\parametermanagementDetailAddDone.png" />
+    <Content Include="Help\Images\parametermanagementDetailAddProses.png" />
+    <Content Include="Help\Images\parametermanagementDetailDeleteDone.png" />
+    <Content Include="Help\Images\parametermanagementDetailDeleteProses.png" />
+    <Content Include="Help\Images\parametermanagementEdit.png" />
+    <Content Include="Help\Images\parametermanagementEdit1.png" />
+    <Content Include="Help\Images\parametermanagementHeader.png" />
+    <Content Include="Help\Images\parametermanagementHeaderDelete.png" />
+    <Content Include="Help\Images\parametermanagementHeaderDeleteDone.png" />
+    <Content Include="Help\Images\parametermanagementHeaderDeleteProses.png" />
+    <Content Include="Help\Images\parametermanagementSearch.png" />
+    <Content Include="Help\Images\siteprofilemanagement.png" />
+    <Content Include="Help\Images\siteprofilemanagement1.png" />
+    <Content Include="Help\Images\siteprofilemanagementAdd.png" />
+    <Content Include="Help\Images\siteprofilemanagementAddDone.png" />
+    <Content Include="Help\Images\siteprofilemanagementAddProses.png" />
+    <Content Include="Help\Images\siteprofilemanagementDeleteDone.png" />
+    <Content Include="Help\Images\siteprofilemanagementDetail.png" />
+    <Content Include="Help\Images\siteprofilemanagementDetailAdd.png" />
+    <Content Include="Help\Images\siteprofilemanagementDetailAddDone.png" />
+    <Content Include="Help\Images\siteprofilemanagementDetailAddProses.png" />
+    <Content Include="Help\Images\siteprofilemanagementDetailDelete.png" />
+    <Content Include="Help\Images\siteprofilemanagementDetailEditDone.png" />
+    <Content Include="Help\Images\siteprofilemanagementDetailEditProses.png" />
+    <Content Include="Help\Images\siteprofilemanagementEdit.png" />
+    <Content Include="Help\Images\siteprofilemanagementEditDone.png" />
+    <Content Include="Help\Images\siteprofilemanagementSearch.png" />
+    <Content Include="Help\Images\usermanagement.png" />
+    <Content Include="Help\Images\usermanagement1.png" />
+    <Content Include="Help\Images\usermanagementAddDone.png" />
+    <Content Include="Help\Images\usermanagementAddDoneComplete.png" />
+    <Content Include="Help\Images\usermanagementDeleteDone.png" />
+    <Content Include="Help\Images\usermanagementDeleteProses.png" />
+    <Content Include="Help\Images\usermanagementEdit.png" />
+    <Content Include="Help\Images\usermanagementEdit1.png" />
+    <Content Include="Help\Images\usermanagementEditDone.png" />
     <Content Include="Image\back2Disable.png" />
     <Content Include="Image\back3Disable.png" />
     <Content Include="Image\backDisable.png" />
@@ -488,6 +599,114 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Trn.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Help\Administration\accessmanagement.aspx.cs">
+      <DependentUpon>accessmanagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\accessmanagementAdd.aspx.cs">
+      <DependentUpon>accessmanagementAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\accessmanagementDetail.aspx.cs">
+      <DependentUpon>accessmanagementDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\accessmanagementEdit.aspx.cs">
+      <DependentUpon>accessmanagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\Introduction.aspx.cs">
+      <DependentUpon>Introduction.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\menumanagement.aspx.cs">
+      <DependentUpon>menumanagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\menumanagementAdd.aspx.cs">
+      <DependentUpon>menumanagementAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\menumanagementDetail.aspx.cs">
+      <DependentUpon>menumanagementDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\menumanagementDetailAdd.aspx.cs">
+      <DependentUpon>menumanagementDetailAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\menumanagementEdit.aspx.cs">
+      <DependentUpon>menumanagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\menumastermanagement.aspx.cs">
+      <DependentUpon>menumastermanagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\parametermanagement.aspx.cs">
+      <DependentUpon>parametermanagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\parametermanagementAdd.aspx.cs">
+      <DependentUpon>parametermanagementAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\parametermanagementDelete.aspx.cs">
+      <DependentUpon>parametermanagementDelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\parametermanagementDetail.aspx.cs">
+      <DependentUpon>parametermanagementDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\parametermanagementDetailAdd.aspx.cs">
+      <DependentUpon>parametermanagementDetailAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\parametermanagementEdit.aspx.cs">
+      <DependentUpon>parametermanagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\siteprofilemanagement.aspx.cs">
+      <DependentUpon>siteprofilemanagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\siteprofilemanagementAdd.aspx.cs">
+      <DependentUpon>siteprofilemanagementAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\siteprofilemanagementDetail.aspx.cs">
+      <DependentUpon>siteprofilemanagementDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\siteprofilemanagementDetailAdd.aspx.cs">
+      <DependentUpon>siteprofilemanagementDetailAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\siteprofilemanagementDetailEdit.aspx.cs">
+      <DependentUpon>siteprofilemanagementDetailEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\siteprofilemanagementEdit.aspx.cs">
+      <DependentUpon>siteprofilemanagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\usermanagement.aspx.cs">
+      <DependentUpon>usermanagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\usermanagementAdd.aspx.cs">
+      <DependentUpon>usermanagementAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\usermanagementDelete.aspx.cs">
+      <DependentUpon>usermanagementDelete.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\Administration\usermanagementEdit.aspx.cs">
+      <DependentUpon>usermanagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="InventoryManagement\StockDisplay\StockDisplayHeader.aspx.cs">
       <DependentUpon>StockDisplayHeader.aspx</DependentUpon>
@@ -1442,6 +1661,7 @@
     <Content Include="Mobile\Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Help\Master Data\" />
     <Folder Include="NewFolder1\" />
   </ItemGroup>
   <PropertyGroup>

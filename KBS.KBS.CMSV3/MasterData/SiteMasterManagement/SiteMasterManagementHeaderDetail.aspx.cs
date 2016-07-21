@@ -153,7 +153,7 @@ namespace KBS.KBS.CMSV3.MasterData.SiteMasterManagement
         protected void ValidateBtn_Click(object sender, EventArgs e)
         {
             processUpdate();
-            if (message.Code == -1)
+            if (message.Code >= 0)
             {
                 Response.Redirect("SiteMasterManagementHeader.aspx");
             }
