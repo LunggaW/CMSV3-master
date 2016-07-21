@@ -10,7 +10,7 @@
 namespace KBS.KBS.CMSV3.MasterData.Assortment {
     
     
-    public partial class AssortmentManagementDetailView {
+    public partial class AssortmentManagementNewItem {
         
         /// <summary>
         /// BackhomeBtn control.
@@ -157,15 +157,6 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment {
         protected global::DevExpress.Web.ASPxTextBox TextBoxVariant;
         
         /// <summary>
-        /// ComboStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox ComboStatus;
-        
-        /// <summary>
         /// ASPxGridViewAssortment control.
         /// </summary>
         /// <remarks>
@@ -173,14 +164,5 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView ASPxGridViewAssortment;
-        
-        /// <summary>
-        /// ButtonChangeStatus control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ButtonChangeStatus;
     }
 }

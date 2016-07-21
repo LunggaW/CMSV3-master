@@ -15,12 +15,11 @@ using KBS.KBS.CMSV3.Administration;
 
 namespace KBS.KBS.CMSV3.MasterData.Assortment
 {
-    public partial class AssortmentManagementDetailView : System.Web.UI.Page
+    public partial class AssortmentManagementNewItem : System.Web.UI.Page
     {
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
         private DataTable DTAssortment = new DataTable();
-        private DataTable DTStatus = new DataTable();
         private string ItemID;
         private string VariantID;
         private AssortmentMaster assortment;
@@ -41,7 +40,6 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
             {
                 loadNavBar();
                 TextBoxSite.Text = CMSfunction.GetSiteCodeandNameFromSiteCode(Session["SiteAssortment"].ToString());
-
                 ASPxGridViewAssortment.Visible = false;
                 
             }
@@ -50,19 +48,14 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            DTStatus = CMSfunction.GetParameterValueAndDescbyClassAndTabID(Session["Class"].ToString(), "20");
-            ComboStatus.DataSource = DTStatus;
-            ComboStatus.ValueField = "PARVALUE";
-            ComboStatus.ValueType = typeof(string);
-            ComboStatus.TextField = "PARDESCRIPTION";
-            ComboStatus.DataBind();
-
-            ASPxGridViewAssortment.Visible = true;
+               
+                
+                ASPxGridViewAssortment.Visible = true;
                 
 
                 
 
-            RefreshDataGrid();
+                RefreshDataGrid();
 
             //String ItemID = CMSfunction.GetItemIDByItemIDEx(Session["ItemIDExManagementVariant"].ToString());
             //ASPxTextBoxItem.Text = Session["ItemIDExManagementVariant"].ToString() +" - "+CMSfunction.GetItemDescByItemID(ItemID);
@@ -129,9 +122,9 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
         protected void BackhomeBtn_Click(object sender, EventArgs e)
         {
             if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("AssortmentManagementItemView.aspx");
+                ASPxWebControl.RedirectOnCallback("AssortmentManagementDetailView.aspx");
             else
-                Response.Redirect("AssortmentManagementItemView.aspx");
+                Response.Redirect("AssortmentManagementDetailView.aspx");
 
 
 
@@ -139,32 +132,12 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
 
         protected void AddBtn_Click(object sender, EventArgs e)
         {
-            if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("AssortmentManagementNewItem.aspx");
-            else
-                Response.Redirect("AssortmentManagementNewItem.aspx");
 
 
         }
 
         protected void DelBtn_Click(object sender, EventArgs e)
         {
-            if (ASPxGridViewAssortment.FocusedRowIndex != -1)
-            {
-                assortment = new AssortmentMaster();
-
-                string dataitem = ItemID;
-                string datavariant = VariantID;
-                string datasite = ASPxGridViewAssortment.GetRowValues(ASPxGridViewAssortment.FocusedRowIndex, "SITE").ToString();
-
-
-
-                String Result = CMSfunction.deleteAssortment(dataitem, datavariant, datasite);
-
-               
-                LabelMessage.Text = Result;
-                RefreshDataGrid();
-            }
         }
 
         private void RefreshDataGrid()
@@ -174,13 +147,38 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
             assortment.ItemID = !string.IsNullOrWhiteSpace(TextBoxItemID.Text) ? TextBoxItemID.Text : "";
             assortment.VariantID = !string.IsNullOrWhiteSpace(TextBoxVariant.Text) ? TextBoxVariant.Text : "";
             assortment.Site = Session["SiteAssortment"].ToString();
-            assortment.Status = ComboStatus.Value?.ToString() ?? "";
+            
 
-            DTAssortment = CMSfunction.GetAllAssortment(Session["Class"].ToString(), assortment);
+            DTAssortment = CMSfunction.GetItemNotExistInAssortment(Session["Class"].ToString(), assortment);
             
             ASPxGridViewAssortment.DataSource = DTAssortment;
             ASPxGridViewAssortment.KeyFieldName = "ITEM ID";
             ASPxGridViewAssortment.DataBind();
+        }
+
+        private void ProcessInsert()
+        {
+            if (ASPxGridViewAssortment.FocusedRowIndex != -1)
+            {
+                AssortmentMaster assortment = new AssortmentMaster();
+
+                assortment.ItemID = CMSfunction.GetItemIDByItemIDEx(
+                    ASPxGridViewAssortment.GetRowValues(ASPxGridViewAssortment.FocusedRowIndex, "ITEM ID").ToString());
+
+
+                assortment.VariantID =
+                    CMSfunction.GetVariantIDByVariantIDEx(
+                        ASPxGridViewAssortment.GetRowValues(ASPxGridViewAssortment.FocusedRowIndex, "VARIANT")
+                            .ToString());
+
+                assortment.Site = Session["SiteAssortment"].ToString();
+                assortment.Status = "1";
+                
+
+
+
+                message = CMSfunction.insertAssortment(assortment, Session["UserID"].ToString());
+            }
         }
 
         #region Grid Navigation Button
@@ -215,33 +213,23 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
         {
         }
 
-        protected void ButtonChangeStatus_Click(object sender, EventArgs e)
+        protected void ValidateBtn_Click(object sender, EventArgs e)
         {
-            if (ASPxGridViewAssortment.FocusedRowIndex != -1)
-            {
-                assortment = new AssortmentMaster();
+            ProcessInsert();
+            Response.Redirect("AssortmentManagementItemView.aspx");
+        }
 
-                assortment.ItemID = CMSfunction.GetItemIDByItemIDEx(
-                    ASPxGridViewAssortment.GetRowValues(ASPxGridViewAssortment.FocusedRowIndex, "ITEM ID").ToString());
+        protected void SaveBtn_Click(object sender, EventArgs e)
+        {
+            RefreshDataGrid();
+            ProcessInsert();
 
+            LabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
 
-                assortment.VariantID =
-                    CMSfunction.GetVariantIDByVariantIDEx(
-                        ASPxGridViewAssortment.GetRowValues(ASPxGridViewAssortment.FocusedRowIndex, "VARIANT")
-                            .ToString());
-
-                assortment.Site = Session["SiteAssortment"].ToString();
-
-                assortment.Status = ASPxGridViewAssortment.GetRowValues(ASPxGridViewAssortment.FocusedRowIndex, "STATUS")
-                    .ToString() == "Active" ? "2" : "1";
+            LabelMessage.Visible = true;
+            LabelMessage.Text = message.Message;
 
 
-                message = CMSfunction.updateAssortment(assortment, Session["UserID"].ToString());
-
-
-                LabelMessage.Text = message.Message;
-                RefreshDataGrid();
-            }
         }
     }
 }
