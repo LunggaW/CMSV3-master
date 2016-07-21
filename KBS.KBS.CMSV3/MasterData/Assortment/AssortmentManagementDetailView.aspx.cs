@@ -21,8 +21,6 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
         private function CMSfunction = new function();
         private DataTable DTAssortment = new DataTable();
         private DataTable DTStatus = new DataTable();
-        private string ItemID;
-        private string VariantID;
         private AssortmentMaster assortment;
         OutputMessage message = new OutputMessage();
 
@@ -154,14 +152,22 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
                 assortment = new AssortmentMaster();
 
 
-                assortment.ItemID = ASPxGridViewAssortment.GetRowValues(ASPxGridViewAssortment.FocusedRowIndex, "ITEM ID").ToString();
-                assortment.VariantID = ASPxGridViewAssortment.GetRowValues(ASPxGridViewAssortment.FocusedRowIndex, "VARIANT").ToString();
+                assortment.ItemID = CMSfunction.GetItemIDByItemIDEx(
+                   ASPxGridViewAssortment.GetRowValues(ASPxGridViewAssortment.FocusedRowIndex, "ITEM ID").ToString());
+
+
+                assortment.VariantID =
+                    CMSfunction.GetVariantIDByVariantIDEx(
+                        ASPxGridViewAssortment.GetRowValues(ASPxGridViewAssortment.FocusedRowIndex, "VARIANT")
+                            .ToString());
+
                 assortment.Site = Session["SiteAssortment"].ToString();
-                
+
                 message = CMSfunction.deleteAssortment(assortment);
 
                
                 LabelMessage.Text = message.Message;
+                LabelMessage.Visible = true;
                 RefreshDataGrid();
             }
         }

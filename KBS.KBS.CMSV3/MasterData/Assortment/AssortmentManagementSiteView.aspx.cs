@@ -139,16 +139,18 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
             {
                 assortment = new AssortmentMaster();
 
+
+
                 string dataitem = ItemID;
                 string datavariant = VariantID;
                 string datasite = ASPxGridViewAssortment.GetRowValues(ASPxGridViewAssortment.FocusedRowIndex, "SITE").ToString();
 
 
 
-                String Result = CMSfunction.deleteAssortment(dataitem, datavariant, datasite);
+                message = CMSfunction.deleteAssortment(assortment);
 
                
-                LabelMessage.Text = Result;
+                LabelMessage.Text = message.Message;
                 RefreshDataGrid();
             }
         }
