@@ -105,7 +105,7 @@ namespace KBS.KBS.CMSV3.MasterData.ColorMasterManagement
 
             if (CekData == "NO")
             {
-                string script = "alert('Color Order Already Exists, please try another color order');";
+                string script = "alert('Color ID Or Order Already Exists, please try another color ID Or Order');";
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
             }
             else
@@ -130,7 +130,7 @@ namespace KBS.KBS.CMSV3.MasterData.ColorMasterManagement
             {
                 if (CekData == "NO")
                 {
-                    string script = "alert('Color Group ID Already Exists, please try another color order');";
+                    string script = "alert('Color ID Or Order Already Exists, please try another color ID Or Order');";
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
                 }
                 else

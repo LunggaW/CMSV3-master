@@ -38,7 +38,25 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!IsPostBack)
+            {
+                if (Session["SearchVariantforUpdate"] == null)
+                {
+                    Session["SearchVariantforUpdate"] = "";
+                }
+                if (Session["SearchItemIDforUpdate"] == null)
+                {
+                    Session["SearchItemIDforUpdate"] = "";
+                }
+                if (Session["SearchBarcodeforUpdate"] == null)
+                {
+                    Session["SearchBarcodeforUpdate"] = "";
+                }
+                ITEMTXT.Text = Session["SearchItemIDforUpdate"].ToString();
+                VID.Text = Session["SearchVariantforUpdate"].ToString();
+                BARCODETXT.Text = Session["SearchBarcodeforUpdate"].ToString();
+            }
+
         }
 
 
@@ -76,12 +94,17 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
 
         protected void ClearBtn_Click(object sender, EventArgs e)
         {
-           
-            TextBoxId.Text = "";
-            TextBoxColorOrder.Text = "";
-            TextBoxSDesc.Text = "";
-            TextBoxLDesc.Text = "";
+
+            ITEMTXT.Text = "";
+            VID.Text = "";
+            BARCODETXT.Text = "";
+            QTYTXT.Text = "";
             //ASPxTextBoxSClass.Text = "";
+        }
+        protected void Search(object sender, EventArgs e)
+        {
+            Session["SearchRedirect"] = "TransferOrderDetailNew.aspx";
+            Response.Redirect("SearchItemMaster.aspx");
         }
 
         protected void BackhomeBtn_Click(object sender, EventArgs e)
@@ -89,10 +112,10 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
             //Session.Remove("ParamHeaderIDforUpdate");
 
             if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("ColorDetailMasterManagement.aspx");
+                ASPxWebControl.RedirectOnCallback("TransferOrderD.aspx");
             else
 
-                Response.Redirect("ColorDetailMasterManagement.aspx");
+                Response.Redirect("TransferOrderD.aspx");
             //Session.Remove("ParamHeaderID");
         }
 
@@ -109,20 +132,33 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
         protected void ValidateBtn_Click(object sender, EventArgs e)
         {
             ProcessInsert();
-            Response.Redirect("ColorDetailMasterManagement.aspx");
+            Response.Redirect("TransferOrderD.aspx");
         }
+
+        protected void BarcodeCek(object sender, EventArgs e)
+        {
+            TransferOrderDetail transferorderdetail = new TransferOrderDetail();
+            transferorderdetail.BARCODE = BARCODETXT.Text;
+            transferorderdetail = CMSfunction.GetBarcodeTransferDetail(transferorderdetail);
+            ITEMTXT.Text = transferorderdetail.ITEMID;
+            VID.Text = transferorderdetail.VARIANT;
+            BARCODETXT.Text = transferorderdetail.BARCODE;
+
+        }
+
 
         private void ProcessInsert()
         {
-            ColorGroupDetail colorgroupdetail = new ColorGroupDetail();
-            colorgroupdetail.GID = Session["ColorIDforUpdate"].ToString();
-            colorgroupdetail.ID = TextBoxId.Text;
-            colorgroupdetail.ColorOrder = TextBoxColorOrder.Text;
-            colorgroupdetail.ColorSDesc = TextBoxSDesc.Text;
-            colorgroupdetail.ColorLDesc = TextBoxLDesc.Text;
+            TransferOrderDetail transferorderdetail = new TransferOrderDetail();
+            transferorderdetail.ID = Session["TRANSFERID"].ToString();
+            transferorderdetail.IID = Session["INTERNALID"].ToString();
+            transferorderdetail.ITEMID = ITEMTXT.Text;
+            transferorderdetail.VARIANT = VID.Text;
+            transferorderdetail.BARCODE = BARCODETXT.Text;
+            transferorderdetail.QTY = QTYTXT.Text;
 
-            
-            message = CMSfunction.InsertColorDetail(colorgroupdetail, Session["UserID"].ToString());
+
+            message = CMSfunction.InsertTOShipmentDetail(transferorderdetail, Session["UserID"].ToString());
 
         }
 

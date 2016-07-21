@@ -82,7 +82,7 @@
                 <Image Height="20px" Width="20px">
                 </Image>
                 <Border BorderColor="Transparent" />
-                <ClientSideEvents Click="function(s, e) {e.processOnServer = confirm('Are You Sure To Delete This Record ?');}" />
+                <ClientSideEvents Click="function(s, e) {e.processOnServer = confirm('Are You Sure Want To Delete This Record ?');}" />
             </dx:ASPxButton>
         </span><span>
             <dx:ASPxButton ID="LprevBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
@@ -123,6 +123,19 @@
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="Help" runat="server" EnableTheming="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/question.png" BackColor="Transparent" ToolTip="Help" >                
+            <ClientSideEvents Click="function (s, e) {window.open('../../Help/Administration/usermanagement.aspx', '_blank')}"></ClientSideEvents>
+
+                <Image Height="20px" Width="20px">
+                </Image>
+
+<BackgroundImage ImageUrl="~/image/transback.png"></BackgroundImage>
+
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
         </span>

@@ -145,6 +145,8 @@
                 </td>
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxTextBox runat="server" Caption="INTERNAL ID" ReadOnly="TRUE"   onkeypress="return isNumberKey(event)" ID="IIDTXT">
+                        <ReadOnlyStyle BackColor="Silver">
+                        </ReadOnlyStyle>
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>

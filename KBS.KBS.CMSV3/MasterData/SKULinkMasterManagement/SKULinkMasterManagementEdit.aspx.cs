@@ -20,20 +20,20 @@ namespace KBS.KBS.CMSV3.MasterData.SKULinkMasterManagement
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
         OutputMessage message = new OutputMessage();
+        private DataTable DTSKULink = new DataTable();
 
         protected override void OnInit(EventArgs e)
         {
 
-
-            if (Session["SKULinkSKUforUpdate"] == null)
-            {
-                Response.Redirect("SKULinkMasterManagement.aspx");
-            }
-            else if (Session["UserID"] == null)
+            if (Session["UserID"] == null)
             {
                 Response.Redirect("~/Account/Logins.aspx");
 
             }
+            else if (Session["SKULinkSKUforUpdate"] == null)
+            {
+                Response.Redirect("SKULinkMasterManagement.aspx");
+            }           
             else
             {
                 loadNavBar();
@@ -45,10 +45,27 @@ namespace KBS.KBS.CMSV3.MasterData.SKULinkMasterManagement
         {
             if (!IsPostBack)
             {
-
-                BRANDBOX.Text = Session["SKULinkBrandforUpdate"].ToString();
-                SKUBOX.Text = Session["SKULinkSKUforUpdate"].ToString();
-                SITEBOX.Text = Session["SKULinkSiteforUpdate"].ToString();
+                DTSKULink = CMSfunction.GetSKUBox();
+                SKUBOX.DataSource = DTSKULink;
+                SKUBOX.ValueField = "VALUE";
+                SKUBOX.ValueType = typeof(string);
+                SKUBOX.TextField = "DESCRIPTION";
+                SKUBOX.DataBind();
+                DTSKULink = CMSfunction.GetBRANDBox();
+                BRANDBOX.DataSource = DTSKULink;
+                BRANDBOX.ValueField = "VALUE";
+                BRANDBOX.ValueType = typeof(string);
+                BRANDBOX.TextField = "DESCRIPTION";
+                BRANDBOX.DataBind();
+                DTSKULink = CMSfunction.GetSITEBox();
+                SITEBOX.DataSource = DTSKULink;
+                SITEBOX.ValueField = "VALUE";
+                SITEBOX.ValueType = typeof(string);
+                SITEBOX.TextField = "DESCRIPTION";
+                SITEBOX.DataBind();
+                BRANDBOX.Value = Session["SKULinkBrandforUpdate"].ToString();
+                SKUBOX.Value = Session["SKULinkSKUforUpdate"].ToString();
+                SITEBOX.Value = Session["SKULinkSiteforUpdate"].ToString();
                 SDATE.Date = Convert.ToDateTime(Session["SKULinkSDATEforUpdate"].ToString());
                 EDATE.Date = Convert.ToDateTime(Session["SKULinkEDATEforUpdate"].ToString());
                  

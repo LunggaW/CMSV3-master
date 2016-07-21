@@ -2589,6 +2589,77 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
 
         }
+        public string CekAccess(string Data)
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+
+               
+                    cmd.CommandText =
+                                      " select ROWNUM, 'NO' as Fail from KDSCMSACCPROFH " +
+                                      " where rownum = 1 and ACPRHACPROF = '" + Data + "' and ACPRHACPROF in (select distinct USERACPROF from KDSCMSUSER )";
+                
+                logger.Debug(cmd.CommandText);
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                string Result = "";
+
+                while (dr.Read())
+                {
+
+                    Result = dr["Fail"].ToString();
+
+                }
+                return Result;
+
+            }
+            catch (Exception e)
+            {
+                logger.Error("Get Brand ID Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+        public string CekVATParam (string status)
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+
+                
+                    cmd.CommandText =
+                                      " select PARDVAN2 from KDSCMSPARDTABLE WHERE PARDLDESC = 'VAT' and PARDTABID = '17' ";
+                
+                logger.Debug(cmd.CommandText);
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                string Result = "0";
+
+                while (dr.Read())
+                {
+
+                    Result = dr["PARDVAN2"].ToString();
+
+                }
+                return Result;
+
+            }
+            catch (Exception e)
+            {
+                logger.Error("Get VAT Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
         public string cekStyle(string GroupId, string datacek, string status)
         {
             try
@@ -3682,7 +3753,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
 
-                cmd.CommandText = "SELECT SKUHSKUID AS \"ID\", " +
+                cmd.CommandText = "SELECT SKUHSKUID AS \"INTERNAL ID\", " +
                                   "SKUHSKUIDX AS \"EXTERNAL ID\", " +
                                   "SKUHSDES AS \"SHORT DESC\", " +
                                   "SKUHLDES AS \"LONG DESC\", " +
@@ -3734,7 +3805,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 }
 
                 //cmd.Parameters.Add(new OracleParameter(":ProfileId", OracleDbType.Varchar2)).Value = ProfileID;
-
+                cmd.CommandText = cmd.CommandText + " order by SKUHSKUID asc  ";
 
 
 
@@ -3956,6 +4027,8 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                       "and SKUDTYPE like '%' || :TYPE || '%' ";
                     cmd.Parameters.Add(new OracleParameter(":TYPE", OracleDbType.Varchar2)).Value = skugroupdetail.TYPE;
                 }
+                cmd.CommandText = cmd.CommandText +
+                                      " order by SKUDSKUIDD asc";
 
 
                 logger.Debug(cmd.CommandText);
@@ -5562,7 +5635,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   //"a.TRFHMOBY AS \"MODIFIED BY\", " +
                                   "a.TRFHNMOD AS \"COUNTER MODIFICATION\" " +
                                   "FROM KDSCMSTRFH a " +
-                                  "where a.TRFDINTF = 9 ";
+                                  "where a.TRFHINTF = 9 ";
                 // TRFHTRFID, TRFHTRDIDI, TRFHTRFDATE, TRFHTRFFR, TRFHTRFTO, TRFHSTAT, TRFHFLAG, TRFHVALBY, TRFHINTF, TRFHCDAT, TRFHMDAT, TRFHCRBY, TRFHMOBY, TRFHNMOD
                 if (!string.IsNullOrWhiteSpace(transferorderheader.ID))
                 {
@@ -5946,6 +6019,125 @@ namespace KBS.KBS.CMSV3.FUNCTION
         }
 
         public DataTable GetTOShipmentDetailDataTable(TransferOrderDetail transferorderdetail)
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = "SELECT TRFDTRFID AS \"TRANSFER ID\", " +
+                                  "TRFDTRFIDI AS \"INTERNAL ID\", " +
+                                  "TRFDITEMID AS \"ITEM ID\", " +
+                                  "TRFDVRNTID AS \"VARIANT ID\", " +
+                                  "TRFDBRCD AS \"BARCODE\", " +
+                                  "TRFDQTY AS \"QTY\", " +
+                                  "TRFDSHPQTY AS \"SHIP\", " +
+                                  "TRFDSCRQTY AS \"SCRAP\", " +
+                                  "TRFDCOMM AS \"COMMENT\", " +
+
+                                  //"TRFDCDAT AS \"CREATED DATE\", " +
+                                  //"TRFDMDAT AS \"MODIFIED DATE\", " +
+                                  //"TRFDCRBY AS \"CREATED BY\", " +
+                                  //"TRFDMOBY AS \"MODIFIED BY\", " +
+                                  "TRFDNMOD AS \"COUNTER MODIFICATION\" " +
+                                  "FROM KDSCMSTRFD " +
+                                  "where TRFDTRFID is not null ";
+
+                // cmd.Parameters.Add(new OracleParameter(":SiteClass", OracleDbType.Int32)).Value = SiteClass;
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.ID))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDTRFID = :ID  ";
+                    cmd.Parameters.Add(new OracleParameter(":ID", OracleDbType.Varchar2)).Value = transferorderdetail.ID;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.IID))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDTRFIDI = :IID  ";
+                    cmd.Parameters.Add(new OracleParameter(":IID", OracleDbType.Int32)).Value = transferorderdetail.IID;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.ITEMID))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDITEMID = :ITEMID  ";
+                    cmd.Parameters.Add(new OracleParameter(":ITEMID", OracleDbType.Int32)).Value = transferorderdetail.ITEMID;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.ITEMID))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDVRNTID = :ITEMID  ";
+                    cmd.Parameters.Add(new OracleParameter(":ITEMID", OracleDbType.Int32)).Value = transferorderdetail.VARIANT;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.BARCODE))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDBRCD = :BARCODE  ";
+                    cmd.Parameters.Add(new OracleParameter(":BARCODE", OracleDbType.Varchar2)).Value = transferorderdetail.BARCODE;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.QTY))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDQTY = :QTY  ";
+                    cmd.Parameters.Add(new OracleParameter(":QTY", OracleDbType.Int32)).Value = transferorderdetail.QTY;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.SHIP))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDSHPQTY = :SHIP  ";
+                    cmd.Parameters.Add(new OracleParameter(":SHIP", OracleDbType.Int32)).Value = transferorderdetail.SHIP;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.RECEIVE))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDRECQTY = :RECEIVE  ";
+                    cmd.Parameters.Add(new OracleParameter(":RECEIVE", OracleDbType.Int32)).Value = transferorderdetail.RECEIVE;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.SCRAP))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDSCRQTY = :SCRAP  ";
+                    cmd.Parameters.Add(new OracleParameter(":SCRAP", OracleDbType.Int32)).Value = transferorderdetail.SCRAP;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.COMMENT))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDCOMM = :COMMENT  ";
+                    cmd.Parameters.Add(new OracleParameter(":COMMENT", OracleDbType.Varchar2)).Value = transferorderdetail.COMMENT;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.STATUS))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDSTAT = :STATUS  ";
+                    cmd.Parameters.Add(new OracleParameter(":STATUS", OracleDbType.Int32)).Value = transferorderdetail.STATUS;
+                }
+                if (!string.IsNullOrWhiteSpace(transferorderdetail.FLAG))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRFDFLAG = :FLAG  ";
+                    cmd.Parameters.Add(new OracleParameter(":FLAG", OracleDbType.Int32)).Value = transferorderdetail.FLAG;
+                }
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+                DataTable DT = new DataTable();
+                DT.Load(dr);
+                this.Close();
+                return DT;
+            }
+            catch (Exception e)
+            {
+                logger.Error("Get TO Detail Data Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+        public DataTable GetCreatedDetailDataTable(TransferOrderDetail transferorderdetail)
         {
             try
             {
@@ -7808,7 +8000,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.Connection = con;
                 cmd.CommandText = "SELECT USERCMS.USERUSID AS \"USER ID\", " +
                                   "USERCMS.USERUSNM AS \"USER NAME\", " +
-                                  "USERCMS.USERPASW AS PASSWORD, " +
+                                  //"USERCMS.USERPASW AS PASSWORD, " +
                                   "USERCMS.USERUSDSC AS DESCRIPTION, " +
                                   "DECODE (USERCMS.USERSTAT, " +
                                   "1, 'Active', " +

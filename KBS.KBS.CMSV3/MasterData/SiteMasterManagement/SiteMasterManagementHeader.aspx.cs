@@ -181,7 +181,23 @@ namespace KBS.KBS.CMSV3.MasterData.SiteMasterManagement
 
         protected void AddBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("SiteMasterManagementHeaderNew.aspx");
+            License license = new License();
+            int ValidSiteCount = Int32.Parse(CMSfunction.GetValidSiteCount());
+
+            String LicenseText = CMSfunction.GetLicense();
+            LicenseText = CMSfunction.Decrypt(LicenseText);
+
+            license = CMSfunction.ParseLicenseText(LicenseText);
+            if (ValidSiteCount >= Int32.Parse(license.StoreTotal))
+            {
+                //TextBoxSite.Text = "";
+                string script = "alert('License Have Maximal Site, Please Update License For More Site ');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+            }
+            else
+            {
+                Response.Redirect("SiteMasterManagementHeaderNew.aspx");
+            }
         }
 
         protected void BackhomeBtn_Click(object sender, EventArgs e)

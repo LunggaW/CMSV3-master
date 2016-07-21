@@ -105,7 +105,7 @@ namespace KBS.KBS.CMSV3.MasterData.SizeMasterManagement
 
             if (CekData == "NO")
             {
-                string script = "alert('Size Order Already Exists, please try another Size order');";
+                string script = "alert('Size ID Or Order Already Exists, please try another Size ID Or Order');";
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
             }
             else
@@ -132,7 +132,7 @@ namespace KBS.KBS.CMSV3.MasterData.SizeMasterManagement
             {
                 if (CekData == "NO")
                 {
-                    string script = "alert('Size Group ID Already Exists, please try another Size order');";
+                    string script = "alert('Size ID Or Order Already Exists, please try another Size ID Or Order');";
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
                 }
                 else

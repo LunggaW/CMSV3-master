@@ -79,7 +79,7 @@
                 <Image Height="20px" Width="20px">
                 </Image>
                 <Border BorderColor="Transparent" />
-                <ClientSideEvents Click="function(s, e) {e.processOnServer = confirm('Are You Sure To Delete This Record ?');}" />
+                <ClientSideEvents Click="function(s, e) {e.processOnServer = confirm('Are You Sure Want To Delete This Record ?');}" />
             </dx:ASPxButton>
         </span><span>
             <dx:ASPxButton ID="LprevBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"

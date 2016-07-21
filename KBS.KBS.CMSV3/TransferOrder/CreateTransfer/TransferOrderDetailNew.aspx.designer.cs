@@ -13,60 +13,6 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer {
     public partial class TransferOrderDetailNew {
         
         /// <summary>
-        /// pcLogin control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPopupControl pcLogin;
-        
-        /// <summary>
-        /// ASPxPanel1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxPanel ASPxPanel1;
-        
-        /// <summary>
-        /// LabelData control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxLabel LabelData;
-        
-        /// <summary>
-        /// btnbacksave control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btnbacksave;
-        
-        /// <summary>
-        /// btnbacknot control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btnbacknot;
-        
-        /// <summary>
-        /// btCancel control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btCancel;
-        
-        /// <summary>
         /// BackhomeBtn control.
         /// </summary>
         /// <remarks>
@@ -184,39 +130,57 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer {
         protected global::DevExpress.Web.ASPxLabel ASPxLabelMessage;
         
         /// <summary>
-        /// TextBoxId control.
+        /// ITEMTXT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxId;
+        protected global::DevExpress.Web.ASPxTextBox ITEMTXT;
         
         /// <summary>
-        /// TextBoxColorOrder control.
+        /// VID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxColorOrder;
+        protected global::DevExpress.Web.ASPxTextBox VID;
         
         /// <summary>
-        /// TextBoxSDesc control.
+        /// BARCODETXT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxSDesc;
+        protected global::DevExpress.Web.ASPxTextBox BARCODETXT;
         
         /// <summary>
-        /// TextBoxLDesc control.
+        /// QTYTXT control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxLDesc;
+        protected global::DevExpress.Web.ASPxTextBox QTYTXT;
+        
+        /// <summary>
+        /// SearchBtnItem control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton SearchBtnItem;
+        
+        /// <summary>
+        /// ASPxButton1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton ASPxButton1;
     }
 }
