@@ -11,5 +11,7 @@ namespace KBS.KBS.CMSV3.DATAMODEL
         public string VariantID { get; set; }
         public string Site { get; set; }
         public string Status { get; set; }
+
+        
     }
 }

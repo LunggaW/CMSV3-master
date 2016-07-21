@@ -1556,10 +1556,11 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 this.Connect();
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "select KDSCMSSASS.SASSITEMID as \"ITEM ID\", " +
+                cmd.CommandText = "select KDSCMSMSTITEM.ITEMITEMIDX as \"ITEM ID\", " +
                                   "KDSCMSMSTVRNT.VRNTVRNTIDX as VARIANT, " +
                                   "(SELECT Par.Pardldesc from Kdscmspardtable par where Par.Pardsclas = :SiteClas and Par.Pardtabid = 20 and Par.Pardtabent = KDSCMSSASS.Sassstat) as STATUS " +
                                   "from KDSCMSSASS inner join KDSCMSMSTVRNT on KDSCMSMSTVRNT.VRNTVRNTID = KDSCMSSASS.SASSVRNT " +
+                                  "inner join KDSCMSMSTITEM on KDSCMSMSTVRNT.VRNTITEMID =  KDSCMSMSTITEM.ITEMITEMID " +
                                   "where KDSCMSMSTVRNT.VRNTITEMID = KDSCMSSASS.SASSITEMID " +
                                   "and KDSCMSSASS.SASSSITEID = :Site ";
 
@@ -1572,7 +1573,68 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 if (!string.IsNullOrWhiteSpace(assortment.ItemID))
                 {
                     cmd.CommandText = cmd.CommandText +
-                                      "and KDSCMSSASS.SASSITEMID like '%' || :ItemID || '%' ";
+                                      "and KDSCMSMSTITEM.ITEMITEMIDX like '%' || :ItemID || '%' ";
+                    cmd.Parameters.Add(new OracleParameter(":ItemID", OracleDbType.Varchar2)).Value = assortment.ItemID;
+                }
+
+                if (!string.IsNullOrWhiteSpace(assortment.VariantID))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and KDSCMSMSTVRNT.VRNTVRNTIDX like '%' || :Variant || '%' ";
+                    cmd.Parameters.Add(new OracleParameter(":Variant", OracleDbType.Varchar2)).Value = assortment.VariantID;
+                }
+
+                if (!string.IsNullOrWhiteSpace(assortment.Status))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and KDSCMSSASS.SASSSTAT = :Status ";
+                    cmd.Parameters.Add(new OracleParameter(":Status", OracleDbType.Varchar2)).Value = assortment.Status;
+                }
+
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+                DataTable DT = new DataTable();
+                DT.Load(dr);
+                this.Close();
+                return DT;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetAllAssortmentByVarIDandItemID Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
+        public DataTable GetItemNotExistInAssortment(string SiteClass, AssortmentMaster assortment)
+        {
+            try
+            {
+
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "select KDSCMSMSTITEM.ITEMITEMIDX AS \"ITEM ID\", KDSCMSMSTVRNT.VRNTVRNTIDX AS VARIANT " +
+                                  "from KDSCMSMSTITEM inner join KDSCMSMSTVRNT on KDSCMSMSTITEM.ITEMITEMID = KDSCMSMSTVRNT.VRNTITEMID " +
+                                  "where " +
+                                  "not exists(select 1 from KDSCMSSASS where KDSCMSSASS.SASSITEMID = KDSCMSMSTITEM.ITEMITEMID and KDSCMSSASS.SASSSITEID = :Site) ";
+
+                cmd.CommandType = CommandType.Text;
+
+                
+                cmd.Parameters.Add(new OracleParameter(":Site", OracleDbType.Varchar2)).Value = assortment.Site;
+
+
+                if (!string.IsNullOrWhiteSpace(assortment.ItemID))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and KDSCMSMSTITEM.ITEMITEMIDX like '%' || :ItemID || '%' ";
                     cmd.Parameters.Add(new OracleParameter(":ItemID", OracleDbType.Varchar2)).Value = assortment.ItemID;
                 }
 
@@ -1596,7 +1658,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
             catch (Exception e)
             {
-                logger.Error("GetAllAssortmentByVarIDandItemID Function");
+                logger.Error("GetItemNotExistInAssortment Function");
                 logger.Error(e.Message);
                 this.Close();
                 return null;

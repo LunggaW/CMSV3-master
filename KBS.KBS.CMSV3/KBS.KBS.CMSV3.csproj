@@ -140,6 +140,7 @@
     <Content Include="Image\validDisable.png" />
     <Content Include="InventoryManagement\StockDisplay\StockDisplayHeader.aspx" />
     <Content Include="InventoryManagement\StockDisplay\StockMovement.aspx" />
+    <Content Include="MasterData\Assortment\AssortmentManagementNewItem.aspx" />
     <Content Include="MasterData\Assortment\AssortmentManagementDetailView.aspx" />
     <Content Include="MasterData\Assortment\AssortmentManagementSiteView.aspx" />
     <Content Include="Administration\MenuManagement\MenuProfileHeader.aspx" />
@@ -502,6 +503,13 @@
     </Compile>
     <Compile Include="InventoryManagement\StockDisplay\StockMovement.aspx.designer.cs">
       <DependentUpon>StockMovement.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="MasterData\Assortment\AssortmentManagementNewItem.aspx.cs">
+      <DependentUpon>AssortmentManagementNewItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MasterData\Assortment\AssortmentManagementNewItem.aspx.designer.cs">
+      <DependentUpon>AssortmentManagementNewItem.aspx</DependentUpon>
     </Compile>
     <Compile Include="MasterData\Assortment\AssortmentManagementDetailView.aspx.cs">
       <DependentUpon>AssortmentManagementDetailView.aspx</DependentUpon>
