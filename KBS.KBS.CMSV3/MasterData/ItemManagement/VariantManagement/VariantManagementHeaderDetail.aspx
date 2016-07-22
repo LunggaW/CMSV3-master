@@ -6,7 +6,7 @@
     <script src="../../../Scripts/PopUp.js" type="text/javascript"></script>
     <script type="text/javascript">
         function UpdateDetailGrid(s, e) {
-            detailGridView.PerformCallback(e.visibleIndex);
+            detailGridView.PerformCallback(e.visibleIndex); 
         }
     </script>
     <link href="../../../Content/New.css" rel="stylesheet" type="text/css" />
