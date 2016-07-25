@@ -188,12 +188,14 @@
         <table class="tableTop">
            <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="ITEM ID" ID="ITEMIDTXT">
+                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="ITEM ID" ID="ITEMIDTXT" OnDisposed="ITEMIDTXT_Disposed">
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" Caption="VARIANT ID" CaptionCellStyle-Width="100px" ID="VARIANTTXT">
-                    </dx:ASPxTextBox>
+                    <%--<dx:ASPxTextBox runat="server" Width="170px" Caption="VARIANT ID" CaptionCellStyle-Width="100px" ID="VARIANTTXT">
+                    </dx:ASPxTextBox>--%>
+                     <dx:ASPxComboBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="VARIANT ID" ID="VARIANTBOX">
+                    </dx:ASPxComboBox>
                 </td>
                   <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxButton runat="server" Width="170px" ID="SearchBtnItem" Text="Search Item Dan Variant" OnClick="Search" ></dx:ASPxButton>
@@ -225,7 +227,7 @@
                 </td>
                   <td class="tableHeader2Column" colspan="5">
                     
-                    <dx:ASPxTextBox runat="server" Width="170px" Visible=false CaptionCellStyle-Width="100px" Caption="VAT" ID="ASPxTextBox1">
+                    <dx:ASPxTextBox runat="server" Width="170px" Visible=false CaptionCellStyle-Width="100px" Caption="Internal Item" ID="ITEMIDX">
                     </dx:ASPxTextBox>
                 </td>                
             </tr>

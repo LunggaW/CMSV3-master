@@ -185,13 +185,13 @@
         <table class="tableTop">
 <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="true" CaptionCellStyle-Width="100px" Caption="ITEM ID" ID="ITEMIDTXT" Enabled="false" ReadOnly="true">
+                    <dx:ASPxTextBox runat="server" Width="170px"  CaptionCellStyle-Width="100px" Caption="ITEM ID" ID="ITEMIDTXT" Enabled="false" ReadOnly="true">
                     <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="true" Caption="VARIANT ID" CaptionCellStyle-Width="100px" ID="VARIANTTXT" Enabled="false" ReadOnly="true">
+                    <dx:ASPxTextBox runat="server" Width="170px"  Caption="VARIANT ID" CaptionCellStyle-Width="100px" ID="VARIANTTXT" Enabled="false" ReadOnly="true">
                     <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                     </dx:ASPxTextBox>
@@ -203,7 +203,7 @@
             </tr>
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="true"  CaptionCellStyle-Width="100px" Caption="SITE" ID="SITETXT" Enabled="false" ReadOnly="true">
+                    <dx:ASPxTextBox runat="server" Width="170px"  CaptionCellStyle-Width="100px" Caption="SITE" ID="SITETXT" Enabled="false" ReadOnly="true">
                     <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                     </dx:ASPxTextBox>

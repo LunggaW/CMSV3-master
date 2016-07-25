@@ -49,7 +49,8 @@ namespace KBS.KBS.CMSV3.MasterData.PriceMasterManagement
                     Session["SearchItemIDforUpdate"] = "";
                 }
                 ITEMIDTXT.Text = Session["SearchItemIDforUpdate"].ToString();
-                VARIANTTXT.Text = Session["SearchVariantforUpdate"].ToString();
+                VARIANTBOX.Text = Session["SearchVariantforUpdate"].ToString();
+                VARIANTBOX.Value = Session["SearchVariantforUpdate"].ToString();
             }
 
             DTPrice = CMSfunction.GetSITEBox();
@@ -98,7 +99,8 @@ namespace KBS.KBS.CMSV3.MasterData.PriceMasterManagement
         {
 
             ITEMIDTXT.Text = "";
-            VARIANTTXT.Text = "";
+            ITEMIDX.Text = "";
+            VARIANTBOX.SelectedIndex = -1;
             SITEBOX.Text = "";
             PRICETXT.Text = "";
             VATBOX.Checked = false;
@@ -148,7 +150,7 @@ namespace KBS.KBS.CMSV3.MasterData.PriceMasterManagement
             PriceGroup pricegroup = new PriceGroup();
            
             pricegroup.ItemID = ITEMIDTXT.Text;
-            pricegroup.VariantID = VARIANTTXT.Text;
+            pricegroup.VariantID = VARIANTBOX.Value.ToString();
             pricegroup.Site = SITEBOX.Value.ToString();
             pricegroup.Price = PRICETXT.Text;
             pricegroup.VAT = Convert.ToInt32(VATBOX.Checked).ToString(); 
@@ -158,5 +160,16 @@ namespace KBS.KBS.CMSV3.MasterData.PriceMasterManagement
 
         }
 
+        protected void ITEMIDTXT_Disposed(object sender, EventArgs e)
+        {
+            ITEMIDX.Text = "";
+
+            DTPrice = CMSfunction.GetVariant(ITEMIDX.Text);
+            VARIANTBOX.DataSource = DTPrice;
+            VARIANTBOX.ValueField = "VALUE";
+            VARIANTBOX.ValueType = typeof(string);
+            VARIANTBOX.TextField = "DESCRIPTION";
+            VARIANTBOX.DataBind();
+        }
     }
 }

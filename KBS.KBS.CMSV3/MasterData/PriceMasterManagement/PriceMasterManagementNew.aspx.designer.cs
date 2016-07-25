@@ -193,13 +193,13 @@ namespace KBS.KBS.CMSV3.MasterData.PriceMasterManagement {
         protected global::DevExpress.Web.ASPxTextBox ITEMIDTXT;
         
         /// <summary>
-        /// VARIANTTXT control.
+        /// VARIANTBOX control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox VARIANTTXT;
+        protected global::DevExpress.Web.ASPxComboBox VARIANTBOX;
         
         /// <summary>
         /// SearchBtnItem control.
@@ -256,12 +256,12 @@ namespace KBS.KBS.CMSV3.MasterData.PriceMasterManagement {
         protected global::DevExpress.Web.ASPxDateEdit EDATE;
         
         /// <summary>
-        /// ASPxTextBox1 control.
+        /// ITEMIDX control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox ASPxTextBox1;
+        protected global::DevExpress.Web.ASPxTextBox ITEMIDX;
     }
 }

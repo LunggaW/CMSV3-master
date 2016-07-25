@@ -2926,6 +2926,36 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
 
         }
+        public DataTable GetVariant(string itemid)
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = " select VRNTVRNTID as VALUE, VRNTVRNTIDX as DESCRIPTION from KDSCMSMSTVRNT ";
+
+                cmd.CommandType = CommandType.Text;
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+                DataTable DT = new DataTable();
+                DT.Load(dr);
+                this.Close();
+                return DT;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetAccessProfile Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
         public OutputMessage deleteSKULinkHeader(SKULink skulink)
         {
 
@@ -8867,7 +8897,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 return null;
             }
         }
-
+       
         public OutputMessage InsertParameterHeader(ParameterHeader parHeader, String User)
         {
 
@@ -9723,7 +9753,42 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 return null;
             }
         }
+        public String getinternalitemid(string itemidx)
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "select ITEMITEMID from KDSCMSMSTITEM where ITEMITEMIDX = '" + itemidx + "'";
 
+
+                cmd.CommandType = CommandType.Text;
+                
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                String result = "";
+
+                while (dr.Read())
+                {
+                    result = dr["ITEMITEMID"].ToString(); ;
+                }
+
+                this.Close();
+                return result;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetSiteDataByProfileID Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+        
         public String GetSiteProfileHeaderRowID(SiteProfileHeader siteProfileHeader)
         {
             try
