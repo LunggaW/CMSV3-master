@@ -16,7 +16,7 @@ namespace KBS.KBS.CMSV3
         protected void RefreshData()
         {
        
-            string ABC = "";
+            
             if (Session["UserFilter"] != null)
             {
                 Session.Remove("UserFilter");

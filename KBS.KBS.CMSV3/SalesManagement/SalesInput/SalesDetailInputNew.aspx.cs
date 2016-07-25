@@ -68,7 +68,7 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
                     Session["SearchBarcodeforUpdate"] = "";
                 }
                 PRICETXT.Text = "0";
-                if ((Session["SearchVariantforUpdate"] != "") && (Session["SearchItemIDforUpdate"] != ""))
+                if ((Session["SearchVariantforUpdate"].ToString() != "") && (Session["SearchItemIDforUpdate"].ToString() != ""))
                 {
                     TransferOrderDetail transferorderdetail = new TransferOrderDetail();
                     transferorderdetail.VARIANT = Session["SearchVariantforUpdate"].ToString();

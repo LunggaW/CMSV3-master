@@ -21,7 +21,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
         private DataTable DTUserType = new DataTable();
         private DataTable DTMenuProfile = new DataTable();
         private DataTable DTGridViewUser = new DataTable();
-        private User user;
+        
         private String MenuID = ConfigurationManager.AppSettings["MenuIdUserManagement"];
         private String Lepat;
         protected override void OnInit(EventArgs e)
