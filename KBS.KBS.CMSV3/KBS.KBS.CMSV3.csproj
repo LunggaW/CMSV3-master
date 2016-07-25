@@ -239,6 +239,7 @@
     <Content Include="Image\backDisable.png" />
     <Content Include="Image\clearDisable.png" />
     <Content Include="Image\edit.png" />
+    <Content Include="Image\editdis.png" />
     <Content Include="Image\homebackDisable.png" />
     <Content Include="Image\homeDisable.png" />
     <Content Include="Image\minDisable.png" />
