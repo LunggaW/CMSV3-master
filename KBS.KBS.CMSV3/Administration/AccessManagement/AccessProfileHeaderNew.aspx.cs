@@ -117,5 +117,10 @@ namespace KBS.KBS.CMSV3.Administration.AccessManagement
             TextBoxAccessProfile.Text = "";
             TextBoxAccessProfileDescription.Text = "";
         }
+
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

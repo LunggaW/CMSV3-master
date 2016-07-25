@@ -244,5 +244,24 @@ namespace KBS.KBS.CMSV3.Administration.MenuManagement
             ASPxGridViewMenuProfile.PageIndex = ASPxGridViewMenuProfile.PageCount - 1;
         }
         #endregion
+
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewMenuProfile.FocusedRowIndex != -1)
+            {
+                Session["MenuProfileManagement"] = ASPxGridViewMenuProfile.GetRowValues(ASPxGridViewMenuProfile.FocusedRowIndex, "MENU PROFILE").ToString();
+                Session["Filter"] = "MenuProfManagement";
+                Session["MenuProfFilter"] = "True";
+                Session["MenuProfProfFilter"] = !string.IsNullOrWhiteSpace(TextBoxMenuProfile.Text) ? TextBoxMenuProfile.Text : "";
+                Session["MenuProfDescFilter"] = !string.IsNullOrWhiteSpace(TextBoxMenuProfileDescription.Text) ? TextBoxMenuProfileDescription.Text : "";
+
+
+
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("MenuProfileHeaderDetail.aspx");
+                else
+                    Response.Redirect("MenuProfileHeaderDetail.aspx");
+            }
+        }
     }
 }
