@@ -100,7 +100,7 @@
         </span><span>
             <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="False">
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="False" OnClick="EditBtn_Click">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -136,8 +136,10 @@
         </span><span>
             <dx:ASPxButton ID="PrevBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/back.png" BackColor="Transparent" ToolTip="Previous Page"
-                Enabled="false" UrlDisabled="~/image/backDisable.png">
+                Image-Url="~/image/back.png" BackColor="Transparent" Enabled="False"
+                ToolTip="Previous Page">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/backDisable.png">
+                </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
                 <Border BorderColor="Transparent" />
