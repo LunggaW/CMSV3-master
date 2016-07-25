@@ -4,7 +4,8 @@
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
-        function showProfileLinkDetail(s, e) {
+        function showProfileLinkDetail(s, e)
+        {
             detailGridView.PerformCallback(e.visibleIndex);
         }
     </script>
@@ -44,7 +45,7 @@
         </span><span>
             <dx:ASPxButton ID="ClearBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/clear.png" ToolTip="Clear" BackColor="Transparent" 
+                Image-Url="~/image/clear.png" ToolTip="Clear" BackColor="Transparent"
                 Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/clearDisable.png">
                 </Image>
@@ -54,10 +55,20 @@
             </dx:ASPxButton>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/search.png" ToolTip="Search" 
-            BackColor="Transparent" Enabled="False"
+                Image-Url="~/image/search.png" ToolTip="Search"
+                BackColor="Transparent" Enabled="False"
                 OnClick="SearchBtn_Click">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
+                </Image>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="True" OnClick="EditBtn_Click">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
@@ -89,7 +100,7 @@
             <dx:ASPxButton ID="LprevBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/back2.png" BackColor="Transparent" Enabled="False"
-            ToolTip="First Page" >
+                ToolTip="First Page">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/back2Disable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -100,7 +111,7 @@
             <dx:ASPxButton ID="PrevBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/back.png" BackColor="Transparent" Enabled="False"
-            ToolTip="Previous Page" >
+                ToolTip="Previous Page">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/backDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -111,7 +122,7 @@
             <dx:ASPxButton ID="NextBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/next.png" BackColor="Transparent" Enabled="False"
-            ToolTip="Next Page" >
+                ToolTip="Next Page">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/nextDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -122,7 +133,7 @@
             <dx:ASPxButton ID="LnextBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/next2.png" BackColor="Transparent" Enabled="False"
-            ToolTip="Last Page" >
+                ToolTip="Last Page">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/next2Disable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -145,8 +156,8 @@
     <br />
     <br />
     <dx:ASPxComboBox ID="ComboBoxMenu" runat="server" ValueType="System.String" CssClass="AccessProfile"
-        Caption="Choose Menu" 
-        onselectedindexchanged="ComboBoxMenu_SelectedIndexChanged" 
+        Caption="Choose Menu"
+        OnSelectedIndexChanged="ComboBoxMenu_SelectedIndexChanged"
         AutoPostBack="True">
         <CaptionCellStyle Width="110px">
         </CaptionCellStyle>
@@ -154,10 +165,10 @@
     <br />
     <br />
     <div>
-        <asp:CheckBoxList ID="CheckBoxListData" runat="server" AutoPostBack="True" 
-            CssClass="AccessProfile" 
-            onselectedindexchanged="CheckBoxListData_SelectedIndexChanged">
-    </asp:CheckBoxList>
+        <asp:CheckBoxList ID="CheckBoxListData" runat="server" AutoPostBack="True"
+            CssClass="AccessProfile"
+            OnSelectedIndexChanged="CheckBoxListData_SelectedIndexChanged">
+        </asp:CheckBoxList>
     </div>
-    
+
 </asp:Content>

@@ -257,5 +257,17 @@ namespace KBS.KBS.CMSV3.Administration.AccessManagement
         }
         #endregion
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewAccessProfile.FocusedRowIndex != -1)
+            {
+                Session["AccessProfileManagement"] = ASPxGridViewAccessProfile.GetRowValues(ASPxGridViewAccessProfile.FocusedRowIndex, "ACCESS PROFILE").ToString();
+                
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("AccessProfileHeaderDetail.aspx");
+                else
+                    Response.Redirect("AccessProfileHeaderDetail.aspx");
+            }
+        }
     }
 }
