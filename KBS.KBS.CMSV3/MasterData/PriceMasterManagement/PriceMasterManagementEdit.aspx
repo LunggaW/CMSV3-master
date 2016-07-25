@@ -175,7 +175,7 @@
     </div>
     <br />
     <div align="center" class="title">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Brand Detail"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Price Update"></asp:Label>
     </div>
     <br />
     <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Visible="False"></asp:Label>
@@ -185,13 +185,13 @@
         <table class="tableTop">
 <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="true" CaptionCellStyle-Width="100px" Caption="ITEM ID" ID="ITEMIDTXT">
+                    <dx:ASPxTextBox runat="server" Width="170px"  CaptionCellStyle-Width="100px" Caption="ITEM ID" ID="ITEMIDTXT" Enabled="false" ReadOnly="true">
                     <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="true" Caption="VARIANT ID" CaptionCellStyle-Width="100px" ID="VARIANTTXT">
+                    <dx:ASPxTextBox runat="server" Width="170px"  Caption="VARIANT ID" CaptionCellStyle-Width="100px" ID="VARIANTTXT" Enabled="false" ReadOnly="true">
                     <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                     </dx:ASPxTextBox>
@@ -203,7 +203,7 @@
             </tr>
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="true"  CaptionCellStyle-Width="100px" Caption="SITE" ID="SITETXT">
+                    <dx:ASPxTextBox runat="server" Width="170px"  CaptionCellStyle-Width="100px" Caption="SITE" ID="SITETXT" Enabled="false" ReadOnly="true">
                     <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                     </dx:ASPxTextBox>
@@ -213,13 +213,13 @@
                     </dx:ASPxTextBox>
                 </td>
                  <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="VAT" ID="VATTXT">
-                    </dx:ASPxTextBox>
+                    <dx:ASPxCheckBox runat="server" Width="170px" Visible="true"  Text="VAT" ID="VATBOX">
+                    </dx:ASPxCheckBox>
                 </td>
             </tr>
             <tr>            
                 <td class="tableHeader2Column" colspan="5">
-                <dx:ASPxDateEdit runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="START DATE" ID="SDATE">
+                <dx:ASPxDateEdit runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="START DATE" ID="SDATE" Enabled="false" ReadOnly="true">
                 </dx:ASPxDateEdit>                    
                 </td>            
                 <td class="tableHeader2Column" colspan="5">

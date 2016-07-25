@@ -20,8 +20,7 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
         private DataTable DTAssortment = new DataTable();
-        private string ItemID;
-        private string VariantID;
+        
         private AssortmentMaster assortment;
         OutputMessage message = new OutputMessage();
 

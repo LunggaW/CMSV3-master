@@ -251,50 +251,73 @@
                 </tr>
                 <tr>
                     <td class="tableHeader2Column" colspan="5">
-                        <dx:ASPxDateEdit runat="server" Width="170px" Caption="Start Date" ID="sdate">
-                            <CaptionSettings ShowColon="False"></CaptionSettings>
-                            <CaptionCellStyle Width="110px">
-                            </CaptionCellStyle>
-                        </dx:ASPxDateEdit>
-                    </td>
-                    <td class="tableHeader2Column" colspan="5">
-                        <dx:ASPxComboBox ID="ComboMenuProfile" runat="server" Caption="User Menu Profile">
+                        <dx:ASPxTextBox ID="ConfirmPassword" runat="server" Caption="* Confirm Password" 
+                            Width="170px" Password="True">
                             <CaptionSettings ShowColon="False" />
-                            <CaptionCellStyle Width="110px">
-                            </CaptionCellStyle>
-                        </dx:ASPxComboBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="tableHeader2Column" colspan="5">
-                        <dx:ASPxDateEdit ID="edate" runat="server" Caption="End Date" Width="170px">
-                            <CaptionSettings ShowColon="False" />
-                            <CaptionCellStyle Width="110px">
-                            </CaptionCellStyle>
-                        </dx:ASPxDateEdit>
-                    </td>
-                    <td class="tableHeader2Column" colspan="5">
-                        <dx:ASPxComboBox ID="ComboAccessProfile" runat="server" Caption="User Access Profile">
-                            <CaptionSettings ShowColon="False" />
-                            <CaptionCellStyle Width="110px">
-                            </CaptionCellStyle>
-                        </dx:ASPxComboBox>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="tableHeader2Column" colspan="5">
-                        <dx:ASPxTextBox ID="UserDesc" runat="server" Caption="User Description" Width="170px">
-                            <CaptionSettings ShowColon="False" />
-                            <CaptionCellStyle Width="110px">
+                            <CaptionCellStyle Width="120px">
                             </CaptionCellStyle>
                         </dx:ASPxTextBox>
                     </td>
                     <td class="tableHeader2Column" colspan="5">
-                        <dx:ASPxComboBox ID="ComboSiteProfile" runat="server" Caption="User Site Profile">
+                        <dx:ASPxComboBox ID="ComboMenuProfile" runat="server" 
+                            Caption="User Menu Profile">
                             <CaptionSettings ShowColon="False" />
-                            <CaptionCellStyle Width="110px">
+                            <CaptionCellStyle Width="120px">
                             </CaptionCellStyle>
                         </dx:ASPxComboBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableHeader2Column" colspan="5">
+                        <dx:ASPxDateEdit runat="server" Width="170px" Caption="* Start Date" ID="sdate">
+                            <CaptionSettings ShowColon="False"></CaptionSettings>
+                            <CaptionCellStyle Width="120px">
+                            </CaptionCellStyle>
+                        </dx:ASPxDateEdit>
+                    </td>
+                    <td class="tableHeader2Column" colspan="5">
+                        <dx:ASPxComboBox ID="ComboAccessProfile" runat="server" 
+                            Caption="* User Access Profile">
+                            <CaptionSettings ShowColon="False" />
+                            <CaptionCellStyle Width="120px">
+                            </CaptionCellStyle>
+                        </dx:ASPxComboBox>
+                    </td>
+                </tr>
+                <tr>
+                    
+                    <td class="tableHeader2Column" colspan="5">
+                        <dx:ASPxDateEdit ID="edate" runat="server" Caption="* End Date" Width="170px">
+                            <CaptionSettings ShowColon="False" />
+                            <CaptionCellStyle Width="120px">
+                            </CaptionCellStyle>
+                        </dx:ASPxDateEdit>
+                    </td>
+                    <td class="tableHeader2Column" colspan="5">
+                        <dx:ASPxComboBox ID="ComboSiteProfile" runat="server" 
+                            Caption="* User Site Profile">
+                            <CaptionSettings ShowColon="False" />
+                            <CaptionCellStyle Width="120px">
+                            </CaptionCellStyle>
+                        </dx:ASPxComboBox>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="tableHeader2Column" colspan="5">
+                        <dx:ASPxTextBox ID="UserDesc" runat="server" Caption="* User Description" 
+                            Width="170px">
+                            <CaptionSettings ShowColon="False" />
+                            <CaptionCellStyle Width="120px">
+                            </CaptionCellStyle>
+                        </dx:ASPxTextBox>
+                    </td>
+                     <td class="tableHeader2Column" colspan="5">
+                        <dx:ASPxTextBox ID="ASPxTextBox1" runat="server" Visible="false" Caption="* User Description" 
+                            Width="170px">
+                            <CaptionSettings ShowColon="False" />
+                            <CaptionCellStyle Width="120px">
+                            </CaptionCellStyle>
+                        </dx:ASPxTextBox>
                     </td>
                 </tr>
             </table>

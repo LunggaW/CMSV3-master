@@ -229,13 +229,13 @@ namespace KBS.KBS.CMSV3.MasterData.PriceMasterManagement {
         protected global::DevExpress.Web.ASPxTextBox PRICETXT;
         
         /// <summary>
-        /// VATTXT control.
+        /// VATBOX control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox VATTXT;
+        protected global::DevExpress.Web.ASPxCheckBox VATBOX;
         
         /// <summary>
         /// SDATE control.

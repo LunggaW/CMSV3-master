@@ -17,7 +17,7 @@ namespace KBS.KBS.CMSV3.MasterData
         private DataTable DTBrand = new DataTable();
         private DataTable DTParameterDetail = new DataTable();
         private DataTable DTGridViewUser = new DataTable();
-        private User user;
+        
         private String MenuID = ConfigurationManager.AppSettings["MenuIdBrandMasterManagement"];
 
         protected override void OnInit(EventArgs e)

@@ -13,7 +13,7 @@ namespace KBS.KBS.CMSV3.Administration.SiteProfileManagement
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
         private DataTable DTSiteProfile = new DataTable();
-        private DATAMODEL.SiteProfileHeader siteProfile;
+        
         private OutputMessage message = new OutputMessage();
 
         protected override void OnInit(EventArgs e)

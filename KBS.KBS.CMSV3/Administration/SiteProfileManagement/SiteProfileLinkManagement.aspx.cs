@@ -14,7 +14,7 @@ namespace KBS.KBS.CMSV3.Administration.SiteProfileManagement
         private function CMSfunction = new function();
         private DataTable DTSiteProfileLink = new DataTable();
         private DataTable DTTable = new DataTable();
-        private DATAMODEL.SiteProfileHeader siteProfile;
+        
 
         protected override void OnInit(EventArgs e)
         {

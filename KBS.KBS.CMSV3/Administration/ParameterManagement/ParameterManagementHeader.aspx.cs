@@ -15,8 +15,7 @@ namespace KBS.KBS.CMSV3.Administration.ParameterManagement
         
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
-        private DataTable DTParameterHeader= new DataTable();
-        private User user;
+        private DataTable DTParameterHeader= new DataTable();        
         private String MenuID = ConfigurationManager.AppSettings["MenuIdParameterManagement"];
 
         protected override void OnInit(EventArgs e)

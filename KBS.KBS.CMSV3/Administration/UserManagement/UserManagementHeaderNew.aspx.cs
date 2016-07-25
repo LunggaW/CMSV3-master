@@ -160,42 +160,66 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
        
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
-            if (ComboUserType.Text == "" || ComboUserStatus.Text == "" || UserPassword.Text == "" || ASPxTextBoxUserManagementUserName.Text == "" || ASPxTextBoxUserManagementUserID.Text == "" || ComboAccessProfile.Text == "" || ComboSiteProfile.Text == "" || ComboMenuProfile.Text == "" || edate.Text == "" || sdate.Text == "")
+            if (UserPassword.Text == ConfirmPassword.Text)
             {
-                string script = "alert('Please Insert All Data');";
-                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                if (ComboUserType.Text == "" || ComboUserStatus.Text == "" || ConfirmPassword.Text == "" || UserPassword.Text == "" || ASPxTextBoxUserManagementUserName.Text == "" || ASPxTextBoxUserManagementUserID.Text == "" || ComboAccessProfile.Text == "" || ComboSiteProfile.Text == "" || ComboMenuProfile.Text == "" || edate.Text == "" || sdate.Text == "")
+                {
+                    string script = "alert('Please Insert All Data');";
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
 
+                }
+                else
+                {
+                    processInsert();
+
+                    LabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+                    if (message.Code < 0)
+                    {
+                        string script = "alert('Record already detail , please delete color detail');";
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                    }
+                    LabelMessage.Text = message.Message;
+
+                    LabelMessage.Visible = true;
+                }
             }
             else
             {
-                processInsert();
-
-                LabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
-                if (message.Code < 0)
-                {
-                    string script = "alert('Record already detail , please delete color detail');";
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
-                }
-                LabelMessage.Text = message.Message;
-
-                LabelMessage.Visible = true;
+                string script = "alert('Password and Confirm Password Not Match');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
             }
         }
 
         protected void ValidateBtn_Click(object sender, EventArgs e)
         {
-
-            processInsert();
-            if (message.Code < 0)
+            if (UserPassword.Text == ConfirmPassword.Text)
             {
-                string script = "alert('Record already detail , please delete color detail');";
+                if (ComboUserType.Text == "" || ComboUserStatus.Text == "" || ConfirmPassword.Text == "" || UserPassword.Text == "" || ASPxTextBoxUserManagementUserName.Text == "" || ASPxTextBoxUserManagementUserID.Text == "" || ComboAccessProfile.Text == "" || ComboSiteProfile.Text == "" || ComboMenuProfile.Text == "" || edate.Text == "" || sdate.Text == "")
+                {
+                    string script = "alert('Please Insert All Data');";
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+
+                }
+                else
+                {
+                    processInsert();
+                    if (message.Code < 0)
+                    {
+                        string script = "alert('Record already detail , please delete color detail');";
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                    }
+                    else
+                    {
+                        Response.Redirect("UserManagementHeader.aspx");
+                    }
+                }
+            }
+             else
+            {
+                string script = "alert('Password and Confirm Password Not Match');";
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
             }
-            else
-            {
-                Response.Redirect("UserManagementHeader.aspx");
-            }
-           
+
         }
 
         private void processInsert()

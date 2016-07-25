@@ -15,7 +15,7 @@ namespace KBS.KBS.CMSV3.Administration.MenuManagement
         private function CMSfunction = new function();
         private DataTable DTMenuProfileLink = new DataTable();
         private DataTable DTTable = new DataTable();
-        private DATAMODEL.MenuProfileHeader menuProfile;
+        
         private String MenuID = ConfigurationManager.AppSettings["MenuIdMenuProfileManagement"];
 
         protected override void OnInit(EventArgs e)

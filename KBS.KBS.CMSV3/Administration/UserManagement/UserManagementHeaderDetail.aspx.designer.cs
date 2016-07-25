@@ -256,13 +256,13 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement {
         protected global::DevExpress.Web.ASPxComboBox ComboUserType;
         
         /// <summary>
-        /// sdate control.
+        /// ConfirmPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit sdate;
+        protected global::DevExpress.Web.ASPxTextBox ConfirmPassword;
         
         /// <summary>
         /// ComboMenuProfile control.
@@ -274,13 +274,13 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement {
         protected global::DevExpress.Web.ASPxComboBox ComboMenuProfile;
         
         /// <summary>
-        /// edate control.
+        /// sdate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit edate;
+        protected global::DevExpress.Web.ASPxDateEdit sdate;
         
         /// <summary>
         /// ComboAccessProfile control.
@@ -292,13 +292,13 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement {
         protected global::DevExpress.Web.ASPxComboBox ComboAccessProfile;
         
         /// <summary>
-        /// UserDesc control.
+        /// edate control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox UserDesc;
+        protected global::DevExpress.Web.ASPxDateEdit edate;
         
         /// <summary>
         /// ComboSiteProfile control.
@@ -308,5 +308,23 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxComboBox ComboSiteProfile;
+        
+        /// <summary>
+        /// UserDesc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox UserDesc;
+        
+        /// <summary>
+        /// ASPxTextBox1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox ASPxTextBox1;
     }
 }

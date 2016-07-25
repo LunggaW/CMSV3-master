@@ -187,14 +187,14 @@
 <table class="tableTop">
             <tr>
            <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxComboBox runat="server"  ReadOnly="true" Caption="SKU" ID="SKUBOX">
+                    <dx:ASPxComboBox runat="server"  ReadOnly="true" Caption="SKU" ID="SKUBOX" Enabled="false" ReadOnly="true">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
                     </dx:ASPxComboBox>
                 </td>
             <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxComboBox runat="server" ReadOnly="true"  Caption="SITE" ID="SITEBOX">
+                    <dx:ASPxComboBox runat="server" ReadOnly="true"  Caption="SITE" ID="SITEBOX" Enabled="false" ReadOnly="true">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
@@ -203,7 +203,7 @@
             </tr>
             <tr>
            <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxComboBox runat="server" ReadOnly="true"  Caption="BRAND" ID="BRANDBOX">
+                    <dx:ASPxComboBox runat="server" ReadOnly="true"  Caption="BRAND" ID="BRANDBOX" Enabled="false" ReadOnly="true">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
@@ -219,7 +219,7 @@
             </tr>
             <tr>            
                 <td class="tableHeader2Column" colspan="5">
-                <dx:ASPxDateEdit runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="START DATE" ID="SDATE">
+                <dx:ASPxDateEdit runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="START DATE" ID="SDATE" Enabled="false" ReadOnly="true">
                 </dx:ASPxDateEdit>                    
                 </td>            
                 <td class="tableHeader2Column" colspan="5">

@@ -138,55 +138,23 @@ Inherits="KBS.KBS.CMSV3.MasterData.SearchItemMasterManagement" %>
     <div>
         <table class="tableTop">
             <tr>
+               <td class="tableHeader2Column" colspan="5">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Item ID" ID="TextBoxItemID" >
+                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                        <ReadOnlyStyle BackColor="Silver">
+                        </ReadOnlyStyle>
+                        <CaptionCellStyle Width="110px">
+                        </CaptionCellStyle>
+                    </dx:ASPxTextBox></td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="ITEM ID" ID="ITEMIDTXT">
-                    </dx:ASPxTextBox>
-                </td>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" Caption="VARIANT ID" CaptionCellStyle-Width="100px" ID="VARIANTTXT">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Variant" ID="TextBoxVariant">
+                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                        <CaptionCellStyle Width="110px">
+                        </CaptionCellStyle>
                     </dx:ASPxTextBox>
                 </td>
             </tr>
-            <tr>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="SHORT DESC" ID="SHORTDESCTXT">
-                    </dx:ASPxTextBox>
-                </td>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="LONG DESC" ID="LONGDESCTXT">
-                    </dx:ASPxTextBox>
-                </td>                 
-            </tr>
-            <tr>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="SIZE GROUP" ID="SIZEGRPTXT">
-                    </dx:ASPxTextBox>
-                </td>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="SIZE " ID="SIZETXT">
-                    </dx:ASPxTextBox>
-                </td>                 
-            </tr>
-            <tr>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="COLOR GROUP" ID="COLORGRPTXT">
-                    </dx:ASPxTextBox>
-                </td>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="COLOR " ID="COLORTXT">
-                    </dx:ASPxTextBox>
-                </td>                 
-            </tr>
-            <tr>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="STYLE GROUP" ID="STYLEGRPTXT">
-                    </dx:ASPxTextBox>
-                </td>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="STYLE " ID="STYLETXT">
-                    </dx:ASPxTextBox>
-                </td>                 
-            </tr>
+           
         </table>
     </div>
     <br />

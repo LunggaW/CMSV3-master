@@ -56,7 +56,7 @@ namespace KBS.KBS.CMSV3.MasterData.PriceMasterManagement
                 ITEMIDTXT.Text = pricegroup.ItemID;
                 VARIANTTXT.Text = pricegroup.VariantID;
                 SITETXT.Text = pricegroup.Site;
-                VATTXT.Text = pricegroup.VAT;
+                VATBOX.Checked = Convert.ToBoolean(int.Parse(pricegroup.VAT));                
                 PRICETXT.Text = pricegroup.Price;
                 SDATE.Text = pricegroup.SDate.ToString();
                 EDATE.Text = pricegroup.Edate.ToString();
@@ -125,7 +125,7 @@ namespace KBS.KBS.CMSV3.MasterData.PriceMasterManagement
             VARIANTTXT.Text = "";
             SITETXT.Text = "";
             PRICETXT.Text = "";
-            VATTXT.Text = "";
+            VATBOX.Checked = false;
             EDATE.Value = "";
             SDATE.Value = "";
             EDATE.Text = "";
@@ -175,7 +175,7 @@ namespace KBS.KBS.CMSV3.MasterData.PriceMasterManagement
             pricegroup.VariantID = VARIANTTXT.Text;
             pricegroup.Site = SITETXT.Text;
             pricegroup.Price = PRICETXT.Text;
-            pricegroup.VAT = VATTXT.Text;
+            pricegroup.VAT = Convert.ToInt32(VATBOX.Checked).ToString();
             pricegroup.Edate = EDATE.Date != DateTime.MinValue ? (DateTime?)EDATE.Date : null;
             pricegroup.SDate = SDATE.Date != DateTime.MinValue ? (DateTime?)SDATE.Date : null;
             message = CMSfunction.updatePriceHeader(pricegroup, Session["UserID"].ToString());

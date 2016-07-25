@@ -49,7 +49,8 @@ namespace KBS.KBS.CMSV3.MasterData.PriceMasterManagement
                     Session["SearchItemIDforUpdate"] = "";
                 }
                 ITEMIDTXT.Text = Session["SearchItemIDforUpdate"].ToString();
-                VARIANTTXT.Text = Session["SearchVariantforUpdate"].ToString();
+                VARIANTBOX.Text = Session["SearchVariantforUpdate"].ToString();
+                VARIANTBOX.Value = Session["SearchVariantforUpdate"].ToString();
             }
 
             DTPrice = CMSfunction.GetSITEBox();
@@ -98,11 +99,11 @@ namespace KBS.KBS.CMSV3.MasterData.PriceMasterManagement
         {
 
             ITEMIDTXT.Text = "";
-            VARIANTTXT.Text = "";
+            ITEMIDX.Text = "";
+            VARIANTBOX.SelectedIndex = -1;
             SITEBOX.Text = "";
             PRICETXT.Text = "";
-            VATBOX.Text = "";
-            VATBOX.Value = "";
+            VATBOX.Checked = false;
             EDATE.Value = "";
             SDATE.Value = "";
             EDATE.Text = "";
@@ -147,22 +148,28 @@ namespace KBS.KBS.CMSV3.MasterData.PriceMasterManagement
         private void ProcessInsert()
         {
             PriceGroup pricegroup = new PriceGroup();
-            string a = "0"; 
-            if (VATBOX.Value.ToString() == "true" )
-            {
-                a = "1";
-            }
-
+           
             pricegroup.ItemID = ITEMIDTXT.Text;
-            pricegroup.VariantID = VARIANTTXT.Text;
+            pricegroup.VariantID = VARIANTBOX.Value.ToString();
             pricegroup.Site = SITEBOX.Value.ToString();
             pricegroup.Price = PRICETXT.Text;
-            pricegroup.VAT = a;
+            pricegroup.VAT = Convert.ToInt32(VATBOX.Checked).ToString(); 
             pricegroup.Edate = EDATE.Date != DateTime.MinValue ? (DateTime?)EDATE.Date : null;
             pricegroup.SDate = SDATE.Date != DateTime.MinValue ? (DateTime?)SDATE.Date : null;
             message = CMSfunction.InsertPriceGroup(pricegroup, Session["UserID"].ToString());
 
         }
 
+        protected void ITEMIDTXT_Disposed(object sender, EventArgs e)
+        {
+            ITEMIDX.Text = "";
+
+            DTPrice = CMSfunction.GetVariant(ITEMIDX.Text);
+            VARIANTBOX.DataSource = DTPrice;
+            VARIANTBOX.ValueField = "VALUE";
+            VARIANTBOX.ValueType = typeof(string);
+            VARIANTBOX.TextField = "DESCRIPTION";
+            VARIANTBOX.DataBind();
+        }
     }
 }
