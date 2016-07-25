@@ -64,13 +64,13 @@
         <br />
         <br />
         <span>
-    <asp:Button ID="LoginBtn" runat="server" Text="Login" height="25%" width="25%" 
+    <asp:Button ID="LoginBtn" runat="server" Text="Login" height="25%" width="50%" 
             onclick="LoginBtn_Click"/>    
     </span>
-    <span>
+    <%--<span>
     <asp:Button ID="Exit" runat="server" Text="Exit" height="25%" width="25%" 
             onclick="Exit_Click"/>
-    </span>
+    </span>--%>
     </div>        
     
         <br />

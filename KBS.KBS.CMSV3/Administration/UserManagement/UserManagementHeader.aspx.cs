@@ -23,7 +23,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
         private DataTable DTGridViewUser = new DataTable();
         private User user;
         private String MenuID = ConfigurationManager.AppSettings["MenuIdUserManagement"];
-
+        private String Lepat;
         protected override void OnInit(EventArgs e)
         {
             if (Session["UserID"] == null)
@@ -388,7 +388,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             }
             catch
             {
-                String Error = "Failed";
+                Lepat = "Failed";
             }
             //User Management
             try
@@ -411,7 +411,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             }
             catch
             {
-                String Error = "Failed";
+                Lepat = "Failed";
             }
             // Menu Prof Master
             try
@@ -425,7 +425,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             }
             catch
             {
-                String Error = "Failed";
+                Lepat = "Failed";
             }
             // Param Master
             try
@@ -439,7 +439,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             }
             catch
             {
-                String Error = "Failed";
+               Lepat = "Failed";
             }
             // Site Master
             try
@@ -453,7 +453,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             }
             catch
             {
-                String Error = "Failed";
+                Lepat = "Failed";
             }
 
             // Access Management
@@ -469,7 +469,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             }
             catch
             {
-                String Error = "Failed";
+               Lepat = "Failed";
             }
             // Brand Master
             try
@@ -484,7 +484,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             }
             catch
             {
-                String Error = "Failed";
+               Lepat = "Failed";
             }
             // Site Master
             try
@@ -498,7 +498,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             }
             catch
             {
-                String Error = "Failed";
+               Lepat = "Failed";
             }
             // Size Master
             try
@@ -512,7 +512,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             }
             catch
             {
-                String Error = "Failed";
+               Lepat = "Failed";
             }
 
             // Price Master
@@ -533,7 +533,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             }
             catch
             {
-                String Error = "Failed";
+               Lepat = "Failed";
             }
             // Style Master
             try
@@ -548,7 +548,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             }
             catch
             {
-                String Error = "Failed";
+               Lepat = "Failed";
             }
 
             // SKU Master
@@ -567,7 +567,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             }
             catch
             {
-                String Error = "Failed";
+               Lepat = "Failed";
             }
             // Color Master
             try
@@ -582,7 +582,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             }
             catch
             {
-                String Error = "Failed";
+               Lepat = "Failed";
             }
         }
     }

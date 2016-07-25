@@ -66,7 +66,7 @@ Inherits="KBS.KBS.CMSV3.TransferOrder.TransferOrderD" %>
             </dx:ASPxButton>
         </span><span>
             <dx:ASPxButton ID="AddBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False" EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/plus.png" ToolTip="Add" BackColor="Transparent" Enabled="False"
+                Image-Url="~/image/plus.png" ToolTip="Add" BackColor="Transparent" 
                 OnClick="AddBtn_Click">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/plusDisable.png">
                 </Image>

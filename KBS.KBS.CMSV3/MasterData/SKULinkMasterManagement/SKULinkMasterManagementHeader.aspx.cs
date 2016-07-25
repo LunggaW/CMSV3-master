@@ -193,21 +193,7 @@ namespace KBS.KBS.CMSV3.MasterData
             
         }
 
-
-        //protected void ASPxButtonEntry_Click(object sender, EventArgs e)
-        //{
-        //    if (ASPxGridViewHeader.FocusedRowIndex != -1)
-        //    {
-
-        //        Session["BrandIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
-        //        Session["BrandDescforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BRAND DESC").ToString();
-            
-        //        Response.Redirect("BrandDetailMasterManagement.aspx");
-        //    }
-
-
-        //}
-
+        
         protected void AddBtn_Click(object sender, EventArgs e)
         {
             Response.Redirect("SKULinkMasterManagementNew.aspx");

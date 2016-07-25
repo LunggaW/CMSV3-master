@@ -14,7 +14,7 @@ namespace KBS.KBS.CMSV3.MasterData
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
         private DataTable DTSearch = new DataTable();
-        private DataTable DTParameterDetail = new DataTable();
+        private DataTable DTSearchItem = new DataTable();
         private DataTable DTGridViewUser = new DataTable();
         private User user;
 
@@ -36,12 +36,7 @@ namespace KBS.KBS.CMSV3.MasterData
             
             if (!IsPostBack)
             {
-                SearchItemVariant search = new SearchItemVariant();
-
-                DTSearch = CMSfunction.GetSearchHeaderDataTable(search);
-                ASPxGridViewHeader.DataSource = DTSearch;
-                ASPxGridViewHeader.KeyFieldName = "ITEM ID";
-                ASPxGridViewHeader.DataBind();            
+                RefreshDataGrid();
             }
 
         }
@@ -81,7 +76,7 @@ namespace KBS.KBS.CMSV3.MasterData
         {
 
             Session["SearchItemIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ITEM ID").ToString();
-            Session["SearchVariantforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VARIANT ID").ToString();
+            Session["SearchVariantforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VARIANT").ToString();
             
 
             if (Page.IsCallback)
@@ -93,62 +88,35 @@ namespace KBS.KBS.CMSV3.MasterData
 
         protected void SearchBtn_Click(object sender, EventArgs e)
         {
-            SearchItemVariant search = new SearchItemVariant();
+            RefreshDataGrid();
 
-
-            search.ITEMID = !string.IsNullOrWhiteSpace(ITEMIDTXT.Text) ? ITEMIDTXT.Text : "";
-            search.VARIANTID = !string.IsNullOrWhiteSpace(VARIANTTXT.Text) ? VARIANTTXT.Text : "";
-            search.SHORTDESC = !string.IsNullOrWhiteSpace(SHORTDESCTXT.Text) ? SHORTDESCTXT.Text : "";
-            search.LONGDESC = !string.IsNullOrWhiteSpace(LONGDESCTXT.Text) ? LONGDESCTXT.Text : "";
-            search.COLORGRP = !string.IsNullOrWhiteSpace(COLORGRPTXT.Text) ? COLORGRPTXT.Text : "";
-            search.COLOR = !string.IsNullOrWhiteSpace(COLORTXT.Text) ? COLORTXT.Text : "";
-            search.STYLEGRP = !string.IsNullOrWhiteSpace(STYLEGRPTXT.Text) ? STYLEGRPTXT.Text : "";
-            search.STYLE = !string.IsNullOrWhiteSpace(STYLETXT.Text) ? STYLETXT.Text : "";            
-            search.SIZEGRP = !string.IsNullOrWhiteSpace(SIZEGRPTXT.Text) ? SIZEGRPTXT.Text : "";
-            search.SIZE = !string.IsNullOrWhiteSpace(SIZETXT.Text) ? SIZETXT.Text : "";
-
-
-
-            DTSearch = CMSfunction.GetSearchHeaderDataTable(search);
-            ASPxGridViewHeader.DataSource = DTSearch;
-            ASPxGridViewHeader.KeyFieldName = "ITEM ID";
-            ASPxGridViewHeader.DataBind();
-
-            
         }
 
         protected void ClearBtn_Click(object sender, EventArgs e)
         {
-            
-            ITEMIDTXT.Text = ""; 
-            VARIANTTXT.Text = "";
-            SHORTDESCTXT.Text = "";
-            LONGDESCTXT.Text = "";
-            COLORGRPTXT.Text = "";
-            COLORTXT.Value = "";
-            SIZEGRPTXT.Value = "";
-            SIZETXT.Text = "";
-            STYLEGRPTXT.Text = "";
-            STYLETXT.Text = "";
+
+            TextBoxItemID.Text = "";
+            TextBoxVariant.Text = "";           
             
         }
 
 
-        //protected void ASPxButtonEntry_Click(object sender, EventArgs e)
-        //{
-        //    if (ASPxGridViewHeader.FocusedRowIndex != -1)
-        //    {
+        private void RefreshDataGrid()
+        {
+            AssortmentMaster assortment = new AssortmentMaster();
 
-        //        Session["BrandIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
-        //        Session["BrandDescforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BRAND DESC").ToString();
-            
-        //        Response.Redirect("BrandDetailMasterManagement.aspx");
-        //    }
+            assortment.ItemID = !string.IsNullOrWhiteSpace(TextBoxItemID.Text) ? TextBoxItemID.Text : "";
+            assortment.VariantID = !string.IsNullOrWhiteSpace(TextBoxVariant.Text) ? TextBoxVariant.Text : "";
+           
+
+            DTSearchItem = CMSfunction.GetItemVariant(assortment);
+
+            ASPxGridViewHeader.DataSource = DTSearchItem;
+            ASPxGridViewHeader.KeyFieldName = "ITEM ID";
+            ASPxGridViewHeader.DataBind();
+        }
 
 
-        //}
-
-       
 
     }
 

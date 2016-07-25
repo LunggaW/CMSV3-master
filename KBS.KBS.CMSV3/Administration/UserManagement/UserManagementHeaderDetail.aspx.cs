@@ -202,30 +202,57 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
         protected void ValidateBtn_Click(object sender, EventArgs e)
         {
             processUpdate();
-            Response.Redirect("UserManagementHeader.aspx");
+            if (message.Code < 0)
+            {
+                string script = "alert('Failed To Update, Please Check Data');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+            }
+            else
+            {
+                Response.Redirect("UserManagementHeader.aspx");
+            }
+          
+           
         }
 
         private void processUpdate()
         {
-            user = new User();
+            if (UserPassword.Text == ConfirmPassword.Text)
+            {
+                if (ComboUserType.Text == "" || ComboUserStatus.Text == "" || ConfirmPassword.Text == "" || UserPassword.Text == "" || ASPxTextBoxUserManagementUserName.Text == "" || ASPxTextBoxUserManagementUserID.Text == "" || ComboAccessProfile.Text == "" || ComboSiteProfile.Text == "" || ComboMenuProfile.Text == "" || edate.Text == "" || sdate.Text == "")
+                {
+                    string script = "alert('Please Insert All Data');";
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
 
-            user.UserID = !string.IsNullOrWhiteSpace(ASPxTextBoxUserManagementUserID.Text) ? ASPxTextBoxUserManagementUserID.Text : "";
-            user.Username = !string.IsNullOrWhiteSpace(ASPxTextBoxUserManagementUserName.Text) ? ASPxTextBoxUserManagementUserName.Text : "";
-            user.Password = !string.IsNullOrWhiteSpace(UserPassword.Text) ? UserPassword.Text : ""; 
-            user.IMEI = !string.IsNullOrWhiteSpace(IMEI.Text) ? IMEI.Text : "";
-            user.UserType = !string.IsNullOrWhiteSpace(ComboUserType.Value.ToString()) ? ComboUserType.Value.ToString() : "";
-            user.Status = !string.IsNullOrWhiteSpace(ComboUserStatus.Value.ToString()) ? ComboUserStatus.Value.ToString() : "";
-            user.Description = !string.IsNullOrWhiteSpace(UserDesc.Text) ? UserDesc.Text : "";
-            user.StartDate = !string.IsNullOrWhiteSpace(sdate.Date.ToString()) ? sdate.Date : sdate.MinDate;
-            user.EndDate = !string.IsNullOrWhiteSpace(edate.Date.ToString()) ? edate.Date : sdate.MinDate;
-            user.AccessProfile = !string.IsNullOrWhiteSpace(ComboAccessProfile.Value.ToString()) ? ComboAccessProfile.Value.ToString() : "";
-            user.SiteProfile = !string.IsNullOrWhiteSpace(ComboSiteProfile.Value.ToString()) ? ComboSiteProfile.Value.ToString() : "";
-            user.MenuProfile = !string.IsNullOrWhiteSpace(ComboMenuProfile.Value.ToString()) ? ComboMenuProfile.Value.ToString() : "";
-            user.IMEI = !string.IsNullOrWhiteSpace(IMEI.Text) ? IMEI.Text : "";
+                }
+                else
+                {
+                    user = new User();
+
+                    user.UserID = !string.IsNullOrWhiteSpace(ASPxTextBoxUserManagementUserID.Text) ? ASPxTextBoxUserManagementUserID.Text : "";
+                    user.Username = !string.IsNullOrWhiteSpace(ASPxTextBoxUserManagementUserName.Text) ? ASPxTextBoxUserManagementUserName.Text : "";
+                    user.Password = !string.IsNullOrWhiteSpace(UserPassword.Text) ? UserPassword.Text : ""; 
+                    user.IMEI = !string.IsNullOrWhiteSpace(IMEI.Text) ? IMEI.Text : "";
+                    user.UserType = !string.IsNullOrWhiteSpace(ComboUserType.Value.ToString()) ? ComboUserType.Value.ToString() : "";
+                    user.Status = !string.IsNullOrWhiteSpace(ComboUserStatus.Value.ToString()) ? ComboUserStatus.Value.ToString() : "";
+                    user.Description = !string.IsNullOrWhiteSpace(UserDesc.Text) ? UserDesc.Text : "";
+                    user.StartDate = !string.IsNullOrWhiteSpace(sdate.Date.ToString()) ? sdate.Date : sdate.MinDate;
+                    user.EndDate = !string.IsNullOrWhiteSpace(edate.Date.ToString()) ? edate.Date : sdate.MinDate;
+                    user.AccessProfile = !string.IsNullOrWhiteSpace(ComboAccessProfile.Value.ToString()) ? ComboAccessProfile.Value.ToString() : "";
+                    user.SiteProfile = !string.IsNullOrWhiteSpace(ComboSiteProfile.Value.ToString()) ? ComboSiteProfile.Value.ToString() : "";
+                    user.MenuProfile = !string.IsNullOrWhiteSpace(ComboMenuProfile.Value.ToString()) ? ComboMenuProfile.Value.ToString() : "";
+                    user.IMEI = !string.IsNullOrWhiteSpace(IMEI.Text) ? IMEI.Text : "";
 
 
 
-            message = CMSfunction.updateUser(user, Session["UserID"].ToString());
+                    message = CMSfunction.updateUser(user, Session["UserID"].ToString());
+                }
+            }
+            else
+            {
+                string script = "alert('Password and Confirm Password Not Match');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+            }
 
         }
 
