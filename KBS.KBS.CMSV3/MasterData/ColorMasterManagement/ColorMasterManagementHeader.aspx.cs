@@ -167,16 +167,20 @@ namespace KBS.KBS.CMSV3.MasterData
 
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["ColorIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COLOR GROUP ID").ToString();
+                Session["ColorGrpforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COLOR GROUP DESC").ToString();
 
-            Session["ColorIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COLOR GROUP ID").ToString();
-            Session["ColorGrpforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COLOR GROUP DESC").ToString();
-            
 
-            if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("ColorMasterManagementEdit.aspx");
-            else
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("ColorMasterManagementEdit.aspx");
+                else
 
-                Response.Redirect("ColorMasterManagementEdit.aspx");
+                    Response.Redirect("ColorMasterManagementEdit.aspx");
+            }
         }
 
         protected void SearchBtn_Click(object sender, EventArgs e)
@@ -264,8 +268,23 @@ namespace KBS.KBS.CMSV3.MasterData
            
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["ColorIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COLOR GROUP ID").ToString();
+                Session["ColorGrpforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COLOR GROUP DESC").ToString();
 
 
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("ColorMasterManagementEdit.aspx");
+                else
+
+                    Response.Redirect("ColorMasterManagementEdit.aspx");
+            }
+        }
     }
 
 }

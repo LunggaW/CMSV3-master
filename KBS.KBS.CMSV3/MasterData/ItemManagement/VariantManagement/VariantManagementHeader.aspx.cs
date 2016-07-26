@@ -234,6 +234,18 @@ namespace KBS.KBS.CMSV3.MasterData.ItemManagement.VariantManagement
             }
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewVariant.FocusedRowIndex != -1)
+            {
+                Session["VariantIDExternal"] =
+                    ASPxGridViewVariant.GetRowValues(ASPxGridViewVariant.FocusedRowIndex, "VARIANT ID").ToString();
 
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("VariantManagementHeaderDetail.aspx");
+                else
+                    Response.Redirect("VariantManagementHeaderDetail.aspx");
+            }
+        }
     }
 }

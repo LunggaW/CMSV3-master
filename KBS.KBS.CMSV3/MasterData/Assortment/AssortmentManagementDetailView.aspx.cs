@@ -215,10 +215,7 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
             ASPxGridViewAssortment.PageIndex = ASPxGridViewAssortment.PageCount - 1;
         }
         #endregion
-
-        protected void ASPxGridViewAssortment_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
-        {
-        }
+        
 
         protected void ButtonChangeStatus_Click(object sender, EventArgs e)
         {

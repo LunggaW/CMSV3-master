@@ -585,5 +585,35 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
                Lepat = "Failed";
             }
         }
+
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewUser.FocusedRowIndex != -1)
+            {
+
+                Session["Filter"] = "UserManagement";
+                Session["UserFilter"] = "True";
+                Session["UserIdFilter"] = !string.IsNullOrWhiteSpace(ASPxTextBoxUserManagementUserID.Text) ? ASPxTextBoxUserManagementUserID.Text : "";
+
+                Session["StartDateFilter"] = sdate.Date != sdate.MinDate ? (object)sdate.Date : "";
+                Session["EndDateFilter"] = edate.Date != edate.MinDate ? (object)edate.Date : "";
+
+                Session["UserDescFilter"] = !string.IsNullOrWhiteSpace(UserDesc.Text) ? UserDesc.Text : "";
+                Session["UserAccProfFilter"] = (ComboAccessProfile.Value != null) ? ComboAccessProfile.Value.ToString() : "";
+                Session["UserNameFilter"] = !string.IsNullOrWhiteSpace(ASPxTextBoxUserManagementUserName.Text) ? ASPxTextBoxUserManagementUserName.Text : "";
+                Session["UserStatFilter"] = (ComboUserStatus.Value != null) ? ComboUserStatus.Value.ToString() : "";
+                Session["UserTypeFilter"] = (ComboUserType.Value != null) ? ComboUserType.Value.ToString() : "";
+                Session["UserMenuProfFilter"] = (ComboMenuProfile.Value != null) ? ComboMenuProfile.Value.ToString() : "";
+                Session["UserSiteProfFilter"] = (ComboSiteProfile.Value != null) ? ComboSiteProfile.Value.ToString() : "";
+
+
+
+                Session["UserIdUserManagement"] = ASPxGridViewUser.GetRowValues(ASPxGridViewUser.FocusedRowIndex, "USER ID").ToString();
+
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("UserManagementHeaderDetail.aspx");
+                else
+                    Response.Redirect("UserManagementHeaderDetail.aspx");
+            }
     }
 }

@@ -5,7 +5,8 @@
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../../Content/New.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
-        function UpdateDetailGrid(s, e) {
+        function UpdateDetailGrid(s, e)
+        {
             detailGridView.PerformCallback(e.visibleIndex);
         }
     </script>
@@ -61,8 +62,19 @@
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
+
         </span><span>
- <dx:ASPxButton ID="AddBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="True" OnClick="EditBtn_Click">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
+                </Image>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="AddBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/plus.png" ToolTip="Add" BackColor="Transparent" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/plusDisable.png">
@@ -132,7 +144,7 @@
         <table class="tableTop">
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                   <dx:ASPxTextBox runat="server" Width="170px" Caption="Item ID" ID="TextBoxItemId">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Item ID" ID="TextBoxItemId">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="110px">
                         </CaptionCellStyle>
@@ -148,35 +160,33 @@
             </tr>
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                     <dx:ASPxTextBox runat="server" Width="170px" Caption="Barcode" ID="TextBoxBarcode">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Barcode" ID="TextBoxBarcode">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="110px">
                         </CaptionCellStyle>
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                     <dx:ASPxTextBox runat="server" Width="170px" Caption="Description" ID="TextBoxDesc">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Description" ID="TextBoxDesc">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="110px">
                         </CaptionCellStyle>
                     </dx:ASPxTextBox>
                 </td>
             </tr>
-            
+
         </table>
     </div>
     <br />
     <dx:ASPxGridView runat="server" ClientInstanceName="detailGridView" CssClass="ASPXGridView"
-        ID="ASPxGridViewStockDisplay">
+        ID="ASPxGridViewStockDisplay" OnCustomCallback="ASPxGridViewStockDisplay_CustomCallback">
         <ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>
-        <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True">
-        </SettingsBehavior>
+        <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True"></SettingsBehavior>
         <SettingsCookies Enabled="True" />
     </dx:ASPxGridView>
     <br />
     <div align="center">
         <asp:ScriptManager ID="ScriptManager1" runat="server">
-
         </asp:ScriptManager>
         <br />
         <br />

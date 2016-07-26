@@ -5,7 +5,8 @@
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../../../../Content/New.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
-        function UpdateDetailGrid(s, e) {
+        function UpdateDetailGrid(s, e)
+        {
             detailGridView.PerformCallback(e.visibleIndex);
         }
     </script>
@@ -51,11 +52,22 @@
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
+        </span><span>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="TRUE"
                 OnClick="SearchBtn_Click">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
+                </Image>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="True" OnClick="EditBtn_Click">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
@@ -145,7 +157,7 @@
             </td>
         </tr>
     </table>
-    <br/>
+    <br />
     <table class="tableTopLabel">
         <tr>
             <td class="tableHeader2Column" colspan="10">
@@ -211,8 +223,7 @@
     <dx:ASPxGridView runat="server" ClientInstanceName="detailGridView" CssClass="ASPXGridView"
         ID="ASPxGridViewBarcode" OnCustomCallback="ASPxGridViewDetail_CustomCallback">
         <ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>
-        <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True">
-        </SettingsBehavior>
+        <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True"></SettingsBehavior>
     </dx:ASPxGridView>
     <br />
 </asp:Content>

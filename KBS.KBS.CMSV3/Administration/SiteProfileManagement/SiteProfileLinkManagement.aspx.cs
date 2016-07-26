@@ -180,6 +180,19 @@ namespace KBS.KBS.CMSV3.Administration.SiteProfileManagement
             ASPxGridViewSiteProfileLink.DataBind();
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewSiteProfileLink.FocusedRowIndex != -1)
+            {
+                Session["Site"] =
+                    ASPxGridViewSiteProfileLink.GetRowValues(ASPxGridViewSiteProfileLink.FocusedRowIndex, "SITE").ToString();
 
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("SiteProfileLinkManagementDetail.aspx");
+                else
+                    Response.Redirect("SiteProfileLinkManagementDetail.aspx");
+            }
+
+        }
     }
 }

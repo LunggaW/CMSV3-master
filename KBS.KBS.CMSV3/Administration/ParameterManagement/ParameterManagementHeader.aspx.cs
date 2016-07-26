@@ -268,7 +268,37 @@ namespace KBS.KBS.CMSV3.Administration.ParameterManagement
 
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["ParamHeaderIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
+                Session["ParamHeaderSClassforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
 
+
+                Session["ParamIDFilter"] = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderID.Text)
+                    ? ASPxTextBoxHeaderID.Text
+                    : "";
+                Session["ParamNameFilter"] = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderName.Text)
+                    ? ASPxTextBoxHeaderName.Text
+                    : "";
+
+                Session["ParamForBack"] = "True";
+                Session["ParamIDFilter"] = ASPxTextBoxHeaderID.Text;
+                Session["ParamNameFilter"] = ASPxTextBoxHeaderName.Text;
+
+                Session["ParamCopy"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COPY").ToString();
+
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("ParameterManagementHeaderDetail.aspx");
+                else
+
+                    Response.Redirect("ParameterManagementHeaderDetail.aspx");
+            }
+        }
     }
 
 }

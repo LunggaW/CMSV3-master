@@ -214,8 +214,21 @@ namespace KBS.KBS.CMSV3.MasterData.ItemManagement.VariantManagement.BarcodeManag
         {
             ASPxGridViewBarcode.PageIndex = ASPxGridViewBarcode.PageCount - 1;
         }
+
         #endregion
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewBarcode.FocusedRowIndex != -1)
+            {
+                Session["Barcode"] =
+                    ASPxGridViewBarcode.GetRowValues(ASPxGridViewBarcode.FocusedRowIndex, "BARCODE").ToString();
 
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("BarcodeManagementHeaderDetail.aspx");
+                else
+                    Response.Redirect("BarcodeManagementHeaderDetail.aspx");
+            }
+        }
     }
 }

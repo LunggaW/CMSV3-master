@@ -4,7 +4,8 @@
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
-        function showProfileLinkDetail(s, e) {
+        function showProfileLinkDetail(s, e)
+        {
             detailGridView.PerformCallback(e.visibleIndex);
         }
     </script>
@@ -35,7 +36,7 @@
             <dx:ASPxButton ID="SaveBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/save.png" ToolTip="Save" BackColor="Transparent" OnClick="SaveBtn_Click" Enabled="False">
-                <Image Height="20px" Width="20px" UrlDisabled="~/image/saveDisable.png" >
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/saveDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
@@ -51,10 +52,21 @@
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
+        </span><span>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
+                </Image>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="True" OnClick="EditBtn_Click">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
@@ -105,7 +117,7 @@
         </span><span>
             <dx:ASPxButton ID="NextBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/next.png" BackColor="Transparent" ToolTip="Next Page" >
+                Image-Url="~/image/next.png" BackColor="Transparent" ToolTip="Next Page">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/nextDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -115,7 +127,7 @@
         </span><span>
             <dx:ASPxButton ID="LnextBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/next2.png" BackColor="Transparent" ToolTip="Last Page" >
+                Image-Url="~/image/next2.png" BackColor="Transparent" ToolTip="Last Page">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/next2Disable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -125,7 +137,7 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="LabelTitleSiteProfile" runat="server" Font-Size="Large" 
+        <asp:Label ID="LabelTitleSiteProfile" runat="server" Font-Size="Large"
             Text="Site Profile Link"></asp:Label>
     </div>
     <br />
@@ -134,7 +146,7 @@
         
     </asp:Label>
     <br />
-    
+
     <br />
     <dx:ASPxGridView ID="ASPxGridViewSiteProfileLink" runat="server" CssClass="ASPXGridView"
         ClientInstanceName="detailGridView" OnCustomCallback="ASPxGridViewSiteProfile_CustomCallback">

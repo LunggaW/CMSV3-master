@@ -138,16 +138,20 @@ namespace KBS.KBS.CMSV3.MasterData
 
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
-            
-            Session["BrandIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
-            Session["BrandDescforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BRAND DESC").ToString();
-            
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["BrandIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
+                Session["BrandDescforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BRAND DESC").ToString();
 
-            if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("BrandMasterManagementEdit.aspx");
-            else
 
-                Response.Redirect("BrandMasterManagementEdit.aspx");
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("BrandMasterManagementEdit.aspx");
+                else
+
+                    Response.Redirect("BrandMasterManagementEdit.aspx");
+            }
         }
         protected void NextBtn_Click(object sender, EventArgs e)
         {
@@ -251,8 +255,25 @@ namespace KBS.KBS.CMSV3.MasterData
             
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+
+                Session["BrandIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
+                Session["BrandDescforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BRAND DESC").ToString();
 
 
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("BrandMasterManagementEdit.aspx");
+                else
+
+                    Response.Redirect("BrandMasterManagementEdit.aspx");
+            }
+
+        }
     }
 
 }

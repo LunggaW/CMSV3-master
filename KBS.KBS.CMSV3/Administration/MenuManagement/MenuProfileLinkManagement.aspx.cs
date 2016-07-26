@@ -212,6 +212,9 @@ namespace KBS.KBS.CMSV3.Administration.MenuManagement
             ASPxGridViewMenuProfileLink.DataBind();
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }
