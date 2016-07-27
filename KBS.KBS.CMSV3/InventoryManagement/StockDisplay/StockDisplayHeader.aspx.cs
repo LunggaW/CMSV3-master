@@ -281,5 +281,20 @@ namespace KBS.KBS.CMSV3.InventoryManagement.StockDisplay
             else
                 Response.Redirect("StockMovement.aspx");
         }
+
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewStockDisplay.FocusedRowIndex != -1)
+            {
+                Session["ItemIDStockDisplay"] = ASPxGridViewStockDisplay.GetRowValues(ASPxGridViewStockDisplay.FocusedRowIndex, "ITEM ID").ToString();
+
+                Session["SiteStockDisplay"] = ASPxGridViewStockDisplay.GetRowValues(ASPxGridViewStockDisplay.FocusedRowIndex, "SITE").ToString();
+
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("StockMovement.aspx");
+                else
+                    Response.Redirect("StockMovement.aspx");
+            }
+        }
     }
 }

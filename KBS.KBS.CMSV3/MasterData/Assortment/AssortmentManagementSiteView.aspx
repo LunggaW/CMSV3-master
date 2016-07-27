@@ -5,7 +5,8 @@
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../../Content/New.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
-        function UpdateDetailGrid(s, e) {
+        function UpdateDetailGrid(s, e)
+        {
             detailGridView.PerformCallback(e.visibleIndex);
         }
     </script>
@@ -20,7 +21,7 @@
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
         </span><span>
-          <dx:ASPxButton ID="ValidateBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+            <dx:ASPxButton ID="ValidateBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/valid.png" BackColor="Transparent" ToolTip="Valid" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/validDisable.png">
@@ -38,7 +39,8 @@
                 <Image Height="20px" Width="20px">
                 </Image>
                 <Border BorderColor="Transparent" />
-            </dx:ASPxButton></span><span>
+            </dx:ASPxButton>
+        </span><span>
             <dx:ASPxButton ID="ClearBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/clear.png" ToolTip="Clear" BackColor="Transparent" Enabled="False">
@@ -48,10 +50,21 @@
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
+        </span><span>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="True">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
+                </Image>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="True" OnClick="EditBtn_Click">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
@@ -113,27 +126,28 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="LabelTitle" runat="server" Font-Size="Large" 
+        <asp:Label ID="LabelTitle" runat="server" Font-Size="Large"
             Text="Assortment Management"></asp:Label>
     </div>
     <br />
-    <br/>
-    <br/>
+    <br />
+    <br />
     <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Visible="False"></asp:Label>
-    <br/>
-    <br/>
-    
+    <br />
+    <br />
+
     <div>
         <table class="tableTop">
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Site" ID="TextBoxSite" >
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Site" ID="TextBoxSite">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="110px">
                         </CaptionCellStyle>
-                    </dx:ASPxTextBox></td>
+                    </dx:ASPxTextBox>
+                </td>
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxTextBox runat="server" Width="170px" Caption="Site Name" ID="TextBoxSiteName">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
@@ -144,13 +158,12 @@
             </tr>
         </table>
     </div>
-    <br/>
+    <br />
     <dx:ASPxGridView runat="server" ClientInstanceName="detailGridView" CssClass="ASPXGridView"
-        ID="ASPxGridViewAssortment" OnCustomCallback="ASPxGridViewAssortment_CustomCallback" >
+        ID="ASPxGridViewAssortment" OnCustomCallback="ASPxGridViewAssortment_CustomCallback">
         <ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>
-        <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True">
-        </SettingsBehavior>
+        <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True"></SettingsBehavior>
     </dx:ASPxGridView>
     <br />
-    <br/>
+    <br />
 </asp:Content>

@@ -4,7 +4,8 @@
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
-        function UpdateDetailGrid(s, e) {
+        function UpdateDetailGrid(s, e)
+        {
             detailGridView.PerformCallback(e.visibleIndex);
         }
     </script>
@@ -35,7 +36,7 @@
             <dx:ASPxButton ID="SaveBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/save.png" ToolTip="Save" BackColor="Transparent" OnClick="SaveBtn_Click" Enabled="false">
-                <Image Height="20px" Width="20px" UrlDisabled="~/image/saveDisable.png" >
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/saveDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
@@ -51,10 +52,21 @@
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
+        </span><span>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="True" OnClick="SearchBtn_Click">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
+                </Image>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="False">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
@@ -135,7 +147,7 @@
         <table class="tableTop">
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                   <dx:ASPxTextBox runat="server" Width="170px" Caption="Item ID" ID="TextBoxItemId">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Item ID" ID="TextBoxItemId">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="110px">
                         </CaptionCellStyle>
@@ -151,15 +163,15 @@
             </tr>
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                     <dx:ASPxTextBox runat="server" Width="170px" Caption="Barcode" ID="TextBoxBarcode">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Barcode" ID="TextBoxBarcode">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="110px">
                         </CaptionCellStyle>
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    
-                     <dx:ASPxTextBox runat="server" Width="170px" Caption="Nota" ID="TextBoxNota">
+
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Nota" ID="TextBoxNota">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="110px">
                         </CaptionCellStyle>
@@ -168,31 +180,30 @@
             </tr>
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                     <dx:ASPxTextBox runat="server" Width="170px" Caption="Transaction ID" ID="TextBoxTransID">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Transaction ID" ID="TextBoxTransID">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="110px">
                         </CaptionCellStyle>
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                     <dx:ASPxComboBox runat="server" Caption="Site" ID="ComboSite">
+                    <dx:ASPxComboBox runat="server" Caption="Site" ID="ComboSite">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="110px">
                         </CaptionCellStyle>
                     </dx:ASPxComboBox>
                 </td>
-                
+
             </tr>
-            
+
         </table>
         <br />
-    <dx:ASPxGridView runat="server" ClientInstanceName="detailGridView" CssClass="ASPXGridView"
-        ID="ASPxGridViewStockMovement">
-        <ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>
-        <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True">
-        </SettingsBehavior>
-        <SettingsCookies Enabled="True" />
-    </dx:ASPxGridView>
+        <dx:ASPxGridView runat="server" ClientInstanceName="detailGridView" CssClass="ASPXGridView"
+            ID="ASPxGridViewStockMovement">
+            <ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>
+            <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True"></SettingsBehavior>
+            <SettingsCookies Enabled="True" />
+        </dx:ASPxGridView>
         <br />
     </div>
 </asp:Content>

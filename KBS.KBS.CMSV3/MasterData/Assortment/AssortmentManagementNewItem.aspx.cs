@@ -230,5 +230,6 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
 
 
         }
+        
     }
 }

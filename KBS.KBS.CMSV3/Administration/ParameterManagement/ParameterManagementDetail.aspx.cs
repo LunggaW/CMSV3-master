@@ -34,7 +34,7 @@ namespace KBS.KBS.CMSV3.Administration
                 loadNavBar();
                 //loadButton(MenuID);
             }
-            
+
         }
 
         protected void Page_Load(object sender, EventArgs e)
@@ -51,9 +51,9 @@ namespace KBS.KBS.CMSV3.Administration
                 }
             }
 
-            
+
             //user = CMSfunction.SelectUserDataFromUserID(User.Identity.Name);
-            
+
             //ASPxComboBoxUserManagementSite.DataSource = DTSite;
             //ASPxComboBoxUserManagementSite.ValueField = "SITECODE";
             //ASPxComboBoxUserManagementSite.ValueType = typeof(string);
@@ -169,13 +169,16 @@ namespace KBS.KBS.CMSV3.Administration
 
         protected void ASPxGridViewDetail_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
-            Session["ParamDetailID"] = ASPxGridViewDetail.GetRowValues(Convert.ToInt32(e.Parameters), "ID").ToString();
-            Session["ParamDetailEntry"] = ASPxGridViewDetail.GetRowValues(Convert.ToInt32(e.Parameters), "ENTRY").ToString();
-            Session["ParamDetailClass"] = ASPxGridViewDetail.GetRowValues(Convert.ToInt32(e.Parameters), "SITE CLASS").ToString();
-            if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("ParameterManagementDetailDetail.aspx");
-            else
-                Response.Redirect("ParameterManagementDetailDetail.aspx");
+                Session["ParamDetailID"] =
+                    ASPxGridViewDetail.GetRowValues(Convert.ToInt32(e.Parameters), "ID").ToString();
+                Session["ParamDetailEntry"] =
+                    ASPxGridViewDetail.GetRowValues(Convert.ToInt32(e.Parameters), "ENTRY").ToString();
+                Session["ParamDetailClass"] =
+                    ASPxGridViewDetail.GetRowValues(Convert.ToInt32(e.Parameters), "SITE CLASS").ToString();
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("ParameterManagementDetailDetail.aspx");
+                else
+                    Response.Redirect("ParameterManagementDetailDetail.aspx");
         }
 
         protected void BackhomeBtn_Click(object sender, EventArgs e)
@@ -185,18 +188,18 @@ namespace KBS.KBS.CMSV3.Administration
                 ASPxWebControl.RedirectOnCallback("ParameterManagementHeader.aspx");
             else
                 Response.Redirect("ParameterManagementHeader.aspx");
-            
+
         }
 
         protected void AddBtn_Click(object sender, EventArgs e)
         {
 
-                if (Page.IsCallback)
-                    ASPxWebControl.RedirectOnCallback("ParameterManagementDetailNew.aspx");
-                else
-                    Response.Redirect("ParameterManagementDetailNew.aspx");
+            if (Page.IsCallback)
+                ASPxWebControl.RedirectOnCallback("ParameterManagementDetailNew.aspx");
+            else
+                Response.Redirect("ParameterManagementDetailNew.aspx");
 
-            
+
         }
 
         protected void DelBtn_Click(object sender, EventArgs e)
@@ -229,6 +232,21 @@ namespace KBS.KBS.CMSV3.Administration
             ASPxGridViewDetail.DataBind();
         }
 
-
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewDetail.FocusedRowIndex != -1)
+            {
+                Session["ParamDetailID"] =
+                    ASPxGridViewDetail.GetRowValues(ASPxGridViewDetail.FocusedRowIndex, "ID").ToString();
+                Session["ParamDetailEntry"] =
+                    ASPxGridViewDetail.GetRowValues(ASPxGridViewDetail.FocusedRowIndex, "ENTRY").ToString();
+                Session["ParamDetailClass"] =
+                    ASPxGridViewDetail.GetRowValues(ASPxGridViewDetail.FocusedRowIndex, "SITE CLASS").ToString();
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("ParameterManagementDetailDetail.aspx");
+                else
+                    Response.Redirect("ParameterManagementDetailDetail.aspx");
+            }
+        }
     }
 }

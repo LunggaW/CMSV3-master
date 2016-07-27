@@ -311,5 +311,6 @@ namespace KBS.KBS.CMSV3.MasterData.ItemManagement.VariantManagement
             ComboDetailSize.TextField = "sizedesc";
             ComboDetailSize.DataBind();
         }
+        
     }
 }

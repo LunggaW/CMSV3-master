@@ -274,5 +274,18 @@ namespace KBS.KBS.CMSV3.MasterData.ItemManagement
             }
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewItem.FocusedRowIndex != -1)
+            {
+                Session["ItemIDExManagement"] =
+                    ASPxGridViewItem.GetRowValues(ASPxGridViewItem.FocusedRowIndex, "ITEM ID").ToString();
+
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("ItemManagementHeaderDetail.aspx");
+                else
+                    Response.Redirect("ItemManagementHeaderDetail.aspx");
+            }
+        }
     }
 }

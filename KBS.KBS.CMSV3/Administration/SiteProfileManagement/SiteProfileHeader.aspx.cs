@@ -245,6 +245,28 @@ namespace KBS.KBS.CMSV3.Administration.SiteProfileManagement
 
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewSiteProfile.FocusedRowIndex != -1)
+            {
+                Session["SiteProfileManagement"] =
+                    ASPxGridViewSiteProfile.GetRowValues(ASPxGridViewSiteProfile.FocusedRowIndex, "SITE PROFILE").ToString();
 
+                Session["Filter"] = "SiteManagement";
+                Session["SiteProfFilter"] = "True";
+                Session["SiteProfIdFilter"] = !string.IsNullOrWhiteSpace(TextBoxSiteProfile.Text)
+                    ? TextBoxSiteProfile.Text
+                    : "";
+                Session["SiteProfDescFilter"] = !string.IsNullOrWhiteSpace(TextBoxSiteProfileDescription.Text)
+                    ? TextBoxSiteProfileDescription.Text
+                    : "";
+
+
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("SiteProfileHeaderDetail.aspx");
+                else
+                    Response.Redirect("SiteProfileHeaderDetail.aspx");
+            }
+        }
     }
 }

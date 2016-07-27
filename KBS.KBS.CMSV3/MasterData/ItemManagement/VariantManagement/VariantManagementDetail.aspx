@@ -5,7 +5,8 @@
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../../../Content/New.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
-        function UpdateDetailGrid(s, e) {
+        function UpdateDetailGrid(s, e)
+        {
             detailGridView.PerformCallback(e.visibleIndex);
         }
     </script>
@@ -51,11 +52,22 @@
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
+        </span><span>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="False"
                 OnClick="SearchBtn_Click">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
+                </Image>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="False" >
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
@@ -127,7 +139,7 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="LabelTitle" runat="server" Font-Size="Large" 
+        <asp:Label ID="LabelTitle" runat="server" Font-Size="Large"
             Text="Variant Management Detail"></asp:Label>
     </div>
     <br />
@@ -149,81 +161,81 @@
     <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Visible="False"></asp:Label>
     <br />
     <br />
-        <table class="tableTop">
-            <tr>
-                <td class="tableHeader2Column" colspan="10">
-                    <dx:ASPxTextBox runat="server" Width="300px" Caption="Variant ID" 
-                        ID="TextBoxVariantIdx" ReadOnly="True" >
-                        <ReadOnlyStyle BackColor="Silver">
+    <table class="tableTop">
+        <tr>
+            <td class="tableHeader2Column" colspan="10">
+                <dx:ASPxTextBox runat="server" Width="300px" Caption="Variant ID"
+                    ID="TextBoxVariantIdx" ReadOnly="True">
+                    <ReadOnlyStyle BackColor="Silver">
                     </ReadOnlyStyle>
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <CaptionCellStyle Width="110px">
-                        </CaptionCellStyle>
-                    </dx:ASPxTextBox>
-                </td>
-                <td class="tableHeader2Column" colspan="10">
-                    <dx:ASPxTextBox runat="server" Width="300px" Caption="Variant ID" 
-                        ID="TextBoxVariantId" ReadOnly="True" Visible="false">
-                        <ReadOnlyStyle BackColor="Silver">
+                    <CaptionSettings ShowColon="False"></CaptionSettings>
+                    <CaptionCellStyle Width="110px">
+                    </CaptionCellStyle>
+                </dx:ASPxTextBox>
+            </td>
+            <td class="tableHeader2Column" colspan="10">
+                <dx:ASPxTextBox runat="server" Width="300px" Caption="Variant ID"
+                    ID="TextBoxVariantId" ReadOnly="True" Visible="false">
+                    <ReadOnlyStyle BackColor="Silver">
                     </ReadOnlyStyle>
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <CaptionCellStyle Width="110px">
-                        </CaptionCellStyle>
-                    </dx:ASPxTextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="tableHeader2Column" colspan="3">
-                    <dx:ASPxComboBox runat="server" Caption="Color Group" ID="ComboGroupColor" 
-                        Width="170px" AutoPostBack="True" 
-                        onselectedindexchanged="ComboGroupColor_SelectedIndexChanged">
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <CaptionCellStyle Width="110px">
-                        </CaptionCellStyle>
-                    </dx:ASPxComboBox>
-                </td>
-                <td class="tableHeader2Column" colspan="3">
-                    <dx:ASPxComboBox runat="server" Caption="Style Group" ID="ComboGroupStyle" 
-                        Width="170px" AutoPostBack="True" 
-                        onselectedindexchanged="ComboGroupStyle_SelectedIndexChanged">
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <CaptionCellStyle Width="110px">
-                        </CaptionCellStyle>
-                    </dx:ASPxComboBox>
-                </td>
-                <td class="tableHeader2Column" colspan="4">
-                    <dx:ASPxComboBox runat="server" Caption="Size Group" ID="ComboGroupSize" 
-                        Width="170px" AutoPostBack="True" 
-                        onselectedindexchanged="ComboGroupSize_SelectedIndexChanged">
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <CaptionCellStyle Width="110px">
-                        </CaptionCellStyle>
-                    </dx:ASPxComboBox>
-                </td>
-            </tr>
-            <tr>
-                 <td class="tableHeader2Column" colspan="3">
-                    <dx:ASPxComboBox runat="server" Caption="Color Detail" ID="ComboDetailColor" Width="170px">
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <CaptionCellStyle Width="110px">
-                        </CaptionCellStyle>
-                    </dx:ASPxComboBox>
-                </td>
-                <td class="tableHeader2Column" colspan="3">
-                    <dx:ASPxComboBox runat="server" Caption="Style Detail" ID="ComboDetailStyle" Width="170px">
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <CaptionCellStyle Width="110px">
-                        </CaptionCellStyle>
-                    </dx:ASPxComboBox>
-                </td>
-                <td class="tableHeader2Column" colspan="4">
-                    <dx:ASPxComboBox runat="server" Caption="Size Detail" ID="ComboDetailSize" Width="170px">
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <CaptionCellStyle Width="110px">
-                        </CaptionCellStyle>
-                    </dx:ASPxComboBox>
-                </td>
-            </tr>
-        </table>
-        <br/>
-        </asp:Content>
+                    <CaptionSettings ShowColon="False"></CaptionSettings>
+                    <CaptionCellStyle Width="110px">
+                    </CaptionCellStyle>
+                </dx:ASPxTextBox>
+            </td>
+        </tr>
+        <tr>
+            <td class="tableHeader2Column" colspan="3">
+                <dx:ASPxComboBox runat="server" Caption="Color Group" ID="ComboGroupColor"
+                    Width="170px" AutoPostBack="True"
+                    OnSelectedIndexChanged="ComboGroupColor_SelectedIndexChanged">
+                    <CaptionSettings ShowColon="False"></CaptionSettings>
+                    <CaptionCellStyle Width="110px">
+                    </CaptionCellStyle>
+                </dx:ASPxComboBox>
+            </td>
+            <td class="tableHeader2Column" colspan="3">
+                <dx:ASPxComboBox runat="server" Caption="Style Group" ID="ComboGroupStyle"
+                    Width="170px" AutoPostBack="True"
+                    OnSelectedIndexChanged="ComboGroupStyle_SelectedIndexChanged">
+                    <CaptionSettings ShowColon="False"></CaptionSettings>
+                    <CaptionCellStyle Width="110px">
+                    </CaptionCellStyle>
+                </dx:ASPxComboBox>
+            </td>
+            <td class="tableHeader2Column" colspan="4">
+                <dx:ASPxComboBox runat="server" Caption="Size Group" ID="ComboGroupSize"
+                    Width="170px" AutoPostBack="True"
+                    OnSelectedIndexChanged="ComboGroupSize_SelectedIndexChanged">
+                    <CaptionSettings ShowColon="False"></CaptionSettings>
+                    <CaptionCellStyle Width="110px">
+                    </CaptionCellStyle>
+                </dx:ASPxComboBox>
+            </td>
+        </tr>
+        <tr>
+            <td class="tableHeader2Column" colspan="3">
+                <dx:ASPxComboBox runat="server" Caption="Color Detail" ID="ComboDetailColor" Width="170px">
+                    <CaptionSettings ShowColon="False"></CaptionSettings>
+                    <CaptionCellStyle Width="110px">
+                    </CaptionCellStyle>
+                </dx:ASPxComboBox>
+            </td>
+            <td class="tableHeader2Column" colspan="3">
+                <dx:ASPxComboBox runat="server" Caption="Style Detail" ID="ComboDetailStyle" Width="170px">
+                    <CaptionSettings ShowColon="False"></CaptionSettings>
+                    <CaptionCellStyle Width="110px">
+                    </CaptionCellStyle>
+                </dx:ASPxComboBox>
+            </td>
+            <td class="tableHeader2Column" colspan="4">
+                <dx:ASPxComboBox runat="server" Caption="Size Detail" ID="ComboDetailSize" Width="170px">
+                    <CaptionSettings ShowColon="False"></CaptionSettings>
+                    <CaptionCellStyle Width="110px">
+                    </CaptionCellStyle>
+                </dx:ASPxComboBox>
+            </td>
+        </tr>
+    </table>
+    <br />
+</asp:Content>
