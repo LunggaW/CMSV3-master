@@ -184,15 +184,6 @@ namespace KBS.KBS.CMSV3.MasterData.SKUMasterManagement {
         protected global::DevExpress.Web.ASPxLabel ASPxLabelMessage;
         
         /// <summary>
-        /// IDTXT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox IDTXT;
-        
-        /// <summary>
         /// EXIDTXT control.
         /// </summary>
         /// <remarks>
@@ -200,6 +191,15 @@ namespace KBS.KBS.CMSV3.MasterData.SKUMasterManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxTextBox EXIDTXT;
+        
+        /// <summary>
+        /// IDTXT control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox IDTXT;
         
         /// <summary>
         /// SDESCTXT control.

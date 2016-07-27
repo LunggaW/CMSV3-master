@@ -1,7 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
 CodeBehind="SearchItemMaster.aspx.cs" 
 Inherits="KBS.KBS.CMSV3.SalesManagement.SearchItemMaster" %>
-
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../../Content/New.css" rel="stylesheet" type="text/css" />
@@ -15,7 +14,7 @@ Inherits="KBS.KBS.CMSV3.SalesManagement.SearchItemMaster" %>
             <dx:ASPxButton ID="BackhomeBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/back3.png" ToolTip="Previous Page" BackColor="Transparent"
-                OnClick="BackhomeBtn_Click">
+                >
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/back3Disable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -37,7 +36,7 @@ Inherits="KBS.KBS.CMSV3.SalesManagement.SearchItemMaster" %>
             <dx:ASPxButton ID="SaveBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/save.png" ToolTip="Save" BackColor="Transparent" 
-            Enabled="False">
+             Enabled  ="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/saveDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -131,80 +130,38 @@ Inherits="KBS.KBS.CMSV3.SalesManagement.SearchItemMaster" %>
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Search Detail"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Search Item"></asp:Label>
     </div>
-    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Search Detail"
+    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Search Item"
         Visible="false"></asp:Label>
     <div>
         <table class="tableTop">
             <tr>
+               <td class="tableHeader2Column" colspan="5">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Item ID" ID="TextBoxItemID" >
+                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                        <ReadOnlyStyle BackColor="Silver">
+                        </ReadOnlyStyle>
+                        <CaptionCellStyle Width="110px">
+                        </CaptionCellStyle>
+                    </dx:ASPxTextBox></td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" Caption="BARCODE" CaptionCellStyle-Width="100px" ID="BARCODETXT">
-                    </dx:ASPxTextBox>
-                </td>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="ITEM ID" ID="ITEMIDTXT">
-                    </dx:ASPxTextBox>
-                </td>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" Caption="VARIANT ID" CaptionCellStyle-Width="100px" ID="VARIANTTXT">
-                    </dx:ASPxTextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="SHORT DESC" ID="SHORTDESCTXT">
-                    </dx:ASPxTextBox>
-                </td>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="LONG DESC" ID="LONGDESCTXT">
-                    </dx:ASPxTextBox>
-                </td>                 
-            
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="SIZE GROUP" ID="SIZEGRPTXT">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Variant" ID="TextBoxVariant">
+                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                        <CaptionCellStyle Width="110px">
+                        </CaptionCellStyle>
                     </dx:ASPxTextBox>
                 </td>
             </tr>
-            <tr>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="SIZE " ID="SIZETXT">
-                    </dx:ASPxTextBox>
-                </td>                 
-            
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="COLOR GROUP" ID="COLORGRPTXT">
-                    </dx:ASPxTextBox>
-                </td>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="COLOR " ID="COLORTXT">
-                    </dx:ASPxTextBox>
-                </td>                 
-            </tr>
-            <tr>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="STYLE GROUP" ID="STYLEGRPTXT">
-                    </dx:ASPxTextBox>
-                </td>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="STYLE " ID="STYLETXT">
-                    </dx:ASPxTextBox>
-                </td>                 
-                    <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" Visible="false" CaptionCellStyle-Width="100px" Caption="STYLE " ID="ASPxTextBox1">
-                    </dx:ASPxTextBox>
-                </td>                 
-            </tr>
+           
         </table>
     </div>
     <br />
     <dx:ASPxGridView runat="server" ClientInstanceName="headerGridView" CssClass="ASPXGridView"
         ID="ASPxGridViewHeader" OnCustomCallback="ASPxGridViewHeader_CustomCallback">
         <ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>
-        <Settings ShowFilterRow="True" />
         <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True">
         </SettingsBehavior>
-        <SettingsSearchPanel Visible="True" />
     </dx:ASPxGridView>
     <%--<div align="center">
         <br />

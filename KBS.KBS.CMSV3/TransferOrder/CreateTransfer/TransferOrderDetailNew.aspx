@@ -127,7 +127,7 @@
     </div>
     <br />
     <div  style="text-align:center" class="title">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Shipment Detail"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Transfer Order Creation Detail New"></asp:Label>
     </div>
     <br />
     <span>

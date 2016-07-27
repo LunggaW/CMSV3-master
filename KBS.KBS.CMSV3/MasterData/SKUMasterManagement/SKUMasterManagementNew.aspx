@@ -187,11 +187,11 @@
         <table class="tableTop">
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon=false Caption="ID" ID="IDTXT">
+                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon=false Caption="EXTERNAL ID" ID="EXIDTXT">
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon=false Caption="EXTERNAL ID" ID="EXIDTXT">
+                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon=false Caption=" ID" ID="IDTXT" Visible="false">
                     </dx:ASPxTextBox>
                 </td>
             </tr>

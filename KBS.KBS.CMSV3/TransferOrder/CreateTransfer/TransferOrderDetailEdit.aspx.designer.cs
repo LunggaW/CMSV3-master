@@ -166,15 +166,6 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer {
         protected global::DevExpress.Web.ASPxTextBox QTYTXT;
         
         /// <summary>
-        /// SHIPTXT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox SHIPTXT;
-        
-        /// <summary>
         /// COMENTEXT control.
         /// </summary>
         /// <remarks>
@@ -182,5 +173,14 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxMemo COMENTEXT;
+        
+        /// <summary>
+        /// SHIPTXT control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox SHIPTXT;
     }
 }

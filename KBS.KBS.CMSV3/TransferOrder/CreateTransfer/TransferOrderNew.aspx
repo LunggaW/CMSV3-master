@@ -127,7 +127,7 @@
     </div>
     <br />
     <div align="center" class="title">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Transfer Order Shipment"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Transfer Order Creation New"></asp:Label>
     </div>
     <br />
     <span>
@@ -183,7 +183,7 @@
                     
                 </td>
                  <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxComboBox runat="server" Visible="true" Caption="STATUS" ID="STATUSBOX">
+                    <dx:ASPxComboBox runat="server" Visible="False" Caption="STATUS" ID="STATUSBOX">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>

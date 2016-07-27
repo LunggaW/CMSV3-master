@@ -121,7 +121,7 @@ namespace KBS.KBS.CMSV3.MasterData.SKUMasterManagement
         {
             SKUGroup skugroup = new SKUGroup();
 
-            skugroup.ID = IDTXT.Text;
+            skugroup.ID = EXIDTXT.Text;
             skugroup.EXID = EXIDTXT.Text;
             skugroup.SDesc = SDESCTXT.Text;
             skugroup.LDesc = LDESCTXT.Text;

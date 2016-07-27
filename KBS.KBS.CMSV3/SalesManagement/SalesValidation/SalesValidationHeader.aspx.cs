@@ -37,14 +37,20 @@ namespace KBS.KBS.CMSV3.SalesManagement
        
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            RefreshGrid();
+        }
+        private void RefreshGrid()
+        {
+          
             SalesHeader salesheader = new SalesHeader();
+            salesheader.SITE = Session["DefaultSite"].ToString();
             DTSalesHeader = CMSfunction.GetSalesHeaderDataTable(salesheader, 1);
             ASPxGridViewHeader.DataSource = DTSalesHeader;
             ASPxGridViewHeader.KeyFieldName = "TRANSACTION ID";
-            ASPxGridViewHeader.DataBind();            
-
+            ASPxGridViewHeader.DataBind();
         }
-        
+    
         protected void NextBtn_Click(object sender, EventArgs e)
         {
             if (ASPxGridViewHeader.PageIndex <= ASPxGridViewHeader.PageCount - 1)
@@ -156,16 +162,7 @@ namespace KBS.KBS.CMSV3.SalesManagement
 
         protected void SearchBtn_Click(object sender, EventArgs e)
         {
-            ColorGroup color = new ColorGroup();
-
-
-            //color.ID = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderID.Text) ? ASPxTextBoxHeaderID.Text : "";
-            //color.Color = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderName.Text) ? ASPxTextBoxHeaderName.Text : "";
-
-            DTSalesHeader = CMSfunction.GetColorHeaderDataTable(color);
-            ASPxGridViewHeader.DataSource = DTSalesHeader;
-            ASPxGridViewHeader.KeyFieldName = "ID";
-            ASPxGridViewHeader.DataBind();
+            RefreshGrid();
         }
 
         protected void ClearBtn_Click(object sender, EventArgs e)
@@ -259,6 +256,7 @@ namespace KBS.KBS.CMSV3.SalesManagement
                         salesheader.SITE = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SITE").ToString();
 
                         message = CMSfunction.UpdateStatusSales(salesheader, Session["UserID"].ToString(), 3);
+                        RefreshGrid();
                     }
                 }
             }
@@ -313,6 +311,7 @@ namespace KBS.KBS.CMSV3.SalesManagement
                     sb.Append("')};");
                     sb.Append("</script>");
                     ClientScript.RegisterClientScriptBlock(this.GetType(), "alert", sb.ToString());
+                    RefreshGrid();
                 }
             }
 
@@ -336,6 +335,7 @@ namespace KBS.KBS.CMSV3.SalesManagement
                 salesheader.SITE = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SITE").ToString();
 
                 message = CMSfunction.UpdateStatusSales(salesheader, Session["UserID"].ToString(), 4);
+                RefreshGrid();
             }
 
             Response.Redirect("SalesValidationHeader.aspx");

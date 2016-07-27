@@ -130,112 +130,22 @@ namespace KBS.KBS.CMSV3.SalesManagement {
         protected global::System.Web.UI.WebControls.Label LabelMessage;
         
         /// <summary>
-        /// BARCODETXT control.
+        /// TextBoxItemID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox BARCODETXT;
+        protected global::DevExpress.Web.ASPxTextBox TextBoxItemID;
         
         /// <summary>
-        /// ITEMIDTXT control.
+        /// TextBoxVariant control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox ITEMIDTXT;
-        
-        /// <summary>
-        /// VARIANTTXT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox VARIANTTXT;
-        
-        /// <summary>
-        /// SHORTDESCTXT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox SHORTDESCTXT;
-        
-        /// <summary>
-        /// LONGDESCTXT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox LONGDESCTXT;
-        
-        /// <summary>
-        /// SIZEGRPTXT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox SIZEGRPTXT;
-        
-        /// <summary>
-        /// SIZETXT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox SIZETXT;
-        
-        /// <summary>
-        /// COLORGRPTXT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox COLORGRPTXT;
-        
-        /// <summary>
-        /// COLORTXT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox COLORTXT;
-        
-        /// <summary>
-        /// STYLEGRPTXT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox STYLEGRPTXT;
-        
-        /// <summary>
-        /// STYLETXT control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox STYLETXT;
-        
-        /// <summary>
-        /// ASPxTextBox1 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox ASPxTextBox1;
+        protected global::DevExpress.Web.ASPxTextBox TextBoxVariant;
         
         /// <summary>
         /// ASPxGridViewHeader control.

@@ -140,8 +140,25 @@
     </span>
     <br />
     <div>
-        <table class="tableTop">
-        
+        <table class="tableTop">        
+           <tr>
+               <td class="tableHeader2Column" colspan="5">
+                 <dx:ASPxComboBox runat="server" Width="170px" ReadOnly="False" Caption="ITEM ID" AutoPostBack="true" ID="ITEMBOX">
+                        <ReadOnlyStyle BackColor="Silver">
+                        </ReadOnlyStyle>
+                        <CaptionCellStyle Width="100px">
+                        </CaptionCellStyle>
+                 </dx:ASPxComboBox>
+                 </td>
+                <td class="tableHeader2Column" colspan="5">
+                    <dx:ASPxComboBox runat="server" Width="170px" ReadOnly="False" Caption="VARIANT" AutoPostBack="true" ID="VARIANTBOX">
+                        <ReadOnlyStyle BackColor="Silver">
+                        </ReadOnlyStyle>
+                        <CaptionCellStyle Width="100px">
+                        </CaptionCellStyle>
+                 </dx:ASPxComboBox>
+                </td>
+            </tr>
             <tr>
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="ITEM ID" ID="ITEMTXT" onkeypress="return isNumberKey(event)" >

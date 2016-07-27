@@ -53,8 +53,17 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
         }
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
+                DTDetailInput = new DataTable();
+                DTDetailInput = CMSfunction.GetItemByAssortment(Session["DefaultSite"].ToString());
+                ITEMBOX.DataSource = DTDetailInput;
+                ITEMBOX.ValueField = "VALUE";
+                ITEMBOX.ValueType = typeof(string);
+                ITEMBOX.TextField = "DESCRIPTION";
+                ITEMBOX.DataBind();
+
                 if (Session["SearchVariantforUpdate"] == null)
                 {
                     Session["SearchVariantforUpdate"] = "";
@@ -81,6 +90,7 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
                 BARCODETXT.Text = Session["SearchBarcodeforUpdate"].ToString();
                 Session["SearchRedirect"] = null;
             }
+            DTDetailInput = new DataTable();
             DTDetailInput = CMSfunction.GetSKULinkBox(Session["DefaultSite"].ToString());
             SKUBOX.DataSource = DTDetailInput;
             SKUBOX.ValueField = "VALUE";
@@ -199,5 +209,15 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
 
         }
 
+        protected void ITEMBOX_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DTDetailInput = new DataTable();
+            DTDetailInput = CMSfunction.GetVariantByAssortment(ITEMBOX.Value.ToString(), Session["DefaultSite"].ToString());
+            VARIANTBOX.DataSource = DTDetailInput;
+            VARIANTBOX.ValueField = "VALUE";
+            VARIANTBOX.ValueType = typeof(string);
+            VARIANTBOX.TextField = "DESCRIPTION";
+            VARIANTBOX.DataBind();
+        }
     }
 }

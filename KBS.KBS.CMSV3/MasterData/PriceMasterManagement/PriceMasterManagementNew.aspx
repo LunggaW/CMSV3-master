@@ -188,7 +188,7 @@
         <table class="tableTop">
            <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="ITEM ID" ID="ITEMIDTXT" OnDisposed="ITEMIDTXT_Disposed">
+                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" AutoPostBack="true" Caption="ITEM ID" ID="ITEMIDTXT" OnTextChanged="ITEMIDTXT_TextChanged">
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">

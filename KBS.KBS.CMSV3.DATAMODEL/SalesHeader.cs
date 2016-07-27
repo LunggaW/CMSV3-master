@@ -14,6 +14,7 @@ namespace KBS.KBS.CMSV3.DATAMODEL
         public DateTime? DATE { get; set; }
         public string SITE { get; set; }
         public string COMMENT { get; set; }
+        public string USER { get; set; }
         public string REJECT { get; set; }
         public string VALID { get; set; }
         public Decimal STATUS { get; set; }

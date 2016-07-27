@@ -33,10 +33,10 @@ namespace KBS.KBS.CMSV3.MasterData
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            RefreshDataGrid();
             if (!IsPostBack)
             {
-                RefreshDataGrid();
+                
             }
 
         }
@@ -77,7 +77,9 @@ namespace KBS.KBS.CMSV3.MasterData
 
             Session["SearchItemIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ITEM ID").ToString();
             Session["SearchVariantforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VARIANT").ToString();
-            
+            Session["SearchItemIIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ITEMID").ToString();
+            Session["SearchVariantIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VARIANTID").ToString();
+
 
             if (Page.IsCallback)
                 ASPxWebControl.RedirectOnCallback(Session["SearchRedirect"].ToString());
@@ -114,6 +116,8 @@ namespace KBS.KBS.CMSV3.MasterData
             ASPxGridViewHeader.DataSource = DTSearchItem;
             ASPxGridViewHeader.KeyFieldName = "ITEM ID";
             ASPxGridViewHeader.DataBind();
+            ASPxGridViewHeader.Columns[0].Visible = false;
+            ASPxGridViewHeader.Columns[3].Visible = false;
         }
 
 
