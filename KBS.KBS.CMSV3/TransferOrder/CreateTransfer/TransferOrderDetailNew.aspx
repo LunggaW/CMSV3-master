@@ -163,7 +163,7 @@
         <table class="tableTop">
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="ITEM ID" ID="ITEMTXT" onkeypress="return isNumberKey(event)">
+                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Visible="false" Caption="ITEM ID" ID="ITEMTXT" onkeypress="return isNumberKey(event)">
                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="100px">
@@ -171,11 +171,31 @@
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Caption="VARIANT ID" ID="VID" onkeypress="return isNumberKey(event)">
+                    <dx:ASPxTextBox runat="server" Caption="VARIANT ID" ID="VID" Visible="false" onkeypress="return isNumberKey(event)">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
                     </dx:ASPxTextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="tableHeader2Column" colspan="5">
+                 <dx:ASPxComboBox runat="server" Width="170px" ReadOnly="False" Caption="ITEM ID" AutoPostBack="true" ID="ITEMBOX" OnSelectedIndexChanged="ITEMBOX_SelectedIndexChanged">
+                      <CaptionSettings ShowColon="False"></CaptionSettings>   
+                        <ReadOnlyStyle BackColor="Silver">
+                        </ReadOnlyStyle>
+                        <CaptionCellStyle Width="100px">
+                        </CaptionCellStyle>
+                 </dx:ASPxComboBox>
+                </td>
+                <td class="tableHeader2Column" colspan="5">
+                    <dx:ASPxComboBox runat="server" Width="170px" ReadOnly="False" Caption="VARIANT" AutoPostBack="true" ID="VARIANTBOX" OnSelectedIndexChanged="Variant_SelectedIndexChanged">
+                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                         <ReadOnlyStyle BackColor="Silver">
+                        </ReadOnlyStyle>
+                        <CaptionCellStyle Width="100px">
+                        </CaptionCellStyle>
+                 </dx:ASPxComboBox>
                 </td>
             </tr>
             <tr>
@@ -197,7 +217,7 @@
             </tr>
             <tr>
              <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxButton runat="server" Width="170px" ID="SearchBtnItem" Text="Search Item Dan Variant" OnClick="Search"></dx:ASPxButton>
+                    <dx:ASPxButton runat="server" Width="170px" ID="SearchBtnItem" Text="Search Item Dan Variant" Visible="false" OnClick="Search"></dx:ASPxButton>
                     
                 </td>
                 <td class="tableHeader2Column" colspan="5">

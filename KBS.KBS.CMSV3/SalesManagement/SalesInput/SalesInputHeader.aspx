@@ -185,7 +185,7 @@ Inherits="KBS.KBS.CMSV3.SalesManagement.SalesInputHeader" %>
 
         <span>
         <dx:ASPxButton ID="Confirm" runat="server" OnClick="Confirm_Click"
-            Text="VALIDATION" Font-Size="Medium">
+            Text="VALIDATE" Font-Size="Medium">
             <ClientSideEvents Click="function(s, e) {e.processOnServer = confirm('Are You Sure Want To Validation This Record ?');}" />
         </dx:ASPxButton>
         </span>
