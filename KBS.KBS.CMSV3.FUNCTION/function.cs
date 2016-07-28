@@ -7126,6 +7126,49 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 return null;
             }
         }
+        public TransferOrderDetail GetBarcodeTransferDetail2(TransferOrderDetail transferorderdetail, string SITE)
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "select BRCDBRCDID, BRCDITEMID, BRCDVRNTID from kdscmsMSTBRCD , KDSCMSSASS where " +
+                                  " SASSITEMID = BRCDITEMID AND SASSVRNT = BRCDVRNTID AND BRCDBRCDID = '" +
+                                  transferorderdetail.BARCODE + "' AND SASSSITEID = '" + SITE + "' group by BRCDBRCDID, BRCDITEMID, BRCDVRNTID ";
+
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+
+                transferorderdetail.BARCODE = "Not Found";
+                transferorderdetail.ITEMID = "";
+                transferorderdetail.VARIANT = "";
+
+                while (dr.Read())
+                {
+
+                    transferorderdetail.BARCODE = dr["BRCDBRCDID"].ToString();
+                    transferorderdetail.ITEMID = dr["BRCDITEMID"].ToString();
+                    transferorderdetail.VARIANT = dr["BRCDVRNTID"].ToString();
+
+
+                }
+
+                this.Close();
+                return transferorderdetail;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetSiteDataByProfileID Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
         public TransferOrderDetail GetBarcodeTransferDetail(TransferOrderDetail transferorderdetail)
         {
             try
@@ -7168,7 +7211,49 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 return null;
             }
         }
+        public TransferOrderDetail GetBarcodeByItemVariant(TransferOrderDetail transferorderdetail)
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "select BRCDBRCDID, BRCDITEMID, BRCDVRNTID from kdscmsMSTBRCD  WHERE BRCDITEMID = '" +
+                                  transferorderdetail.ITEMID + "' and BRCDVRNTID = '" +
+                                  transferorderdetail.VARIANT + "' ";
 
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+
+                transferorderdetail.BARCODE = "Not Found";
+                transferorderdetail.ITEMID = "";
+                transferorderdetail.VARIANT = "";
+
+                while (dr.Read())
+                {
+
+                    transferorderdetail.BARCODE = dr["BRCDBRCDID"].ToString();
+                    transferorderdetail.ITEMID = dr["BRCDITEMID"].ToString();
+                    transferorderdetail.VARIANT = dr["BRCDVRNTID"].ToString();
+
+
+                }
+
+                this.Close();
+                return transferorderdetail;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetSiteDataByProfileID Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
         public VariantDetail GetVariantDetail(String VariantID)
         {
             VariantDetail variantDetail = new VariantDetail();

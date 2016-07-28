@@ -21,7 +21,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
         private DataTable DTUserType = new DataTable();
         private DataTable DTMenuProfile = new DataTable();
         private DataTable DTGridViewUser = new DataTable();
-        
+
         private String MenuID = ConfigurationManager.AppSettings["MenuIdUserManagement"];
         private String Lepat;
         protected override void OnInit(EventArgs e)
@@ -43,61 +43,61 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-                DTAccessProfile = CMSfunction.GetAccessProfile();
 
-                DTSiteProfile = CMSfunction.GetSiteProfile();
+            DTAccessProfile = CMSfunction.GetAccessProfile();
 
-                DTMenuProfile = CMSfunction.GetMenuProfile();
+            DTSiteProfile = CMSfunction.GetSiteProfile();
 
-                DTUserStatus = CMSfunction.GetParameterbyClassAndTabID("0", "1");
+            DTMenuProfile = CMSfunction.GetMenuProfile();
 
-                DTUserType = CMSfunction.GetParameterbyClassAndTabID("0", "2");
+            DTUserStatus = CMSfunction.GetParameterbyClassAndTabID("0", "1");
 
-                ComboSiteProfile.DataSource = DTSiteProfile;
-                ComboSiteProfile.ValueField = "SITEPROFILE";
-                ComboSiteProfile.ValueType = typeof(string);
-                ComboSiteProfile.TextField = "SITEPROFILEDESC";
-                ComboSiteProfile.DataBind();
+            DTUserType = CMSfunction.GetParameterbyClassAndTabID("0", "2");
 
-                ComboAccessProfile.DataSource = DTAccessProfile;
-                ComboAccessProfile.ValueField = "ACCESSPROFILE";
-                ComboAccessProfile.ValueType = typeof(string);
-                ComboAccessProfile.TextField = "ACCESSPROFILEDESC";
-                ComboAccessProfile.DataBind();
+            ComboSiteProfile.DataSource = DTSiteProfile;
+            ComboSiteProfile.ValueField = "SITEPROFILE";
+            ComboSiteProfile.ValueType = typeof(string);
+            ComboSiteProfile.TextField = "SITEPROFILEDESC";
+            ComboSiteProfile.DataBind();
 
-                ComboMenuProfile.DataSource = DTMenuProfile;
-                ComboMenuProfile.ValueField = "MENUPROFILE";
-                ComboMenuProfile.ValueType = typeof(string);
-                ComboMenuProfile.TextField = "MENUPROFILEDESC";
-                ComboMenuProfile.DataBind();
+            ComboAccessProfile.DataSource = DTAccessProfile;
+            ComboAccessProfile.ValueField = "ACCESSPROFILE";
+            ComboAccessProfile.ValueType = typeof(string);
+            ComboAccessProfile.TextField = "ACCESSPROFILEDESC";
+            ComboAccessProfile.DataBind();
 
-                ComboUserType.DataSource = DTUserType;
-                ComboUserType.ValueField = "PARVALUE";
-                ComboUserType.ValueType = typeof(string);
-                ComboUserType.TextField = "PARDESCRIPTION";
-                ComboUserType.DataBind();
+            ComboMenuProfile.DataSource = DTMenuProfile;
+            ComboMenuProfile.ValueField = "MENUPROFILE";
+            ComboMenuProfile.ValueType = typeof(string);
+            ComboMenuProfile.TextField = "MENUPROFILEDESC";
+            ComboMenuProfile.DataBind();
 
-                ComboUserStatus.DataSource = DTUserStatus;
-                ComboUserStatus.ValueField = "PARVALUE";
-                ComboUserStatus.ValueType = typeof(string);
-                ComboUserStatus.TextField = "PARDESCRIPTION";
-                ComboUserStatus.DataBind();
-                string Compare = Session["Filter"].ToString();
-                if (Compare != "")
+            ComboUserType.DataSource = DTUserType;
+            ComboUserType.ValueField = "PARVALUE";
+            ComboUserType.ValueType = typeof(string);
+            ComboUserType.TextField = "PARDESCRIPTION";
+            ComboUserType.DataBind();
+
+            ComboUserStatus.DataSource = DTUserStatus;
+            ComboUserStatus.ValueField = "PARVALUE";
+            ComboUserStatus.ValueType = typeof(string);
+            ComboUserStatus.TextField = "PARDESCRIPTION";
+            ComboUserStatus.DataBind();
+            string Compare = Session["Filter"].ToString();
+            if (Compare != "")
+            {
+                if (Session["Filter"].ToString() != "UserManagement")
                 {
-                    if (Session["Filter"].ToString() != "UserManagement")
-                    {
-                        UserManagementHeader Sunda = new UserManagementHeader();
-                        Sunda.ClearDataSeasson();
-                    }
+                    UserManagementHeader Sunda = new UserManagementHeader();
+                    Sunda.ClearDataSeasson();
                 }
-                RefreshDataGrid();
-               
+            }
+            RefreshDataGrid();
+
 
         }
 
-        
+
         private void loadNavBar()
         {
 
@@ -126,7 +126,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
                 }
             }
             masterNav.DataBind();
-            
+
         }
 
         private void loadButton(String MenuID)
@@ -146,9 +146,9 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
                         //Ed.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         if (accessContainer.Type == "0")
                         {
-                            ASPxGridViewUser.ClientSideEvents.RowDblClick = null;    
+                            ASPxGridViewUser.ClientSideEvents.RowDblClick = null;
                         }
-                        
+
                         break;
                     case "3":
                         SearchBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
@@ -165,7 +165,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
 
         protected void SearchBtn_Click(object sender, EventArgs e)
         {
-            
+
         }
 
         protected void ASPxGridViewUser_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
@@ -175,7 +175,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             Session["UserIdFilter"] = !string.IsNullOrWhiteSpace(ASPxTextBoxUserManagementUserID.Text) ? ASPxTextBoxUserManagementUserID.Text : "";
 
             Session["StartDateFilter"] = sdate.Date != sdate.MinDate ? (object)sdate.Date : "";
-            Session["EndDateFilter"] = edate.Date != edate.MinDate ? (object) edate.Date : "";
+            Session["EndDateFilter"] = edate.Date != edate.MinDate ? (object)edate.Date : "";
 
             Session["UserDescFilter"] = !string.IsNullOrWhiteSpace(UserDesc.Text) ? UserDesc.Text : "";
             Session["UserAccProfFilter"] = (ComboAccessProfile.Value != null) ? ComboAccessProfile.Value.ToString() : "";
@@ -200,7 +200,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             if (ASPxGridViewUser.FocusedRowIndex != -1)
             {
                 String UserID = ASPxGridViewUser.GetRowValues(ASPxGridViewUser.FocusedRowIndex, "USER ID").ToString();
-                
+
 
 
                 OutputMessage message = new OutputMessage();
@@ -268,13 +268,13 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
 
             if (Session["UserFilter"] != null)
             {
-                
+
 
                 user.UserID = !string.IsNullOrWhiteSpace(Session["UserIdFilter"].ToString()) ? Session["UserIdFilter"].ToString() : "";
 
                 DateTime container;
                 user.StartDate = DateTime.TryParse(Session["StartDateFilter"].ToString(), out container)
-                    ? (DateTime?) container
+                    ? (DateTime?)container
                     : null;
 
                 user.EndDate = DateTime.TryParse(Session["EndDateFilter"].ToString(), out container)
@@ -342,7 +342,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
                 }
 
 
-               // Session.Remove("UserFilter");
+                // Session.Remove("UserFilter");
             }
             else
             {
@@ -353,24 +353,24 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
                 user.Description = !string.IsNullOrWhiteSpace(UserDesc.Text) ? UserDesc.Text : "";
 
 
-                user.EndDate = edate.Date != edate.MinDate ? (DateTime?) edate.Date : null;
-                user.StartDate = sdate.Date != sdate.MinDate ? (DateTime?) sdate.Date : null;
+                user.EndDate = edate.Date != edate.MinDate ? (DateTime?)edate.Date : null;
+                user.StartDate = sdate.Date != sdate.MinDate ? (DateTime?)sdate.Date : null;
 
                 user.AccessProfile = (ComboAccessProfile.Value != null) ? ComboAccessProfile.Value.ToString() : "";
                 user.SiteProfile = (ComboSiteProfile.Value != null) ? ComboSiteProfile.Value.ToString() : "";
                 user.MenuProfile = (ComboMenuProfile.Value != null) ? ComboMenuProfile.Value.ToString() : "";
             }
 
-            
-            
 
-            
+
+
+
 
             DTGridViewUser = CMSfunction.GetAllUserFiltered(user);
             ASPxGridViewUser.DataSource = DTGridViewUser;
             ASPxGridViewUser.KeyFieldName = "USER ID";
             ASPxGridViewUser.DataBind();
-            
+
         }
 
         protected void BackhomeBtn_Click(object sender, EventArgs e)
@@ -380,7 +380,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
         public void ClearDataSeasson()
         {
             //Assortment
-            Session.Remove("OrderData"); 
+            Session.Remove("OrderData");
             try
             {
                 Session.Remove("VariantIDExAssortment");
@@ -439,7 +439,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             }
             catch
             {
-               Lepat = "Failed";
+                Lepat = "Failed";
             }
             // Site Master
             try
@@ -469,7 +469,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             }
             catch
             {
-               Lepat = "Failed";
+                Lepat = "Failed";
             }
             // Brand Master
             try
@@ -484,7 +484,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             }
             catch
             {
-               Lepat = "Failed";
+                Lepat = "Failed";
             }
             // Site Master
             try
@@ -498,7 +498,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             }
             catch
             {
-               Lepat = "Failed";
+                Lepat = "Failed";
             }
             // Size Master
             try
@@ -512,7 +512,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             }
             catch
             {
-               Lepat = "Failed";
+                Lepat = "Failed";
             }
 
             // Price Master
@@ -528,12 +528,12 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
                     Session.Remove("FPVAT");
                     Session.Remove("FPriceEDate");
                     Session.Remove("FPriceSDate");
-                    
+
                 }
             }
             catch
             {
-               Lepat = "Failed";
+                Lepat = "Failed";
             }
             // Style Master
             try
@@ -548,7 +548,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             }
             catch
             {
-               Lepat = "Failed";
+                Lepat = "Failed";
             }
 
             // SKU Master
@@ -562,12 +562,12 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
                     Session.Remove("SKULDesc");
                     Session.Remove("SKUEDate");
                     Session.Remove("SKUSDate");
-                    Session.Remove("SKUFilter");                    
+                    Session.Remove("SKUFilter");
                 }
             }
             catch
             {
-               Lepat = "Failed";
+                Lepat = "Failed";
             }
             // Color Master
             try
@@ -577,12 +577,12 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
                     Session.Remove("ColorFilter");
                     Session.Remove("ColorID");
                     Session.Remove("ColorColor");
-              
+
                 }
             }
             catch
             {
-               Lepat = "Failed";
+                Lepat = "Failed";
             }
         }
 
@@ -615,5 +615,6 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
                 else
                     Response.Redirect("UserManagementHeaderDetail.aspx");
             }
+        }
     }
 }
