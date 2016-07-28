@@ -75,13 +75,19 @@ namespace KBS.KBS.CMSV3.SalesManagement
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
 
-            
-            if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback(Session["SearchRedirect"].ToString());
-            else
 
+            if (Page.IsCallback)
+            {
+                ASPxWebControl.RedirectOnCallback(Session["SearchRedirect"].ToString());
+            }
+
+            else
+            {
                 Response.Redirect(Session["SearchRedirect"].ToString());
-        }
+            }
+
+                
+    
         }
 
         protected void SearchBtn_Click(object sender, EventArgs e)
