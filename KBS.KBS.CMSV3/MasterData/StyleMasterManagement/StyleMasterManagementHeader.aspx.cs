@@ -57,10 +57,10 @@ namespace KBS.KBS.CMSV3.MasterData
                 {
                     if (Session["StyleFilter"].ToString() == "True")
                     {
-                   
+
                         ASPxTextBoxHeaderID.Text = !string.IsNullOrWhiteSpace(Session["StyleID"].ToString()) ? Session["StyleID"].ToString() : "";
                         ASPxTextBoxHeaderName.Text = !string.IsNullOrWhiteSpace(Session["StyleDesc"].ToString()) ? Session["StyleDesc"].ToString() : "";
-                    
+
                     }
                 }
                 catch
@@ -77,7 +77,7 @@ namespace KBS.KBS.CMSV3.MasterData
         {
             StyleGroup stylegroup = new StyleGroup();
 
-            
+
             stylegroup.ID = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderID.Text) ? ASPxTextBoxHeaderID.Text : "";
             stylegroup.StyleDesc = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderName.Text) ? ASPxTextBoxHeaderName.Text : "";
 
@@ -87,7 +87,7 @@ namespace KBS.KBS.CMSV3.MasterData
             ASPxGridViewHeader.DataBind();
         }
 
-        
+
         private void loadNavBar()
         {
 
@@ -131,7 +131,7 @@ namespace KBS.KBS.CMSV3.MasterData
                         AddBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         break;
                     case "2":
-                        //Ed.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        EditBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         if (accessContainer.Type == "0")
                         {
                             ASPxGridViewHeader.ClientSideEvents.RowDblClick = null;
@@ -153,22 +153,22 @@ namespace KBS.KBS.CMSV3.MasterData
 
         protected void PrevBtn_Click(object sender, EventArgs e)
         {
-            if (ASPxGridViewHeader.PageIndex -1 > 0)
+            if (ASPxGridViewHeader.PageIndex - 1 > 0)
             {
                 ASPxGridViewHeader.PageIndex = ASPxGridViewHeader.PageIndex - 1;
             }
         }
-        
+
 
         protected void LprevBtn_Click(object sender, EventArgs e)
         {
             ASPxGridViewHeader.PageIndex = 0;
         }
-        protected void NextBtn_Click(object sender, EventArgs e)        
+        protected void NextBtn_Click(object sender, EventArgs e)
         {
             if (ASPxGridViewHeader.PageIndex <= ASPxGridViewHeader.PageCount - 1)
             {
-                ASPxGridViewHeader.PageIndex = ASPxGridViewHeader.PageIndex + 1;    
+                ASPxGridViewHeader.PageIndex = ASPxGridViewHeader.PageIndex + 1;
             }
         }
         protected void LnextBtn_Click(object sender, EventArgs e)
@@ -179,22 +179,26 @@ namespace KBS.KBS.CMSV3.MasterData
 
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["StyleIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "STYLE GROUP ID").ToString();
+                Session["StyleDescforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "STYLE GROUP DESC").ToString();
 
-            Session["StyleIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "STYLE GROUP ID").ToString();
-            Session["StyleDescforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "STYLE GROUP DESC").ToString();
-            
 
-            if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("StyleMasterManagementEdit.aspx");
-            else
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("StyleMasterManagementEdit.aspx");
+                else
 
-                Response.Redirect("StyleMasterManagementEdit.aspx");
+                    Response.Redirect("StyleMasterManagementEdit.aspx");
+            }
         }
 
         protected void SearchBtn_Click(object sender, EventArgs e)
         {
-            Session["Filter"]= "StyleMaster";
-            Session["StyleFilter"]= "True";
+            Session["Filter"] = "StyleMaster";
+            Session["StyleFilter"] = "True";
             Session["StyleID"] = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderID.Text) ? ASPxTextBoxHeaderID.Text : "";
             Session["StyleDesc"] = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderName.Text) ? ASPxTextBoxHeaderName.Text : "";
 
@@ -206,7 +210,7 @@ namespace KBS.KBS.CMSV3.MasterData
 
         protected void ClearBtn_Click(object sender, EventArgs e)
         {
-            
+
             ASPxTextBoxHeaderID.Text = ""; ASPxTextBoxHeaderName.Text = "";
             Session["StyleID"] = "";
             Session["StyleDesc"] = "";
@@ -223,7 +227,7 @@ namespace KBS.KBS.CMSV3.MasterData
 
                 Session["StyleIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "STYLE GROUP ID").ToString();
                 Session["StyleDescforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "STYLE GROUP DESC").ToString();
-            
+
                 Response.Redirect("StyleDetailMasterManagement.aspx");
             }
 
@@ -268,11 +272,26 @@ namespace KBS.KBS.CMSV3.MasterData
                     Response.Redirect("StyleMasterManagementHeader.aspx");
                 }
             }
-           
+
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["StyleIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "STYLE GROUP ID").ToString();
+                Session["StyleDescforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "STYLE GROUP DESC").ToString();
 
 
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("StyleMasterManagementEdit.aspx");
+                else
+
+                    Response.Redirect("StyleMasterManagementEdit.aspx");
+            }
+        }
     }
 
 }

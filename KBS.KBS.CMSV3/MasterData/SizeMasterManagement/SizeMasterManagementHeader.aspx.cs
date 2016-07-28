@@ -139,7 +139,8 @@ namespace KBS.KBS.CMSV3.MasterData
                         AddBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         break;
                     case "2":
-                        //Ed.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        EditBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        
                         if (accessContainer.Type == "0")
                         {
                             ASPxGridViewHeader.ClientSideEvents.RowDblClick = null;
@@ -161,16 +162,20 @@ namespace KBS.KBS.CMSV3.MasterData
 
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
-          
-            Session["SizeIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SIZE GROUP ID").ToString();
-            Session["SizeDescforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SIZE GROUP DESC").ToString();
-            
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["SizeIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SIZE GROUP ID").ToString();
+                Session["SizeDescforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SIZE GROUP DESC").ToString();
 
-            if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("SizeMasterManagementEdit.aspx");
-            else
 
-                Response.Redirect("SizeMasterManagementEdit.aspx");
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("SizeMasterManagementEdit.aspx");
+                else
+
+                    Response.Redirect("SizeMasterManagementEdit.aspx");
+            }
         }
 
         protected void SearchBtn_Click(object sender, EventArgs e)
@@ -262,8 +267,23 @@ namespace KBS.KBS.CMSV3.MasterData
 
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["SizeIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SIZE GROUP ID").ToString();
+                Session["SizeDescforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SIZE GROUP DESC").ToString();
 
 
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("SizeMasterManagementEdit.aspx");
+                else
+
+                    Response.Redirect("SizeMasterManagementEdit.aspx");
+            }
+        }
     }
 
 }

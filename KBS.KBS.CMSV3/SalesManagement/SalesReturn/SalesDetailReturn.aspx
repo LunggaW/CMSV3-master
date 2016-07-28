@@ -1,12 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
-CodeBehind="SalesDetailReturn.aspx.cs" 
-Inherits="KBS.KBS.CMSV3.SalesManagement.SalesDetailReturn" %>
+    CodeBehind="SalesDetailReturn.aspx.cs"
+    Inherits="KBS.KBS.CMSV3.SalesManagement.SalesDetailReturn" %>
 
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../../Content/New.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
-        function UpdateDetailGrid(s, e) {
+        function UpdateDetailGrid(s, e)
+        {
             headerGridView.PerformCallback(e.visibleIndex);
         }
     </script>
@@ -35,7 +36,7 @@ Inherits="KBS.KBS.CMSV3.SalesManagement.SalesDetailReturn" %>
         </span><span>
             <dx:ASPxButton ID="SaveBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/save.png" ToolTip="Save" BackColor="Transparent"  Enabled="False">
+                Image-Url="~/image/save.png" ToolTip="Save" BackColor="Transparent" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/saveDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -52,10 +53,21 @@ Inherits="KBS.KBS.CMSV3.SalesManagement.SalesDetailReturn" %>
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
+        </span><span>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
+                </Image>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="False">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
@@ -134,7 +146,7 @@ Inherits="KBS.KBS.CMSV3.SalesManagement.SalesDetailReturn" %>
             <tr>
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxTextBox runat="server" Width="170px" Caption="TRANSACTION ID" ID="TRANSACTIONIDTXT" ReadOnly="true">
-                    <ReadOnlyStyle BackColor="Silver">
+                        <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
@@ -142,25 +154,25 @@ Inherits="KBS.KBS.CMSV3.SalesManagement.SalesDetailReturn" %>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxTextBox runat="server" Width="170px" Caption="INTERNAL ID" ID="INTERNALIDTXT" ReadOnly="true">
-                    <ReadOnlyStyle BackColor="Silver">
+                        <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
-                        </dx:ASPxTextBox>
+                    </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxTextBox runat="server" Width="170px" Caption="RECEIPT ID" ID="RECEIPTIDTXT" ReadOnly="true">
-                    <ReadOnlyStyle BackColor="Silver">
+                        <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
-                        </dx:ASPxTextBox>
+                    </dx:ASPxTextBox>
                 </td>
             </tr>
             <tr>
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxTextBox runat="server" Width="170px" Caption="SITE" ID="SITETXT" ReadOnly="true">
-                    <ReadOnlyStyle BackColor="Silver">
+                        <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
@@ -169,20 +181,20 @@ Inherits="KBS.KBS.CMSV3.SalesManagement.SalesDetailReturn" %>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxTextBox runat="server" Width="170px" Caption="NOTA" ID="NOTATXT" ReadOnly="true">
-                    
-                    <ReadOnlyStyle BackColor="Silver">
+
+                        <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
-                        </dx:ASPxTextBox>
+                    </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxTextBox runat="server" Width="170px" Caption="DATE" ID="DATETXT" ReadOnly="true">
-                    <ReadOnlyStyle BackColor="Silver">
+                        <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
-                        </dx:ASPxTextBox>
+                    </dx:ASPxTextBox>
                 </td>
             </tr>
         </table>
@@ -191,17 +203,16 @@ Inherits="KBS.KBS.CMSV3.SalesManagement.SalesDetailReturn" %>
     <dx:ASPxGridView runat="server" ClientInstanceName="headerGridView" CssClass="ASPXGridView"
         ID="ASPxGridViewHeader" OnCustomCallback="ASPxGridViewHeader_CustomCallback">
         <ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>
-        <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True">
-        </SettingsBehavior>
+        <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True"></SettingsBehavior>
     </dx:ASPxGridView>
     <div align="center">
         <br />
-                
+
         <span>
-        <dx:ASPxButton ID="ASPxButton1" runat="server" OnClick="Return_Click" Visible="false"
-            Text="RETURN" Font-Size="Medium">
+            <dx:ASPxButton ID="ASPxButton1" runat="server" OnClick="Return_Click" Visible="false"
+                Text="RETURN" Font-Size="Medium">
             </dx:ASPxButton>
-        </span>        
+        </span>
         <br />
     </div>
     <br />

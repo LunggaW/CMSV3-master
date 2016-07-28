@@ -1,12 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
-CodeBehind="SKUMasterManagementHeader.aspx.cs" 
-Inherits="KBS.KBS.CMSV3.MasterData.SKUMasterManagementHeader" %>
+    CodeBehind="SKUMasterManagementHeader.aspx.cs"
+    Inherits="KBS.KBS.CMSV3.MasterData.SKUMasterManagementHeader" %>
 
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../../Content/New.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
-        function UpdateDetailGrid(s, e) {
+        function UpdateDetailGrid(s, e)
+        {
             headerGridView.PerformCallback(e.visibleIndex);
         }
     </script>
@@ -25,8 +26,8 @@ Inherits="KBS.KBS.CMSV3.MasterData.SKUMasterManagementHeader" %>
         </span><span>
             <dx:ASPxButton ID="ValidateBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/valid.png" BackColor="Transparent" ToolTip="Valid" 
-            Enabled="False">
+                Image-Url="~/image/valid.png" BackColor="Transparent" ToolTip="Valid"
+                Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/validDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -36,8 +37,8 @@ Inherits="KBS.KBS.CMSV3.MasterData.SKUMasterManagementHeader" %>
         </span><span>
             <dx:ASPxButton ID="SaveBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/save.png" ToolTip="Save" BackColor="Transparent" 
-            Enabled="False">
+                Image-Url="~/image/save.png" ToolTip="Save" BackColor="Transparent"
+                Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/saveDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -54,11 +55,22 @@ Inherits="KBS.KBS.CMSV3.MasterData.SKUMasterManagementHeader" %>
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
+        </span><span>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="True"
                 OnClick="SearchBtn_Click">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
+                </Image>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="True" OnClick="EditBtn_Click">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
@@ -137,33 +149,33 @@ Inherits="KBS.KBS.CMSV3.MasterData.SKUMasterManagementHeader" %>
         <table class="tableTop">
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon=false Caption="ID" ID="IDTXT">
+                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon="false" Caption="ID" ID="IDTXT">
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon=false Caption="EXTERNAL ID" ID="EXIDTXT">
+                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon="false" Caption="EXTERNAL ID" ID="EXIDTXT">
                     </dx:ASPxTextBox>
                 </td>
             </tr>
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon=false Caption="SHORT DESC" ID="SDESCTXT">
+                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon="false" Caption="SHORT DESC" ID="SDESCTXT">
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon=false Caption="LONG DESC" ID="LDESCTXT">
+                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon="false" Caption="LONG DESC" ID="LDESCTXT">
                     </dx:ASPxTextBox>
                 </td>
             </tr>
-            <tr>            
+            <tr>
                 <td class="tableHeader2Column" colspan="5">
-                <dx:ASPxDateEdit runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon=false  Caption="START DATE" ID="SDATE">
-                </dx:ASPxDateEdit>                    
-                </td>            
+                    <dx:ASPxDateEdit runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon="false" Caption="START DATE" ID="SDATE">
+                    </dx:ASPxDateEdit>
+                </td>
                 <td class="tableHeader2Column" colspan="5">
-                <dx:ASPxDateEdit  runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon=false Caption="END DATE" ID="EDATE">
-                </dx:ASPxDateEdit>
-                </td>                                
+                    <dx:ASPxDateEdit runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon="false" Caption="END DATE" ID="EDATE">
+                    </dx:ASPxDateEdit>
+                </td>
             </tr>
         </table>
     </div>
@@ -171,8 +183,7 @@ Inherits="KBS.KBS.CMSV3.MasterData.SKUMasterManagementHeader" %>
     <dx:ASPxGridView runat="server" ClientInstanceName="headerGridView" CssClass="ASPXGridView"
         ID="ASPxGridViewHeader" OnCustomCallback="ASPxGridViewHeader_CustomCallback">
         <ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>
-        <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True">
-        </SettingsBehavior>
+        <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True"></SettingsBehavior>
     </dx:ASPxGridView>
     <div align="center">
         <br />

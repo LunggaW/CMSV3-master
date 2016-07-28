@@ -1,11 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
- CodeBehind="TransferOrderEdit.aspx.cs" 
+    CodeBehind="TransferOrderEdit.aspx.cs"
     Inherits="KBS.KBS.CMSV3.TransferOrder.CreateTransfer.TransferOrderEdit" %>
 
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
-        function UpdateDetailGrid(s, e) {
+        function UpdateDetailGrid(s, e)
+        {
             detailGridView.PerformCallback(e.visibleIndex);
         }
     </script>
@@ -52,10 +53,21 @@
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
+        </span><span>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
+                </Image>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="False">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
@@ -133,10 +145,10 @@
     <br />
     <br />
     <div>
-       <table class="tableTop">
+        <table class="tableTop">
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="TRUE"  Caption="ID" ID="IDTXT">
+                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="TRUE" Caption="ID" ID="IDTXT">
                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="100px">
@@ -144,7 +156,7 @@
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Caption="INTERNAL ID" ReadOnly="TRUE"   onkeypress="return isNumberKey(event)" ID="IIDTXT">
+                    <dx:ASPxTextBox runat="server" Caption="INTERNAL ID" ReadOnly="TRUE" onkeypress="return isNumberKey(event)" ID="IIDTXT">
                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionSettings ShowColon="False"></CaptionSettings>
@@ -154,14 +166,14 @@
                 </td>
             </tr>
             <tr>
-                 <td class="tableHeader2Column" colspan="5">
+                <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxComboBox runat="server" Visible="true" Caption="SITE FROM" ID="FROMBOX">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
                     </dx:ASPxComboBox>
                 </td>
-                 <td class="tableHeader2Column" colspan="5">
+                <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxComboBox runat="server" Visible="true" Caption="SITE TO" ID="TOBOX">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
@@ -183,7 +195,7 @@
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
-                    </dx:ASPxComboBox>                                  
+                    </dx:ASPxComboBox>
                 </td>
             </tr>
         </table>

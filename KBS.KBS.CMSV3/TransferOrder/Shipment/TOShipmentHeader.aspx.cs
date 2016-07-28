@@ -41,21 +41,21 @@ namespace KBS.KBS.CMSV3.TransferOrder
             DTTransferShipment = CMSfunction.GetTOShipmentHeaderDataTable(TOHeader, 0);
             ASPxGridViewHeader.DataSource = DTTransferShipment;
             ASPxGridViewHeader.KeyFieldName = "TRANSFER ID";
-            ASPxGridViewHeader.DataBind();            
+            ASPxGridViewHeader.DataBind();
 
         }
-        
+
         protected void NextBtn_Click(object sender, EventArgs e)
         {
             if (ASPxGridViewHeader.PageIndex <= ASPxGridViewHeader.PageCount - 1)
             {
-                ASPxGridViewHeader.PageIndex = ASPxGridViewHeader.PageIndex + 1;    
+                ASPxGridViewHeader.PageIndex = ASPxGridViewHeader.PageIndex + 1;
             }
         }
 
         protected void PrevBtn_Click(object sender, EventArgs e)
         {
-            if (ASPxGridViewHeader.PageIndex -1 >= 0)
+            if (ASPxGridViewHeader.PageIndex - 1 >= 0)
             {
                 ASPxGridViewHeader.PageIndex = ASPxGridViewHeader.PageIndex - 1;
             }
@@ -117,7 +117,7 @@ namespace KBS.KBS.CMSV3.TransferOrder
                         AddBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         break;
                     case "2":
-                        //Ed.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        EditBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         if (accessContainer.Type == "0")
                         {
                             ASPxGridViewHeader.ClientSideEvents.RowDblClick = null;
@@ -139,16 +139,19 @@ namespace KBS.KBS.CMSV3.TransferOrder
 
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["TOShipIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TRANSFER ID").ToString();
+                //Session["TGrpforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COLOR").ToString();
 
-            Session["TOShipIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TRANSFER ID").ToString();
-            //Session["TGrpforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COLOR").ToString();
-            
 
-            if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("TOShipmentEdit.aspx");
-            else
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("TOShipmentEdit.aspx");
+                else
 
-                Response.Redirect("TOShipmentEdit.aspx");
+                    Response.Redirect("TOShipmentEdit.aspx");
+            }
         }
 
         protected void SearchBtn_Click(object sender, EventArgs e)
@@ -167,9 +170,9 @@ namespace KBS.KBS.CMSV3.TransferOrder
 
         protected void ClearBtn_Click(object sender, EventArgs e)
         {
-            
+
             //ASPxTextBoxHeaderID.Text = ""; ASPxTextBoxHeaderName.Text = "";
-            
+
         }
 
 
@@ -178,7 +181,7 @@ namespace KBS.KBS.CMSV3.TransferOrder
             if (ASPxGridViewHeader.FocusedRowIndex != -1)
             {
                 Session["TOShipIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TRANSFER ID").ToString();
-                Session["TOShipIIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();                    
+                Session["TOShipIIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
                 Response.Redirect("TOShipmentDetail.aspx");
             }
 
@@ -191,7 +194,7 @@ namespace KBS.KBS.CMSV3.TransferOrder
                 TransferOrderDetail transferorderdetail = new TransferOrderDetail();
                 transferorderdetail.ID = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TRANSFER ID").ToString();
                 transferorderdetail.IID = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
-                
+
                 message = CMSfunction.UpdateStatus(transferorderdetail, Session["UserID"].ToString(), 2);
             }
             Response.Redirect("TOShipmentHeader.aspx");
@@ -222,8 +225,22 @@ namespace KBS.KBS.CMSV3.TransferOrder
             }
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["TOShipIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TRANSFER ID").ToString();
+                //Session["TGrpforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COLOR").ToString();
 
 
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("TOShipmentEdit.aspx");
+                else
+
+                    Response.Redirect("TOShipmentEdit.aspx");
+            }
+        }
     }
 
 }

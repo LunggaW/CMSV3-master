@@ -1,12 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
-CodeBehind="SKULinkMasterManagementHeader.aspx.cs" 
-Inherits="KBS.KBS.CMSV3.MasterData.SKULinkMasterManagementHeader" %>
+    CodeBehind="SKULinkMasterManagementHeader.aspx.cs"
+    Inherits="KBS.KBS.CMSV3.MasterData.SKULinkMasterManagementHeader" %>
 
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../../Content/New.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
-        function UpdateDetailGrid(s, e) {
+        function UpdateDetailGrid(s, e)
+        {
             headerGridView.PerformCallback(e.visibleIndex);
         }
     </script>
@@ -25,8 +26,8 @@ Inherits="KBS.KBS.CMSV3.MasterData.SKULinkMasterManagementHeader" %>
         </span><span>
             <dx:ASPxButton ID="ValidateBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/valid.png" BackColor="Transparent" ToolTip="Valid" 
-            Enabled="False">
+                Image-Url="~/image/valid.png" BackColor="Transparent" ToolTip="Valid"
+                Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/validDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -36,8 +37,8 @@ Inherits="KBS.KBS.CMSV3.MasterData.SKULinkMasterManagementHeader" %>
         </span><span>
             <dx:ASPxButton ID="SaveBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/save.png" ToolTip="Save" BackColor="Transparent" 
-            Enabled="False">
+                Image-Url="~/image/save.png" ToolTip="Save" BackColor="Transparent"
+                Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/saveDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -54,11 +55,22 @@ Inherits="KBS.KBS.CMSV3.MasterData.SKULinkMasterManagementHeader" %>
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
+        </span><span>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="True"
                 OnClick="SearchBtn_Click">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
+                </Image>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="True" OnClick="EditBtn_Click">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
@@ -134,7 +146,7 @@ Inherits="KBS.KBS.CMSV3.MasterData.SKULinkMasterManagementHeader" %>
     <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="SKU Link"
         Visible="false"></asp:Label>
     <div>
-    <%--    <table class="tableTop">
+        <%--    <table class="tableTop">
             <tr>
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" Caption="SKU" ID="SKUTXT">
@@ -185,16 +197,8 @@ Inherits="KBS.KBS.CMSV3.MasterData.SKULinkMasterManagementHeader" %>
         ID="ASPxGridViewHeader" OnCustomCallback="ASPxGridViewHeader_CustomCallback">
         <ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>
         <Settings ShowFilterRow="True" />
-        <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True">
-        </SettingsBehavior>
+        <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True"></SettingsBehavior>
         <SettingsSearchPanel Visible="True" />
     </dx:ASPxGridView>
-    <%--<div align="center">
-        <br />
-        <dx:ASPxButton ID="ASPxButtonEntry" runat="server" OnClick="ASPxButtonEntry_Click"
-            Text="Entry" Font-Size="Medium">
-        </dx:ASPxButton>
-        <br />
-    </div>--%>
     <br />
 </asp:Content>

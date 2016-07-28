@@ -121,7 +121,7 @@ namespace KBS.KBS.CMSV3.Report
                         AddBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         break;
                     case "2":
-                        //Ed.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        EditBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         if (accessContainer.Type == "0")
                         {
                             ASPxGridViewSalesHeader.ClientSideEvents.RowDblClick = null;

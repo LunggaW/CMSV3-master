@@ -117,7 +117,7 @@ namespace KBS.KBS.CMSV3.SalesManagement
                         AddBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         break;
                     case "2":
-                        //Ed.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        EditBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         if (accessContainer.Type == "0")
                         {
                             ASPxGridViewHeader.ClientSideEvents.RowDblClick = null;
@@ -138,20 +138,30 @@ namespace KBS.KBS.CMSV3.SalesManagement
         }
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
-            Session["INPUTSALESID"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TRANSACTION ID").ToString();
-            Session["INPUTIID"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
-            Session["INPUTNOTA"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "NOTA").ToString();
-            Session["INPUTRECEIPTID"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "RECEIPT ID").ToString();
-            Session["INPUTDATE"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "DATE").ToString();
-            Session["INPUTSITE"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SITE").ToString();
-            Session["INPUTCOMMENT"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COMMENT").ToString();
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["INPUTSALESID"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TRANSACTION ID").ToString();
+                Session["INPUTIID"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
+                Session["INPUTNOTA"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "NOTA").ToString();
+                Session["INPUTRECEIPTID"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "RECEIPT ID").ToString();
+                Session["INPUTDATE"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "DATE").ToString();
+                Session["INPUTSITE"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SITE").ToString();
+                Session["INPUTCOMMENT"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COMMENT").ToString();
 
-            if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("SalesValidationEdit.aspx");
-            else
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("SalesValidationEdit.aspx");
+                else
 
-                Response.Redirect("SalesValidationEdit.aspx");
-         
+                    Response.Redirect("SalesValidationEdit.aspx");
+            }
+
         }
 
         protected void SearchBtn_Click(object sender, EventArgs e)
@@ -341,8 +351,32 @@ namespace KBS.KBS.CMSV3.SalesManagement
             Response.Redirect("SalesValidationHeader.aspx");
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["INPUTSALESID"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TRANSACTION ID").ToString();
+                Session["INPUTIID"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
+                Session["INPUTNOTA"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "NOTA").ToString();
+                Session["INPUTRECEIPTID"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "RECEIPT ID").ToString();
+                Session["INPUTDATE"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "DATE").ToString();
+                Session["INPUTSITE"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SITE").ToString();
+                Session["INPUTCOMMENT"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COMMENT").ToString();
 
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("SalesValidationEdit.aspx");
+                else
 
+                    Response.Redirect("SalesValidationEdit.aspx");
+            }
+        }
     }
 
 }

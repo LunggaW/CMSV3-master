@@ -141,7 +141,7 @@ namespace KBS.KBS.CMSV3.TransferOrder
                         AddBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         break;
                     case "2":
-                        //Ed.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        EditBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         if (accessContainer.Type == "0")
                         {
                             ASPxGridViewHeader.ClientSideEvents.RowDblClick = null;
@@ -162,16 +162,20 @@ namespace KBS.KBS.CMSV3.TransferOrder
         }
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
-            
-            Session["TRANSFERID"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TRANSFER ID").ToString();
-            Session["INTERNALID"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
-            
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["TRANSFERID"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TRANSFER ID").ToString();
+                Session["INTERNALID"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
 
-            if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("TransferOrderEdit.aspx");
-            else
-                Response.Redirect("TransferOrderEdit.aspx");
-                
+
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("TransferOrderEdit.aspx");
+                else
+                    Response.Redirect("TransferOrderEdit.aspx");
+            }
+
         }
 
         protected void SearchBtn_Click(object sender, EventArgs e)
@@ -220,8 +224,22 @@ namespace KBS.KBS.CMSV3.TransferOrder
                         
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["TRANSFERID"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TRANSFER ID").ToString();
+                Session["INTERNALID"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
 
 
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("TransferOrderEdit.aspx");
+                else
+                    Response.Redirect("TransferOrderEdit.aspx");
+            }
+        }
     }
 
 }

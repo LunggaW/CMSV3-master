@@ -101,16 +101,20 @@ namespace KBS.KBS.CMSV3.MasterData
 
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["SizeDetailIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
+                Session["SizeDetailGrpforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "GROUP ID").ToString();
 
-            Session["SizeDetailIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
-            Session["SizeDetailGrpforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "GROUP ID").ToString();
-            
 
-            if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("SizeDetailMasterManagementEdit.aspx");
-            else
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("SizeDetailMasterManagementEdit.aspx");
+                else
 
-                Response.Redirect("SizeDetailMasterManagementEdit.aspx");
+                    Response.Redirect("SizeDetailMasterManagementEdit.aspx");
+            }
         }
 
         protected void SearchBtn_Click(object sender, EventArgs e)
@@ -165,8 +169,23 @@ namespace KBS.KBS.CMSV3.MasterData
             Response.Redirect("SizeDetailMasterManagement.aspx");
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["SizeDetailIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
+                Session["SizeDetailGrpforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "GROUP ID").ToString();
 
 
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("SizeDetailMasterManagementEdit.aspx");
+                else
+
+                    Response.Redirect("SizeDetailMasterManagementEdit.aspx");
+            }
+        }
     }
 
 }

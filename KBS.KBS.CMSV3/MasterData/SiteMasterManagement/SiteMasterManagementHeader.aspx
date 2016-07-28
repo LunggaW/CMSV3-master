@@ -4,7 +4,8 @@
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
     <script type="text/javascript">
-        function showHeaderDetail(s, e) {
+        function showHeaderDetail(s, e)
+        {
             headerGridView.PerformCallback(e.visibleIndex);
         }
     </script>
@@ -51,11 +52,22 @@
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
+        </span><span>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="TRUE"
                 OnClick="SearchBtn_Click">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
+                </Image>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="True" OnClick="EditBtn_Click">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
@@ -139,13 +151,14 @@
         <table class="tableTop">
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Site" ID="TextBoxSite" >
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Site" ID="TextBoxSite">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="110px">
                         </CaptionCellStyle>
-                    </dx:ASPxTextBox></td>
+                    </dx:ASPxTextBox>
+                </td>
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxTextBox runat="server" Width="170px" Caption="Site Name" ID="TextBoxSiteName">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
@@ -166,9 +179,8 @@
         </table>
     </div>
     <br />
-    <dx:ASPxGridView ID="ASPxGridViewSite" runat="server" CssClass="ASPXGridView" 
-        ClientInstanceName="headerGridView" oncustomcallback="ASPxGridViewSite_CustomCallback"
-        >
+    <dx:ASPxGridView ID="ASPxGridViewSite" runat="server" CssClass="ASPXGridView"
+        ClientInstanceName="headerGridView" OnCustomCallback="ASPxGridViewSite_CustomCallback">
         <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True" />
         <ClientSideEvents RowDblClick="showHeaderDetail"></ClientSideEvents>
     </dx:ASPxGridView>

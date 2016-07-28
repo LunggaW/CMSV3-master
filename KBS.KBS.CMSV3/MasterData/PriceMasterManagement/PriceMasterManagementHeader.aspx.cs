@@ -38,7 +38,7 @@ namespace KBS.KBS.CMSV3.MasterData
         {
             if (!IsPostBack)
             {
-                PriceGroup pricegroup = new PriceGroup();                
+                PriceGroup pricegroup = new PriceGroup();
                 DTPrice = CMSfunction.GetPriceHeaderDataTable(pricegroup);
 
                 ASPxGridViewHeader.DataSource = DTPrice;
@@ -56,7 +56,7 @@ namespace KBS.KBS.CMSV3.MasterData
                 else
                 {
                     try
-                    { 
+                    {
                         if (Session["PriceFilter"].ToString() == "True")
                         {
                             ITEMIDTXT.Text = Session["FPItemId"].ToString();
@@ -76,13 +76,13 @@ namespace KBS.KBS.CMSV3.MasterData
                             // Session["FPriceSDate"] = SDATE.Date != DateTime.MinValue ? (DateTime?)SDATE.Date : null;
                         }
                     }
-                        catch
+                    catch
                     {
                         String Data = "Not Found";
                     }
-            }
-                    
-               
+                }
+
+
 
             }
             SearchBtn_Click();
@@ -97,7 +97,7 @@ namespace KBS.KBS.CMSV3.MasterData
         }
         protected void PrevBtn_Click(object sender, EventArgs e)
         {
-            if (ASPxGridViewHeader.PageIndex -1 >= 0)
+            if (ASPxGridViewHeader.PageIndex - 1 >= 0)
             {
                 ASPxGridViewHeader.PageIndex = ASPxGridViewHeader.PageIndex - 1;
             }
@@ -157,7 +157,8 @@ namespace KBS.KBS.CMSV3.MasterData
                         AddBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         break;
                     case "2":
-                        //Ed.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        EditBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        
                         if (accessContainer.Type == "0")
                         {
                             ASPxGridViewHeader.ClientSideEvents.RowDblClick = null;
@@ -179,22 +180,31 @@ namespace KBS.KBS.CMSV3.MasterData
 
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
 
-            
-            Session["PriceIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ITEM ID").ToString();
-            Session["PriceVarforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VARIANT ID").ToString();
-            Session["PriceSiteforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SITE").ToString();
-            Session["PriceVATforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VAT").ToString();
-            Session["PriceforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "PRICE").ToString();
-            Session["PriceSDateforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "START DATE").ToString();
-            Session["PriceEDateforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "END DATE").ToString();
-            
+                Session["PriceIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ITEM ID").ToString();
+                Session["PriceVarforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VARIANT ID").ToString();
+                Session["PriceSiteforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SITE").ToString();
+                Session["PriceVATforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VAT").ToString();
+                Session["PriceforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "PRICE").ToString();
+                Session["PriceSDateforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "START DATE").ToString();
+                Session["PriceEDateforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "END DATE").ToString();
 
-            if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("PriceMasterManagementEdit.aspx");
-            else
 
-                Response.Redirect("PriceMasterManagementEdit.aspx");
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("PriceMasterManagementEdit.aspx");
+                else
+
+                    Response.Redirect("PriceMasterManagementEdit.aspx");
+            }
         }
         private void SearchBtn_Click()
         {
@@ -218,7 +228,7 @@ namespace KBS.KBS.CMSV3.MasterData
         }
         protected void SearchBtn_Click(object sender, EventArgs e)
         {
-            
+
             Session["Filter"] = "PriceMaster";
             Session["PriceFilter"] = "True";
             Session["FPItemId"] = !string.IsNullOrWhiteSpace(ITEMIDTXT.Text) ? ITEMIDTXT.Text : "";
@@ -234,8 +244,8 @@ namespace KBS.KBS.CMSV3.MasterData
 
         protected void ClearBtn_Click(object sender, EventArgs e)
         {
-            
-            ITEMIDTXT.Text = ""; 
+
+            ITEMIDTXT.Text = "";
             VARIANTTXT.Text = "";
             SITETXT.Text = "";
             PRICETXT.Text = "";
@@ -284,7 +294,7 @@ namespace KBS.KBS.CMSV3.MasterData
                 PriceGroup pricegroup = new PriceGroup();
 
 
-                
+
 
 
                 String ITEMID = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ITEM ID").ToString();
@@ -305,8 +315,33 @@ namespace KBS.KBS.CMSV3.MasterData
             Response.Redirect("PriceMasterManagementHeader.aspx");
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["PriceIDforUpdate"] =
+                   ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ITEM ID").ToString();
+                Session["PriceVarforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VARIANT ID").ToString();
+                Session["PriceSiteforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SITE").ToString();
+                Session["PriceVATforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VAT").ToString();
+                Session["PriceforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "PRICE").ToString();
+                Session["PriceSDateforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "START DATE").ToString();
+                Session["PriceEDateforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "END DATE").ToString();
 
 
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("PriceMasterManagementEdit.aspx");
+                else
+
+                    Response.Redirect("PriceMasterManagementEdit.aspx");
+            }
+        }
     }
 
 }

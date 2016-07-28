@@ -1,12 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
-CodeBehind="TransferOrderD.aspx.cs" 
-Inherits="KBS.KBS.CMSV3.TransferOrder.TransferOrderD" %>
+    CodeBehind="TransferOrderD.aspx.cs"
+    Inherits="KBS.KBS.CMSV3.TransferOrder.TransferOrderD" %>
 
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../../Content/New.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
-        function UpdateDetailGrid(s, e) {
+        function UpdateDetailGrid(s, e)
+        {
             headerGridView.PerformCallback(e.visibleIndex);
         }
     </script>
@@ -25,8 +26,8 @@ Inherits="KBS.KBS.CMSV3.TransferOrder.TransferOrderD" %>
         </span><span>
             <dx:ASPxButton ID="ValidateBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/valid.png" BackColor="Transparent" ToolTip="Valid" 
-            Enabled="False">
+                Image-Url="~/image/valid.png" BackColor="Transparent" ToolTip="Valid"
+                Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/validDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -36,8 +37,8 @@ Inherits="KBS.KBS.CMSV3.TransferOrder.TransferOrderD" %>
         </span><span>
             <dx:ASPxButton ID="SaveBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/save.png" ToolTip="Save" BackColor="Transparent" 
-            Enabled="False">
+                Image-Url="~/image/save.png" ToolTip="Save" BackColor="Transparent"
+                Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/saveDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -54,6 +55,7 @@ Inherits="KBS.KBS.CMSV3.TransferOrder.TransferOrderD" %>
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
+        </span><span>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="True"
@@ -65,8 +67,18 @@ Inherits="KBS.KBS.CMSV3.TransferOrder.TransferOrderD" %>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
         </span><span>
+            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="True" OnClick="EditBtn_Click">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
+                </Image>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
             <dx:ASPxButton ID="AddBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False" EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/plus.png" ToolTip="Add" BackColor="Transparent" 
+                Image-Url="~/image/plus.png" ToolTip="Add" BackColor="Transparent"
                 OnClick="AddBtn_Click">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/plusDisable.png">
                 </Image>
@@ -133,7 +145,7 @@ Inherits="KBS.KBS.CMSV3.TransferOrder.TransferOrderD" %>
     <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Transfer Order Shipment Detail"
         Visible="false"></asp:Label>
     <div>
-      <%--  <table class="tableTop">
+        <%--  <table class="tableTop">
             <tr>
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxTextBox runat="server" Width="170px" Caption="ID" ID="ASPxTextBoxHeaderID">
@@ -150,9 +162,8 @@ Inherits="KBS.KBS.CMSV3.TransferOrder.TransferOrderD" %>
     <dx:ASPxGridView runat="server" ClientInstanceName="headerGridView" CssClass="ASPXGridView"
         ID="ASPxGridViewHeader" OnCustomCallback="ASPxGridViewHeader_CustomCallback">
         <ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>
-        <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True">
-        </SettingsBehavior>
+        <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True"></SettingsBehavior>
     </dx:ASPxGridView>
-    
+
     <br />
 </asp:Content>

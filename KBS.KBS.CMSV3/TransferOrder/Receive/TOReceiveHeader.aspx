@@ -1,12 +1,13 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
-CodeBehind="TOReceiveHeader.aspx.cs" 
-Inherits="KBS.KBS.CMSV3.TransferOrder.TOReceiveHeader" %>
+    CodeBehind="TOReceiveHeader.aspx.cs"
+    Inherits="KBS.KBS.CMSV3.TransferOrder.TOReceiveHeader" %>
 
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../../Content/New.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
-        function UpdateDetailGrid(s, e) {
+        function UpdateDetailGrid(s, e)
+        {
             headerGridView.PerformCallback(e.visibleIndex);
         }
     </script>
@@ -25,8 +26,8 @@ Inherits="KBS.KBS.CMSV3.TransferOrder.TOReceiveHeader" %>
         </span><span>
             <dx:ASPxButton ID="ValidateBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/valid.png" BackColor="Transparent" ToolTip="Valid" 
-            Enabled="False">
+                Image-Url="~/image/valid.png" BackColor="Transparent" ToolTip="Valid"
+                Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/validDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -36,8 +37,8 @@ Inherits="KBS.KBS.CMSV3.TransferOrder.TOReceiveHeader" %>
         </span><span>
             <dx:ASPxButton ID="SaveBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/save.png" ToolTip="Save" BackColor="Transparent" 
-            Enabled="False">
+                Image-Url="~/image/save.png" ToolTip="Save" BackColor="Transparent"
+                Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/saveDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -54,11 +55,22 @@ Inherits="KBS.KBS.CMSV3.TransferOrder.TOReceiveHeader" %>
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
+        </span><span>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="True"
                 OnClick="SearchBtn_Click">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
+                </Image>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="False">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
@@ -150,19 +162,21 @@ Inherits="KBS.KBS.CMSV3.TransferOrder.TOReceiveHeader" %>
     <dx:ASPxGridView runat="server" ClientInstanceName="headerGridView" CssClass="ASPXGridView"
         ID="ASPxGridViewHeader" OnCustomCallback="ASPxGridViewHeader_CustomCallback">
         <ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>
-        <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True">
-        </SettingsBehavior>
+        <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True"></SettingsBehavior>
     </dx:ASPxGridView>
     <div align="center">
         <br />
-        <span><dx:ASPxButton ID="ASPxButtonEntry" runat="server" OnClick="ASPxButtonEntry_Click"
-            Text="ENTRY" Font-Size="Medium">
-        </dx:ASPxButton>
+        <span>
+            <dx:ASPxButton ID="ASPxButtonEntry" runat="server" OnClick="ASPxButtonEntry_Click"
+                Text="ENTRY" Font-Size="Medium">
+            </dx:ASPxButton>
         </span>
-        <span><dx:ASPxButton ID="Receive" runat="server" OnClick="Receive_Click"
-            Text="RECEIVE" Font-Size="Medium">
-        </dx:ASPxButton></span>
-        
+        <span>
+            <dx:ASPxButton ID="Receive" runat="server" OnClick="Receive_Click"
+                Text="RECEIVE" Font-Size="Medium">
+            </dx:ASPxButton>
+        </span>
+
 
         <br />
     </div>

@@ -210,11 +210,13 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
         {
             if (ASPxGridViewAssortment.FocusedRowIndex != -1)
             {
-                Session["SiteAssortment"] = ASPxGridViewAssortment.GetRowValues(ASPxGridViewAssortment.FocusedRowIndex, "SITE").ToString();
+                Session["SiteAssortment"] =
+                    ASPxGridViewAssortment.GetRowValues(ASPxGridViewAssortment.FocusedRowIndex, "SITE").ToString();
                 if (Page.IsCallback)
                     ASPxWebControl.RedirectOnCallback("AssortmentManagementDetailView.aspx");
                 else
                     Response.Redirect("AssortmentManagementDetailView.aspx");
             }
+        }
     }
 }

@@ -33,13 +33,13 @@ namespace KBS.KBS.CMSV3.SalesManagement
 
         protected void Page_Load(object sender, EventArgs e)
         {
-                        
-                SearchItemVariant search = new SearchItemVariant();
 
-                DTSearch = CMSfunction.GetSearchHeaderDataTable(search);
-                ASPxGridViewHeader.DataSource = DTSearch;
-                ASPxGridViewHeader.KeyFieldName = "ITEM ID";
-                ASPxGridViewHeader.DataBind();                        
+            SearchItemVariant search = new SearchItemVariant();
+
+            DTSearch = CMSfunction.GetSearchHeaderDataTable(search);
+            ASPxGridViewHeader.DataSource = DTSearch;
+            ASPxGridViewHeader.KeyFieldName = "ITEM ID";
+            ASPxGridViewHeader.DataBind();
         }
 
 
@@ -110,17 +110,22 @@ namespace KBS.KBS.CMSV3.SalesManagement
 
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["SearchItemIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ITEM ID").ToString();
+                Session["SearchVariantforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VARIANT ID").ToString();
+                Session["SearchBarcodeforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BARCODE").ToString();
 
-            Session["SearchItemIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ITEM ID").ToString();
-            Session["SearchVariantforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VARIANT ID").ToString();
-            Session["SearchBarcodeforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BARCODE").ToString();
-            
 
-            if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback(Session["SearchRedirect"].ToString());
-            else
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback(Session["SearchRedirect"].ToString());
+                else
 
-                Response.Redirect(Session["SearchRedirect"].ToString());
+                    Response.Redirect(Session["SearchRedirect"].ToString());
+            }
         }
 
         protected void SearchBtn_Click(object sender, EventArgs e)
@@ -135,7 +140,7 @@ namespace KBS.KBS.CMSV3.SalesManagement
             search.COLORGRP = !string.IsNullOrWhiteSpace(COLORGRPTXT.Text) ? COLORGRPTXT.Text : "";
             search.COLOR = !string.IsNullOrWhiteSpace(COLORTXT.Text) ? COLORTXT.Text : "";
             search.STYLEGRP = !string.IsNullOrWhiteSpace(STYLEGRPTXT.Text) ? STYLEGRPTXT.Text : "";
-            search.STYLE = !string.IsNullOrWhiteSpace(STYLETXT.Text) ? STYLETXT.Text : "";            
+            search.STYLE = !string.IsNullOrWhiteSpace(STYLETXT.Text) ? STYLETXT.Text : "";
             search.SIZEGRP = !string.IsNullOrWhiteSpace(SIZEGRPTXT.Text) ? SIZEGRPTXT.Text : "";
             search.SIZE = !string.IsNullOrWhiteSpace(SIZETXT.Text) ? SIZETXT.Text : "";
             search.SIZE = !string.IsNullOrWhiteSpace(BARCODETXT.Text) ? BARCODETXT.Text : "";
@@ -148,13 +153,13 @@ namespace KBS.KBS.CMSV3.SalesManagement
             ASPxGridViewHeader.KeyFieldName = "ITEM ID";
             ASPxGridViewHeader.DataBind();
 
-            
+
         }
 
         protected void ClearBtn_Click(object sender, EventArgs e)
         {
-            
-            ITEMIDTXT.Text = ""; 
+
+            ITEMIDTXT.Text = "";
             VARIANTTXT.Text = "";
             SHORTDESCTXT.Text = "";
             LONGDESCTXT.Text = "";
@@ -167,6 +172,26 @@ namespace KBS.KBS.CMSV3.SalesManagement
             BARCODETXT.Text = "";
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["SearchItemIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ITEM ID").ToString();
+                Session["SearchVariantforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VARIANT ID").ToString();
+                Session["SearchBarcodeforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BARCODE").ToString();
+
+
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback(Session["SearchRedirect"].ToString());
+                else
+
+                    Response.Redirect(Session["SearchRedirect"].ToString());
+            }
+        }
+
 
         //protected void ASPxButtonEntry_Click(object sender, EventArgs e)
         //{
@@ -175,14 +200,14 @@ namespace KBS.KBS.CMSV3.SalesManagement
 
         //        Session["BrandIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
         //        Session["BrandDescforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BRAND DESC").ToString();
-            
+
         //        Response.Redirect("BrandDetailMasterManagement.aspx");
         //    }
 
 
         //}
 
-       
+
 
     }
 
