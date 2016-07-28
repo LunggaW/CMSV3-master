@@ -246,6 +246,9 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
             
         }
 
+        protected void Help_Click(object sender, EventArgs e)
+        {
 
+        }
     }
 }

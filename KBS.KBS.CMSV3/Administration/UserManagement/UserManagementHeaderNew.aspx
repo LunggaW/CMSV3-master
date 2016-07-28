@@ -190,7 +190,7 @@
         </span><span>
             <dx:ASPxButton ID="Help" runat="server" EnableTheming="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/question.png" BackColor="Transparent" ToolTip="Help">
+                Image-Url="~/image/question.png" BackColor="Transparent" ToolTip="Help" OnClick="Help_Click">
                 <ClientSideEvents Click="function (s, e) {window.open('../../Help/Administration/usermanagementAdd.aspx', '_blank')}"></ClientSideEvents>
 
                 <Image Height="20px" Width="20px">
