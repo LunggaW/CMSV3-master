@@ -49,6 +49,7 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
                 ITEMBOX.ValueType = typeof(string);
                 ITEMBOX.TextField = "DESCRIPTION";
                 ITEMBOX.DataBind();
+                QTYTXT.Text = "0";
 
             }
 
@@ -93,7 +94,7 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
             ITEMTXT.Text = "";
             VID.Text = "";
             BARCODETXT.Text = "";
-            QTYTXT.Text = "";
+            QTYTXT.Text = "0";
             //ASPxTextBoxSClass.Text = "";
         }
         protected void Search(object sender, EventArgs e)
@@ -157,7 +158,7 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
         {
             TransferOrderDetail transferorderdetail = new TransferOrderDetail();
             transferorderdetail.BARCODE = BARCODETXT.Text;
-            transferorderdetail = CMSfunction.GetBarcodeTransferDetail2(transferorderdetail, Session["DefaultSite"].ToString());
+            transferorderdetail = CMSfunction.GetBarcodeTransferDetail3(transferorderdetail, Session["SITETO"].ToString(), Session["SITEFROM"].ToString());
             if (transferorderdetail.BARCODE != "Not Found")
             {
                 ITEMTXT.Text = transferorderdetail.ITEMID;
@@ -166,7 +167,7 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
                 ITEMBOX.Value = transferorderdetail.ITEMID;
 
                 DTDetailInput = new DataTable();
-                DTDetailInput = CMSfunction.GetVariantByAssortment(ITEMBOX.Value.ToString(), Session["DefaultSite"].ToString());
+                DTDetailInput = CMSfunction.GetVariantByAssortment2(ITEMBOX.Value.ToString(), Session["SITETO"].ToString(), Session["SITEFROM"].ToString());
                 VARIANTBOX.DataSource = DTDetailInput;
                 VARIANTBOX.ValueField = "VALUE";
                 VARIANTBOX.ValueType = typeof(string);
@@ -186,7 +187,7 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
                 ITEMBOX.SelectedIndex = -1;
                 DTDetailInput = new DataTable();
 
-                DTDetailInput = CMSfunction.GetVariantByAssortment("0", Session["DefaultSite"].ToString());
+                DTDetailInput = CMSfunction.GetVariantByAssortment2("0", Session["SITETO"].ToString(), Session["SITEFROM"].ToString());
                 VARIANTBOX.DataSource = DTDetailInput;
                 VARIANTBOX.ValueField = "VALUE";
                 VARIANTBOX.ValueType = typeof(string);
@@ -202,8 +203,8 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
             TransferOrderDetail transferorderdetail = new TransferOrderDetail();
             transferorderdetail.ID = Session["TRANSFERID"].ToString();
             transferorderdetail.IID = Session["INTERNALID"].ToString();
-            transferorderdetail.ITEMID = ITEMTXT.Text;
-            transferorderdetail.VARIANT = VID.Text;
+            transferorderdetail.ITEMID = ITEMBOX.Value.ToString();
+            transferorderdetail.VARIANT = VARIANTBOX.Value.ToString();
             transferorderdetail.BARCODE = BARCODETXT.Text;
             transferorderdetail.QTY = QTYTXT.Text;
 

@@ -153,7 +153,7 @@
         <table class="tableTop">
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="ITEM ID" ID="ITEMTXT" onkeypress="return isNumberKey(event)">
+                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Visible="false" Caption="ITEM ID" ID="ITEMTXT" onkeypress="return isNumberKey(event)">
                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="100px">
@@ -161,7 +161,7 @@
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Caption="VARIANT ID" ID="VID" onkeypress="return isNumberKey(event)">
+                    <dx:ASPxTextBox runat="server" Caption="VARIANT ID" ID="VID" Visible="false" onkeypress="return isNumberKey(event)">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
