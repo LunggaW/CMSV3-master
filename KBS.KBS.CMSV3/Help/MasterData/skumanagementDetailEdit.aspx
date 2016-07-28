@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="skumanagementDetailEdit.aspx.cs" Inherits="sizemanagementDetailEdit" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="skumanagementDetailEdit.aspx.cs" Inherits="skumanagementDetailEdit" %>
 
 <!DOCTYPE html>
 

@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="stylemanagementDetail.aspx.cs" Inherits="stylemanagement" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="stylemanagementDetail.aspx.cs" Inherits="stylemanagementDetail" %>
 
 <!DOCTYPE html>
 
