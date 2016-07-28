@@ -2910,6 +2910,72 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
         }
 
+        public DataTable GetVariantByAssortment2(String Itemid, String SITE, String SITE2)
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = " select VRNTVRNTID as VALUE, VRNTVRNTIDX as DESCRIPTION from KDSCMSSASS, KDSCMSMSTVRNT " +
+                                  " where SASSITEMID = VRNTITEMID AND SASSVRNT = VRNTVRNTID " +
+                                  " AND SASSCDAT <= SYSDATE AND SASSMDAT >= SYSDATE AND VRNTITEMID = '" + Itemid + "' " +
+                                  " AND SASSSITEID  in ('" + SITE + "','" + SITE2 + "')  GROUP BY VRNTVRNTID, VRNTVRNTIDX ";
+
+                cmd.CommandType = CommandType.Text;
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+                DataTable DT = new DataTable();
+                DT.Load(dr);
+                this.Close();
+                return DT;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetAccessProfile Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+        public DataTable GetItemByAssortment2(String SITE, String SITE2)
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "select ITEMITEMID as VALUE, ITEMITEMIDX as DESCRIPTION from KDSCMSSASS, KDSCMSMSTITEM  " +
+                                  " where SASSITEMID = ITEMITEMID AND SASSCDAT <= SYSDATE AND SASSMDAT >= SYSDATE AND SASSSITEID in ('" + SITE + "','" + SITE2 + "') " +
+                                  " GROUP BY ITEMITEMID, ITEMITEMIDX ";
+
+                cmd.CommandType = CommandType.Text;
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+                DataTable DT = new DataTable();
+                DT.Load(dr);
+                this.Close();
+                return DT;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetAccessProfile Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
 
         public DataTable GetSKULinkBox(String SITE)
         {
@@ -4917,10 +4983,10 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.CommandText = "SELECT SLSDLNNUM AS \"LINE\", " +
                                   "(select ITEMSDESC FROM KDSCMSMSTITEM WHERE ITEMITEMID = SLSDITEMID) AS \"ITEM ID\", " +
                                   "SLSDBRCD AS \"BARCODE\", " +
-                                  "SLSDSLQTY AS \"QTY\", " +
-                                  "(SELECT SKUHLDES FROM KDSCMSSKUH where SKUHSKUID = SLSDSKUID) AS \"SKU ID\", " +
+                                  "SLSDSLQTY AS \"QTY\", " +                                  
                                   "SLSDSLPRC AS \"PRICE\", " +
                                   "SLSDTOTPRC AS \"TOTAL PRICE\", " +
+                                  "(SELECT SKUHLDES FROM KDSCMSSKUH where SKUHSKUID = SLSDSKUID) AS \"SKU ID\", " +
                                   "SLSDDISCTOT AS \"DISCOUNT TOTAL\", " +
                                   "SLSDSLTOTCUS AS \"SALES TOTAL\" " +
                                   "FROM KDSCMSSLSD " +

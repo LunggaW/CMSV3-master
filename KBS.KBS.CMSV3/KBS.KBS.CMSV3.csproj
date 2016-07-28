@@ -139,6 +139,7 @@
     <Content Include="Help\Administration\parametermanagementDelete.aspx" />
     <Content Include="Help\Administration\parametermanagementDetail.aspx" />
     <Content Include="Help\Administration\parametermanagementDetailAdd.aspx" />
+    <Content Include="Help\Administration\parametermanagementDetailEdit.aspx" />
     <Content Include="Help\Administration\parametermanagementEdit.aspx" />
     <Content Include="Help\Administration\siteprofilemanagement.aspx" />
     <Content Include="Help\Administration\siteprofilemanagementAdd.aspx" />
@@ -161,15 +162,93 @@
     <Content Include="Help\Images\accessmanagementEdit.png" />
     <Content Include="Help\Images\accessmanagementEditDone.png" />
     <Content Include="Help\Images\accessmanagementSearch.png" />
+    <Content Include="Help\Images\brandmanagement.png" />
+    <Content Include="Help\Images\brandmanagementAdd.png" />
+    <Content Include="Help\Images\brandmanagementAddDone.png" />
+    <Content Include="Help\Images\brandmanagementAddProses.png" />
+    <Content Include="Help\Images\brandmanagementDelete.png" />
+    <Content Include="Help\Images\brandmanagementDeleteDone.png" />
+    <Content Include="Help\Images\brandmanagementEdit.png" />
+    <Content Include="Help\Images\brandmanagementEditDone.png" />
     <Content Include="Help\Images\cmslogin.png" />
+    <Content Include="Help\Images\colormanagement.png" />
+    <Content Include="Help\Images\colormanagementDeleteDone.png" />
+    <Content Include="Help\Images\colormanagementDeleteProses.png" />
+    <Content Include="Help\Images\colormanagementDetail.png" />
+    <Content Include="Help\Images\colormanagementDetailAdd.png" />
+    <Content Include="Help\Images\colormanagementDetailAddDone.png" />
+    <Content Include="Help\Images\colormanagementDetailAddProses.png" />
+    <Content Include="Help\Images\colormanagementDetailDeleteDone.png" />
+    <Content Include="Help\Images\colormanagementDetailDeleteProses.png" />
+    <Content Include="Help\Images\colormanagementDetailEdit.png" />
+    <Content Include="Help\Images\colormanagementDetailEditProses.png" />
+    <Content Include="Help\Images\colormanagementEdit.png" />
+    <Content Include="Help\Images\colormanagementEditDone.png" />
+    <Content Include="Help\Images\colormanagementHeaderAdd.png" />
+    <Content Include="Help\Images\colormanagementHeaderAddDone.png" />
+    <Content Include="Help\Images\itemmanagement.png" />
+    <Content Include="Help\Images\itemmanagementAdd.png" />
+    <Content Include="Help\Images\itemmanagementAddDone.png" />
+    <Content Include="Help\Images\itemmanagementAddProses.png" />
+    <Content Include="Help\Images\itemmanagementBarcode.png" />
+    <Content Include="Help\Images\itemmanagementBarcodeAdd.png" />
+    <Content Include="Help\Images\itemmanagementBarcodeAddDone.png" />
+    <Content Include="Help\Images\itemmanagementBarcodeAddProses.png" />
+    <Content Include="Help\Images\itemmanagementCommon.png" />
+    <Content Include="Help\Images\itemmanagementCommonAdd.png" />
+    <Content Include="Help\Images\itemmanagementCommonAddDone.png" />
+    <Content Include="Help\Images\itemmanagementCommonAddProses.png" />
+    <Content Include="Help\Images\itemmanagementVariant.png" />
+    <Content Include="Help\Images\itemmanagementVariantAdd.png" />
+    <Content Include="Help\Images\itemmanagementVariantAddDone.png" />
+    <Content Include="Help\Images\itemmanagementVariantAddProses.png" />
+    <Content Include="Help\Images\itemmanagementVariantDetail.png" />
+    <Content Include="Help\Images\itemmanagementVariantDetailDone.png" />
+    <Content Include="Help\Images\itemmanagementVariantDetailProses.png" />
     <Content Include="Help\Images\KDS.png" />
+    <Content Include="Help\Images\keteranganbrandmanagement.png" />
+    <Content Include="Help\Images\keterangancolormanagement.png" />
+    <Content Include="Help\Images\keterangancolormanagementDetail.png" />
+    <Content Include="Help\Images\keterangancolormanagementDetailAdd.png" />
+    <Content Include="Help\Images\keteranganitemmanagement.png" />
+    <Content Include="Help\Images\keteranganitemmanagementBarcode.png" />
+    <Content Include="Help\Images\keteranganitemmanagementBarcodeAdd.png" />
+    <Content Include="Help\Images\keteranganitemmanagementCommonAdd.png" />
+    <Content Include="Help\Images\keteranganitemmanagementVarian.png" />
+    <Content Include="Help\Images\keteranganitemmanagementVariantAdd.png" />
     <Content Include="Help\Images\keteranganmenumanagementDetail.png" />
     <Content Include="Help\Images\keterangannavigasi.png" />
     <Content Include="Help\Images\keteranganparametermanagementDetail.png" />
     <Content Include="Help\Images\keteranganparametermanagementDetailAdd.png" />
     <Content Include="Help\Images\keteranganparametermanagementHeader.png" />
     <Content Include="Help\Images\keteranganparametermanagementHeaderAdd.png" />
+    <Content Include="Help\Images\keteranganpricemanagement.png" />
+    <Content Include="Help\Images\keteranganpricemanagementAdd.png" />
+    <Content Include="Help\Images\keterangansalesinput.png" />
+    <Content Include="Help\Images\keterangansalesinputAdd.png" />
+    <Content Include="Help\Images\keterangansalesinputDetail.png" />
+    <Content Include="Help\Images\keterangansalesinputDetailAdd.png" />
+    <Content Include="Help\Images\keterangansalesreturn.png" />
+    <Content Include="Help\Images\keterangansalesvalidation.png" />
+    <Content Include="Help\Images\keterangansimplesalesinput.png" />
+    <Content Include="Help\Images\keterangansitemanagement.png" />
+    <Content Include="Help\Images\keterangansitemanagementAdd.png" />
+    <Content Include="Help\Images\keterangansitemanagementEdit.png" />
     <Content Include="Help\Images\keterangansiteprofilemanagementDetail.png" />
+    <Content Include="Help\Images\keterangansizemanagement.png" />
+    <Content Include="Help\Images\keterangansizemanagementDetail.png" />
+    <Content Include="Help\Images\keteranganskulinkmanagement.png" />
+    <Content Include="Help\Images\keteranganskulinkmanagementAdd.png" />
+    <Content Include="Help\Images\keteranganskumanagement.png" />
+    <Content Include="Help\Images\keteranganskumanagementAdd.png" />
+    <Content Include="Help\Images\keteranganskumanagementDetail.png" />
+    <Content Include="Help\Images\keteranganskumanagementDetailAdd.png" />
+    <Content Include="Help\Images\keteranganstylemanagement.png" />
+    <Content Include="Help\Images\keteranganstylemanagementDetail.png" />
+    <Content Include="Help\Images\keteranganstylemanagementDetailAdd.png" />
+    <Content Include="Help\Images\keterangantocreation.png" />
+    <Content Include="Help\Images\keterangantocreationAdd.png" />
+    <Content Include="Help\Images\keterangantocreationDetail.png" />
     <Content Include="Help\Images\keteranganusermanagement.png" />
     <Content Include="Help\Images\keteranganusermanagementAdd.png" />
     <Content Include="Help\Images\keteranganusermanagementAdd1024.png" />
@@ -202,6 +281,7 @@
     <Content Include="Help\Images\parametermanagementDetailAddProses.png" />
     <Content Include="Help\Images\parametermanagementDetailDeleteDone.png" />
     <Content Include="Help\Images\parametermanagementDetailDeleteProses.png" />
+    <Content Include="Help\Images\parametermanagementDetailEdit.png" />
     <Content Include="Help\Images\parametermanagementEdit.png" />
     <Content Include="Help\Images\parametermanagementEdit1.png" />
     <Content Include="Help\Images\parametermanagementHeader.png" />
@@ -209,6 +289,43 @@
     <Content Include="Help\Images\parametermanagementHeaderDeleteDone.png" />
     <Content Include="Help\Images\parametermanagementHeaderDeleteProses.png" />
     <Content Include="Help\Images\parametermanagementSearch.png" />
+    <Content Include="Help\Images\pricemanagement.png" />
+    <Content Include="Help\Images\pricemanagementAdd.png" />
+    <Content Include="Help\Images\pricemanagementAddProses.png" />
+    <Content Include="Help\Images\pricemanagementEnding.png" />
+    <Content Include="Help\Images\rejectbutton.png" />
+    <Content Include="Help\Images\returnbutton.png" />
+    <Content Include="Help\Images\salesinput.png" />
+    <Content Include="Help\Images\salesinputAdd.png" />
+    <Content Include="Help\Images\salesinputAddDone.png" />
+    <Content Include="Help\Images\salesinputAddProses.png" />
+    <Content Include="Help\Images\salesinputDetail.png" />
+    <Content Include="Help\Images\salesinputDetailAdd.png" />
+    <Content Include="Help\Images\salesinputDetailAddDone.png" />
+    <Content Include="Help\Images\salesinputDetailAddProses.png" />
+    <Content Include="Help\Images\salesinputEdit.png" />
+    <Content Include="Help\Images\salesinputEditDone.png" />
+    <Content Include="Help\Images\salesinputkeconfirm.png" />
+    <Content Include="Help\Images\salesinputkedetail.png" />
+    <Content Include="Help\Images\salesreturn.png" />
+    <Content Include="Help\Images\salesreturnButton.png" />
+    <Content Include="Help\Images\salesreturnDetail.png" />
+    <Content Include="Help\Images\salesreturnDone.png" />
+    <Content Include="Help\Images\salesvalidation.png" />
+    <Content Include="Help\Images\salesvalidationButton.png" />
+    <Content Include="Help\Images\salesvalidationDetail.png" />
+    <Content Include="Help\Images\salesvalidationValidation.png" />
+    <Content Include="Help\Images\simplesalesinput.png" />
+    <Content Include="Help\Images\simplesalesinputProses.png" />
+    <Content Include="Help\Images\sitemanagement.png" />
+    <Content Include="Help\Images\sitemanagementAdd.png" />
+    <Content Include="Help\Images\sitemanagementAddDone.png" />
+    <Content Include="Help\Images\sitemanagementAddDone1.png" />
+    <Content Include="Help\Images\sitemanagementAddProses.png" />
+    <Content Include="Help\Images\sitemanagementDeleteDone.png" />
+    <Content Include="Help\Images\sitemanagementDeleteProses.png" />
+    <Content Include="Help\Images\sitemanagementEdit.png" />
+    <Content Include="Help\Images\sitemanagementEditDone.png" />
     <Content Include="Help\Images\siteprofilemanagement.png" />
     <Content Include="Help\Images\siteprofilemanagement1.png" />
     <Content Include="Help\Images\siteprofilemanagementAdd.png" />
@@ -225,6 +342,61 @@
     <Content Include="Help\Images\siteprofilemanagementEdit.png" />
     <Content Include="Help\Images\siteprofilemanagementEditDone.png" />
     <Content Include="Help\Images\siteprofilemanagementSearch.png" />
+    <Content Include="Help\Images\sizemanagement.png" />
+    <Content Include="Help\Images\sizemanagementAdd.png" />
+    <Content Include="Help\Images\sizemanagementAddDone.png" />
+    <Content Include="Help\Images\sizemanagementAddProses.png" />
+    <Content Include="Help\Images\sizemanagementDeleteDone.png" />
+    <Content Include="Help\Images\sizemanagementDeleteProses.png" />
+    <Content Include="Help\Images\sizemanagementDetail.png" />
+    <Content Include="Help\Images\sizemanagementDetailAdd.png" />
+    <Content Include="Help\Images\sizemanagementDetailAddDone.png" />
+    <Content Include="Help\Images\sizemanagementDetailDeleteDone.png" />
+    <Content Include="Help\Images\sizemanagementDetailDeleteProses.png" />
+    <Content Include="Help\Images\sizemanagementDetailEdit.png" />
+    <Content Include="Help\Images\sizemanagementDetailEditProses.png" />
+    <Content Include="Help\Images\sizemanagementEdit.png" />
+    <Content Include="Help\Images\sizemanagementEditDone.png" />
+    <Content Include="Help\Images\skulinkmanagement.png" />
+    <Content Include="Help\Images\skulinkmanagementAdd.png" />
+    <Content Include="Help\Images\skulinkmanagementAddProses.png" />
+    <Content Include="Help\Images\skumanagement.png" />
+    <Content Include="Help\Images\skumanagementAdd.png" />
+    <Content Include="Help\Images\skumanagementAddDone.png" />
+    <Content Include="Help\Images\skumanagementAddProses.png" />
+    <Content Include="Help\Images\skumanagementDeleteDone.png" />
+    <Content Include="Help\Images\skumanagementDeleteProses.png" />
+    <Content Include="Help\Images\skumanagementDetail.png" />
+    <Content Include="Help\Images\skumanagementDetailAdd.png" />
+    <Content Include="Help\Images\skumanagementDetailAddDone.png" />
+    <Content Include="Help\Images\skumanagementDetailAddProses.png" />
+    <Content Include="Help\Images\skumanagementDetailDeleteDone.png" />
+    <Content Include="Help\Images\skumanagementDetailDeleteProses.png" />
+    <Content Include="Help\Images\skumanagementDetailEdit.png" />
+    <Content Include="Help\Images\skumanagementDetailEditDone.png" />
+    <Content Include="Help\Images\skumanagementDetailEditProses.png" />
+    <Content Include="Help\Images\skumanagementEdit.png" />
+    <Content Include="Help\Images\skumanagementEditDone.png" />
+    <Content Include="Help\Images\stylemanagement.png" />
+    <Content Include="Help\Images\stylemanagementAdd.png" />
+    <Content Include="Help\Images\stylemanagementAddDone.png" />
+    <Content Include="Help\Images\stylemanagementAddProses.png" />
+    <Content Include="Help\Images\stylemanagementDeleteDone.png" />
+    <Content Include="Help\Images\stylemanagementDeleteProses.png" />
+    <Content Include="Help\Images\stylemanagementDetail.png" />
+    <Content Include="Help\Images\stylemanagementDetailAdd.png" />
+    <Content Include="Help\Images\stylemanagementDetailAdddone.png" />
+    <Content Include="Help\Images\stylemanagementDetailAddProses.png" />
+    <Content Include="Help\Images\stylemanagementDetailDeleteDone.png" />
+    <Content Include="Help\Images\stylemanagementDetailDeleteProses.png" />
+    <Content Include="Help\Images\stylemanagementDetailEditDone.png" />
+    <Content Include="Help\Images\stylemanagementEdit.png" />
+    <Content Include="Help\Images\stylemanagementEditDone.png" />
+    <Content Include="Help\Images\tocreation.png" />
+    <Content Include="Help\Images\tocreationAdd.png" />
+    <Content Include="Help\Images\tocreationAddProses.png" />
+    <Content Include="Help\Images\tocreationDetail.png" />
+    <Content Include="Help\Images\tocreationDetailAdd.png" />
     <Content Include="Help\Images\usermanagement.png" />
     <Content Include="Help\Images\usermanagement1.png" />
     <Content Include="Help\Images\usermanagementAddDone.png" />
@@ -234,6 +406,68 @@
     <Content Include="Help\Images\usermanagementEdit.png" />
     <Content Include="Help\Images\usermanagementEdit1.png" />
     <Content Include="Help\Images\usermanagementEditDone.png" />
+    <Content Include="Help\Images\validatebutton.png" />
+    <Content Include="Help\Images\variantdetail.png" />
+    <Content Include="Help\Images\variantdetailDone.png" />
+    <Content Include="Help\Images\variantdetailProses.png" />
+    <Content Include="Help\MasterData\brandmanagement.aspx" />
+    <Content Include="Help\MasterData\brandmanagementAdd.aspx" />
+    <Content Include="Help\MasterData\brandmanagementEdit.aspx" />
+    <Content Include="Help\MasterData\colormanagement.aspx" />
+    <Content Include="Help\MasterData\colormanagementAdd.aspx" />
+    <Content Include="Help\MasterData\colormanagementDetail.aspx" />
+    <Content Include="Help\MasterData\colormanagementDetailAdd.aspx" />
+    <Content Include="Help\MasterData\colormanagementDetailEdit.aspx" />
+    <Content Include="Help\MasterData\colormanagementEdit.aspx" />
+    <Content Include="Help\MasterData\itemmanagement.aspx" />
+    <Content Include="Help\MasterData\itemmanagementAdd.aspx" />
+    <Content Include="Help\MasterData\itemmanagementVariant.aspx" />
+    <Content Include="Help\MasterData\itemmanagementVariantAdd.aspx" />
+    <Content Include="Help\MasterData\itemmanagementVariantBarcode.aspx" />
+    <Content Include="Help\MasterData\itemmanagementVariantBarcodeAdd.aspx" />
+    <Content Include="Help\MasterData\itemmanagementVariantDetail.aspx" />
+    <Content Include="Help\MasterData\pricemanagement.aspx" />
+    <Content Include="Help\MasterData\pricemanagementAdd.aspx" />
+    <Content Include="Help\MasterData\pricemanagementEndingPrice.aspx" />
+    <Content Include="Help\MasterData\sitemanagement.aspx" />
+    <Content Include="Help\MasterData\sitemanagementAdd.aspx" />
+    <Content Include="Help\MasterData\sitemanagementEdit.aspx" />
+    <Content Include="Help\MasterData\sizemanagement.aspx" />
+    <Content Include="Help\MasterData\sizemanagementAdd.aspx" />
+    <Content Include="Help\MasterData\sizemanagementDetail.aspx" />
+    <Content Include="Help\MasterData\sizemanagementDetailAdd.aspx" />
+    <Content Include="Help\MasterData\sizemanagementDetailEdit .aspx" />
+    <Content Include="Help\MasterData\sizemanagementEdit.aspx" />
+    <Content Include="Help\MasterData\skulinkmanagement .aspx" />
+    <Content Include="Help\MasterData\skumanagement.aspx" />
+    <Content Include="Help\MasterData\skumanagementAdd.aspx" />
+    <Content Include="Help\MasterData\skumanagementDetail.aspx" />
+    <Content Include="Help\MasterData\skumanagementDetailAdd.aspx" />
+    <Content Include="Help\MasterData\skumanagementDetailEdit.aspx" />
+    <Content Include="Help\MasterData\skumanagementEdit.aspx" />
+    <Content Include="Help\MasterData\stylemanagement.aspx" />
+    <Content Include="Help\MasterData\stylemanagementAdd.aspx" />
+    <Content Include="Help\MasterData\stylemanagementDetail.aspx" />
+    <Content Include="Help\MasterData\stylemanagementDetailAdd.aspx" />
+    <Content Include="Help\MasterData\stylemanagementDetailEdit.aspx" />
+    <Content Include="Help\MasterData\stylemanagementEdit.aspx" />
+    <Content Include="Help\SalesManagement\salesinput.aspx" />
+    <Content Include="Help\SalesManagement\salesinputAdd.aspx" />
+    <Content Include="Help\SalesManagement\salesinputDetail.aspx" />
+    <Content Include="Help\SalesManagement\salesinputDetailAdd.aspx" />
+    <Content Include="Help\SalesManagement\salesinputDetailEditBelum .aspx" />
+    <Content Include="Help\SalesManagement\salesinputEditBelum.aspx" />
+    <Content Include="Help\SalesManagement\salesreturn.aspx" />
+    <Content Include="Help\SalesManagement\salesreturnDetail.aspx" />
+    <Content Include="Help\SalesManagement\salesvalidation.aspx" />
+    <Content Include="Help\SalesManagement\salesvalidationDetail.aspx" />
+    <Content Include="Help\SalesManagement\simplesalesinput.aspx" />
+    <Content Include="Help\TransferOrder\transferordercreation.aspx" />
+    <Content Include="Help\TransferOrder\transferordercreationAdd.aspx" />
+    <Content Include="Help\TransferOrder\transferordercreationDetail.aspx" />
+    <Content Include="Help\TransferOrder\transferordercreationDetailAdd.aspx" />
+    <Content Include="Help\TransferOrder\transferordercreationDetailEdit.aspx" />
+    <Content Include="Help\TransferOrder\transferordercreationEdit.aspx" />
     <Content Include="Image\back2Disable.png" />
     <Content Include="Image\back3Disable.png" />
     <Content Include="Image\backDisable.png" />
@@ -666,6 +900,10 @@
       <DependentUpon>parametermanagementDetailAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
+    <Compile Include="Help\Administration\parametermanagementDetailEdit.aspx.cs">
+      <DependentUpon>parametermanagementDetailEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Help\Administration\parametermanagementEdit.aspx.cs">
       <DependentUpon>parametermanagementEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -708,6 +946,238 @@
     </Compile>
     <Compile Include="Help\Administration\usermanagementEdit.aspx.cs">
       <DependentUpon>usermanagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\brandmanagement.aspx.cs">
+      <DependentUpon>brandmanagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\brandmanagementAdd.aspx.cs">
+      <DependentUpon>brandmanagementAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\brandmanagementEdit.aspx.cs">
+      <DependentUpon>brandmanagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\colormanagement.aspx.cs">
+      <DependentUpon>colormanagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\colormanagementAdd.aspx.cs">
+      <DependentUpon>colormanagementAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\colormanagementDetail.aspx.cs">
+      <DependentUpon>colormanagementDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\colormanagementDetailAdd.aspx.cs">
+      <DependentUpon>colormanagementDetailAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\colormanagementDetailEdit.aspx.cs">
+      <DependentUpon>colormanagementDetailEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\colormanagementEdit.aspx.cs">
+      <DependentUpon>colormanagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\itemmanagement.aspx.cs">
+      <DependentUpon>itemmanagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\itemmanagementAdd.aspx.cs">
+      <DependentUpon>itemmanagementAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\itemmanagementVariant.aspx.cs">
+      <DependentUpon>itemmanagementVariant.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\itemmanagementVariantAdd.aspx.cs">
+      <DependentUpon>itemmanagementVariantAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\itemmanagementVariantBarcode.aspx.cs">
+      <DependentUpon>itemmanagementVariantBarcode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\itemmanagementVariantBarcodeAdd.aspx.cs">
+      <DependentUpon>itemmanagementVariantBarcodeAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\itemmanagementVariantDetail.aspx.cs">
+      <DependentUpon>itemmanagementVariantDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\pricemanagement.aspx.cs">
+      <DependentUpon>pricemanagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\pricemanagementAdd.aspx.cs">
+      <DependentUpon>pricemanagementAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\pricemanagementEndingPrice.aspx.cs">
+      <DependentUpon>pricemanagementEndingPrice.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\sitemanagement.aspx.cs">
+      <DependentUpon>sitemanagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\sitemanagementAdd.aspx.cs">
+      <DependentUpon>sitemanagementAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\sitemanagementEdit.aspx.cs">
+      <DependentUpon>sitemanagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\sizemanagement.aspx.cs">
+      <DependentUpon>sizemanagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\sizemanagementAdd.aspx.cs">
+      <DependentUpon>sizemanagementAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\sizemanagementDetail.aspx.cs">
+      <DependentUpon>sizemanagementDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\sizemanagementDetailAdd.aspx.cs">
+      <DependentUpon>sizemanagementDetailAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\sizemanagementDetailEdit .aspx.cs">
+      <DependentUpon>sizemanagementDetailEdit .aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\sizemanagementEdit.aspx.cs">
+      <DependentUpon>sizemanagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\skulinkmanagement .aspx.cs">
+      <DependentUpon>skulinkmanagement .aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\skumanagement.aspx.cs">
+      <DependentUpon>skumanagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\skumanagementAdd.aspx.cs">
+      <DependentUpon>skumanagementAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\skumanagementDetail.aspx.cs">
+      <DependentUpon>skumanagementDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\skumanagementDetailAdd.aspx.cs">
+      <DependentUpon>skumanagementDetailAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\skumanagementDetailEdit.aspx.cs">
+      <DependentUpon>skumanagementDetailEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\skumanagementEdit.aspx.cs">
+      <DependentUpon>skumanagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\stylemanagement.aspx.cs">
+      <DependentUpon>stylemanagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\stylemanagementAdd.aspx.cs">
+      <DependentUpon>stylemanagementAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\stylemanagementDetail.aspx.cs">
+      <DependentUpon>stylemanagementDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\stylemanagementDetailAdd.aspx.cs">
+      <DependentUpon>stylemanagementDetailAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\stylemanagementDetailEdit.aspx.cs">
+      <DependentUpon>stylemanagementDetailEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\MasterData\stylemanagementEdit.aspx.cs">
+      <DependentUpon>stylemanagementEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\SalesManagement\salesinput.aspx.cs">
+      <DependentUpon>salesinput.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\SalesManagement\salesinputAdd.aspx.cs">
+      <DependentUpon>salesinputAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\SalesManagement\salesinputDetail.aspx.cs">
+      <DependentUpon>salesinputDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\SalesManagement\salesinputDetailAdd.aspx.cs">
+      <DependentUpon>salesinputDetailAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\SalesManagement\salesinputDetailEditBelum .aspx.cs">
+      <DependentUpon>salesinputDetailEditBelum .aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\SalesManagement\salesinputEditBelum.aspx.cs">
+      <DependentUpon>salesinputEditBelum.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\SalesManagement\salesreturn.aspx.cs">
+      <DependentUpon>salesreturn.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\SalesManagement\salesreturnDetail.aspx.cs">
+      <DependentUpon>salesreturnDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\SalesManagement\salesvalidation.aspx.cs">
+      <DependentUpon>salesvalidation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\SalesManagement\salesvalidationDetail.aspx.cs">
+      <DependentUpon>salesvalidationDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\SalesManagement\simplesalesinput.aspx.cs">
+      <DependentUpon>simplesalesinput.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\TransferOrder\transferordercreation.aspx.cs">
+      <DependentUpon>transferordercreation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\TransferOrder\transferordercreationAdd.aspx.cs">
+      <DependentUpon>transferordercreationAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\TransferOrder\transferordercreationDetail.aspx.cs">
+      <DependentUpon>transferordercreationDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\TransferOrder\transferordercreationDetailAdd.aspx.cs">
+      <DependentUpon>transferordercreationDetailAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\TransferOrder\transferordercreationDetailEdit.aspx.cs">
+      <DependentUpon>transferordercreationDetailEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Help\TransferOrder\transferordercreationEdit.aspx.cs">
+      <DependentUpon>transferordercreationEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="InventoryManagement\StockDisplay\StockDisplayHeader.aspx.cs">
@@ -1670,7 +2140,6 @@
     <Content Include="Mobile\Mobile.Master" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Help\Master Data\" />
     <Folder Include="NewFolder1\" />
   </ItemGroup>
   <PropertyGroup>

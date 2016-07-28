@@ -36,35 +36,7 @@ namespace KBS.KBS.CMSV3.TransferOrder
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            /*
-            string Compare = Session["Filter"].ToString();
-            if (Compare != "")
-            {
-                if (Session["Filter"].ToString() != "ColorMaster")
-                {
-                    Administration.UserManagement.UserManagementHeader Sunda = new Administration.UserManagement.UserManagementHeader();
-                    Sunda.ClearDataSeasson();
-                }
-                else
-                {
-                    try
-                    {
-                        if (Session["ColorFilter"].ToString() == "True")
-                        {
-
-                            //ASPxTextBoxHeaderID.Text = !string.IsNullOrWhiteSpace(Session["ColorID"].ToString()) ? Session["ColorID"].ToString() : "";
-                            //ASPxTextBoxHeaderName.Text = !string.IsNullOrWhiteSpace(Session["ColorColor"].ToString()) ? Session["ColorColor"].ToString() : "";
-
-                        }
-                    }
-                    catch
-                    {
-                        String Data = "Not Found";
-                    }
-                }
-            }
-
-            */
+           
           
             RefreshGrid();
         }
@@ -168,8 +140,7 @@ namespace KBS.KBS.CMSV3.TransferOrder
                     ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TRANSFER ID").ToString();
                 Session["INTERNALID"] =
                     ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
-
-
+              
                 if (Page.IsCallback)
                     ASPxWebControl.RedirectOnCallback("TransferOrderEdit.aspx");
                 else
@@ -206,6 +177,10 @@ namespace KBS.KBS.CMSV3.TransferOrder
 
                 Session["TRANSFERID"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TRANSFER ID").ToString();
                 Session["INTERNALID"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
+                Session["SITETO"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SITE TO").ToString();
+                Session["SITEFROM"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SITE FROM").ToString();
+
+
 
                 Response.Redirect("TransferOrderD.aspx");
                 
