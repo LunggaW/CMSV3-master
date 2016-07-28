@@ -77,24 +77,34 @@ namespace KBS.KBS.CMSV3.TransferOrder
 
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["TOShipIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TRANSFER ID").ToString();
+                Session["TOShipIIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
+                Session["TOShipITEMIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ITEM ID").ToString();
+                Session["TOShipVARIANTIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VARIANT ID").ToString();
+                Session["TOShipBARCODEforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BARCODE").ToString();
+                Session["TOShipSHIPforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SHIP").ToString();
 
-            Session["TOShipIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TRANSFER ID").ToString();
-            Session["TOShipIIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
-            Session["TOShipITEMIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ITEM ID").ToString();
-            Session["TOShipVARIANTIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VARIANT ID").ToString();
-            Session["TOShipBARCODEforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BARCODE").ToString();
-            Session["TOShipSHIPforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SHIP").ToString();
-            
-            Session["TOShipRECforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "RECEIVE").ToString();
-            Session["TOShipCMTforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COMMENT").ToString();
-            Session["TOShipIDforUpdate"] = Session["TOShipIDforUpdate"].ToString();
-            Session["TOShipIIDforUpdate"] = Session["TOShipIIDforUpdate"].ToString();
+                Session["TOShipRECforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "RECEIVE").ToString();
+                Session["TOShipCMTforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COMMENT").ToString();
+                Session["TOShipIDforUpdate"] = Session["TOShipIDforUpdate"].ToString();
+                Session["TOShipIIDforUpdate"] = Session["TOShipIIDforUpdate"].ToString();
 
-            if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("TOReceiveDetailEdit.aspx");
-            else
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("TOReceiveDetailEdit.aspx");
+                else
 
-                Response.Redirect("TOShipmentDetailEdit.aspx");
+                    Response.Redirect("TOShipmentDetailEdit.aspx");
+            }
         }
 
         protected void SearchBtn_Click(object sender, EventArgs e)
@@ -172,8 +182,37 @@ namespace KBS.KBS.CMSV3.TransferOrder
             Response.Redirect("ColorDetailMasterManagement.aspx");
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["TOShipIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TRANSFER ID").ToString();
+                Session["TOShipIIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
+                Session["TOShipITEMIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ITEM ID").ToString();
+                Session["TOShipVARIANTIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VARIANT ID").ToString();
+                Session["TOShipBARCODEforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BARCODE").ToString();
+                Session["TOShipSHIPforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SHIP").ToString();
 
+                Session["TOShipRECforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "RECEIVE").ToString();
+                Session["TOShipCMTforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COMMENT").ToString();
+                Session["TOShipIDforUpdate"] = Session["TOShipIDforUpdate"].ToString();
+                Session["TOShipIIDforUpdate"] = Session["TOShipIIDforUpdate"].ToString();
 
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("TOReceiveDetailEdit.aspx");
+                else
+
+                    Response.Redirect("TOShipmentDetailEdit.aspx");
+            }
+        }
     }
 
 }

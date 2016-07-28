@@ -143,7 +143,8 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
                         AddBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         break;
                     case "2":
-                        //Ed.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        EditBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        
                         if (accessContainer.Type == "0")
                         {
                             ASPxGridViewUser.ClientSideEvents.RowDblClick = null;
@@ -593,22 +594,33 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
 
                 Session["Filter"] = "UserManagement";
                 Session["UserFilter"] = "True";
-                Session["UserIdFilter"] = !string.IsNullOrWhiteSpace(ASPxTextBoxUserManagementUserID.Text) ? ASPxTextBoxUserManagementUserID.Text : "";
+                Session["UserIdFilter"] = !string.IsNullOrWhiteSpace(ASPxTextBoxUserManagementUserID.Text)
+                    ? ASPxTextBoxUserManagementUserID.Text
+                    : "";
 
-                Session["StartDateFilter"] = sdate.Date != sdate.MinDate ? (object)sdate.Date : "";
-                Session["EndDateFilter"] = edate.Date != edate.MinDate ? (object)edate.Date : "";
+                Session["StartDateFilter"] = sdate.Date != sdate.MinDate ? (object) sdate.Date : "";
+                Session["EndDateFilter"] = edate.Date != edate.MinDate ? (object) edate.Date : "";
 
                 Session["UserDescFilter"] = !string.IsNullOrWhiteSpace(UserDesc.Text) ? UserDesc.Text : "";
-                Session["UserAccProfFilter"] = (ComboAccessProfile.Value != null) ? ComboAccessProfile.Value.ToString() : "";
-                Session["UserNameFilter"] = !string.IsNullOrWhiteSpace(ASPxTextBoxUserManagementUserName.Text) ? ASPxTextBoxUserManagementUserName.Text : "";
+                Session["UserAccProfFilter"] = (ComboAccessProfile.Value != null)
+                    ? ComboAccessProfile.Value.ToString()
+                    : "";
+                Session["UserNameFilter"] = !string.IsNullOrWhiteSpace(ASPxTextBoxUserManagementUserName.Text)
+                    ? ASPxTextBoxUserManagementUserName.Text
+                    : "";
                 Session["UserStatFilter"] = (ComboUserStatus.Value != null) ? ComboUserStatus.Value.ToString() : "";
                 Session["UserTypeFilter"] = (ComboUserType.Value != null) ? ComboUserType.Value.ToString() : "";
-                Session["UserMenuProfFilter"] = (ComboMenuProfile.Value != null) ? ComboMenuProfile.Value.ToString() : "";
-                Session["UserSiteProfFilter"] = (ComboSiteProfile.Value != null) ? ComboSiteProfile.Value.ToString() : "";
+                Session["UserMenuProfFilter"] = (ComboMenuProfile.Value != null)
+                    ? ComboMenuProfile.Value.ToString()
+                    : "";
+                Session["UserSiteProfFilter"] = (ComboSiteProfile.Value != null)
+                    ? ComboSiteProfile.Value.ToString()
+                    : "";
 
 
 
-                Session["UserIdUserManagement"] = ASPxGridViewUser.GetRowValues(ASPxGridViewUser.FocusedRowIndex, "USER ID").ToString();
+                Session["UserIdUserManagement"] =
+                    ASPxGridViewUser.GetRowValues(ASPxGridViewUser.FocusedRowIndex, "USER ID").ToString();
 
                 if (Page.IsCallback)
                     ASPxWebControl.RedirectOnCallback("UserManagementHeaderDetail.aspx");

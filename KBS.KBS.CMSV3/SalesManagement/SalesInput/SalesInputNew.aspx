@@ -1,11 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
- CodeBehind="SalesInputNew.aspx.cs" Inherits="KBS.KBS.CMSV3.SalesManagement.SalesInput.SalesInputNew" %>
+    CodeBehind="SalesInputNew.aspx.cs" Inherits="KBS.KBS.CMSV3.SalesManagement.SalesInput.SalesInputNew" %>
 
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
-<script src="../../Scripts/CustomJS.js" type="text/javascript"></script>
+    <script src="../../Scripts/CustomJS.js" type="text/javascript"></script>
     <script type="text/javascript">
-        function UpdateDetailGrid(s, e) {
+        function UpdateDetailGrid(s, e)
+        {
             detailGridView.PerformCallback(e.visibleIndex);
         }
     </script>
@@ -52,10 +53,21 @@
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
+        </span><span>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
+                </Image>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="False">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
@@ -156,14 +168,14 @@
                 </td>
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxMemo
-                     runat="server" Caption="COMMENT" ID="COMMENTXT" Height="71px" Width="429px"  ReadOnly="False" >
+                        runat="server" Caption="COMMENT" ID="COMMENTXT" Height="71px" Width="429px" ReadOnly="False">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
                     </dx:ASPxMemo>
                 </td>
             </tr>
-            
+
         </table>
     </div>
     <br />

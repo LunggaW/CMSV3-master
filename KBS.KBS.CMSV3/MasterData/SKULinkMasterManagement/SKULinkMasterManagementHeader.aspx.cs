@@ -36,14 +36,14 @@ namespace KBS.KBS.CMSV3.MasterData
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
-                SKULink skulink = new SKULink();
-                DTSKULink = CMSfunction.GetSKULinkHeaderDataTable(skulink);
 
-                ASPxGridViewHeader.DataSource = DTSKULink;
-                ASPxGridViewHeader.KeyFieldName = "SKU ID";
-                ASPxGridViewHeader.DataBind();
-            
+            SKULink skulink = new SKULink();
+            DTSKULink = CMSfunction.GetSKULinkHeaderDataTable(skulink);
+
+            ASPxGridViewHeader.DataSource = DTSKULink;
+            ASPxGridViewHeader.KeyFieldName = "SKU ID";
+            ASPxGridViewHeader.DataBind();
+
             //SearchBtn_Click();
         }
 
@@ -56,7 +56,7 @@ namespace KBS.KBS.CMSV3.MasterData
         }
         protected void PrevBtn_Click(object sender, EventArgs e)
         {
-            if (ASPxGridViewHeader.PageIndex -1 >= 0)
+            if (ASPxGridViewHeader.PageIndex - 1 >= 0)
             {
                 ASPxGridViewHeader.PageIndex = ASPxGridViewHeader.PageIndex - 1;
             }
@@ -116,7 +116,7 @@ namespace KBS.KBS.CMSV3.MasterData
                         AddBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         break;
                     case "2":
-                        //Ed.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        EditBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         if (accessContainer.Type == "0")
                         {
                             ASPxGridViewHeader.ClientSideEvents.RowDblClick = null;
@@ -138,19 +138,26 @@ namespace KBS.KBS.CMSV3.MasterData
 
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["SKULinkSKUforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SKU ID").ToString();
+                Session["SKULinkSiteforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SITE ID").ToString();
+                Session["SKULinkBrandforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BRAND ID").ToString();
+                Session["SKULinkSDateforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "START DATE").ToString();
+                Session["SKULinkEDateforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "END DATE").ToString();
 
-            Session["SKULinkSKUforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SKU ID").ToString();
-            Session["SKULinkSiteforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SITE ID").ToString();
-            Session["SKULinkBrandforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BRAND ID").ToString();
-            Session["SKULinkSDateforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "START DATE").ToString();
-            Session["SKULinkEDateforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "END DATE").ToString();
-            
 
-            if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("SKULinkMasterManagementEdit.aspx");
-            else
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("SKULinkMasterManagementEdit.aspx");
+                else
 
-                Response.Redirect("SKULinkMasterManagementEdit.aspx");
+                    Response.Redirect("SKULinkMasterManagementEdit.aspx");
+            }
         }
         private void SearchBtn_Click()
         {
@@ -180,7 +187,7 @@ namespace KBS.KBS.CMSV3.MasterData
 
         protected void ClearBtn_Click(object sender, EventArgs e)
         {
-            
+
             //ITEMIDTXT.Text = ""; 
             //VARIANTTXT.Text = "";
             //SITETXT.Text = "";
@@ -190,10 +197,10 @@ namespace KBS.KBS.CMSV3.MasterData
             //SDATE.Value = "";
             //EDATE.Text = "";
             //SDATE.Text = "";
-            
+
         }
 
-        
+
         protected void AddBtn_Click(object sender, EventArgs e)
         {
             Response.Redirect("SKULinkMasterManagementNew.aspx");
@@ -206,8 +213,8 @@ namespace KBS.KBS.CMSV3.MasterData
                 SKULink skulink = new SKULink();
                 skulink.SKU = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SKU ID").ToString();
                 skulink.SITE = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SITE ID").ToString();
-                skulink.BRAND  = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BRAND ID").ToString();
-                
+                skulink.BRAND = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BRAND ID").ToString();
+
                 skulink = CMSfunction.Cekdataskulink(skulink);
                 if (skulink.BRAND == "NO")
                 {
@@ -243,11 +250,32 @@ namespace KBS.KBS.CMSV3.MasterData
                     Response.Redirect("SKULinkMasterManagementHeader.aspx");
                 }
             }
-            
+
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["SKULinkSKUforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SKU ID").ToString();
+                Session["SKULinkSiteforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SITE ID").ToString();
+                Session["SKULinkBrandforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BRAND ID").ToString();
+                Session["SKULinkSDateforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "START DATE").ToString();
+                Session["SKULinkEDateforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "END DATE").ToString();
 
 
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("SKULinkMasterManagementEdit.aspx");
+                else
+
+                    Response.Redirect("SKULinkMasterManagementEdit.aspx");
+            }
+        }
     }
 
 }

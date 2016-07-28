@@ -48,7 +48,7 @@ namespace KBS.KBS.CMSV3.SalesManagement
             salesinputdetail.DATE = DateTime.Parse(Session["INPUTDATE"].ToString());
             salesinputdetail.SITE = Session["INPUTSITE"].ToString();
             String Status = "'0','3'";
-            DTSalesDetail = CMSfunction.GetSalesInputDetailDataTable(salesinputdetail,Status);
+            DTSalesDetail = CMSfunction.GetSalesInputDetailDataTable(salesinputdetail, Status);
             ASPxGridViewHeader.DataSource = DTSalesDetail;
             ASPxGridViewHeader.KeyFieldName = "LINE";
             ASPxGridViewHeader.DataBind();
@@ -61,7 +61,7 @@ namespace KBS.KBS.CMSV3.SalesManagement
 
         }
 
-        
+
         private void loadNavBar()
         {
 
@@ -94,14 +94,18 @@ namespace KBS.KBS.CMSV3.SalesManagement
 
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
-            Session["INPUTLINE"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "LINE").ToString();
-           
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["INPUTLINE"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "LINE").ToString();
 
-            if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("SalesDetailInputEdit.aspx");
-            else
 
-                Response.Redirect("SalesDetailInputEdit.aspx");
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("SalesDetailInputEdit.aspx");
+                else
+
+                    Response.Redirect("SalesDetailInputEdit.aspx");
+            }
         }
 
         protected void SearchBtn_Click(object sender, EventArgs e)
@@ -112,7 +116,7 @@ namespace KBS.KBS.CMSV3.SalesManagement
 
         protected void ClearBtn_Click(object sender, EventArgs e)
         {
-                                    
+
         }
 
         protected void NextBtn_Click(object sender, EventArgs e)
@@ -124,7 +128,7 @@ namespace KBS.KBS.CMSV3.SalesManagement
         }
         protected void PrevBtn_Click(object sender, EventArgs e)
         {
-            if (ASPxGridViewHeader.PageIndex -1 >= 0)
+            if (ASPxGridViewHeader.PageIndex - 1 >= 0)
             {
                 ASPxGridViewHeader.PageIndex = ASPxGridViewHeader.PageIndex - 1;
             }
@@ -155,13 +159,13 @@ namespace KBS.KBS.CMSV3.SalesManagement
         {
             if (ASPxGridViewHeader.FocusedRowIndex != -1)
             {
-               
+
                 String LINE = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "LINE").ToString();
 
 
                 OutputMessage message = new OutputMessage();
 
-                message = CMSfunction.DeleteSalesDetail(Session["INPUTSALESID"].ToString(),Session["INPUTIID"].ToString(),Session["INPUTNOTA"].ToString(),Session["INPUTRECEIPTID"].ToString(),Session["INPUTSITE"].ToString(), LINE);
+                message = CMSfunction.DeleteSalesDetail(Session["INPUTSALESID"].ToString(), Session["INPUTIID"].ToString(), Session["INPUTNOTA"].ToString(), Session["INPUTRECEIPTID"].ToString(), Session["INPUTSITE"].ToString(), LINE);
 
                 LabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
 
@@ -171,8 +175,21 @@ namespace KBS.KBS.CMSV3.SalesManagement
             Response.Redirect("SalesDetailInput.aspx");
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["INPUTLINE"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "LINE").ToString();
 
 
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("SalesDetailInputEdit.aspx");
+                else
+
+                    Response.Redirect("SalesDetailInputEdit.aspx");
+            }
+        }
     }
 
 }

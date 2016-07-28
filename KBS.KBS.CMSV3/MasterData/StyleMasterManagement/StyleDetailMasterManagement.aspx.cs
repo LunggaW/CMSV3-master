@@ -39,7 +39,7 @@ namespace KBS.KBS.CMSV3.MasterData
         }
         protected void PrevBtn_Click(object sender, EventArgs e)
         {
-            if (ASPxGridViewHeader.PageIndex -1 > 0)
+            if (ASPxGridViewHeader.PageIndex - 1 > 0)
             {
                 ASPxGridViewHeader.PageIndex = ASPxGridViewHeader.PageIndex - 1;
             }
@@ -61,7 +61,7 @@ namespace KBS.KBS.CMSV3.MasterData
             DTStyleDetail = CMSfunction.GetStyleDetailDataTable(stylegroupdetail, Session["StyleIDforUpdate"].ToString());
             ASPxGridViewHeader.DataSource = DTStyleDetail;
             ASPxGridViewHeader.KeyFieldName = "ID";
-            ASPxGridViewHeader.DataBind();            
+            ASPxGridViewHeader.DataBind();
 
         }
 
@@ -98,31 +98,35 @@ namespace KBS.KBS.CMSV3.MasterData
 
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["StyleDetailIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
+                Session["StyleDetailGrpforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "STYLE ID").ToString();
 
-            Session["StyleDetailIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
-            Session["StyleDetailGrpforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "STYLE ID").ToString();
-            
 
-            if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("StyleDetailMasterManagementEdit.aspx");
-            else
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("StyleDetailMasterManagementEdit.aspx");
+                else
 
-                Response.Redirect("StyleDetailMasterManagementEdit.aspx");
+                    Response.Redirect("StyleDetailMasterManagementEdit.aspx");
+            }
         }
 
         protected void SearchBtn_Click(object sender, EventArgs e)
         {
             ColorGroupDetail color = new ColorGroupDetail();
 
-/*
-            color.ID = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderID.Text) ? ASPxTextBoxHeaderID.Text : "";
-            color.Color = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderName.Text) ? ASPxTextBoxHeaderName.Text : "";
+            /*
+                        color.ID = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderID.Text) ? ASPxTextBoxHeaderID.Text : "";
+                        color.Color = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderName.Text) ? ASPxTextBoxHeaderName.Text : "";
 
-            DTColorDetail = CMSfunction.GetColorHeaderDataTable(color);
-            ASPxGridViewHeader.DataSource = DTColorDetail;
-            ASPxGridViewHeader.KeyFieldName = "ID";
-            ASPxGridViewHeader.DataBind();
-  */
+                        DTColorDetail = CMSfunction.GetColorHeaderDataTable(color);
+                        ASPxGridViewHeader.DataSource = DTColorDetail;
+                        ASPxGridViewHeader.KeyFieldName = "ID";
+                        ASPxGridViewHeader.DataBind();
+              */
         }
         protected void BackhomeBtn_Click(object sender, EventArgs e)
         {
@@ -130,12 +134,12 @@ namespace KBS.KBS.CMSV3.MasterData
         }
         protected void ClearBtn_Click(object sender, EventArgs e)
         {
-            
+
             //ASPxTextBoxHeaderID.Text = ""; StyleOrder.Text = "";
             //StyleSDesc.Text = ""; StyleLDesc.Text = "";
-            
+
         }
-        
+
 
         protected void AddBtn_Click(object sender, EventArgs e)
         {
@@ -162,8 +166,23 @@ namespace KBS.KBS.CMSV3.MasterData
             Response.Redirect("StyleDetailMasterManagement.aspx");
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["StyleDetailIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
+                Session["StyleDetailGrpforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "STYLE ID").ToString();
 
 
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("StyleDetailMasterManagementEdit.aspx");
+                else
+
+                    Response.Redirect("StyleDetailMasterManagementEdit.aspx");
+            }
+        }
     }
 
 }

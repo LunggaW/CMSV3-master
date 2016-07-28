@@ -5,7 +5,8 @@
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">   
     <script src="../../Scripts/PopUp.js" type="text/javascript"></script>
     <script type="text/javascript">
-        function UpdateDetailGrid(s, e) {
+        function UpdateDetailGrid(s, e)
+        {
             detailGridView.PerformCallback(e.visibleIndex);
         }
     </script>
@@ -20,28 +21,26 @@
                 <dx:ASPxPanel ID="ASPxPanel1" runat="server" DefaultButton="btOK">
                     <PanelCollection>
                         <dx:PanelContent runat="server">
-                             <dx:ASPxLabel ID="LabelData" runat="server" Text ="Apakah Ingin Di Simpan Terlebih Dahulu ?"></dx:ASPxLabel>
-                            <table style="margin-top:20px"> 
+                                <dx:ASPxLabel ID="LabelData" runat="server" Text="Apakah Ingin Di Simpan Terlebih Dahulu ?"></dx:ASPxLabel>
+                                <table style="margin-top: 20px">
                                 <tr>
-                                    <td>
-                                       
-                                    </td>
+                                        <td></td>
                                 </tr>                                                              
                                 <tr>
                                     <td colspan="2">
-                                            <dx:ASPxButton ID="btnbacksave" runat="server" Text="Ok" Width="80px" AutoPostBack="False" OnClick="ValidateBtn_Click" style="float: left; margin-right: 8px">                                                
+                                            <dx:ASPxButton ID="btnbacksave" runat="server" Text="Ok" Width="80px" AutoPostBack="False" OnClick="ValidateBtn_Click" Style="float: left; margin-right: 8px">
                                             <ClientSideEvents Click="function(s, e) { pcLogin.Hide(); }" />
                                             </dx:ASPxButton>
                                             
                                                                                    
                                     </td>
                                     <td colspan="2">
-                                    <dx:ASPxButton ID="btnbacknot" runat="server" Text="No" Width="80px" OnClick="BackhomeBtn_Click" AutoPostBack="False" style="float: left; margin-right: 8px">                                                
+                                            <dx:ASPxButton ID="btnbacknot" runat="server" Text="No" Width="80px" OnClick="BackhomeBtn_Click" AutoPostBack="False" Style="float: left; margin-right: 8px">
                                         <ClientSideEvents Click="function(s, e) { pcLogin.Hide(); }" />        
                                     </dx:ASPxButton>
                                     </td>
                                     <td colspan="2">
-                                    <dx:ASPxButton ID="btCancel" runat="server" Text="Cancel" Width="80px" AutoPostBack="False" style="float: left; margin-right: 8px">
+                                            <dx:ASPxButton ID="btCancel" runat="server" Text="Cancel" Width="80px" AutoPostBack="False" Style="float: left; margin-right: 8px">
                                                 <ClientSideEvents Click="function(s, e) { pcLogin.Hide(); }" />
                                             </dx:ASPxButton> 
                                     </td>
@@ -60,8 +59,7 @@
         <span>
             <dx:ASPxButton ID="BackhomeBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/back3.png" ToolTip="Previous Page" BackColor="Transparent"
-               > 
+                Image-Url="~/image/back3.png" ToolTip="Previous Page" BackColor="Transparent">
                 <ClientSideEvents Click="Confirm" />
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/back3Disable.png">
                 </Image>
@@ -99,10 +97,21 @@
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
+        </span><span>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
+                </Image>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="False">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
@@ -197,21 +206,21 @@
             </tr>
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon=false Caption="SHORT DESC" ID="SDESCTXT" MaxLength="20">
+                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon="false" Caption="SHORT DESC" ID="SDESCTXT" MaxLength="20">
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon=false Caption="LONG DESC" ID="LDESCTXT" MaxLength="50">
+                    <dx:ASPxTextBox runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon="false" Caption="LONG DESC" ID="LDESCTXT" MaxLength="50">
                     </dx:ASPxTextBox>
                 </td>
             </tr>
             <tr>            
                 <td class="tableHeader2Column" colspan="5">
-                <dx:ASPxDateEdit runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon=false  Caption="START DATE" ID="SDATE">
+                    <dx:ASPxDateEdit runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon="false" Caption="START DATE" ID="SDATE">
                 </dx:ASPxDateEdit>                    
                 </td>            
                 <td class="tableHeader2Column" colspan="5">
-                <dx:ASPxDateEdit  runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon=false Caption="END DATE" ID="EDATE">
+                    <dx:ASPxDateEdit runat="server" Width="170px" CaptionCellStyle-Width="100px" CaptionSettings-ShowColon="false" Caption="END DATE" ID="EDATE">
                 </dx:ASPxDateEdit>
                 </td>                                
             </tr>                

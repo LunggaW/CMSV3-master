@@ -87,7 +87,8 @@ namespace KBS.KBS.CMSV3.Administration.MenuMasterManagement
                         AddBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         break;
                     case "2":
-                        //Ed.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        EditBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        
                         if (accessContainer.Type == "0")
                         {
                             ASPxGridViewMenu.ClientSideEvents.RowDblClick = null;
@@ -269,5 +270,38 @@ namespace KBS.KBS.CMSV3.Administration.MenuMasterManagement
             ASPxGridViewMenu.DataBind();
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewMenu.FocusedRowIndex != -1)
+            {
+                Session["MenuID"] = ASPxGridViewMenu.GetRowValues(ASPxGridViewMenu.FocusedRowIndex, "ID").ToString();
+
+
+                Session["MenuMasterFilter"] = "True";
+
+                Session["MenuMasterGrpIDFilter"] = !string.IsNullOrWhiteSpace(TextBoxMenuGroupID.Text)
+                    ? TextBoxMenuGroupID.Text
+                    : "";
+                Session["MenuMasterGrpNameFilter"] = !string.IsNullOrWhiteSpace(TextBoxMenuGroupName.Text)
+                    ? TextBoxMenuGroupName.Text
+                    : "";
+                Session["MenuMasterMenuIDFilter"] = !string.IsNullOrWhiteSpace(TextBoxMenuID.Text)
+                    ? TextBoxMenuID.Text
+                    : "";
+                Session["MenuMasterMenuNameFilter"] = !string.IsNullOrWhiteSpace(TextBoxMenuName.Text)
+                    ? TextBoxMenuName.Text
+                    : "";
+                Session["MenuMasterMemoURLFilter"] = !string.IsNullOrWhiteSpace(ASPxMemoURL.Text)
+                    ? ASPxMemoURL.Text
+                    : "";
+
+
+
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("MenuMasterDetail.aspx");
+                else
+                    Response.Redirect("MenuMasterDetail.aspx");
+            }
+        }
     }
 }

@@ -5,7 +5,8 @@ Inherits="KBS.KBS.CMSV3.SalesManagement.SearchItemMaster" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
     <link href="../../Content/New.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
-        function UpdateDetailGrid(s, e) {
+        function UpdateDetailGrid(s, e)
+        {
             headerGridView.PerformCallback(e.visibleIndex);
         }
     </script>
@@ -53,11 +54,22 @@ Inherits="KBS.KBS.CMSV3.SalesManagement.SearchItemMaster" %>
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
+        </span><span>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/search.png" ToolTip="Search" 
             BackColor="Transparent">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
+                </Image>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="True" OnClick="EditBtn_Click">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
@@ -137,7 +149,7 @@ Inherits="KBS.KBS.CMSV3.SalesManagement.SearchItemMaster" %>
     <div>
         <table class="tableTop">
             <tr>
-               <td class="tableHeader2Column" colspan="5">
+                <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxTextBox runat="server" Width="170px" Caption="Item ID" ID="TextBoxItemID" >
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <ReadOnlyStyle BackColor="Silver">
@@ -153,7 +165,7 @@ Inherits="KBS.KBS.CMSV3.SalesManagement.SearchItemMaster" %>
                     </dx:ASPxTextBox>
                 </td>
             </tr>
-           
+            
         </table>
     </div>
     <br />
@@ -163,12 +175,5 @@ Inherits="KBS.KBS.CMSV3.SalesManagement.SearchItemMaster" %>
         <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True">
         </SettingsBehavior>
     </dx:ASPxGridView>
-    <%--<div align="center">
-        <br />
-        <dx:ASPxButton ID="ASPxButtonEntry" runat="server" OnClick="ASPxButtonEntry_Click"
-            Text="Entry" Font-Size="Medium">
-        </dx:ASPxButton>
-        <br />
-    </div>--%>
     <br />
 </asp:Content>

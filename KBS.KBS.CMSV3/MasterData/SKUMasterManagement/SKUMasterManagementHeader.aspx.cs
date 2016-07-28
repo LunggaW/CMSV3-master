@@ -55,10 +55,10 @@ namespace KBS.KBS.CMSV3.MasterData
             else
             {
                 try
-                { 
+                {
                     if (Session["SKUFilter"].ToString() == "True")
                     {
-                    
+
 
                         IDTXT.Text = !string.IsNullOrWhiteSpace(Session["SKUID"].ToString()) ? Session["SKUID"].ToString() : "";
                         EXIDTXT.Text = !string.IsNullOrWhiteSpace(Session["SKUEXID"].ToString()) ? Session["SKUEXID"].ToString() : "";
@@ -66,7 +66,7 @@ namespace KBS.KBS.CMSV3.MasterData
                         LDESCTXT.Text = !string.IsNullOrWhiteSpace(Session["SKULDesc"].ToString()) ? Session["SKULDesc"].ToString() : "";
                         //EDATE.Date = DateTime.Parse(Session["SKUEDate"].ToString()) != DateTime.MinValue ? (DateTime?)DateTime.Parse(Session["SKUEDate"].ToString()) : null; 
                         //SDATE.Date = !string.IsNullOrWhiteSpace(Session["SKUSDate"].ToString()) ? Session["SKUSDate"].ToString() : "";
-                    
+
                     }
                 }
                 catch
@@ -74,7 +74,7 @@ namespace KBS.KBS.CMSV3.MasterData
                     String Data = "Not Found";
                 }
 
-        }
+            }
             SearchBtn_Click();
         }
 
@@ -87,7 +87,7 @@ namespace KBS.KBS.CMSV3.MasterData
         }
         protected void PrevBtn_Click(object sender, EventArgs e)
         {
-            if (ASPxGridViewHeader.PageIndex -1 > 0)
+            if (ASPxGridViewHeader.PageIndex - 1 > 0)
             {
                 ASPxGridViewHeader.PageIndex = ASPxGridViewHeader.PageIndex - 1;
             }
@@ -147,7 +147,7 @@ namespace KBS.KBS.CMSV3.MasterData
                         AddBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         break;
                     case "2":
-                        //Ed.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        EditBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         if (accessContainer.Type == "0")
                         {
                             ASPxGridViewHeader.ClientSideEvents.RowDblClick = null;
@@ -169,21 +169,29 @@ namespace KBS.KBS.CMSV3.MasterData
 
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["SKUIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
+                Session["SKUEXIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "EXTERNAL ID").ToString();
+                Session["SKUSDESCforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SHORT DESC").ToString();
+                Session["SKULDESCforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "LONG DESC").ToString();
+                Session["SKUSDATEforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "START DATE").ToString();
+                Session["SKUEDATEforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "END DATE").ToString();
 
-            Session["SKUIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
-            Session["SKUEXIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "EXTERNAL ID").ToString();
-            Session["SKUSDESCforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SHORT DESC").ToString();
-            Session["SKULDESCforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "LONG DESC").ToString();
-            Session["SKUSDATEforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "START DATE").ToString();
-            Session["SKUEDATEforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "END DATE").ToString();
-            
-            
 
-            if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("SKUMasterManagementEdit.aspx");
-            else
 
-                Response.Redirect("SKUMasterManagementEdit.aspx");
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("SKUMasterManagementEdit.aspx");
+                else
+
+                    Response.Redirect("SKUMasterManagementEdit.aspx");
+            }
         }
 
         protected void SearchBtn_Click(object sender, EventArgs e)
@@ -221,7 +229,7 @@ namespace KBS.KBS.CMSV3.MasterData
             IDTXT.Text = ""; EXIDTXT.Text = "";
             EDATE.Text = ""; SDATE.Text = "";
             SDESCTXT.Text = ""; LDESCTXT.Text = "";
-            
+
             Session["SKUID"] = "";
             Session["SKUEXID"] = "";
             Session["SKUSDesc"] = "";
@@ -240,8 +248,8 @@ namespace KBS.KBS.CMSV3.MasterData
             {
 
                 Session["SKUIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
-                
-            
+
+
                 Response.Redirect("SKUDetailMasterManagement.aspx");
             }
 
@@ -301,8 +309,32 @@ namespace KBS.KBS.CMSV3.MasterData
             }
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["SKUIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
+                Session["SKUEXIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "EXTERNAL ID").ToString();
+                Session["SKUSDESCforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SHORT DESC").ToString();
+                Session["SKULDESCforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "LONG DESC").ToString();
+                Session["SKUSDATEforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "START DATE").ToString();
+                Session["SKUEDATEforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "END DATE").ToString();
 
 
+
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("SKUMasterManagementEdit.aspx");
+                else
+
+                    Response.Redirect("SKUMasterManagementEdit.aspx");
+            }
+        }
     }
 
 }

@@ -1,13 +1,14 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
- CodeBehind="SalesInputNewSimple.aspx.cs" Inherits="KBS.KBS.CMSV3.SalesManagement.SalesInput.SalesInputNewSimple" %>
+    CodeBehind="SalesInputNewSimple.aspx.cs" Inherits="KBS.KBS.CMSV3.SalesManagement.SalesInput.SalesInputNewSimple" %>
 
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
 
-<script src="../../Scripts/CustomJS.js" type="text/javascript"></script>
-<script src="../../Scripts/CustomJS2.js" type="text/javascript"></script>
+    <script src="../../Scripts/CustomJS.js" type="text/javascript"></script>
+    <script src="../../Scripts/CustomJS2.js" type="text/javascript"></script>
     <script type="text/javascript">
-        function UpdateDetailGrid(s, e) {
+        function UpdateDetailGrid(s, e)
+        {
             detailGridView.PerformCallback(e.visibleIndex);
         }
     </script>
@@ -17,7 +18,7 @@
         <span>
             <dx:ASPxButton ID="BackhomeBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/back3.png" ToolTip="Previous Page" BackColor="Transparent" Enabled ="False"
+                Image-Url="~/image/back3.png" ToolTip="Previous Page" BackColor="Transparent" Enabled="False"
                 OnClick="BackhomeBtn_Click">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/back3Disable.png">
                 </Image>
@@ -55,10 +56,21 @@
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
+        </span><span>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
+                </Image>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="False">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
@@ -128,7 +140,7 @@
         </span>
     </div>
     <br />
-    <div  style="text-align:center" class="title">
+    <div style="text-align: center" class="title">
         <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Sales Input"></asp:Label>
     </div>
     <br />
@@ -141,10 +153,10 @@
     <br />
     <div>
         <table class="tableTop">
-        
+
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="NOTA" ID="TextBoxNota" onkeypress="return isNumberKey(event)" >
+                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="NOTA" ID="TextBoxNota" onkeypress="return isNumberKey(event)">
                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="130px">
@@ -169,7 +181,7 @@
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Caption="QTY" ID="QTYTXT"  onkeypress="return isNumberKeyQty(event)" Width="170px"  >
+                    <dx:ASPxTextBox runat="server" Caption="QTY" ID="QTYTXT" onkeypress="return isNumberKeyQty(event)" Width="170px">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="130px">
                         </CaptionCellStyle>
@@ -178,7 +190,7 @@
             </tr>
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="AMOUNT" ID="ASPxTextBoxAmt" onkeypress="return isNumberKey(event)" >
+                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="AMOUNT" ID="ASPxTextBoxAmt" onkeypress="return isNumberKey(event)">
                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="130px">
@@ -193,7 +205,7 @@
                     </dx:ASPxDateEdit>
                 </td>
             </tr>
-            </table>
+        </table>
     </div>
     <br />
 </asp:Content>

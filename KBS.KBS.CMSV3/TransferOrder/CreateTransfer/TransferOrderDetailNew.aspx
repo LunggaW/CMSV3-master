@@ -6,7 +6,8 @@
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
 <script src="../../Scripts/CustomJS.js" type="text/javascript"></script>
     <script type="text/javascript">
-        function UpdateDetailGrid(s, e) {
+        function UpdateDetailGrid(s, e)
+        {
             detailGridView.PerformCallback(e.visibleIndex);
         }
     </script>
@@ -53,10 +54,21 @@
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
+        </span><span>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
+                </Image>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="False">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
@@ -141,7 +153,7 @@
         <table class="tableTop">
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="ITEM ID" ID="ITEMTXT" onkeypress="return isNumberKey(event)" >
+                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="ITEM ID" ID="ITEMTXT" onkeypress="return isNumberKey(event)">
                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="100px">
@@ -149,7 +161,7 @@
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Caption="VARIANT ID" ID="VID" onkeypress="return isNumberKey(event)"  >
+                    <dx:ASPxTextBox runat="server" Caption="VARIANT ID" ID="VID" onkeypress="return isNumberKey(event)">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
@@ -166,7 +178,7 @@
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Caption="QTY" ID="QTYTXT" onkeypress="return isNumberKey(event)" >
+                    <dx:ASPxTextBox runat="server" Caption="QTY" ID="QTYTXT" onkeypress="return isNumberKey(event)">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
@@ -175,11 +187,11 @@
             </tr>
             <tr>
              <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxButton runat="server" Width="170px" ID="SearchBtnItem" Text="Search Item Dan Variant" OnClick="Search" ></dx:ASPxButton>
+                    <dx:ASPxButton runat="server" Width="170px" ID="SearchBtnItem" Text="Search Item Dan Variant" OnClick="Search"></dx:ASPxButton>
                     
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxButton runat="server" Width="170px" ID="ASPxButton1" Visible="false" Text="Search Item Dan Variant" OnClick="Search" ></dx:ASPxButton>
+                    <dx:ASPxButton runat="server" Width="170px" ID="ASPxButton1" Visible="false" Text="Search Item Dan Variant" OnClick="Search"></dx:ASPxButton>
                     
                 </td>
             </tr>

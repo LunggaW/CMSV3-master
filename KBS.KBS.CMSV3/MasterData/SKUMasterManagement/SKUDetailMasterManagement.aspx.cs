@@ -45,7 +45,7 @@ namespace KBS.KBS.CMSV3.MasterData
         }
         protected void PrevBtn_Click(object sender, EventArgs e)
         {
-            if (ASPxGridViewHeader.PageIndex -1 >= 0)
+            if (ASPxGridViewHeader.PageIndex - 1 >= 0)
             {
                 ASPxGridViewHeader.PageIndex = ASPxGridViewHeader.PageIndex - 1;
             }
@@ -68,7 +68,7 @@ namespace KBS.KBS.CMSV3.MasterData
             DTSKUDetail = CMSfunction.GetSKUDetailDataTable(skugroupdetail, SKUID);
             ASPxGridViewHeader.DataSource = DTSKUDetail;
             ASPxGridViewHeader.KeyFieldName = "ID";
-            ASPxGridViewHeader.DataBind();            
+            ASPxGridViewHeader.DataBind();
         }
 
 
@@ -116,7 +116,7 @@ namespace KBS.KBS.CMSV3.MasterData
                         AddBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         break;
                     case "2":
-                        //Ed.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        EditBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         if (accessContainer.Type == "0")
                         {
                             ASPxGridViewHeader.ClientSideEvents.RowDblClick = null;
@@ -138,37 +138,46 @@ namespace KBS.KBS.CMSV3.MasterData
 
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["SKUDetailIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
+                Session["SKUDetailEXIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID EXTERNAL").ToString();
+                Session["SKUDetailNAMEforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "NAME").ToString();
+                Session["SKUDetailGRPIDforUpdate"] = Session["SKUIDforUpdate"].ToString();
+                Session["SKUDetailVALUEforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VALUE").ToString();
+                Session["SKUDetailPARTforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "PARTICIPATION").ToString();
+                Session["SKUDetailBASEforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BASED ON").ToString();
+                Session["SKUDetailTYPEforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TYPE").ToString();
 
-            Session["SKUDetailIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
-            Session["SKUDetailEXIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID EXTERNAL").ToString();
-            Session["SKUDetailNAMEforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "NAME").ToString();
-            Session["SKUDetailGRPIDforUpdate"] = Session["SKUIDforUpdate"].ToString();
-            Session["SKUDetailVALUEforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VALUE").ToString();
-            Session["SKUDetailPARTforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "PARTICIPATION").ToString();
-            Session["SKUDetailBASEforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BASED ON").ToString();
-            Session["SKUDetailTYPEforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TYPE").ToString();
-            
 
-            if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("SKUDetailMasterManagementEdit.aspx");
-            else
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("SKUDetailMasterManagementEdit.aspx");
+                else
 
-                Response.Redirect("SKUDetailMasterManagementEdit.aspx");
+                    Response.Redirect("SKUDetailMasterManagementEdit.aspx");
+            }
         }
 
         protected void SearchBtn_Click(object sender, EventArgs e)
         {
             ColorGroupDetail color = new ColorGroupDetail();
 
-/*
-            color.ID = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderID.Text) ? ASPxTextBoxHeaderID.Text : "";
-            color.Color = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderName.Text) ? ASPxTextBoxHeaderName.Text : "";
+            /*
+                        color.ID = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderID.Text) ? ASPxTextBoxHeaderID.Text : "";
+                        color.Color = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderName.Text) ? ASPxTextBoxHeaderName.Text : "";
 
-            DTColorDetail = CMSfunction.GetColorHeaderDataTable(color);
-            ASPxGridViewHeader.DataSource = DTColorDetail;
-            ASPxGridViewHeader.KeyFieldName = "ID";
-            ASPxGridViewHeader.DataBind();
-  */
+                        DTColorDetail = CMSfunction.GetColorHeaderDataTable(color);
+                        ASPxGridViewHeader.DataSource = DTColorDetail;
+                        ASPxGridViewHeader.KeyFieldName = "ID";
+                        ASPxGridViewHeader.DataBind();
+              */
         }
 
         protected void BackhomeBtn_Click(object sender, EventArgs e)
@@ -185,16 +194,16 @@ namespace KBS.KBS.CMSV3.MasterData
 
         protected void ClearBtn_Click(object sender, EventArgs e)
         {
-            
+
             //ASPxTextBoxHeaderID.Text = ""; SizeOrder.Text = "";
             //SizeSDesc.Text = ""; SizeLDesc.Text = "";
-            
+
         }
-        
+
 
         protected void AddBtn_Click(object sender, EventArgs e)
         {
-            
+
             Response.Redirect("SKUDetailMasterManagementNew.aspx");
         }
 
@@ -245,11 +254,37 @@ namespace KBS.KBS.CMSV3.MasterData
                     Response.Redirect("SKUDetailMasterManagement.aspx");
                 }
             }
-            
+
         }
 
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["SKUDetailIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
+                Session["SKUDetailEXIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID EXTERNAL").ToString();
+                Session["SKUDetailNAMEforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "NAME").ToString();
+                Session["SKUDetailGRPIDforUpdate"] = Session["SKUIDforUpdate"].ToString();
+                Session["SKUDetailVALUEforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VALUE").ToString();
+                Session["SKUDetailPARTforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "PARTICIPATION").ToString();
+                Session["SKUDetailBASEforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BASED ON").ToString();
+                Session["SKUDetailTYPEforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TYPE").ToString();
 
 
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("SKUDetailMasterManagementEdit.aspx");
+                else
+
+                    Response.Redirect("SKUDetailMasterManagementEdit.aspx");
+            }
+        }
     }
 
 }

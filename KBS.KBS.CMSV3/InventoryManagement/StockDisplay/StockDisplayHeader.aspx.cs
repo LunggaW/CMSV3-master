@@ -125,7 +125,8 @@ namespace KBS.KBS.CMSV3.InventoryManagement.StockDisplay
                        // AddBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         break;
                     case "2":
-                        //Ed.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        EditBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        
                         if (accessContainer.Type == "0")
                         {
                             ASPxGridViewStockDisplay.ClientSideEvents.RowDblClick = null;

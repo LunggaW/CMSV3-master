@@ -118,7 +118,8 @@ namespace KBS.KBS.CMSV3.MasterData.SiteMasterManagement
                         AddBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
                         break;
                     case "2":
-                        //Ed.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        EditBtn.Enabled = Convert.ToBoolean(Convert.ToInt32(accessContainer.Type));
+                        
                         if (accessContainer.Type == "0")
                         {
                             ASPxGridViewSite.ClientSideEvents.RowDblClick = null;
@@ -259,7 +260,16 @@ namespace KBS.KBS.CMSV3.MasterData.SiteMasterManagement
             ASPxGridViewSite.PageIndex = ASPxGridViewSite.PageCount - 1;
         }
 
-
-
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewSite.FocusedRowIndex != -1)
+            {
+                Session["Site"] = ASPxGridViewSite.GetRowValues(ASPxGridViewSite.FocusedRowIndex, "SITE").ToString();
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback("SiteMasterManagementHeaderDetail.aspx");
+                else
+                    Response.Redirect("SiteMasterManagementHeaderDetail.aspx");
+            }
+        }
     }
 }

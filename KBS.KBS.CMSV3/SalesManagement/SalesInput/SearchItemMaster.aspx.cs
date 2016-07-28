@@ -33,7 +33,7 @@ namespace KBS.KBS.CMSV3.SalesManagement
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+                        
             if (!IsPostBack)
             {
                 RefreshDataGrid();
@@ -75,17 +75,19 @@ namespace KBS.KBS.CMSV3.SalesManagement
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
 
-            Session["SearchItemIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ITEM ID").ToString();
-            Session["SearchVariantforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VARIANT").ToString();
-            Session["SearchItemIIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ITEMID").ToString();
-            Session["SearchVariantIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VARIANTID").ToString();
-
 
             if (Page.IsCallback)
+            {
                 ASPxWebControl.RedirectOnCallback(Session["SearchRedirect"].ToString());
-            else
+            }
 
+            else
+            {
                 Response.Redirect(Session["SearchRedirect"].ToString());
+            }
+
+                
+    
         }
 
         protected void SearchBtn_Click(object sender, EventArgs e)
@@ -96,10 +98,30 @@ namespace KBS.KBS.CMSV3.SalesManagement
 
         protected void ClearBtn_Click(object sender, EventArgs e)
         {
-
+            
             TextBoxItemID.Text = "";
             TextBoxVariant.Text = "";
 
+        }
+
+        protected void EditBtn_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
+                Session["SearchItemIDforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ITEM ID").ToString();
+                Session["SearchVariantforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "VARIANT ID").ToString();
+                Session["SearchBarcodeforUpdate"] =
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "BARCODE").ToString();
+
+
+                if (Page.IsCallback)
+                    ASPxWebControl.RedirectOnCallback(Session["SearchRedirect"].ToString());
+                else
+
+                    Response.Redirect(Session["SearchRedirect"].ToString());
+            }
         }
 
 
@@ -109,7 +131,7 @@ namespace KBS.KBS.CMSV3.SalesManagement
 
             assortment.ItemID = !string.IsNullOrWhiteSpace(TextBoxItemID.Text) ? TextBoxItemID.Text : "";
             assortment.VariantID = !string.IsNullOrWhiteSpace(TextBoxVariant.Text) ? TextBoxVariant.Text : "";
-
+            
 
             DTSearchItem = CMSfunction.GetItemVariant(assortment);
 
@@ -120,7 +142,7 @@ namespace KBS.KBS.CMSV3.SalesManagement
             ASPxGridViewHeader.Columns[3].Visible = false;
         }
 
-
+       
 
     }
 

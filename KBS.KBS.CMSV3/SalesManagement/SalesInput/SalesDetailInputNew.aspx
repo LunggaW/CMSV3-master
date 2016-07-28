@@ -7,7 +7,8 @@
 <script src="../../Scripts/CustomJS.js" type="text/javascript"></script>
 <script src="../../Scripts/CustomJS2.js" type="text/javascript"></script>
     <script type="text/javascript">
-        function UpdateDetailGrid(s, e) {
+        function UpdateDetailGrid(s, e)
+        {
             detailGridView.PerformCallback(e.visibleIndex);
         }
     </script>
@@ -55,10 +56,21 @@
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
+        </span><span>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
                 Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
+                </Image>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="False">
+                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
@@ -128,7 +140,7 @@
         </span>
     </div>
     <br />
-    <div  style="text-align:center" class="title">
+    <div style="text-align: center" class="title">
         <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Sales Input Detail"></asp:Label>
     </div>
     <br />
@@ -140,9 +152,9 @@
     </span>
     <br />
     <div>
-        <table class="tableTop">    
-            <tr>
-                <td class="tableHeader2Column" colspan="5">
+        <table class="tableTop">        
+           <tr>
+               <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="ITEM ID" ID="ITEMTXT" Visible="false" onkeypress="return isNumberKey(event)" >
                          <CaptionSettings ShowColon="False"></CaptionSettings>
                         <ReadOnlyStyle BackColor="Silver">
@@ -150,7 +162,7 @@
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
                     </dx:ASPxTextBox>
-                </td>
+                 </td>
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxTextBox runat="server" Caption="VARIANT ID" ID="VID" onkeypress="return isNumberKey(event)" Visible="false" >
                         <CaptionSettings ShowColon="False"></CaptionSettings>
@@ -158,17 +170,17 @@
                         </CaptionCellStyle>
                     </dx:ASPxTextBox>
                 </td>
-            </tr>    
-           <tr>
-               <td class="tableHeader2Column" colspan="5">
+            </tr>
+            <tr>
+                <td class="tableHeader2Column" colspan="5">
                  <dx:ASPxComboBox runat="server" Width="170px" ReadOnly="False" Caption="ITEM ID" AutoPostBack="true" ID="ITEMBOX" OnSelectedIndexChanged="ITEMBOX_SelectedIndexChanged">
                       <CaptionSettings ShowColon="False"></CaptionSettings>   
-                     <ReadOnlyStyle BackColor="Silver">
+                        <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
                  </dx:ASPxComboBox>
-                 </td>
+                </td>
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxComboBox runat="server" Width="170px" ReadOnly="False" Caption="VARIANT" AutoPostBack="true" ID="VARIANTBOX" OnSelectedIndexChanged="Variant_SelectedIndexChanged">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
@@ -184,7 +196,7 @@
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="BARCODE" AutoPostBack="true" OnTextChanged="BarcodeCek" ID="BARCODETXT">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
-                         <ReadOnlyStyle BackColor="Silver">
+                        <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
@@ -202,14 +214,14 @@
             </tr>
             <tr>                
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Caption="QTY" ID="QTYTXT"  onkeypress="return isNumberKeyQty(event)"  >
+                    <dx:ASPxTextBox runat="server" Caption="QTY" ID="QTYTXT" onkeypress="return isNumberKeyQty(event)">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Caption="PRICE" ID="PRICETXT" onkeypress="return isNumberKey(event)" >
+                    <dx:ASPxTextBox runat="server" Caption="PRICE" ID="PRICETXT" onkeypress="return isNumberKey(event)">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
