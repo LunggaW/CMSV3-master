@@ -1,10 +1,10 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
-    CodeBehind="TransferOrderNew.aspx.cs" Inherits="KBS.KBS.CMSV3.TransferOrder.CreateTransfer.TransferOrderNew" %>
+ CodeBehind="TransferOrderNew.aspx.cs" Inherits="KBS.KBS.CMSV3.TransferOrder.CreateTransfer.TransferOrderNew" %>
 
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
 
-    <script src="../../Scripts/CustomJS.js" type="text/javascript"></script>
+<script src="../../Scripts/CustomJS.js" type="text/javascript"></script>
     <script type="text/javascript">
         function UpdateDetailGrid(s, e)
         {
@@ -139,7 +139,7 @@
     </div>
     <br />
     <div align="center" class="title">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Transfer Order Shipment"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Transfer Order Creation New"></asp:Label>
     </div>
     <br />
     <span>
@@ -169,14 +169,14 @@
                 </td>
             </tr>
             <tr>
-                <td class="tableHeader2Column" colspan="5">
+                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxComboBox runat="server" Visible="true" Caption="SITE FROM" ID="FROMBOX">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
                     </dx:ASPxComboBox>
                 </td>
-                <td class="tableHeader2Column" colspan="5">
+                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxComboBox runat="server" Visible="true" Caption="SITE TO" ID="TOBOX">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
@@ -192,16 +192,16 @@
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
                     </dx:ASPxDateEdit>
-
+                    
                 </td>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxComboBox runat="server" Visible="true" Caption="STATUS" ID="STATUSBOX">
+                 <td class="tableHeader2Column" colspan="5">
+                    <dx:ASPxComboBox runat="server" Visible="False" Caption="STATUS" ID="STATUSBOX">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
-                    </dx:ASPxComboBox>
+                    </dx:ASPxComboBox>                                  
                 </td>
-
+                
             </tr>
         </table>
     </div>

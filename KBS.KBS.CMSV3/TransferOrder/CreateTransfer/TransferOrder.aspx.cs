@@ -213,7 +213,32 @@ namespace KBS.KBS.CMSV3.TransferOrder
 
 
         }
+        protected void Proses_Click(object sender, EventArgs e)
+        {
+            if (ASPxGridViewHeader.FocusedRowIndex != -1)
+            {
 
+                Session["TRANSFERID"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "TRANSFER ID").ToString();
+                Session["INTERNALID"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
+
+                string results = CMSfunction.TOProsesFlag(Session["TRANSFERID"].ToString(), Session["INTERNALID"].ToString(), Session["UserID"].ToString());
+                
+                if (results == "1")
+                {
+                    RefreshGrid();
+                    string script = "alert('Success Confirm Data');";
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                }
+                else
+                {
+                    string script = "alert('Failed Confirm Data');";
+                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                }
+
+            }
+
+
+        }
         protected void AddBtn_Click(object sender, EventArgs e)
         {
             Response.Redirect("TransferOrderNew.aspx");

@@ -37,14 +37,19 @@ namespace KBS.KBS.CMSV3.TransferOrder
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            RefreshDataGrid();
+
+        }
+        private void RefreshDataGrid()
+        {
             TransferOrderHeader TOHeader = new TransferOrderHeader();
+            TOHeader.TO = Session["DefaultSite"].ToString();
             DTTransferReceive = CMSfunction.GetTOShipmentHeaderDataTable(TOHeader, 2);
             ASPxGridViewHeader.DataSource = DTTransferReceive;
             ASPxGridViewHeader.KeyFieldName = "TRANSFER ID";
-            ASPxGridViewHeader.DataBind();            
-
+            ASPxGridViewHeader.DataBind();
         }
-        
+
         protected void NextBtn_Click(object sender, EventArgs e)
         {
             if (ASPxGridViewHeader.PageIndex <= ASPxGridViewHeader.PageCount - 1)
@@ -192,8 +197,9 @@ namespace KBS.KBS.CMSV3.TransferOrder
                 transferorderdetail.IID = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "INTERNAL ID").ToString();
                 
                 message = CMSfunction.UpdateStatus(transferorderdetail, Session["UserID"].ToString(), 3);
+                RefreshDataGrid();
             }
-            Response.Redirect("TOReceiveHeader.aspx");
+            //Response.Redirect("TOReceiveHeader.aspx");
 
         }
 

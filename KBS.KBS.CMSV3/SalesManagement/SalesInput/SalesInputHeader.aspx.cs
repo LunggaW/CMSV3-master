@@ -37,12 +37,16 @@ namespace KBS.KBS.CMSV3.SalesManagement
         protected void Page_Load(object sender, EventArgs e)
         {
             SalesHeader salesheader = new SalesHeader();
+            salesheader.SITE = Session["DefaultSite"].ToString();
+            salesheader.USER = Session["UserID"].ToString();
             String Status = "'0','3'";
             DTSalesHeader = CMSfunction.GetSalesInputHeaderDataTable(salesheader,Status );
             ASPxGridViewHeader.DataSource = DTSalesHeader;
             ASPxGridViewHeader.KeyFieldName = "TRANSACTION ID";
-            ASPxGridViewHeader.DataBind();            
-
+            ASPxGridViewHeader.DataBind();
+            this.ASPxGridViewHeader.Columns[0].Visible = false;
+            this.ASPxGridViewHeader.Columns[1].Visible = false;
+            this.ASPxGridViewHeader.Columns[3].Visible = false;
         }
         
         protected void NextBtn_Click(object sender, EventArgs e)

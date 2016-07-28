@@ -145,7 +145,8 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
             transferorderheader.DATE = TDATE.Date != DateTime.MinValue ? (DateTime?)TDATE.Date : null;
             transferorderheader.FROM = FROMBOX.Value.ToString();
             transferorderheader.TO = TOBOX.Value.ToString();
-            if (STATUSBOX.Text == "CREATION")
+            transferorderheader.STATUS = "0";
+            /*if (STATUSBOX.Text == "CREATION")
             {
                 transferorderheader.STATUS = "0";
             }
@@ -153,7 +154,7 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
             {
                 transferorderheader.STATUS = "2";
             }
-
+            */
 
             message = CMSfunction.InsertTOShipmentGroup(transferorderheader, Session["UserID"].ToString());
 

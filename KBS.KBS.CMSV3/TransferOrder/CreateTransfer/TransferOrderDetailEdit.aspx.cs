@@ -49,7 +49,7 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
                 VID.Text = Session["TOVARIANTIDforUpdate"].ToString();
                 BARCODETXT.Text = Session["TOBARCODEforUpdate"].ToString();
                 QTYTXT.Text = Session["TOQTYforUpdate"].ToString();
-                SHIPTXT.Text = Session["TOSHIPforUpdate"].ToString();
+             //   SHIPTXT.Text = Session["TOSHIPforUpdate"].ToString();
                 COMENTEXT.Text = Session["TOCMTforUpdate"].ToString();
 
 
@@ -158,7 +158,7 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
             transferorderdetail.VARIANT = VID.Text;
             transferorderdetail.BARCODE = BARCODETXT.Text;
             transferorderdetail.QTY = QTYTXT.Text;
-            transferorderdetail.SHIP = SHIPTXT.Text;
+            //transferorderdetail.SHIP = SHIPTXT.Text;
             transferorderdetail.COMMENT = COMENTEXT.Text;
 
             message = CMSfunction.UpdateTOShipmentDetail(transferorderdetail, Session["UserID"].ToString());

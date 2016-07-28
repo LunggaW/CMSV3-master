@@ -41,46 +41,47 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
                 Response.Redirect("~/Account/Logins.aspx");
             }
         }
-        protected void BarcodeCek(object sender, EventArgs e)
-        {
-            TransferOrderDetail transferorderdetail = new TransferOrderDetail();
-            transferorderdetail.BARCODE = BARCODETXT.Text;
-            transferorderdetail = CMSfunction.GetBarcodeTransferDetail(transferorderdetail);
-            ITEMTXT.Text = transferorderdetail.ITEMID;
-            VID.Text = transferorderdetail.VARIANT;
-            BARCODETXT.Text = transferorderdetail.BARCODE;
-
-        }
+        
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
-                if (Session["SearchVariantforUpdate"] == null)
-                {
-                    Session["SearchVariantforUpdate"] = "";
-                }
-                if (Session["SearchItemIDforUpdate"] == null)
-                {
-                    Session["SearchItemIDforUpdate"] = "";
-                }
-                if (Session["SearchBarcodeforUpdate"] == null)
-                {
-                    Session["SearchBarcodeforUpdate"] = "";
-                }
-                PRICETXT.Text = "0";
-                if ((Session["SearchVariantforUpdate"].ToString() != "") && (Session["SearchItemIDforUpdate"].ToString() != ""))
-                {
-                    TransferOrderDetail transferorderdetail = new TransferOrderDetail();
-                    transferorderdetail.VARIANT = Session["SearchVariantforUpdate"].ToString();
-                    transferorderdetail.ITEMID = Session["SearchItemIDforUpdate"].ToString();
-                    transferorderdetail = CMSfunction.GetPriceDetail(transferorderdetail, Session["DefaultSite"].ToString());
-                    PRICETXT.Text = transferorderdetail.PRICE;
-                }
-                ITEMTXT.Text = Session["SearchItemIDforUpdate"].ToString();
-                VID.Text = Session["SearchVariantforUpdate"].ToString();
-                BARCODETXT.Text = Session["SearchBarcodeforUpdate"].ToString();
-                Session["SearchRedirect"] = null;
+                DTDetailInput = new DataTable();
+                DTDetailInput = CMSfunction.GetItemByAssortment(Session["DefaultSite"].ToString());
+                ITEMBOX.DataSource = DTDetailInput;
+                ITEMBOX.ValueField = "VALUE";
+                ITEMBOX.ValueType = typeof(string);
+                ITEMBOX.TextField = "DESCRIPTION";
+                ITEMBOX.DataBind();
+               
+                //if (Session["SearchVariantforUpdate"] == null)
+                //{
+                //    Session["SearchVariantforUpdate"] = "";
+                //}
+                //if (Session["SearchItemIDforUpdate"] == null)
+                //{
+                //    Session["SearchItemIDforUpdate"] = "";
+                //}
+                //if (Session["SearchBarcodeforUpdate"] == null)
+                //{
+                //    Session["SearchBarcodeforUpdate"] = "";
+                //}
+                //PRICETXT.Text = "0";
+                //if ((Session["SearchVariantforUpdate"].ToString() != "") && (Session["SearchItemIDforUpdate"].ToString() != ""))
+                //{
+                //    TransferOrderDetail transferorderdetail = new TransferOrderDetail();
+                //    transferorderdetail.VARIANT = Session["SearchVariantforUpdate"].ToString();
+                //    transferorderdetail.ITEMID = Session["SearchItemIDforUpdate"].ToString();
+                //    transferorderdetail = CMSfunction.GetPriceDetail(transferorderdetail, Session["DefaultSite"].ToString());
+                //    PRICETXT.Text = transferorderdetail.PRICE;
+                //}
+                //ITEMTXT.Text = Session["SearchItemIDforUpdate"].ToString();
+                //VID.Text = Session["SearchVariantforUpdate"].ToString();
+                //BARCODETXT.Text = Session["SearchBarcodeforUpdate"].ToString();
+                //Session["SearchRedirect"] = null;
             }
+            DTDetailInput = new DataTable();
             DTDetailInput = CMSfunction.GetSKULinkBox(Session["DefaultSite"].ToString());
             SKUBOX.DataSource = DTDetailInput;
             SKUBOX.ValueField = "VALUE";
@@ -134,7 +135,16 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
             VID.Text = "";
             BARCODETXT.Text = "";
             QTYTXT.Text = "";
-            
+            ITEMBOX.SelectedIndex = -1;
+            DTDetailInput = new DataTable();
+            DTDetailInput = CMSfunction.GetVariantByAssortment(ITEMBOX.Value.ToString(), Session["DefaultSite"].ToString());
+            VARIANTBOX.DataSource = DTDetailInput;
+            VARIANTBOX.ValueField = "VALUE";
+            VARIANTBOX.ValueType = typeof(string);
+            VARIANTBOX.TextField = "DESCRIPTION";
+            VARIANTBOX.DataBind();
+
+
         }
 
         protected void BackhomeBtn_Click(object sender, EventArgs e)
@@ -176,8 +186,8 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
             salesinputdetail.RECEIPTID = Session["INPUTRECEIPTID"].ToString();
             salesinputdetail.DATE = DateTime.Parse(Session["INPUTDATE"].ToString());
             salesinputdetail.SITE = Session["INPUTSITE"].ToString();
-            salesinputdetail.ITEMID = ITEMTXT.Text;
-            salesinputdetail.VARIANTID = VID.Text;
+            salesinputdetail.ITEMID = ITEMBOX.Value.ToString();
+            salesinputdetail.VARIANTID = VARIANTBOX.Value.ToString();
             salesinputdetail.BARCODE = BARCODETXT.Text;
             salesinputdetail.SALESQTY= QTYTXT.Text;
             salesinputdetail.SALESPRICE = PRICETXT.Text;
@@ -199,5 +209,80 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
 
         }
 
+        protected void ITEMBOX_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DTDetailInput = new DataTable();
+            DTDetailInput = CMSfunction.GetVariantByAssortment(ITEMBOX.Value.ToString(), Session["DefaultSite"].ToString());
+            VARIANTBOX.DataSource = DTDetailInput;
+            VARIANTBOX.ValueField = "VALUE";
+            VARIANTBOX.ValueType = typeof(string);
+            VARIANTBOX.TextField = "DESCRIPTION";
+            VARIANTBOX.DataBind();
+
+            
+        }
+        protected void BarcodeCek(object sender, EventArgs e)
+        {
+            TransferOrderDetail transferorderdetail = new TransferOrderDetail();
+            transferorderdetail.BARCODE = BARCODETXT.Text;
+            transferorderdetail = CMSfunction.GetBarcodeTransferDetail2(transferorderdetail, Session["DefaultSite"].ToString());
+            if (transferorderdetail.BARCODE != "Not Found")
+            {
+                ITEMTXT.Text = transferorderdetail.ITEMID;
+                VID.Text = transferorderdetail.VARIANT;
+                BARCODETXT.Text = transferorderdetail.BARCODE;
+                ITEMBOX.Value = transferorderdetail.ITEMID;
+
+                DTDetailInput = new DataTable();
+                DTDetailInput = CMSfunction.GetVariantByAssortment(ITEMBOX.Value.ToString(), Session["DefaultSite"].ToString());
+                VARIANTBOX.DataSource = DTDetailInput;
+                VARIANTBOX.ValueField = "VALUE";
+                VARIANTBOX.ValueType = typeof(string);
+                VARIANTBOX.TextField = "DESCRIPTION";
+                VARIANTBOX.DataBind();
+                VARIANTBOX.Value = transferorderdetail.VARIANT;
+                transferorderdetail = new TransferOrderDetail();
+                transferorderdetail.VARIANT = VARIANTBOX.Value.ToString();
+                transferorderdetail.ITEMID = ITEMBOX.Value.ToString();
+                transferorderdetail = CMSfunction.GetPriceDetail(transferorderdetail, Session["DefaultSite"].ToString());
+                PRICETXT.Text = transferorderdetail.PRICE;
+            }
+            else
+            {
+                string script = "alert('Item Dengan Barcode Tidak Tersedia , Mohon Hubungi Admin');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                BARCODETXT.Text = transferorderdetail.BARCODE;
+
+                ITEMTXT.Text = "";
+                VID.Text = "";
+                
+                ITEMBOX.SelectedIndex = -1;
+                DTDetailInput = new DataTable();
+                DTDetailInput = CMSfunction.GetVariantByAssortment(ITEMBOX.Value.ToString(), Session["DefaultSite"].ToString());
+                VARIANTBOX.DataSource = DTDetailInput;
+                VARIANTBOX.ValueField = "VALUE";
+                VARIANTBOX.ValueType = typeof(string);
+                VARIANTBOX.TextField = "DESCRIPTION";
+                VARIANTBOX.DataBind();
+               
+            }
+        }
+        protected void Variant_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TransferOrderDetail transferorderdetail = new TransferOrderDetail();
+            transferorderdetail.ITEMID = ITEMBOX.Value.ToString();
+            transferorderdetail.VARIANT = VARIANTBOX.Value.ToString();
+            transferorderdetail = CMSfunction.GetBarcodeByItemVariant(transferorderdetail);            
+            BARCODETXT.Text = transferorderdetail.BARCODE;
+            ITEMTXT.Text = transferorderdetail.ITEMID;
+            VID.Text = transferorderdetail.VARIANT;
+
+            transferorderdetail = new TransferOrderDetail();
+            transferorderdetail.VARIANT = VARIANTBOX.Value.ToString();
+            transferorderdetail.ITEMID = ITEMBOX.Value.ToString();
+            transferorderdetail = CMSfunction.GetPriceDetail(transferorderdetail, Session["DefaultSite"].ToString());
+            PRICETXT.Text = transferorderdetail.PRICE;
+
+        }
     }
 }

@@ -209,5 +209,14 @@ namespace KBS.KBS.CMSV3.TransferOrder {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxButton ASPxButtonEntry;
+        
+        /// <summary>
+        /// Proses control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton Proses;
     }
 }

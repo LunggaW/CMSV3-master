@@ -1,9 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
-    CodeBehind="TransferOrderDetailEdit.aspx.cs" Inherits="KBS.KBS.CMSV3.TransferOrder.CreateTransfer.TransferOrderDetailEdit" %>
+ CodeBehind="TransferOrderDetailEdit.aspx.cs" Inherits="KBS.KBS.CMSV3.TransferOrder.CreateTransfer.TransferOrderDetailEdit" %>
 
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
-    <script src="../../Scripts/CustomJS.js" type="text/javascript"></script>
+<script src="../../Scripts/CustomJS.js" type="text/javascript"></script>
     <script type="text/javascript">
         function UpdateDetailGrid(s, e)
         {
@@ -46,7 +46,7 @@
         </span><span>
             <dx:ASPxButton ID="ClearBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/clear.png" ToolTip="Clear" BackColor="Transparent">
+                Image-Url="~/image/clear.png" ToolTip="Clear" BackColor="Transparent"  Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/clearDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -138,7 +138,7 @@
     </div>
     <br />
     <div align="center" class="title">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Transfer Order Shipment"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Transfer Order Creation Detail Update"></asp:Label>
     </div>
     <br />
     <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Visible="False"></asp:Label>
@@ -146,7 +146,7 @@
     <br />
     <div>
         <table class="tableTop">
-
+            
             <tr>
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="True" Caption="ITEM ID" ID="ITEMTXT" onkeypress="return isNumberKey(event)">
@@ -175,7 +175,7 @@
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Caption="QTY" ID="QTYTXT" ReadOnly="True" onkeypress="return isNumberKey(event)">
+                    <dx:ASPxTextBox runat="server" Caption="QTY" ID="QTYTXT" ReadOnly="false" onkeypress="return isNumberKey(event)" >
                         <ReadOnlyStyle BackColor="Silver"></ReadOnlyStyle>
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
@@ -184,21 +184,22 @@
                 </td>
             </tr>
             <tr>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Caption="Shiping" ID="SHIPTXT" ReadOnly="False" onkeypress="return isNumberKey(event)">
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <CaptionCellStyle Width="100px">
-                        </CaptionCellStyle>
-                    </dx:ASPxTextBox>
-                </td>
-                <td class="tableHeader2Column" colspan="5">
+             <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxMemo
-                        runat="server" Caption="Comment" ID="COMENTEXT" Height="71px" Width="429px" ReadOnly="False">
+                     runat="server" Caption="Comment" ID="COMENTEXT" Height="71px" Width="429px"  ReadOnly="False" >
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
                     </dx:ASPxMemo>
                 </td>
+                <td class="tableHeader2Column" colspan="5">
+                    <dx:ASPxTextBox runat="server" Caption="Shiping" ID="SHIPTXT" ReadOnly="False" Visible="false" onkeypress="return isNumberKey(event)" >
+                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                        <CaptionCellStyle Width="100px">
+                        </CaptionCellStyle>
+                    </dx:ASPxTextBox>
+                </td>
+                
             </tr>
         </table>
     </div>

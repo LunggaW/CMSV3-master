@@ -88,7 +88,7 @@
         </span><span>
             <dx:ASPxButton ID="DelBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
-                Image-Url="~/image/min.png" ToolTip="Delete" BackColor="Transparent" Enabled="True"
+                Image-Url="~/image/min.png" ToolTip="Delete" BackColor="Transparent" Enabled="False"
                 OnClick="DelBtn_Click">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/minDisable.png">
                 </Image>

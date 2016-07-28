@@ -140,9 +140,9 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Transfer Order Shipment Detail"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Transfer Order Creation Detail"></asp:Label>
     </div>
-    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Transfer Order Shipment Detail"
+    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Transfer Order Creation Detail"
         Visible="false"></asp:Label>
     <div>
         <%--  <table class="tableTop">

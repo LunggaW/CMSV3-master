@@ -48,11 +48,26 @@ namespace KBS.KBS.CMSV3.MasterData.PriceMasterManagement
                 {
                     Session["SearchItemIDforUpdate"] = "";
                 }
+                if (Session["SearchItemIIDforUpdate"] == null)
+                {
+                    Session["SearchItemIIDforUpdate"] = "";
+                }
+                if (Session["SearchVariantIDforUpdate"] == null)
+                {
+                    Session["SearchVariantIDforUpdate"] = "";
+                }
                 ITEMIDTXT.Text = Session["SearchItemIDforUpdate"].ToString();
+                ITEMIDX.Text = Session["SearchItemIIDforUpdate"].ToString();              
+                DTPrice = CMSfunction.GetVariant(ITEMIDX.Text);
+                VARIANTBOX.DataSource = DTPrice;
+                VARIANTBOX.ValueField = "VALUE";
+                VARIANTBOX.ValueType = typeof(string);
+                VARIANTBOX.TextField = "DESCRIPTION";
+                VARIANTBOX.DataBind();
                 VARIANTBOX.Text = Session["SearchVariantforUpdate"].ToString();
-                VARIANTBOX.Value = Session["SearchVariantforUpdate"].ToString();
-            }
+                VARIANTBOX.Value = Session["SearchVariantIDforUpdate"].ToString();
 
+            }
             DTPrice = CMSfunction.GetSITEBox();
             SITEBOX.DataSource = DTPrice;
             SITEBOX.ValueField = "VALUE";
@@ -114,7 +129,10 @@ namespace KBS.KBS.CMSV3.MasterData.PriceMasterManagement
         protected void BackhomeBtn_Click(object sender, EventArgs e)
         {
             //Session.Remove("ParamHeaderIDforUpdate");
-
+            Session.Remove("SearchVariantIDforUpdate");
+            Session.Remove("SearchVariantforUpdate");
+            Session.Remove("SearchItemIIDforUpdate");
+            Session.Remove("SearchItemIDforUpdate");
             if (Page.IsCallback)
                 ASPxWebControl.RedirectOnCallback("PriceMasterManagementHeader.aspx");
             else
@@ -135,6 +153,13 @@ namespace KBS.KBS.CMSV3.MasterData.PriceMasterManagement
 
         protected void Search(object sender, EventArgs e)
         {
+            Session["SearchItemIDforUpdate"] = ITEMIDTXT.Text;
+            Session["SearchItemIIDforUpdate"] = ITEMIDX.Text;            
+            Session["SearchVariantforUpdate"] = VARIANTBOX.Text;
+            if (VARIANTBOX.Text != "")
+            {
+                Session["SearchVariantIDforUpdate"] = VARIANTBOX.Value.ToString();
+            }
             Session["SearchRedirect"] = "PriceMasterManagementNew.aspx";
             Response.Redirect("SearchItemMasterManagement.aspx");
         }
@@ -147,9 +172,13 @@ namespace KBS.KBS.CMSV3.MasterData.PriceMasterManagement
 
         private void ProcessInsert()
         {
+            Session.Remove("SearchVariantIDforUpdate");
+            Session.Remove("SearchVariantforUpdate");
+            Session.Remove("SearchItemIIDforUpdate");
+            Session.Remove("SearchItemIDforUpdate");
             PriceGroup pricegroup = new PriceGroup();
            
-            pricegroup.ItemID = ITEMIDTXT.Text;
+            pricegroup.ItemID = ITEMIDX.Text;
             pricegroup.VariantID = VARIANTBOX.Value.ToString();
             pricegroup.Site = SITEBOX.Value.ToString();
             pricegroup.Price = PRICETXT.Text;
@@ -159,11 +188,13 @@ namespace KBS.KBS.CMSV3.MasterData.PriceMasterManagement
             message = CMSfunction.InsertPriceGroup(pricegroup, Session["UserID"].ToString());
 
         }
+        
 
-        protected void ITEMIDTXT_Disposed(object sender, EventArgs e)
+        protected void ITEMIDTXT_TextChanged(object sender, EventArgs e)
         {
+            VARIANTBOX.SelectedIndex = -1;
             ITEMIDX.Text = "";
-
+            ITEMIDX.Text = CMSfunction.getinternalitemid(ITEMIDTXT.Text);
             DTPrice = CMSfunction.GetVariant(ITEMIDX.Text);
             VARIANTBOX.DataSource = DTPrice;
             VARIANTBOX.ValueField = "VALUE";

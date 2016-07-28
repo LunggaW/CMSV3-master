@@ -35,23 +35,23 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
             else
             {
                 loadNavBar();
-                
+
                 ASPxGridViewAssortment.Visible = false;
-                
+
             }
 
         }
 
         protected void Page_Load(object sender, EventArgs e)
         {
-               
-                
-                ASPxGridViewAssortment.Visible = true;
-                
 
-                
 
-                RefreshDataGrid();
+            ASPxGridViewAssortment.Visible = true;
+
+
+
+
+            RefreshDataGrid();
 
             //String ItemID = CMSfunction.GetItemIDByItemIDEx(Session["ItemIDExManagementVariant"].ToString());
             //ASPxTextBoxItem.Text = Session["ItemIDExManagementVariant"].ToString() +" - "+CMSfunction.GetItemDescByItemID(ItemID);
@@ -149,7 +149,7 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
 
                 message = CMSfunction.deleteAssortment(assortment);
 
-               
+
                 LabelMessage.Text = message.Message;
                 RefreshDataGrid();
             }
@@ -163,7 +163,7 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
             siteMaster.SiteName = !string.IsNullOrWhiteSpace(TextBoxSiteName.Text) ? TextBoxSiteName.Text : "";
 
             DTSiteAssortment = CMSfunction.GetAllStoreAssortment(Session["SiteProfile"].ToString(), siteMaster);
-            
+
             ASPxGridViewAssortment.DataSource = DTSiteAssortment;
             ASPxGridViewAssortment.KeyFieldName = "SITE";
             ASPxGridViewAssortment.DataBind();

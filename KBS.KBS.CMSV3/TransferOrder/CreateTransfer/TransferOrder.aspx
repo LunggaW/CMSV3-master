@@ -95,6 +95,7 @@
                 <Image Height="20px" Width="20px">
                 </Image>
                 <Border BorderColor="Transparent" />
+                <ClientSideEvents Click="function(s, e) {e.processOnServer = confirm('Are You Sure Want To Delete This Record ?');}" />
             </dx:ASPxButton>
         </span><span>
             <dx:ASPxButton ID="LprevBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
@@ -188,6 +189,10 @@
         <br />
         <dx:ASPxButton ID="ASPxButtonEntry" runat="server" OnClick="ASPxButtonEntry_Click"
             Text="Detail" Font-Size="Medium">
+        </dx:ASPxButton>
+        <dx:ASPxButton ID="Proses" runat="server" OnClick="Proses_Click"
+            Text="Proccess" Font-Size="Medium">
+            <ClientSideEvents Click="function(s, e) {e.processOnServer = confirm('Are You Sure Want To Proses This Record ?');}" />
         </dx:ASPxButton>
         <br />
     </div>
