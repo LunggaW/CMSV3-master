@@ -139,15 +139,6 @@ namespace KBS.KBS.CMSV3.SalesManagement {
         protected global::DevExpress.Web.ASPxGridView ASPxGridViewHeader;
         
         /// <summary>
-        /// Confirm control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton Confirm;
-        
-        /// <summary>
         /// ASPxButtonEntry control.
         /// </summary>
         /// <remarks>
@@ -155,5 +146,14 @@ namespace KBS.KBS.CMSV3.SalesManagement {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxButton ASPxButtonEntry;
+        
+        /// <summary>
+        /// Confirm control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton Confirm;
     }
 }

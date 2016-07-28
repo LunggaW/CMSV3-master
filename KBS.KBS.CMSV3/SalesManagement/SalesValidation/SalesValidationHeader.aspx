@@ -156,20 +156,23 @@ Inherits="KBS.KBS.CMSV3.SalesManagement.SalesValidationHeader" %>
     <div align="center">
         <br />
         <span>
+        <dx:ASPxButton ID="ASPxButtonEntry" runat="server" OnClick="ASPxButtonEntry_Click"
+            Text="DETAIL" Font-Size="Medium">
+        </dx:ASPxButton>
+        </span>
+        <span>
         <dx:ASPxButton ID="ASPxButton2" runat="server" OnClick="Reject_Click"
             Text="REJECT" Font-Size="Medium">
+            <ClientSideEvents Click="function(s, e) {e.processOnServer = confirm('Are You Sure Want To Reject This Record ?');}" />
             </dx:ASPxButton>
         </span>
         <span>
         <dx:ASPxButton ID="ASPxButton1" runat="server" OnClick="Validate_Click"
             Text="VALIDATE" Font-Size="Medium">
+            <ClientSideEvents Click="function(s, e) {e.processOnServer = confirm('Are You Sure Want To Validation This Record ?');}" />
             </dx:ASPxButton>
         </span>
-        <span>
-        <dx:ASPxButton ID="ASPxButtonEntry" runat="server" OnClick="ASPxButtonEntry_Click"
-            Text="ENTRY" Font-Size="Medium">
-        </dx:ASPxButton>
-        </span>
+        
         <br />
     </div>
     <br />

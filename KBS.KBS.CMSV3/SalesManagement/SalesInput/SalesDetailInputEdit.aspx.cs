@@ -52,15 +52,22 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
 
             if (!IsPostBack)
             {
+                DTDetailInput = new DataTable();
+                DTDetailInput = CMSfunction.GetItemByAssortment(Session["DefaultSite"].ToString());
+                ITEMBOX.DataSource = DTDetailInput;
+                ITEMBOX.ValueField = "VALUE";
+                ITEMBOX.ValueType = typeof(string);
+                ITEMBOX.TextField = "DESCRIPTION";
+                ITEMBOX.DataBind();
+
+                
+
                 SalesInputDetail salesinputdetail = new SalesInputDetail();
                 salesinputdetail.SALESID = Session["INPUTSALESID"].ToString();
                 salesinputdetail.IID = Session["INPUTIID"].ToString();
                 salesinputdetail.NOTA = Session["INPUTNOTA"].ToString();
                 salesinputdetail.RECEIPTID = Session["INPUTRECEIPTID"].ToString();
                 salesinputdetail.LINE = Session["INPUTLINE"].ToString();
-
-
-
                 salesinputdetail = CMSfunction.GetSalesInputDetailUpdate(salesinputdetail);
 
                 ITEMTXT.Text = salesinputdetail.ITEMID;
@@ -68,36 +75,23 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
                 BARCODETXT.Text = salesinputdetail.BARCODE;
                 QTYTXT.Text = salesinputdetail.SALESQTY;
                 PRICETXT.Text = salesinputdetail.SALESPRICE;
-                //SKUBOX.Text = salesinputdetail.SKUID;
                 COMMENTXT.Text = salesinputdetail.COMMENT;
-                //SKUBOX.SelectedIndex = int.Parse(salesinputdetail.SKUID);
-                
+
+                ITEMBOX.Value = salesinputdetail.ITEMID;
+                DTDetailInput = new DataTable();
+                DTDetailInput = CMSfunction.GetVariantByAssortment(ITEMBOX.Value.ToString(), Session["DefaultSite"].ToString());
+                VARIANTBOX.DataSource = DTDetailInput;
+                VARIANTBOX.ValueField = "VALUE";
+                VARIANTBOX.ValueType = typeof(string);
+                VARIANTBOX.TextField = "DESCRIPTION";
+                VARIANTBOX.DataBind();
+                VARIANTBOX.Value = salesinputdetail.VARIANTID;
                 SKUBOX.Value = int.Parse(salesinputdetail.SKUID);
                 SKUBOX.Text = salesinputdetail.NOTA;
-                //SKUBOX.SelectedItem.SetValue("Tes",salesinputdetail.SKUID);
-                if (Session["SearchRedirect"] != null )
-                {
-                    if (Session["SearchVariantforUpdate"] == null)
-                    {
-                        Session["SearchVariantforUpdate"] = "";
-                    }
-                    if (Session["SearchItemIDforUpdate"] == null)
-                    {
-                        Session["SearchItemIDforUpdate"] = "";
-                    }
-                    if (Session["SearchBarcodeforUpdate"] == null)
-                    {
-                        Session["SearchBarcodeforUpdate"] = "";
-                    }
-                    ITEMTXT.Text = Session["SearchItemIDforUpdate"].ToString();
-                    VID.Text = Session["SearchVariantforUpdate"].ToString();
-                    BARCODETXT.Text = Session["SearchBarcodeforUpdate"].ToString();
-                    Session["SearchRedirect"] = null;
-                }
+                
 
             }
-            String ABC = SKUBOX.Text;
-            String DEF = SKUBOX.Value.ToString();
+            
 
         }
 
@@ -135,27 +129,12 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
 
         protected void SearchBtn_Click(object sender, EventArgs e)
         {
-            //ParameterDetail parDetail = new ParameterDetail();
-
-            //parHeader.Lock = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderBlock.Text) ? ASPxTextBoxHeaderBlock.Text : "";
-            //parHeader.Comment = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderComment.Text) ? ASPxTextBoxHeaderComment.Text : "";
-            //parHeader.Copy = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderCopy.Text) ? ASPxTextBoxHeaderCopy.Text : "";
-            //parHeader.ID = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderID.Text) ? ASPxTextBoxHeaderID.Text : "";
-            //parHeader.Name = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderName.Text) ? ASPxTextBoxHeaderName.Text : "";
-
-            //DTParameterHeader = CMSfunction.GetParameterHeaderData(parHeader);
-            //ASPxGridViewDetail.DataSource = DTParameterHeader;
-            //ASPxGridViewDetail.KeyFieldName = "ID"; ASPxGridViewHeader.DataBind();
+           
         }
 
         protected void ClearBtn_Click(object sender, EventArgs e)
         {
-            //ASPxTextBoxHeaderBlock.Text = "";
-            //ASPxTextBoxHeaderComment.Text = "";
-            //ASPxTextBoxHeaderCopy.Text = "";
-            //ASPxTextBoxHeaderID.Text = "";
-            //ASPxTextBoxHeaderName.Text = "";
-            //ASPxTextBoxHeaderSClas.Text = "";
+           
         }
 
         protected void BackhomeBtn_Click(object sender, EventArgs e)
@@ -183,7 +162,7 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
 
         protected void AddBtn_Click(object sender, EventArgs e)
         {
-            //Response.Redirect("ParameterManagementDetailNew.aspx");
+            
         }
 
         protected void ValidateBtn_Click(object sender, EventArgs e)
@@ -196,10 +175,76 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
         {
             TransferOrderDetail transferorderdetail = new TransferOrderDetail();
             transferorderdetail.BARCODE = BARCODETXT.Text;
-            transferorderdetail = CMSfunction.GetBarcodeTransferDetail(transferorderdetail);
+            transferorderdetail = CMSfunction.GetBarcodeTransferDetail2(transferorderdetail, Session["DefaultSite"].ToString());
+            if (transferorderdetail.BARCODE != "Not Found")
+            {
+                ITEMTXT.Text = transferorderdetail.ITEMID;
+                VID.Text = transferorderdetail.VARIANT;
+                BARCODETXT.Text = transferorderdetail.BARCODE;
+                ITEMBOX.Value = transferorderdetail.ITEMID;
+
+                DTDetailInput = new DataTable();
+                DTDetailInput = CMSfunction.GetVariantByAssortment(ITEMBOX.Value.ToString(), Session["DefaultSite"].ToString());
+                VARIANTBOX.DataSource = DTDetailInput;
+                VARIANTBOX.ValueField = "VALUE";
+                VARIANTBOX.ValueType = typeof(string);
+                VARIANTBOX.TextField = "DESCRIPTION";
+                VARIANTBOX.DataBind();
+                VARIANTBOX.Value = transferorderdetail.VARIANT;
+                transferorderdetail = new TransferOrderDetail();
+                transferorderdetail.VARIANT = VARIANTBOX.Value.ToString();
+                transferorderdetail.ITEMID = ITEMBOX.Value.ToString();
+                transferorderdetail = CMSfunction.GetPriceDetail(transferorderdetail, Session["DefaultSite"].ToString());
+                PRICETXT.Text = transferorderdetail.PRICE;
+            }
+            else
+            {
+                string script = "alert('Item Dengan Barcode Tidak Tersedia , Mohon Hubungi Admin');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                BARCODETXT.Text = transferorderdetail.BARCODE;
+
+                ITEMTXT.Text = "";
+                VID.Text = "";
+
+                ITEMBOX.SelectedIndex = -1;
+                DTDetailInput = new DataTable();
+                DTDetailInput = CMSfunction.GetVariantByAssortment("0", Session["DefaultSite"].ToString());
+                VARIANTBOX.DataSource = DTDetailInput;
+                VARIANTBOX.ValueField = "VALUE";
+                VARIANTBOX.ValueType = typeof(string);
+                VARIANTBOX.TextField = "DESCRIPTION";
+                VARIANTBOX.DataBind();
+
+            }
+
+        }
+        protected void Variant_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            TransferOrderDetail transferorderdetail = new TransferOrderDetail();
+            transferorderdetail.ITEMID = ITEMBOX.Value.ToString();
+            transferorderdetail.VARIANT = VARIANTBOX.Value.ToString();
+            transferorderdetail = CMSfunction.GetBarcodeByItemVariant(transferorderdetail);
+            BARCODETXT.Text = transferorderdetail.BARCODE;
             ITEMTXT.Text = transferorderdetail.ITEMID;
             VID.Text = transferorderdetail.VARIANT;
-            BARCODETXT.Text = transferorderdetail.BARCODE;
+
+            transferorderdetail = new TransferOrderDetail();
+            transferorderdetail.VARIANT = VARIANTBOX.Value.ToString();
+            transferorderdetail.ITEMID = ITEMBOX.Value.ToString();
+            transferorderdetail = CMSfunction.GetPriceDetail(transferorderdetail, Session["DefaultSite"].ToString());
+            PRICETXT.Text = transferorderdetail.PRICE;
+
+        }
+        protected void ITEMBOX_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DTDetailInput = new DataTable();
+            DTDetailInput = CMSfunction.GetVariantByAssortment(ITEMBOX.Value.ToString(), Session["DefaultSite"].ToString());
+            VARIANTBOX.DataSource = DTDetailInput;
+            VARIANTBOX.ValueField = "VALUE";
+            VARIANTBOX.ValueType = typeof(string);
+            VARIANTBOX.TextField = "DESCRIPTION";
+            VARIANTBOX.DataBind();
+
 
         }
         protected void Search(object sender, EventArgs e)
@@ -218,8 +263,8 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
             salesinputdetail.RECEIPTID = Session["INPUTRECEIPTID"].ToString();
             salesinputdetail.DATE = DateTime.Parse(Session["INPUTDATE"].ToString());
             salesinputdetail.SITE = Session["INPUTSITE"].ToString();
-            salesinputdetail.ITEMID = ITEMTXT.Text;
-            salesinputdetail.VARIANTID = VID.Text;
+            salesinputdetail.ITEMID = ITEMBOX.Value.ToString();
+            salesinputdetail.VARIANTID = VARIANTBOX.Value.ToString();
             salesinputdetail.BARCODE = BARCODETXT.Text;
             salesinputdetail.SALESQTY = QTYTXT.Text;
             salesinputdetail.SALESPRICE = PRICETXT.Text;

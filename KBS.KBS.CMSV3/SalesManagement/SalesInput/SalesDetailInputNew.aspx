@@ -140,28 +140,11 @@
     </span>
     <br />
     <div>
-        <table class="tableTop">        
-           <tr>
-               <td class="tableHeader2Column" colspan="5">
-                 <dx:ASPxComboBox runat="server" Width="170px" ReadOnly="False" Caption="ITEM ID" AutoPostBack="true" ID="ITEMBOX" OnSelectedIndexChanged="ITEMBOX_SelectedIndexChanged">
-                        <ReadOnlyStyle BackColor="Silver">
-                        </ReadOnlyStyle>
-                        <CaptionCellStyle Width="100px">
-                        </CaptionCellStyle>
-                 </dx:ASPxComboBox>
-                 </td>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxComboBox runat="server" Width="170px" ReadOnly="False" Caption="VARIANT" AutoPostBack="true" ID="VARIANTBOX" OnSelectedIndexChanged="Variant_SelectedIndexChanged">
-                        <ReadOnlyStyle BackColor="Silver">
-                        </ReadOnlyStyle>
-                        <CaptionCellStyle Width="100px">
-                        </CaptionCellStyle>
-                 </dx:ASPxComboBox>
-                </td>
-            </tr>
+        <table class="tableTop">    
             <tr>
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="ITEM ID" ID="ITEMTXT" Visible="false" onkeypress="return isNumberKey(event)" >
+                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="100px">
@@ -175,11 +158,33 @@
                         </CaptionCellStyle>
                     </dx:ASPxTextBox>
                 </td>
+            </tr>    
+           <tr>
+               <td class="tableHeader2Column" colspan="5">
+                 <dx:ASPxComboBox runat="server" Width="170px" ReadOnly="False" Caption="ITEM ID" AutoPostBack="true" ID="ITEMBOX" OnSelectedIndexChanged="ITEMBOX_SelectedIndexChanged">
+                      <CaptionSettings ShowColon="False"></CaptionSettings>   
+                     <ReadOnlyStyle BackColor="Silver">
+                        </ReadOnlyStyle>
+                        <CaptionCellStyle Width="100px">
+                        </CaptionCellStyle>
+                 </dx:ASPxComboBox>
+                 </td>
+                <td class="tableHeader2Column" colspan="5">
+                    <dx:ASPxComboBox runat="server" Width="170px" ReadOnly="False" Caption="VARIANT" AutoPostBack="true" ID="VARIANTBOX" OnSelectedIndexChanged="Variant_SelectedIndexChanged">
+                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                         <ReadOnlyStyle BackColor="Silver">
+                        </ReadOnlyStyle>
+                        <CaptionCellStyle Width="100px">
+                        </CaptionCellStyle>
+                 </dx:ASPxComboBox>
+                </td>
             </tr>
+            
             <tr>
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="BARCODE" AutoPostBack="true" OnTextChanged="BarcodeCek" ID="BARCODETXT">
-                        <ReadOnlyStyle BackColor="Silver">
+                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
@@ -187,6 +192,7 @@
                 </td>
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxComboBox runat="server" Width="170px" ReadOnly="False" Caption="SKU " AutoPostBack="true" ID="SKUBOX" >
+                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="100px">
@@ -214,7 +220,7 @@
              
                 <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxMemo
-                     runat="server" Caption="COMMENT" ID="COMMENTXT" Height="71px" Width="429px"  ReadOnly="False" >
+                     runat="server" Caption="COMMENT" ID="COMMENTXT" Height="71px" Width="300px"  ReadOnly="False" >
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>

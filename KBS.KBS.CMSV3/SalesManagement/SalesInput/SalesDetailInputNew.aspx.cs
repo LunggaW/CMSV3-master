@@ -258,7 +258,8 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
                 
                 ITEMBOX.SelectedIndex = -1;
                 DTDetailInput = new DataTable();
-                DTDetailInput = CMSfunction.GetVariantByAssortment(ITEMBOX.Value.ToString(), Session["DefaultSite"].ToString());
+                
+                DTDetailInput = CMSfunction.GetVariantByAssortment("0", Session["DefaultSite"].ToString());
                 VARIANTBOX.DataSource = DTDetailInput;
                 VARIANTBOX.ValueField = "VALUE";
                 VARIANTBOX.ValueType = typeof(string);

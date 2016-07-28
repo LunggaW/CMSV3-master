@@ -130,24 +130,6 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput {
         protected global::DevExpress.Web.ASPxLabel ASPxLabelMessage;
         
         /// <summary>
-        /// ITEMBOX control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox ITEMBOX;
-        
-        /// <summary>
-        /// VARIANTBOX control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox VARIANTBOX;
-        
-        /// <summary>
         /// ITEMTXT control.
         /// </summary>
         /// <remarks>
@@ -164,6 +146,24 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxTextBox VID;
+        
+        /// <summary>
+        /// ITEMBOX control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxComboBox ITEMBOX;
+        
+        /// <summary>
+        /// VARIANTBOX control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxComboBox VARIANTBOX;
         
         /// <summary>
         /// BARCODETXT control.
