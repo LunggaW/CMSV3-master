@@ -121,6 +121,15 @@ namespace KBS.KBS.CMSV3.Administration.MenuMasterManagement {
         protected global::DevExpress.Web.ASPxButton LnextBtn;
         
         /// <summary>
+        /// Help control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton Help;
+        
+        /// <summary>
         /// LabelTitle control.
         /// </summary>
         /// <remarks>

@@ -134,7 +134,11 @@ namespace KBS.KBS.CMSV3.MasterData.ColorMasterManagement
                 {
                     ProcessInsert();
                     if (message.Code > 0)
-                    { Response.Redirect("ColorMasterManagementHeader.aspx"); }
+                    {
+                        string script = "alert('Success Insert');";
+                        ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                        Response.Redirect("ColorMasterManagementHeader.aspx");
+                    }
                 
                 }
             }

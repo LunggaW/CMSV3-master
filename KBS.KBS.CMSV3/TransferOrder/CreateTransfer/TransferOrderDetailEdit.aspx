@@ -134,6 +134,16 @@
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
+        </span><span>
+            <dx:ASPxButton ID="Help" runat="server" EnableTheming="False"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"
+                Image-Url="~/image/question.png" BackColor="Transparent" ToolTip="Help">
+                <ClientSideEvents Click="function (s, e) {window.open('../../Help/Administration/TransferOrderDetailEdit.aspx', '_blank')}"></ClientSideEvents>
+                <Image Height="20px" Width="20px">
+                </Image>
+                <BackgroundImage ImageUrl="~/image/transback.png"></BackgroundImage>
+                <Border BorderColor="Transparent" />
+            </dx:ASPxButton>
         </span>
     </div>
     <br />
