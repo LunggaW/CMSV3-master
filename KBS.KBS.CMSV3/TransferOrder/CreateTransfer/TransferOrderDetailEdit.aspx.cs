@@ -21,6 +21,7 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
         OutputMessage message = new OutputMessage();
+        private DataTable DTDetailInput = new DataTable();
 
         protected override void OnInit(EventArgs e)
         {
@@ -52,6 +53,23 @@ namespace KBS.KBS.CMSV3.TransferOrder.CreateTransfer
              //   SHIPTXT.Text = Session["TOSHIPforUpdate"].ToString();
                 COMENTEXT.Text = Session["TOCMTforUpdate"].ToString();
 
+                DTDetailInput = new DataTable();
+                DTDetailInput = CMSfunction.GetItemByAssortment2(Session["SITETO"].ToString(), Session["SITEFROM"].ToString());
+                ITEMBOX.DataSource = DTDetailInput;
+                ITEMBOX.ValueField = "VALUE";
+                ITEMBOX.ValueType = typeof(string);
+                ITEMBOX.TextField = "DESCRIPTION";
+                ITEMBOX.DataBind();
+                
+                ITEMBOX.Value = Session["TOITEMIDforUpdate"].ToString();
+                DTDetailInput = new DataTable();
+                DTDetailInput = CMSfunction.GetVariantByAssortment2(ITEMBOX.Value.ToString(), Session["SITETO"].ToString(), Session["SITEFROM"].ToString());
+                VARIANTBOX.DataSource = DTDetailInput;
+                VARIANTBOX.ValueField = "VALUE";
+                VARIANTBOX.ValueType = typeof(string);
+                VARIANTBOX.TextField = "DESCRIPTION";
+                VARIANTBOX.DataBind();
+                VARIANTBOX.Value = Session["TOVARIANTIDforUpdate"].ToString();
 
             }
 
