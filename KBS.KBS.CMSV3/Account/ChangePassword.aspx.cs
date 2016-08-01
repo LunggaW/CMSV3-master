@@ -63,11 +63,12 @@ namespace KBS.KBS.CMSV3 {
 
         protected void Page_Load(object sender, EventArgs e)
         {
-
+/*
             if (!String.IsNullOrWhiteSpace(User.Identity.Name))
             {
                 Response.Redirect("~/");
             }
+            */
         }
     }
 }

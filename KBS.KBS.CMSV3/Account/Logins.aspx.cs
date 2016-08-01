@@ -72,6 +72,7 @@ namespace KBS.KBS.CMSV3.Account
                     Session["MenuProfile"] = user.MenuProfile;
                     Session["SiteProfile"] = user.SiteProfile;
                     Session["SiteName"] = Session["DefaultSite"].ToString() + " " + Session["DefaultSiteName"].ToString();
+                    Session["Pass"] = user.Password;
                     Response.Redirect("~/Default.aspx");
                 }
                 else

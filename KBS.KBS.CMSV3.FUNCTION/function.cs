@@ -144,7 +144,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
                 cmd.CommandText =
-                    "select Cmsuser.Userusnm, Cmsuser.Useracprof, Cmsuser.Usermeprof, Sitelink.Prststprof, Site.Sitesite,  Site.SITESITENAME, Site.Sitesclas from kdscmsuser cmsuser " +
+                    "select Cmsuser.Userusnm, Cmsuser.Userpasw, Cmsuser.Useracprof, Cmsuser.Usermeprof, Sitelink.Prststprof, Site.Sitesite,  Site.SITESITENAME, Site.Sitesclas from kdscmsuser cmsuser " +
                     "inner join kdscmsprofsitelink sitelink on Cmsuser.Userstprof = Sitelink.Prststprof " +
                     "inner join kdscmssite site on Sitelink.Prstsite = Site.Sitesite " +
                     "where cmsuser.userusid = :userid " +
@@ -166,6 +166,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 while (dr.Read())
                 {
                     user.Username = (String)dr["Userusnm"];
+                    user.Password = (String)dr["Userpasw"];
                     user.SiteProfile = (String)dr["Prststprof"];
                     user.AccessProfile = (String)dr["Useracprof"];
                     user.MenuProfile = (String)dr["Usermeprof"];
@@ -689,14 +690,14 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 this.Connect();
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "UPDATE KDSUSERCMSV3 SET PASSWORD = :newpassword, MODIFIEDDATE = SYSDATE, MODIFIEDBY = :userid WHERE USERID = :userid";
+                cmd.CommandText = "UPDATE KDSCMSUSER SET USERPASW = :newpassword, USERMDAT = SYSDATE, USERMOBY = :userid WHERE USERUSID = :userid";
                 cmd.CommandType = CommandType.Text;
                 cmd.Parameters.Add(new OracleParameter(":userid", OracleDbType.Varchar2)).Value = UserID;
                 cmd.Parameters.Add(new OracleParameter(":newpassword", OracleDbType.Varchar2)).Value = NewPassword;
 
                 cmd.ExecuteNonQuery();
 
-                ResultString = "Success Updating Password, Password Changed to : " + NewPassword;
+                ResultString = "Success";
 
                 this.Close();
                 return ResultString;
