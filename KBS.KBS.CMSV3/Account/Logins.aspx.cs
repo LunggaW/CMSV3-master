@@ -34,7 +34,6 @@ namespace KBS.KBS.CMSV3.Account
             Background.ImageUrl = "~/image/" + path + "";            
             Logo.ImageUrl = "~/Image/cmslogo.png";
             Session["Filter"] = "Login";
-            logger.Debug("test");
         }
         protected void test(object sender, EventArgs e)
         {
