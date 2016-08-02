@@ -20,8 +20,8 @@ using Menu = KBS.KBS.CMSV3.DATAMODEL.Menu;
 namespace KBS.KBS.CMSV3.Account
 {
     public partial class Logins : System.Web.UI.Page
-    {private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
-        
+    {
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
         private User user;
         private OutputMessage message;
