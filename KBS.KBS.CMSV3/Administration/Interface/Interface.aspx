@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
-    CodeBehind="ChangePassword.aspx.cs" Inherits="KBS.KBS.CMSV3.Administration.ChangePassword.ChangePassword" %>
+    CodeBehind="Interface.aspx.cs" Inherits="KBS.KBS.CMSV3.Administration.Interface.Interface" %>
 
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
@@ -189,7 +189,7 @@
               <tr>
                 <td class="tableHeader2Column">
                     <dx:ASPxLabel ID="lblConfirmPassword" runat="server" AssociatedControlID="tbConfirmPassword"
-                        Text="Confirm Password:" />
+                        Text="Password:" />
                 </td>
             </tr>
                   <tr>
@@ -216,4 +216,11 @@
                 </tr>
             </table>
         </div>
+        <br/>
+        <dx:ASPxGridView runat="server" ClientInstanceName="headerGridView" CssClass="ASPXGridView"
+            ID="ASPxGridViewHeader" OnCustomCallback="ASPxGridViewHeader_CustomCallback">
+            <ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>
+            <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True"></SettingsBehavior>
+        </dx:ASPxGridView>
+        <br/>
 </asp:Content>

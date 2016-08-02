@@ -118,6 +118,7 @@
     <Content Include="Administration\AccessManagement\AccessProfileHeaderNew.aspx" />
     <Content Include="Administration\AccessManagement\AccessProfileDetail.aspx" />
     <Content Include="Administration\ChangePassword\ChangePassword.aspx" />
+    <Content Include="Administration\Interface\Interface.aspx" />
     <Content Include="Administration\License\ImportLicense.aspx" />
     <Content Include="Dependency\NLog\log.txt" />
     <Content Include="Dependency\NLog\NLog.dll" />
@@ -768,6 +769,13 @@
     </Compile>
     <Compile Include="Administration\ChangePassword\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Interface\Interface.aspx.cs">
+      <DependentUpon>Interface.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\Interface\Interface.aspx.designer.cs">
+      <DependentUpon>Interface.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administration\License\ImportLicense.aspx.cs">
       <DependentUpon>ImportLicense.aspx</DependentUpon>
