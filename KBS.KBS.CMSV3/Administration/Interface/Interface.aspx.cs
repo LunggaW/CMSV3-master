@@ -13,9 +13,8 @@ namespace KBS.KBS.CMSV3.Administration.Interface
     {
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
-        private DataTable DTAccessProfile = new DataTable();
-        private DATAMODEL.AccessProfileHeader accessProfile;
-        private String MenuID = ConfigurationManager.AppSettings["MenuIdAccessProfileManagement"];
+        private DataTable DTInterface = new DataTable();
+        private DATAMODEL.AccessProfileHeader accessProfile;       
         private User user;
 
         protected override void OnInit(EventArgs e)
@@ -33,58 +32,14 @@ namespace KBS.KBS.CMSV3.Administration.Interface
 
         protected void Page_Load(object sender, EventArgs e)
         {
-           
-            
+            DTInterface = CMSfunction.GetInterfaceDataTable();
+            ASPxGridViewHeader.DataSource = DTInterface;
+            ASPxGridViewHeader.KeyFieldName = "ID";
+            ASPxGridViewHeader.DataBind();
+
         }
         
-        protected void btnChangePassword_Click(object sender, EventArgs e)
-        {
-
-            if (tbCurrentPassword.Text != Session["Pass"].ToString())
-            {
-                tbCurrentPassword.ErrorText = "Old Password is not valid";
-                tbCurrentPassword.IsValid = false;
-                //btnChangePassword.Enabled = false;
-
-            }
-            else if (tbPassword.Text == "")
-            {
-                tbPassword.ErrorText = "New Password is required.";
-                tbPassword.IsValid = false;
-                //btnChangePassword.Enabled = false;
-            }
-            else if (tbPassword.Text == Session["Pass"].ToString())
-            {
-                tbPassword.ErrorText = "Old Password and new Password is identical";
-                tbPassword.IsValid = false;
-                //btnChangePassword.Enabled = false;
-            }
-            else if (tbPassword.Text != tbConfirmPassword.Text)
-            {
-                tbConfirmPassword.ErrorText = "Confirm Password is different";
-                tbConfirmPassword.IsValid = false;
-                //btnChangePassword.Enabled = false;
-            }
-            else if (tbPassword.Text.Contains(" "))
-            {
-                tbPassword.ErrorText = "New Password cannot contain empty string";
-                tbPassword.IsValid = false;
-                //btnChangePassword.Enabled = false;
-            }
-            else
-            {
-                String Message = CMSfunction.changePassword(tbPassword.Text, Session["UserID"].ToString());
-
-                if (Message == "Success")
-                {
-                    Session["Pass"] = tbPassword.Text;
-                    string script = "alert('Update Password Success');";
-                    ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
-                }
-            }
-            
-
-        }
+     
 
 
         private void loadNavBar()
@@ -120,6 +75,16 @@ namespace KBS.KBS.CMSV3.Administration.Interface
         protected void tbCurrentPassword_TextChanged(object sender, EventArgs e)
         {
             
+        }
+
+        protected void Execute_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Log_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

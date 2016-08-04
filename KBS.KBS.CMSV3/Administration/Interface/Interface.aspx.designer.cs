@@ -148,69 +148,6 @@ namespace KBS.KBS.CMSV3.Administration.Interface {
         protected global::System.Web.UI.WebControls.Label LabelMessage;
         
         /// <summary>
-        /// lblCurrentPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxLabel lblCurrentPassword;
-        
-        /// <summary>
-        /// tbCurrentPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox tbCurrentPassword;
-        
-        /// <summary>
-        /// lblPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxLabel lblPassword;
-        
-        /// <summary>
-        /// tbPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox tbPassword;
-        
-        /// <summary>
-        /// lblConfirmPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxLabel lblConfirmPassword;
-        
-        /// <summary>
-        /// tbConfirmPassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox tbConfirmPassword;
-        
-        /// <summary>
-        /// btnChangePassword control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxButton btnChangePassword;
-        
-        /// <summary>
         /// ASPxGridViewHeader control.
         /// </summary>
         /// <remarks>
@@ -218,5 +155,23 @@ namespace KBS.KBS.CMSV3.Administration.Interface {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxGridView ASPxGridViewHeader;
+        
+        /// <summary>
+        /// Execute control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton Execute;
+        
+        /// <summary>
+        /// Log control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton Log;
     }
 }

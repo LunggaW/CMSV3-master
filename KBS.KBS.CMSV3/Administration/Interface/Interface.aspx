@@ -146,81 +146,38 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="LabelTitleSiteProfile" runat="server" Font-Size="Large" Text="Change Password"></asp:Label>
+        <asp:Label ID="LabelTitleSiteProfile" runat="server" Font-Size="Large" Text="Interface"></asp:Label>
     </div>
     <br />
-    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Change Password"
+    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Interface"
         Visible="false">
         
     </asp:Label>
     <br />
     <div align="center">
-         <table class="tableTop" style="width:200px;text-align:center;grid-column-align:center">
-            
-            <tr>
-                <td class="tableHeader2Column">
-                    <dx:ASPxLabel ID="lblCurrentPassword" runat="server" Text="Old Password:" />
-                </td>
-            </tr>
-              <tr>
-                <td class="tableHeader2Column">        
-                    <dx:ASPxTextBox ID="tbCurrentPassword" runat="server" Password="true" Width="220px">
-                        <ValidationSettings ValidationGroup="ChangeUserPasswordValidationGroup" ErrorTextPosition="Bottom" ErrorFrameStyle-Font-Size="XX-Small">
-                            <RequiredField ErrorText="Old Password is required." IsRequired="true" />
-                        </ValidationSettings>
-                    </dx:ASPxTextBox>        
-               </td>
-            </tr>
-              <tr>
-                <td class="tableHeader2Column">
-                    <dx:ASPxLabel ID="lblPassword" runat="server" AssociatedControlID="tbPassword" Text="Password:" />
-             </td>
-            </tr>
-              <tr>
-                <td class="tableHeader2Column">
-                    <dx:ASPxTextBox ID="tbPassword" ClientInstanceName="Password" Password="true" runat="server"
-                        Width="220px"  >
-                        <ValidationSettings ValidationGroup="ChangeUserPasswordValidationGroup" ErrorTextPosition="Bottom" ErrorFrameStyle-Font-Size="XX-Small">
-                            <RequiredField ErrorText="Password is required." IsRequired="true" />
-                        </ValidationSettings>
-                    </dx:ASPxTextBox>
-                </td>
-            </tr>
-              <tr>
-                <td class="tableHeader2Column">
-                    <dx:ASPxLabel ID="lblConfirmPassword" runat="server" AssociatedControlID="tbConfirmPassword"
-                        Text="Password:" />
-                </td>
-            </tr>
-                  <tr>
-                    <td class="tableHeader2Column">
-                    <dx:ASPxTextBox ID="tbConfirmPassword" Password="true" runat="server" Width="220px" >
-                        <ValidationSettings ValidationGroup="ChangeUserPasswordValidationGroup" ErrorTextPosition="Bottom" ErrorFrameStyle-Font-Size="XX-Small">
-                            <RequiredField ErrorText="Confirm Password is required." IsRequired="true" />
-                        </ValidationSettings>
-                        <ClientSideEvents Validation="function(s, e) {
-                            var originalPasswd = Password.GetText();
-                            var currentPasswd = s.GetText();
-                            e.isValid = (originalPasswd  == currentPasswd );
-                            e.errorText = 'Confirmation Password not match.';
-                        }" />
-                    </dx:ASPxTextBox>
-                     </td>
-                </tr>
-                  <tr>
-                    <td class="tableHeader2Column">
-                    <dx:ASPxButton ID="btnChangePassword" runat="server" Text="Change Password" ValidationGroup="ChangeUserPasswordValidationGroup"
-                        OnClick="btnChangePassword_Click">
-                    </dx:ASPxButton>
-                      </td>
-                </tr>
-            </table>
-        </div>
+         
         <br/>
         <dx:ASPxGridView runat="server" ClientInstanceName="headerGridView" CssClass="ASPXGridView"
-            ID="ASPxGridViewHeader" OnCustomCallback="ASPxGridViewHeader_CustomCallback">
-            <ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>
+            ID="ASPxGridViewHeader">
+            <%--<ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>--%>
             <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True"></SettingsBehavior>
         </dx:ASPxGridView>
         <br/>
+        </div>
+    <div align="center">
+        <br />
+        <span>
+            <dx:ASPxButton ID="Execute" runat="server" 
+                Text="Execute" Font-Size="Medium" OnClick="Execute_Click" Width="100px">
+            </dx:ASPxButton>
+        </span>
+        <span>
+            <dx:ASPxButton ID="Log" runat="server" 
+                Text="Log" Font-Size="Medium" OnClick="Log_Click" Width="100px">
+            </dx:ASPxButton>
+        </span>
+
+
+        <br />
+    </div>
 </asp:Content>

@@ -690,10 +690,9 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 this.Connect();
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "UPDATE KDSCMSUSER SET USERPASW = :newpassword, USERMDAT = SYSDATE, USERMOBY = :userid WHERE USERUSID = :userid";
+                cmd.CommandText = "UPDATE KDSCMSUSER SET USERPASW = '" + NewPassword + "', USERMDAT = SYSDATE, USERMOBY =  '" + UserID + "' WHERE USERUSID =  '" + UserID + "' ";
                 cmd.CommandType = CommandType.Text;
-                cmd.Parameters.Add(new OracleParameter(":userid", OracleDbType.Varchar2)).Value = UserID;
-                cmd.Parameters.Add(new OracleParameter(":newpassword", OracleDbType.Varchar2)).Value = NewPassword;
+                
 
                 cmd.ExecuteNonQuery();
 
@@ -2492,7 +2491,36 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 return null;
             }
         }
+        public DataTable GetInterfaceDataTable()
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
 
+                cmd.CommandText = "select INTID as ID, INTDESC as Description, INTLSTRUN as \"Last Run\", INTLSTBY as \"Executed By\" from KDSCMSMSTINT ";
+
+                
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+                DataTable DT = new DataTable();
+                DT.Load(dr);
+                this.Close();
+                return DT;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetInterfaceDataTable Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
         public DataTable GetBrandHeaderDataTable(BrandGroup brandgroup)
         {
             try

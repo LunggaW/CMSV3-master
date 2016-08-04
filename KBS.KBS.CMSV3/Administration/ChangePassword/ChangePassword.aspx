@@ -173,7 +173,7 @@
             </tr>
               <tr>
                 <td class="tableHeader2Column">
-                    <dx:ASPxLabel ID="lblPassword" runat="server" AssociatedControlID="tbPassword" Text="Password:" />
+                    <dx:ASPxLabel ID="lblPassword" runat="server" AssociatedControlID="tbPassword" Text="New Password:" />
              </td>
             </tr>
               <tr>
