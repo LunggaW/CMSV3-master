@@ -62,7 +62,7 @@
                              </div>
                                  <div class="templateTitle">
                                 <span>
-                                <dx:ASPxButton ID="Logout" runat="server" Text="Logout" Font-Size="10pt" OnClick="Logout_clicked" Height="27px" ></dx:ASPxButton>                                                                
+                                <dx:ASPxButton ID="Logout" runat="server" UseSubmitBehavior="false" Text="Logout" Font-Size="10pt" OnClick="Logout_clicked" Height="27px" ></dx:ASPxButton>                                                                
                              </span>
                             
                             
