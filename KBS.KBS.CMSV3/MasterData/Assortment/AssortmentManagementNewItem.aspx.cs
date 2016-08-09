@@ -220,9 +220,9 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
 
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
-            RefreshDataGrid();
+            
             ProcessInsert();
-
+            RefreshDataGrid();
             LabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
 
             LabelMessage.Visible = true;
