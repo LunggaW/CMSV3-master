@@ -215,7 +215,7 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
         protected void ValidateBtn_Click(object sender, EventArgs e)
         {
             ProcessInsert();
-            Response.Redirect("AssortmentManagementItemView.aspx");
+            Response.Redirect("AssortmentManagementDetailView.aspx");
         }
 
         protected void SaveBtn_Click(object sender, EventArgs e)
