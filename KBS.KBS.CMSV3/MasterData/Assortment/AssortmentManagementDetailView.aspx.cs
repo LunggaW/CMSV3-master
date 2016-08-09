@@ -127,9 +127,9 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
         protected void BackhomeBtn_Click(object sender, EventArgs e)
         {
             if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("AssortmentManagementItemView.aspx");
+                ASPxWebControl.RedirectOnCallback("AssortmentManagementSiteView.aspx");
             else
-                Response.Redirect("AssortmentManagementItemView.aspx");
+                Response.Redirect("AssortmentManagementSiteView.aspx");
 
 
 
