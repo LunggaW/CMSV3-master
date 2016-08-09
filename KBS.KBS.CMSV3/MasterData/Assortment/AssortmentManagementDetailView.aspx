@@ -192,7 +192,7 @@
     </div>
     <br />
     <dx:ASPxGridView runat="server" ClientInstanceName="detailGridView" CssClass="ASPXGridView"
-        ID="ASPxGridViewAssortment" OnCustomCallback="ASPxGridViewAssortment_CustomCallback">
+        ID="ASPxGridViewAssortment">
         <ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>
         <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True"></SettingsBehavior>
     </dx:ASPxGridView>
