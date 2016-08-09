@@ -245,5 +245,10 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
                 RefreshDataGrid();
             }
         }
+
+        protected void ASPxGridViewAssortment_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
+        {
+
+        }
     }
 }

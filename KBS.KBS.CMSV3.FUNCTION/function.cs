@@ -1623,7 +1623,11 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.CommandText = "select KDSCMSMSTITEM.ITEMITEMIDX AS \"ITEM ID\", KDSCMSMSTVRNT.VRNTVRNTIDX AS VARIANT " +
                                   "from KDSCMSMSTITEM inner join KDSCMSMSTVRNT on KDSCMSMSTITEM.ITEMITEMID = KDSCMSMSTVRNT.VRNTITEMID " +
                                   "where " +
-                                  "not exists(select 1 from KDSCMSSASS where KDSCMSSASS.SASSITEMID = KDSCMSMSTITEM.ITEMITEMID and KDSCMSSASS.SASSSITEID = :Site) ";
+                                  "not exists" +
+                                  "(select 1 from KDSCMSSASS where " +
+                                  " KDSCMSSASS.SASSITEMID = KDSCMSMSTITEM.ITEMITEMID and " +
+                                  " KDSCMSSASS.SASSSITEID = :Site AND " +
+                                  " KDSCMSSASS.SASSVRNT = KDSCMSMSTVRNT.VRNTVRNTID) ";
 
                 cmd.CommandType = CommandType.Text;
 
