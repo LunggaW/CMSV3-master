@@ -2525,6 +2525,85 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
 
         }
+
+        public DataTable GetInterfaceSite()
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = "SELECT " +
+                                  "ROWID, " +
+                                  "INTSITESITE as SITE," +
+                                  "INTSITESCLAS as SITECLASS, " +
+                                  "INTSITESITENAME as SITENAME, " +
+                                  "INTSITESITECDAT as \"CREATED DATE\", " +
+                                  "INTSITESITEMDAT as \"MODIFIED DATE\", " +
+                                  "INTSITESITECRBY as \"CREATED BY\", " +
+                                  "INTSITESITEMOBY as \"MODIFIED BY\", " +
+                                  "INTSITESITEMSG as MESSAGE, " +
+                                  "INTSITESITEFLAG as FLAG " +
+                                  "FROM KDSCMSINTSITE " +
+                                  "where INTSITESITEFLAG >= 0";
+
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+                DataTable DT = new DataTable();
+                DT.Load(dr);
+                this.Close();
+                return DT;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetInterfaceSite Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
+        public string getIncomingDirectory()
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+
+                    cmd.CommandText =
+                                     "select DIRECTORY_PATH from ALL_DIRECTORIES where DIRECTORY_NAME = 'SOURCE_DIR'";
+                    
+                logger.Debug(cmd.CommandText);
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                string Result = "";
+
+                while (dr.Read())
+                {
+
+                    Result = dr["DIRECTORY_PATH"].ToString();
+
+                }
+                return Result;
+
+            }
+            catch (Exception e)
+            {
+                logger.Error("getIncomingDirectory Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
         public DataTable GetBrandHeaderDataTable(BrandGroup brandgroup)
         {
             try
