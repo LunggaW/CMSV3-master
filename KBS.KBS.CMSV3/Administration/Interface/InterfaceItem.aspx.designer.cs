@@ -10,7 +10,7 @@
 namespace KBS.KBS.CMSV3.Administration.Interface {
     
     
-    public partial class InterfaceSiteDetail {
+    public partial class InterfaceItem {
         
         /// <summary>
         /// BackhomeBtn control.
@@ -148,39 +148,48 @@ namespace KBS.KBS.CMSV3.Administration.Interface {
         protected global::System.Web.UI.WebControls.Label LabelMessage;
         
         /// <summary>
-        /// TextBoxIntSite control.
+        /// ASPxGridViewHeader control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxIntSite;
+        protected global::DevExpress.Web.ASPxGridView ASPxGridViewHeader;
         
         /// <summary>
-        /// TextBoxIntSiteClass control.
+        /// FileUploadItem control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxIntSiteClass;
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadItem;
         
         /// <summary>
-        /// TextBoxIntSiteName control.
+        /// Upload control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxIntSiteName;
+        protected global::DevExpress.Web.ASPxButton Upload;
         
         /// <summary>
-        /// ButtonReset control.
+        /// Execute control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxButton ButtonReset;
+        protected global::DevExpress.Web.ASPxButton Execute;
+        
+        /// <summary>
+        /// Log control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxButton Log;
     }
 }

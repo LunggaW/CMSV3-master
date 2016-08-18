@@ -118,6 +118,8 @@
     <Content Include="Administration\AccessManagement\AccessProfileHeaderNew.aspx" />
     <Content Include="Administration\AccessManagement\AccessProfileDetail.aspx" />
     <Content Include="Administration\ChangePassword\ChangePassword.aspx" />
+    <Content Include="Administration\Interface\InterfaceItem.aspx" />
+    <Content Include="Administration\Interface\InterfaceItemDetail.aspx" />
     <Content Include="Administration\Interface\InterfaceSiteDetail.aspx" />
     <Content Include="Administration\Interface\InterfaceSite.aspx" />
     <Content Include="Administration\Interface\Interface.aspx" />
@@ -771,6 +773,20 @@
     </Compile>
     <Compile Include="Administration\ChangePassword\ChangePassword.aspx.designer.cs">
       <DependentUpon>ChangePassword.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Interface\InterfaceItem.aspx.cs">
+      <DependentUpon>InterfaceItem.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\Interface\InterfaceItem.aspx.designer.cs">
+      <DependentUpon>InterfaceItem.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Interface\InterfaceItemDetail.aspx.cs">
+      <DependentUpon>InterfaceItemDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\Interface\InterfaceItemDetail.aspx.designer.cs">
+      <DependentUpon>InterfaceItemDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administration\Interface\InterfaceSiteDetail.aspx.cs">
       <DependentUpon>InterfaceSiteDetail.aspx</DependentUpon>

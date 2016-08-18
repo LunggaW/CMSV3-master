@@ -10,7 +10,7 @@
 namespace KBS.KBS.CMSV3.Administration.Interface {
     
     
-    public partial class InterfaceSiteDetail {
+    public partial class InterfaceItemDetail {
         
         /// <summary>
         /// BackhomeBtn control.
@@ -148,31 +148,58 @@ namespace KBS.KBS.CMSV3.Administration.Interface {
         protected global::System.Web.UI.WebControls.Label LabelMessage;
         
         /// <summary>
-        /// TextBoxIntSite control.
+        /// TextBoxIntItemIDExternal control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxIntSite;
+        protected global::DevExpress.Web.ASPxTextBox TextBoxIntItemIDExternal;
         
         /// <summary>
-        /// TextBoxIntSiteClass control.
+        /// TextBoxIntItemType control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxIntSiteClass;
+        protected global::DevExpress.Web.ASPxTextBox TextBoxIntItemType;
         
         /// <summary>
-        /// TextBoxIntSiteName control.
+        /// TextBoxIntItemSDesc control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxIntSiteName;
+        protected global::DevExpress.Web.ASPxTextBox TextBoxIntItemSDesc;
+        
+        /// <summary>
+        /// TextBoxIntItemLDesc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox TextBoxIntItemLDesc;
+        
+        /// <summary>
+        /// TextBoxIntItemBrandID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox TextBoxIntItemBrandID;
+        
+        /// <summary>
+        /// TextBoxIntItemBrandDesc control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox TextBoxIntItemBrandDesc;
         
         /// <summary>
         /// ButtonReset control.

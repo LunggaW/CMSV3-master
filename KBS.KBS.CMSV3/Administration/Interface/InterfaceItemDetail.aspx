@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
-    CodeBehind="InterfaceSiteDetail.aspx.cs" Inherits="KBS.KBS.CMSV3.Administration.Interface.InterfaceSiteDetail" %>
+    CodeBehind="InterfaceItemDetail.aspx.cs" Inherits="KBS.KBS.CMSV3.Administration.Interface.InterfaceItemDetail" %>
 
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
@@ -145,7 +145,7 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="LabelTitleSiteProfile" runat="server" Font-Size="Large" Text="Interface Site Detail"></asp:Label>
+        <asp:Label ID="LabelTitleSiteProfile" runat="server" Font-Size="Large" Text="Interface Item Detail"></asp:Label>
     </div>
     <br />
     <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Interface"
@@ -157,7 +157,7 @@
         <table class="tableTop">
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Site" ID="TextBoxIntSite"
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Item ID" ID="TextBoxIntItemIDExternal"
                         ReadOnly="False">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <ReadOnlyStyle BackColor="Silver">
@@ -167,7 +167,7 @@
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Site Class" ID="TextBoxIntSiteClass">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Item Type" ID="TextBoxIntItemType">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="110px">
                         </CaptionCellStyle>
@@ -176,7 +176,39 @@
             </tr>
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Site Name" ID="TextBoxIntSiteName"
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Short Description" ID="TextBoxIntItemSDesc"
+                        ReadOnly="False">
+                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                        <ReadOnlyStyle BackColor="Silver">
+                        </ReadOnlyStyle>
+                        <CaptionCellStyle Width="110px">
+                        </CaptionCellStyle>
+                    </dx:ASPxTextBox>
+                </td>
+                <td class="tableHeader2Column" colspan="5">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Long Description" ID="TextBoxIntItemLDesc"
+                        ReadOnly="False">
+                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                        <ReadOnlyStyle BackColor="Silver">
+                        </ReadOnlyStyle>
+                        <CaptionCellStyle Width="110px">
+                        </CaptionCellStyle>
+                    </dx:ASPxTextBox>
+                </td>
+            </tr>
+             <tr>
+                <td class="tableHeader2Column" colspan="5">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Brand ID" ID="TextBoxIntItemBrandID"
+                        ReadOnly="False">
+                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                        <ReadOnlyStyle BackColor="Silver">
+                        </ReadOnlyStyle>
+                        <CaptionCellStyle Width="110px">
+                        </CaptionCellStyle>
+                    </dx:ASPxTextBox>
+                </td>
+                <td class="tableHeader2Column" colspan="5">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Brand Description" ID="TextBoxIntItemBrandDesc"
                         ReadOnly="False">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <ReadOnlyStyle BackColor="Silver">

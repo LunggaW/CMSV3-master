@@ -10,11 +10,10 @@ using KBS.KBS.CMSV3.FUNCTION;
 
 namespace KBS.KBS.CMSV3.Administration.Interface
 {
-    public partial class InterfaceSiteDetail : System.Web.UI.Page
+    public partial class InterfaceItemDetail : System.Web.UI.Page
     {
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
-        private DataTable DTInterface = new DataTable();
         private DATAMODEL.AccessProfileHeader accessProfile;    
         private OutputMessage message = new OutputMessage();   
         private User user;
@@ -25,9 +24,9 @@ namespace KBS.KBS.CMSV3.Administration.Interface
             {
                 Response.Redirect("~/Account/logins.aspx");
             }
-            else if (Session["InterfaceSiteRowID"] == null)
+            else if (Session["InterfaceItemRowID"] == null)
             {
-                Response.Redirect("InterfaceSite.aspx");
+                Response.Redirect("InterfaceItem.aspx");
             }
             else
             {
@@ -40,13 +39,15 @@ namespace KBS.KBS.CMSV3.Administration.Interface
         {
             if (!IsPostBack)
             {
-                SiteMaster Site = new SiteMaster();
+                ItemMaster item = new ItemMaster();
 
-                Site = CMSfunction.GetSiteIntFromRowID(Session["InterfaceSiteRowID"].ToString());
+                item = CMSfunction.GetItemIntFromRowID(Session["InterfaceItemRowID"].ToString());
 
-                TextBoxIntSite.Text = Site.Site;
-                TextBoxIntSiteClass.Text = Site.SiteClass.ToString();
-                TextBoxIntSiteName.Text = Site.SiteName;
+                TextBoxIntItemIDExternal.Text = item.ItemIDExternal;
+                TextBoxIntItemType.Text = item.Type;
+                TextBoxIntItemLDesc.Text = item.LongDesc;
+                TextBoxIntItemSDesc.Text = item.ShortDesc;
+                TextBoxIntItemBrandID.Text = item.Brand;
             }
 
         }
@@ -86,7 +87,7 @@ namespace KBS.KBS.CMSV3.Administration.Interface
 
         protected void ButtonReset_Click(object sender, EventArgs e)
         {
-            message = CMSfunction.resetIntSite(Session["InterfaceSiteRowID"].ToString(), Session["UserID"].ToString());
+            message = CMSfunction.resetIntItem(Session["InterfaceItemRowID"].ToString(), Session["UserID"].ToString());
 
             LabelMessage.Visible = true;
             LabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
@@ -108,26 +109,27 @@ namespace KBS.KBS.CMSV3.Administration.Interface
         {
             ProcessUpdate();
 
-            Response.Redirect("InterfaceSite.aspx");
+            Response.Redirect("InterfaceItem.aspx");
         }
 
         private void ProcessUpdate()
         {
-            SiteMaster Site = new SiteMaster();
+            ItemMaster itemMaster = new ItemMaster();
 
-            Site.Site = TextBoxIntSite.Text;
+            itemMaster.ItemIDExternal = TextBoxIntItemIDExternal.Text;
+            itemMaster.Type = TextBoxIntItemType.Text;
+            itemMaster.LongDesc = TextBoxIntItemLDesc.Text;
+            itemMaster.ShortDesc = TextBoxIntItemSDesc.Text;
+            itemMaster.Brand = TextBoxIntItemBrandID.Text;
 
-            Site.SiteClass = Int32.Parse(TextBoxIntSiteClass.Text);
-
-            Site.SiteName = TextBoxIntSiteName.Text;
-
-            //To be Checked Site Flag
-            message = CMSfunction.updateIntSite(Site, Session["InterfaceSiteRowID"].ToString(), Session["UserID"].ToString());
+            //To be Checked brand description
+            message = CMSfunction.updateIntItem(itemMaster, Session["InterfaceItemRowID"].ToString(), Session["UserID"].ToString());
         }
 
         protected void BackhomeBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("InterfaceSite.aspx");
+            Response.Redirect("InterfaceItem.aspx");
         }
+        
     }
 }
