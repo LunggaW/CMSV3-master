@@ -14,6 +14,7 @@ namespace KBS.KBS.CMSV3.Administration.Interface
     {
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
+        private DataTable DTInterface = new DataTable();
         private DATAMODEL.AccessProfileHeader accessProfile;    
         private OutputMessage message = new OutputMessage();   
         private User user;
@@ -39,15 +40,19 @@ namespace KBS.KBS.CMSV3.Administration.Interface
         {
             if (!IsPostBack)
             {
-                ItemMaster item = new ItemMaster();
+                ItemMaster itemMaster = new ItemMaster();
 
-                item = CMSfunction.GetItemIntFromRowID(Session["InterfaceItemRowID"].ToString());
 
-                TextBoxIntItemIDExternal.Text = item.ItemIDExternal;
-                TextBoxIntItemType.Text = item.Type;
-                TextBoxIntItemLDesc.Text = item.LongDesc;
-                TextBoxIntItemSDesc.Text = item.ShortDesc;
-                TextBoxIntItemBrandID.Text = item.Brand;
+
+                itemMaster = CMSfunction.GetItemIntFromRowID(Session["InterfaceItemRowID"].ToString());
+
+                
+                TextBoxIntItemIDEx.Text = itemMaster.ItemIDExternal;
+                TextBoxIntBrandID.Text = itemMaster.Brand;
+                TextBoxIntSDesc.Text = itemMaster.ShortDesc;
+                TextBoxIntLDesc.Text = itemMaster.LongDesc;
+                TextBoxIntType.Text = itemMaster.Type;
+                
             }
 
         }
@@ -116,13 +121,21 @@ namespace KBS.KBS.CMSV3.Administration.Interface
         {
             ItemMaster itemMaster = new ItemMaster();
 
-            itemMaster.ItemIDExternal = TextBoxIntItemIDExternal.Text;
-            itemMaster.Type = TextBoxIntItemType.Text;
-            itemMaster.LongDesc = TextBoxIntItemLDesc.Text;
-            itemMaster.ShortDesc = TextBoxIntItemSDesc.Text;
-            itemMaster.Brand = TextBoxIntItemBrandID.Text;
 
-            //To be Checked brand description
+
+            
+            itemMaster.ItemIDExternal = TextBoxIntItemIDEx.Text;
+            itemMaster.Brand = TextBoxIntBrandID.Text;
+            itemMaster.ShortDesc = TextBoxIntSDesc.Text;
+            itemMaster.LongDesc  = TextBoxIntLDesc.Text;
+            itemMaster.Type = TextBoxIntType.Text;
+
+
+
+
+
+
+            //To be Checked Brand Description
             message = CMSfunction.updateIntItem(itemMaster, Session["InterfaceItemRowID"].ToString(), Session["UserID"].ToString());
         }
 
@@ -130,6 +143,5 @@ namespace KBS.KBS.CMSV3.Administration.Interface
         {
             Response.Redirect("InterfaceItem.aspx");
         }
-        
     }
 }

@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
-    CodeBehind="InterfaceItemDetail.aspx.cs" Inherits="KBS.KBS.CMSV3.Administration.Interface.InterfaceItemDetail" %>
+    CodeBehind="InterfaceVariant.aspx.cs" Inherits="KBS.KBS.CMSV3.Administration.Interface.InterfaceVariant" %>
 
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
@@ -11,10 +11,11 @@
     </script>
     <link href="../../Content/New.css" rel="stylesheet" type="text/css" />
     <div>
+
         <span>
             <dx:ASPxButton ID="BackhomeBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png" UseSubmitBehavior="false"
-                Image-Url="~/image/back3.png" ToolTip="Previous Page" BackColor="Transparent" Enabled="True" OnClick="BackhomeBtn_Click">
+                Image-Url="~/image/back3.png" ToolTip="Previous Page" BackColor="Transparent" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/back3Disable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -24,7 +25,7 @@
         </span><span>
             <dx:ASPxButton ID="ValidateBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png" UseSubmitBehavior="false"
-                Image-Url="~/image/valid.png" BackColor="Transparent" ToolTip="Valid" Enabled="True" OnClick="ValidateBtn_Click">
+                Image-Url="~/image/valid.png" BackColor="Transparent" ToolTip="Valid" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/validDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -34,7 +35,7 @@
         </span><span>
             <dx:ASPxButton ID="SaveBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png" UseSubmitBehavior="false"
-                Image-Url="~/image/save.png" ToolTip="Save" BackColor="Transparent" Enabled="True" OnClick="SaveBtn_Click">
+                Image-Url="~/image/save.png" ToolTip="Save" BackColor="Transparent" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/saveDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -145,7 +146,7 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="LabelTitleSiteProfile" runat="server" Font-Size="Large" Text="Interface Item Detail"></asp:Label>
+        <asp:Label ID="LabelTitleSiteProfile" runat="server" Font-Size="Large" Text="Interface Variant"></asp:Label>
     </div>
     <br />
     <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Interface"
@@ -153,73 +154,36 @@
         
     </asp:Label>
     <br />
-    <div>
-        <table class="tableTop">
-            <tr>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Item ID" ID="TextBoxIntItemIDEx"
-                        ReadOnly="False">
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <ReadOnlyStyle BackColor="Silver">
-                        </ReadOnlyStyle>
-                        <CaptionCellStyle Width="110px">
-                        </CaptionCellStyle>
-                    </dx:ASPxTextBox>
-                </td>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Type" ID="TextBoxIntType"
-                        ReadOnly="False">
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <ReadOnlyStyle BackColor="Silver">
-                        </ReadOnlyStyle>
-                        <CaptionCellStyle Width="110px">
-                        </CaptionCellStyle>
-                    </dx:ASPxTextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Short Description" ID="TextBoxIntSDesc"
-                        ReadOnly="False">
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <ReadOnlyStyle BackColor="Silver">
-                        </ReadOnlyStyle>
-                        <CaptionCellStyle Width="110px">
-                        </CaptionCellStyle>
-                    </dx:ASPxTextBox>
-                </td>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Long Description" ID="TextBoxIntLDesc"
-                        ReadOnly="False">
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <ReadOnlyStyle BackColor="Silver">
-                        </ReadOnlyStyle>
-                        <CaptionCellStyle Width="110px">
-                        </CaptionCellStyle>
-                    </dx:ASPxTextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Brand ID" ID="TextBoxIntBrandID"
-                        ReadOnly="False">
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <ReadOnlyStyle BackColor="Silver">
-                        </ReadOnlyStyle>
-                        <CaptionCellStyle Width="110px">
-                        </CaptionCellStyle>
-                    </dx:ASPxTextBox>
-                </td>
-            </tr>
-        </table>
-    </div>
     <div align="center">
+
+        <br />
+    <dx:ASPxGridView ID="ASPxGridViewHeader" runat="server" CssClass="ASPXGridView"
+        ClientInstanceName="headerGridView" OnCustomCallback="ASPxGridViewHeader_CustomCallback">
+        <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True" />
+        <ClientSideEvents RowDblClick="showHeaderDetail"></ClientSideEvents>
+    </dx:ASPxGridView>
+        <br />
+    </div>
+
+    <div align="center">
+        <asp:FileUpload ID="FileUploadVariant" runat="server" />
+        <dx:ASPxButton ID="Upload" runat="server"
+            Text="Upload" Font-Size="Medium" Width="100px" OnClick="Upload_Click">
+        </dx:ASPxButton>
+
         <br />
         <span>
-            <dx:ASPxButton ID="ButtonReset" runat="server"
-                Text="Reset" Font-Size="Medium" Width="100px" OnClick="ButtonReset_Click">
+            <dx:ASPxButton ID="Execute" runat="server"
+                Text="Execute" Font-Size="Medium" OnClick="Execute_Click" Width="100px">
             </dx:ASPxButton>
         </span>
+        <span>
+            <dx:ASPxButton ID="Log" runat="server"
+                Text="Log" Font-Size="Medium" OnClick="Log_Click" Width="100px">
+            </dx:ASPxButton>
+        </span>
+
+
         <br />
     </div>
 </asp:Content>

@@ -10,7 +10,7 @@
 namespace KBS.KBS.CMSV3.Administration.Interface {
     
     
-    public partial class InterfaceItemDetail {
+    public partial class InterfaceBarcodeDetail {
         
         /// <summary>
         /// BackhomeBtn control.
@@ -148,13 +148,31 @@ namespace KBS.KBS.CMSV3.Administration.Interface {
         protected global::System.Web.UI.WebControls.Label LabelMessage;
         
         /// <summary>
-        /// TextBoxIntItemIDEx control.
+        /// TextBoxIntBarcode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxIntItemIDEx;
+        protected global::DevExpress.Web.ASPxTextBox TextBoxIntBarcode;
+        
+        /// <summary>
+        /// TextBoxIntItemID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox TextBoxIntItemID;
+        
+        /// <summary>
+        /// TextBoxIntVariantID control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox TextBoxIntVariantID;
         
         /// <summary>
         /// TextBoxIntType control.
@@ -166,31 +184,31 @@ namespace KBS.KBS.CMSV3.Administration.Interface {
         protected global::DevExpress.Web.ASPxTextBox TextBoxIntType;
         
         /// <summary>
-        /// TextBoxIntSDesc control.
+        /// DateStart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxIntSDesc;
+        protected global::DevExpress.Web.ASPxDateEdit DateStart;
         
         /// <summary>
-        /// TextBoxIntLDesc control.
+        /// DateEnd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxIntLDesc;
+        protected global::DevExpress.Web.ASPxDateEdit DateEnd;
         
         /// <summary>
-        /// TextBoxIntBrandID control.
+        /// TextBoxIntStatus control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxIntBrandID;
+        protected global::DevExpress.Web.ASPxTextBox TextBoxIntStatus;
         
         /// <summary>
         /// ButtonReset control.
