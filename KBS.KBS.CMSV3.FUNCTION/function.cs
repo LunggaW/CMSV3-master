@@ -2525,6 +2525,539 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
 
         }
+
+        public DataTable GetInterfaceSite()
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = "SELECT " +
+                                  "ROWID, " +
+                                  "INTSITESITE as SITE," +
+                                  "INTSITESCLAS as SITECLASS, " +
+                                  "INTSITESITENAME as SITENAME, " +
+                                  "INTSITESITECDAT as \"CREATED DATE\", " +
+                                  "INTSITESITEMDAT as \"MODIFIED DATE\", " +
+                                  "INTSITESITECRBY as \"CREATED BY\", " +
+                                  "INTSITESITEMOBY as \"MODIFIED BY\", " +
+                                  "INTSITESITEMSG as MESSAGE, " +
+                                  "INTSITESITEFLAG as FLAG " +
+                                  "FROM KDSCMSINTSITE " +
+                                  "where INTSITESITEINTF < 0";
+
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+                DataTable DT = new DataTable();
+                DT.Load(dr);
+                this.Close();
+                return DT;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetInterfaceSite Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
+        public DataTable GetInterfaceItem()
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = "SELECT ROWID, " +
+                                  "INTITEMITEMIDX as \"ITEM ID\", " +
+                                  "INTITEMTYPE as \"ITEM TYPE\", " +
+                                  "INTITEMSDESC AS \"SHORT DESC\", " +
+                                  "INTITEMLDESC AS \"LONG DESC\", " +
+                                  "INTITEMBRNDID AS \"BRAND ID\", " +
+                                  "INTITEMBRNDDESC AS \"BRAND DESC\", " +
+                                  "INTFILENAME AS \"FILENAME\", " +
+                                  "INTERRMESS AS \"ERR MESSAGE\", " +
+                                  "INTDCRE AS \"CREATED DATE\", " +
+                                  "INTDMAJ AS \"MODIFIED DATE\", " +
+                                  "INTUTIL AS \"CREATED BY\" " +
+                                  "FROM KDSCMSINTITEM " +
+                                  "WHERE INTTRT < 0";
+
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+                DataTable DT = new DataTable();
+                DT.Load(dr);
+                this.Close();
+                return DT;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetInterfaceSite Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
+        public DataTable GetInterfaceVariant()
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = "SELECT " +
+                                  "ROWID, " +
+                                  "INTVRNTITEMID as \"ITEM ID\", " +
+                                  "INTVRNTVRNTID as \"VARIANT ID\", " +
+                                  "INTVRNTVRNTIDX AS \"VARIANT ID EXTERNAL\", " +
+                                  "INTVRNTSDESC AS \"SHORT DESC\", " +
+                                  "INTVRNTLDESC AS \"LONG DESC\", " +
+                                  "INTVRNTSTAT AS STATUS, " +
+                                  "INTVRNTMSG AS MESSAGE, " +
+                                  "INTVRNTCDAT AS \"CREATED DATE\", " +
+                                  "INTVRNTMDAT AS \"MODIFIED DATE\", " +
+                                  "INTVRNTCRBY AS \"CREATED BY\", " +
+                                  "INTVRNTMOBY AS \"MODIFIED BY\" " +
+                                  "FROM KDSCMSINTMSTVRNT " +
+                                  "WHERE INTVRNTDINTF < 0";
+
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+                DataTable DT = new DataTable();
+                DT.Load(dr);
+                this.Close();
+                return DT;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetInterfaceVariant Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
+        public DataTable GetInterfacePrice()
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = "SELECT ROWID, " +
+                                  "INTSPRCITEMIDX AS \"ITEM ID\", " +
+                                  "INTSPRCDVRNTIDX AS \"VARIANT ID\", " +
+                                  "INTSPRCSITE AS \"SITE\", " +
+                                  "INTSPRCSPRICE AS \"SALES PRICE\", " +
+                                  "INTSPRCVAT AS \"VAT\", " +
+                                  "INTSPRCSDAT AS \"START DATE\", " +
+                                  "INTSPRCEDAT AS \"END DATE\", " +
+                                  "INTFILENAME AS \"FILENAME\", " +
+                                  "INTERRMESS AS \"MESSAGE\", " +
+                                  "INTDCRE AS \"CREATED DATE\", " +
+                                  "INTDMAJ AS \"MODIFIED DATE\", " +
+                                  "INTUTIL AS \"MODIFIED BY\" " +
+                                  "FROM KDSCMSINTSPRICE " +
+                                  "WHERE INTTRT < 0 ";
+
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+                DataTable DT = new DataTable();
+                DT.Load(dr);
+                this.Close();
+                return DT;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetInterfacePrice Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
+        public DataTable GetInterfaceBarcode()
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = "SELECT ROWID, " +
+                                  "INTBRCDBRCDID AS BARCODE, " +
+                                  "INTBRCDITEMID AS \"ITEM ID\", " +
+                                  "INTBRCDVRNTID AS \"VARIANT ID\", " +
+                                  "INTBRCDTYPE AS \"TYPE\", " +
+                                  "INTBRCDSTAT AS \"STATUS\", " +
+                                  "INTBRCDSDAT AS \"START DATE\", " +
+                                  "INTBRCDEDAT AS \"END DATE\", " +
+                                  "INTBRCDCDAT AS \"CREATED DATE\", " +
+                                  "INTBRCDMDAT AS \"MODIFIED DATE\", " +
+                                  "INTBRCDCRBY AS \"CREATED BY\", " +
+                                  "INTBRCDMOBY AS \"MODIFIED BY\" " +
+                                  "FROM KDSCMSINTMSTBRCD " +
+                                  "WHERE INTBRCDINTF < 0 ";
+
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+                DataTable DT = new DataTable();
+                DT.Load(dr);
+                this.Close();
+                return DT;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetInterfaceBarcode Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
+        public string getIncomingDirectory()
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+
+                    cmd.CommandText =
+                                     "select DIRECTORY_PATH from ALL_DIRECTORIES where DIRECTORY_NAME = 'SOURCE_DIR'";
+                    
+                logger.Debug(cmd.CommandText);
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                string Result = "";
+
+                while (dr.Read())
+                {
+
+                    Result = dr["DIRECTORY_PATH"].ToString();
+
+                }
+                return Result;
+
+            }
+            catch (Exception e)
+            {
+                logger.Error("getIncomingDirectory Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
+        public OutputMessage ExecuteSPImportStoreFile(String FileName)
+        {
+
+            User user = new User();
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "Import_STORE_File";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.Add("P_FILENAME", OracleDbType.Varchar2).Value = FileName;
+                cmd.Parameters.Add("o_msg", OracleDbType.Varchar2).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+                cmd.ExecuteNonQuery();
+
+                //outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["o_msg"].Value.ToString();
+
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("ExecuteSPImportStoreFile Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage ExecuteSPImportItemFile(String FileName)
+        {
+
+            User user = new User();
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "Import_ITEM_File";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.Add("P_FILENAME", OracleDbType.Varchar2).Value = FileName;
+                cmd.Parameters.Add("o_msg", OracleDbType.Varchar2).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+                cmd.ExecuteNonQuery();
+
+                //outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["o_msg"].Value.ToString();
+
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("ExecuteSPImportItemFile Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage ExecuteSPImportVariantFile(String FileName)
+        {
+
+            User user = new User();
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "Import_VARIANT_File";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.Add("P_FILENAME", OracleDbType.Varchar2).Value = FileName;
+                cmd.Parameters.Add("o_msg", OracleDbType.Varchar2).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+                cmd.ExecuteNonQuery();
+
+                //outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["o_msg"].Value.ToString();
+
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("ExecuteSPImportVariantFile Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage ExecuteSPImportBarcodeFile(String FileName)
+        {
+
+            User user = new User();
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "Import_BARCODE_File";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.Add("P_FILENAME", OracleDbType.Varchar2).Value = FileName;
+                cmd.Parameters.Add("o_msg", OracleDbType.Varchar2).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+                cmd.ExecuteNonQuery();
+
+                //outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["o_msg"].Value.ToString();
+
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("ExecuteSPImportBarcodeFile Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage ExecuteSPImportPriceFile(String FileName)
+        {
+
+            User user = new User();
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "Import_PRICE_File";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.Add("P_FILENAME", OracleDbType.Varchar2).Value = FileName;
+                cmd.Parameters.Add("o_msg", OracleDbType.Varchar2).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+                cmd.ExecuteNonQuery();
+
+                //outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["o_msg"].Value.ToString();
+
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("ExecuteSPImportPriceFile Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage ExecuteSPImportDNFile(String FileName)
+        {
+
+            User user = new User();
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "Import_DN_File";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.Add("P_FILENAME", OracleDbType.Varchar2).Value = FileName;
+                cmd.Parameters.Add("o_msg", OracleDbType.Varchar2).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+                cmd.ExecuteNonQuery();
+
+                //outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["o_msg"].Value.ToString();
+
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("ExecuteSPImportDNFile Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
         public DataTable GetBrandHeaderDataTable(BrandGroup brandgroup)
         {
             try
@@ -7819,6 +8352,257 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
         }
 
+        public SiteMaster GetSiteIntFromRowID(String ROWID)
+        {
+            SiteMaster siteMaster = new SiteMaster();
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "select " +
+                                  "INTSITESITE, " +
+                                  "INTSITESCLAS, " +
+                                  "INTSITESITENAME " +
+                                  "from KDSCMSINTSITE " +
+                                  "where ROWID = :ROWIDSITE";
+
+
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new OracleParameter(":ROWIDSITE", OracleDbType.Varchar2)).Value = ROWID;
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    siteMaster.Site = dr["INTSITESITE"].ToString();
+                    siteMaster.SiteClass = Int32.Parse(dr["INTSITESCLAS"].ToString());
+                    siteMaster.SiteName = dr["INTSITESITENAME"].ToString();
+                    //siteMaster.Enable = Int32.Parse(dr["sitesiteflag"].ToString());
+                }
+
+                this.Close();
+                return siteMaster;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetSiteDataByProfileID Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
+        public ItemMaster GetItemIntFromRowID(String ROWID)
+        {
+            ItemMaster item = new ItemMaster();
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT " +
+                                  "INTITEMITEMIDX, " +
+                                  "INTITEMTYPE, " +
+                                  "INTITEMSDESC, " +
+                                  "INTITEMLDESC, " +
+                                  "INTITEMBRNDID " +
+                                  "FROM KDSCMSINTITEM " +
+                                  "where ROWID = :ROWIDITEM";
+
+
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new OracleParameter(":ROWIDITEM", OracleDbType.Varchar2)).Value = ROWID;
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    item.ItemIDExternal = dr["INTITEMITEMIDX"].ToString();
+                    item.Type = dr["INTITEMTYPE"].ToString();
+                    item.ShortDesc = dr["INTITEMSDESC"].ToString();
+                    item.LongDesc = dr["INTITEMLDESC"].ToString();
+                    item.Brand = dr["INTITEMBRNDID"].ToString();
+
+
+                    //siteMaster.Enable = Int32.Parse(dr["sitesiteflag"].ToString());
+                }
+
+                this.Close();
+                return item;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetItemIntFromRowID Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
+        public BarcodeMaster GetBarcodeIntFromRowID(String ROWID)
+        {
+            BarcodeMaster barcode = new BarcodeMaster();
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT INTBRCDBRCDID , " +
+                                  "INTBRCDITEMID, " +
+                                  "INTBRCDVRNTID, " +
+                                  "INTBRCDTYPE, " +
+                                  "INTBRCDSTAT, " +
+                                  "INTBRCDSDAT, " +
+                                  "INTBRCDEDAT " +
+                                  "FROM KDSCMSINTMSTBRCD " +
+                                  "where ROWID = :ROWIDBARCODE";
+
+
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new OracleParameter(":ROWIDBARCODE", OracleDbType.Varchar2)).Value = ROWID;
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+
+                    barcode.Barcode = dr["INTBRCDBRCDID"].ToString();
+                    barcode.ItemID = dr["INTBRCDITEMID"].ToString();
+                    barcode.VariantID = dr["INTBRCDVRNTID"].ToString();
+                    barcode.Type = dr["INTBRCDTYPE"].ToString();
+                    barcode.Status = dr["INTBRCDSTAT"].ToString();
+                    barcode.StartDate = DateTime.Parse(dr["INTBRCDSDAT"].ToString());
+                    barcode.EndDate = DateTime.Parse(dr["INTBRCDEDAT"].ToString());
+
+
+                    //siteMaster.Enable = Int32.Parse(dr["sitesiteflag"].ToString());
+                }
+
+                this.Close();
+                return barcode;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetBarcodeIntFromRowID Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
+        public VariantMaster GetVariantIntFromRowID(String ROWID)
+        {
+            VariantMaster variantMaster = new VariantMaster();
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT INTVRNTITEMID, " +
+                                  "INTVRNTVRNTID, " +
+                                  "INTVRNTVRNTIDX, " +
+                                  "INTVRNTSDESC, " +
+                                  "INTVRNTLDESC, " +
+                                  "INTVRNTSTAT " +
+                                  "FROM KDSCMSINTMSTVRNT " +
+                                  "where ROWID = :ROWIDVARIANT";
+
+
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new OracleParameter(":ROWIDVARIANT", OracleDbType.Varchar2)).Value = ROWID;
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    
+                    variantMaster.ItemID = dr["INTVRNTITEMID"].ToString();
+                    variantMaster.VariantID = dr["INTVRNTVRNTID"].ToString();
+                    variantMaster.VariantIDExternal = dr["INTVRNTVRNTIDX"].ToString();
+                    variantMaster.ShortDesc = dr["INTVRNTSDESC"].ToString();
+                    variantMaster.LongDesc = dr["INTVRNTLDESC"].ToString();
+                    variantMaster.Status = dr["INTVRNTSTAT"].ToString();
+                    //siteMaster.Enable = Int32.Parse(dr["sitesiteflag"].ToString());
+                }
+
+                this.Close();
+                return variantMaster;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetVariantIntFromRowID Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
+        public PriceGroup GetPriceIntFromRowID(String ROWID)
+        {
+            PriceGroup priceGroup = new PriceGroup();
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT INTSPRCITEMIDX, " +
+                                  "INTSPRCDVRNTIDX, " +
+                                  "INTSPRCSITE, " +
+                                  "INTSPRCSPRICE, " +
+                                  "INTSPRCVAT, " +
+                                  "INTSPRCSDAT, " +
+                                  "INTSPRCEDAT " +
+                                  "FROM KDSCMSINTSPRICE " +
+                                  "where ROWID = :ROWIDPRICE";
+
+
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new OracleParameter(":ROWIDPRICE", OracleDbType.Varchar2)).Value = ROWID;
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+
+                    priceGroup.ItemID = dr["INTSPRCITEMIDX"].ToString();
+                    priceGroup.VariantID = dr["INTSPRCDVRNTIDX"].ToString();
+                    priceGroup.Site = dr["INTSPRCSITE"].ToString();
+                    priceGroup.Price = dr["INTSPRCSPRICE"].ToString();
+                    priceGroup.VAT = dr["INTSPRCVAT"].ToString();
+                    priceGroup.SDate = DateTime.Parse(dr["INTSPRCSDAT"].ToString());
+                    priceGroup.Edate = DateTime.Parse(dr["INTSPRCEDAT"].ToString());
+
+                    //siteMaster.Enable = Int32.Parse(dr["sitesiteflag"].ToString());
+                }
+
+                this.Close();
+                return priceGroup;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetPriceIntFromRowID Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
         public DataTable GetMenuDataByProfileID(String ProfileID)
         {
             try
@@ -11948,6 +12732,581 @@ namespace KBS.KBS.CMSV3.FUNCTION
             catch (Exception e)
             {
                 logger.Error("Login Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage updateIntSite(SiteMaster Site, String ROWID, String CurrUser)
+        {
+
+
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+                //PINTSITESITE VARCHAR2,
+                //    PINTSITESCLAS   NUMBER,
+                //    PINTSITESITENAME VARCHAR2,
+                //    PINTSITESITEINTF    NUMBER,
+                //    PINTSITESITEMOBY VARCHAR2,
+                //    PINTSITESITEFLAG    NUMBER,
+                //    PINTSITEROWID VARCHAR2,
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "PKKDSCMSINTSITE.UPD_DATA";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.Add("PINTSITESITE", OracleDbType.Varchar2, 20).Value = Site.Site;
+                cmd.Parameters.Add("PINTSITESCLAS", OracleDbType.Int32, 1).Value = Site.SiteClass;
+                cmd.Parameters.Add("PINTSITESITENAME", OracleDbType.Varchar2, 50).Value = Site.SiteName;
+                cmd.Parameters.Add("PINTSITESITEMOBY", OracleDbType.Varchar2, 20).Value = CurrUser;
+                cmd.Parameters.Add("PINTSITESITEFLAG", OracleDbType.Int32).Value = "0";
+                cmd.Parameters.Add("PINTSITEROWID", OracleDbType.Varchar2).Value = ROWID;
+                cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                cmd.ExecuteNonQuery();
+                //OracleDataReader dr = cmd.ExecuteReader();
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+
+                outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["POUTRSNMSG"].Value.ToString();
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("updateIntSite Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage updateIntVariant(VariantMaster Variant, String ROWID, String CurrUser)
+        {
+
+
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+                //PINTVRNTITEMID NUMBER, 
+                //PINTVRNTVRNTID NUMBER,
+                //PINTVRNTVRNTIDX VARCHAR, 
+                //    PINTVRNTSDESC VARCHAR,
+                //    PINTVRNTLDESC VARCHAR, 
+                //    PINTVRNTSTAT NUMBER,
+                //    PINTVRNTMOBY VARCHAR,  
+                //    PINTVRNTROWID VARCHAR2,
+                //    POUTRSNCODE OUT NUMBER,
+                //    POUTRSNMSG OUT VARCHAR2
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "PKKDSCMSINTMSTVRNT.UPD_DATA";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.Add("PINTVRNTITEMID", OracleDbType.Int32, 10).Value = Variant.ItemID;
+                cmd.Parameters.Add("PINTVRNTVRNTID", OracleDbType.Int32, 10).Value = Variant.VariantID;
+                cmd.Parameters.Add("PINTVRNTVRNTIDX", OracleDbType.Varchar2, 20).Value = Variant.VariantIDExternal;
+                cmd.Parameters.Add("PINTVRNTSDESC", OracleDbType.Varchar2, 30).Value = Variant.ShortDesc;
+                cmd.Parameters.Add("PINTVRNTLDESC", OracleDbType.Varchar2, 50).Value = Variant.LongDesc;
+                cmd.Parameters.Add("PINTVRNTSTAT", OracleDbType.Int32, 1).Value = Variant.Status;
+                cmd.Parameters.Add("PINTVRNTMOBY", OracleDbType.Varchar2, 20).Value = CurrUser;
+                cmd.Parameters.Add("PINTVRNTROWID", OracleDbType.Varchar2).Value = ROWID;
+                cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                cmd.ExecuteNonQuery();
+                //OracleDataReader dr = cmd.ExecuteReader();
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+
+                outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["POUTRSNMSG"].Value.ToString();
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("updateIntSite Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage updateIntBarcode(BarcodeMaster Barcode, String ROWID, String CurrUser)
+        {
+
+
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+                //PINTBRCDBRCDID VARCHAR,
+                //     PINTBRCDITEMID NUMBER,
+                //    PINTBRCDVRNTID NUMBER,
+                //    PINTBRCDTYPE NUMBER,
+                //    PINTBRCDSTAT NUMBER,
+                //    PINTBRCDSDAT DATE,
+                //    PINTBRCDEDAT DATE,
+                //    PINTBRCDMOBY VARCHAR,  
+                //    PINTBRCDROWID VARCHAR2,
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "PKKDSCMSINTMSTBRCD.UPD_DATA";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.Add("PINTBRCDBRCDID", OracleDbType.Varchar2, 20).Value = Barcode.Barcode;
+                cmd.Parameters.Add("PINTBRCDITEMID", OracleDbType.Int32, 10).Value = Barcode.ItemID;
+                cmd.Parameters.Add("PINTBRCDVRNTID", OracleDbType.Int32, 10).Value = Barcode.VariantID;
+                cmd.Parameters.Add("PINTBRCDTYPE", OracleDbType.Int32, 1).Value = Barcode.Type;
+                cmd.Parameters.Add("PINTBRCDSTAT", OracleDbType.Int32, 1).Value = Barcode.Status;
+                cmd.Parameters.Add("PINTBRCDSDAT", OracleDbType.Date).Value = Barcode.StartDate;
+                cmd.Parameters.Add("PINTBRCDEDAT", OracleDbType.Date).Value = Barcode.EndDate;
+                cmd.Parameters.Add("PINTBRCDMOBY", OracleDbType.Varchar2, 20).Value = CurrUser;
+                cmd.Parameters.Add("PINTBRCDROWID", OracleDbType.Varchar2).Value = ROWID;
+                cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                cmd.ExecuteNonQuery();
+                //OracleDataReader dr = cmd.ExecuteReader();
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+
+                outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["POUTRSNMSG"].Value.ToString();
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("updateIntBarcode Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage updateIntPrice(PriceGroup Price, String ROWID, String CurrUser)
+        {
+
+
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+                //PINTSPRCITEMIDX VARCHAR2,
+                //     PINTSPRCDVRNTIDX VARCHAR2, 
+                //    PINTSPRCSITE VARCHAR2,
+                //    PINTSPRCSPRICE NUMBER,
+                //    PINTSPRCVAT NUMBER,
+                //    PINTSPRCSDAT DATE,
+                //    PINTSPRCEDAT DATE,
+                //    PINTSPRCMOBY VARCHAR,  
+                //    PINTSPRCROWID VARCHAR2,
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "PKKDSCMSINTSPRICE.UPD_DATA";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.Add("PINTSPRCITEMIDX", OracleDbType.Varchar2, 20).Value = Price.ItemID;
+                cmd.Parameters.Add("PINTSPRCDVRNTIDX", OracleDbType.Varchar2, 20).Value = Price.VariantID;
+                cmd.Parameters.Add("PINTSPRCSITE", OracleDbType.Varchar2, 20).Value = Price.Site;
+                cmd.Parameters.Add("PINTSPRCSPRICE", OracleDbType.Int32, 12).Value = Price.Price;
+                cmd.Parameters.Add("PINTSPRCVAT", OracleDbType.Int32, 2).Value = Price.VAT;
+                cmd.Parameters.Add("PINTSPRCSDAT", OracleDbType.Date).Value = Price.SDate;
+                cmd.Parameters.Add("PINTSPRCEDAT", OracleDbType.Date).Value = Price.Edate;
+                cmd.Parameters.Add("PINTSPRCMOBY", OracleDbType.Varchar2, 20).Value = CurrUser;
+                cmd.Parameters.Add("PINTSPRCROWID", OracleDbType.Varchar2).Value = ROWID;
+                cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                cmd.ExecuteNonQuery();
+                //OracleDataReader dr = cmd.ExecuteReader();
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+
+                outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["POUTRSNMSG"].Value.ToString();
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("updateIntBarcode Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage updateIntItem(ItemMaster Item, String ROWID, String CurrUser)
+        {
+
+
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+                //PINTITEMITEMIDX VARCHAR2,
+                //    PINTITEMTYPE NUMBER,
+                //    PINTITEMSDESC VARCHAR,
+                //    PINTITEMLDESC VARCHAR,
+                //    PINTITEMBRNDID VARCHAR,
+                //    PINTITEMBRNDDESC VARCHAR,
+                //    PINTUTIL VARCHAR,
+                //    PINTITEMROWID VARCHAR,
+                //    POUTRSNCODE OUT NUMBER,
+                //    POUTRSNMSG OUT VARCHAR2);
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "PKKDSCMSINTITEM.UPD_DATA";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.Add("PINTITEMITEMIDX", OracleDbType.Varchar2, 30).Value = Item.ItemIDExternal;
+                cmd.Parameters.Add("PINTITEMTYPE", OracleDbType.Int32, 2).Value = Item.Type;
+                cmd.Parameters.Add("PINTITEMSDESC", OracleDbType.Varchar2, 20).Value = Item.ShortDesc;
+                cmd.Parameters.Add("PINTITEMLDESC", OracleDbType.Varchar2, 50).Value = Item.LongDesc;
+                cmd.Parameters.Add("PINTITEMBRNDID", OracleDbType.Varchar2, 3).Value = Item.Brand;
+                //cmd.Parameters.Add("PINTITEMBRNDDESC", OracleDbType.Varchar2, 50).Value = "0";
+                cmd.Parameters.Add("PINTUTIL", OracleDbType.Varchar2, 20).Value = CurrUser;
+                cmd.Parameters.Add("PINTITEMROWID", OracleDbType.Varchar2).Value = ROWID;
+                cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                cmd.ExecuteNonQuery();
+                //OracleDataReader dr = cmd.ExecuteReader();
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+
+                outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["POUTRSNMSG"].Value.ToString();
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("updateIntSite Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage resetIntSite(String ROWID, String CurrUser)
+        {
+
+
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+                //procedure RESET_DATA(PINTSITEROWID VARCHAR2,
+                //    PINTSITESITEMOBY VARCHAR2,
+                //    POUTRSNCODE OUT NUMBER,
+                //    POUTRSNMSG OUT VARCHAR2);
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "PKKDSCMSINTSITE.RESET_DATA";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("PINTSITEROWID", OracleDbType.Varchar2).Value = ROWID;
+                cmd.Parameters.Add("PINTSITESITEMOBY", OracleDbType.Varchar2, 20).Value = CurrUser;
+
+                cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                cmd.ExecuteNonQuery();
+                //OracleDataReader dr = cmd.ExecuteReader();
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+
+                outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["POUTRSNMSG"].Value.ToString();
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("resetIntSite Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage resetIntVariant(String ROWID, String CurrUser)
+        {
+
+
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+                //procedure RESET_DATA(PINTSITEROWID VARCHAR2,
+                //    PINTSITESITEMOBY VARCHAR2,
+                //    POUTRSNCODE OUT NUMBER,
+                //    POUTRSNMSG OUT VARCHAR2);
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "PKKDSCMSINTMSTVRNT.RESET_DATA";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("PINTVRNTROWID", OracleDbType.Varchar2).Value = ROWID;
+                cmd.Parameters.Add("PINTVRNTMOBY", OracleDbType.Varchar2, 20).Value = CurrUser;
+
+                cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                cmd.ExecuteNonQuery();
+                //OracleDataReader dr = cmd.ExecuteReader();
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+
+                outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["POUTRSNMSG"].Value.ToString();
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("resetIntVariant Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage resetIntPrice(String ROWID, String CurrUser)
+        {
+
+
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+                //procedure RESET_DATA(PINTSITEROWID VARCHAR2,
+                //    PINTSITESITEMOBY VARCHAR2,
+                //    POUTRSNCODE OUT NUMBER,
+                //    POUTRSNMSG OUT VARCHAR2);
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "PKKDSCMSINTSPRICE.RESET_DATA";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("PINTSPRCROWID", OracleDbType.Varchar2).Value = ROWID;
+                cmd.Parameters.Add("PINTSPRCMOBY", OracleDbType.Varchar2, 20).Value = CurrUser;
+
+                cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                cmd.ExecuteNonQuery();
+                //OracleDataReader dr = cmd.ExecuteReader();
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+
+                outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["POUTRSNMSG"].Value.ToString();
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("resetIntVariant Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage resetIntBarcode(String ROWID, String CurrUser)
+        {
+
+
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+                //procedure RESET_DATA(PINTSITEROWID VARCHAR2,
+                //    PINTSITESITEMOBY VARCHAR2,
+                //    POUTRSNCODE OUT NUMBER,
+                //    POUTRSNMSG OUT VARCHAR2);
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "PKKDSCMSINTMSTBRCD.RESET_DATA";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("PINTBRCDROWID", OracleDbType.Varchar2).Value = ROWID;
+                cmd.Parameters.Add("PINTBRCDMOBY", OracleDbType.Varchar2, 20).Value = CurrUser;
+
+                cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                cmd.ExecuteNonQuery();
+                //OracleDataReader dr = cmd.ExecuteReader();
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+
+                outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["POUTRSNMSG"].Value.ToString();
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("resetIntBarcode Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage resetIntItem(String ROWID, String CurrUser)
+        {
+
+
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+                //procedure RESET_DATA(PINTSITEROWID VARCHAR2,
+                //    PINTSITESITEMOBY VARCHAR2,
+                //    POUTRSNCODE OUT NUMBER,
+                //    POUTRSNMSG OUT VARCHAR2);
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "PKKDSCMSINTITEM.RESET_DATA";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("PINTITEMROWID", OracleDbType.Varchar2).Value = ROWID;
+                cmd.Parameters.Add("PINTUTIL", OracleDbType.Varchar2, 20).Value = CurrUser;
+
+                cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                cmd.ExecuteNonQuery();
+                //OracleDataReader dr = cmd.ExecuteReader();
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+
+                outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["POUTRSNMSG"].Value.ToString();
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("resetIntItem Function");
                 logger.Error(e.Message);
                 this.Close();
                 return null;
