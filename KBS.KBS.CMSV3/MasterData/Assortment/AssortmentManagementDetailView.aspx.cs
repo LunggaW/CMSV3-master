@@ -242,7 +242,12 @@ namespace KBS.KBS.CMSV3.MasterData.Assortment
 
 
                 LabelMessage.Text = message.Message;
+
+                
                 RefreshDataGrid();
+                string script = "alert('Change Status Succesfull');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+
             }
         }
 

@@ -135,12 +135,13 @@
             </dx:ASPxButton>
         </span>
     </div>
+    
+    <br />
+    <br />
     <div align="center">
         <asp:Label ID="LabelTitle" runat="server" Font-Size="Large"
             Text="Assortment Management"></asp:Label>
     </div>
-    <br />
-    <br />
     <br />
     <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Visible="False"></asp:Label>
     <br />
