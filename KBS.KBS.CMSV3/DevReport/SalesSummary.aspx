@@ -141,7 +141,7 @@
             <dx:ASPxButton ID="Help" runat="server" EnableTheming="False" UseSubmitBehavior="false"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png" 
                 Image-Url="~/image/question.png" BackColor="Transparent" ToolTip="Help">
-                <ClientSideEvents Click="function (s, e) {window.open('../../Help/Administration/TransferOrderDetailEdit.aspx', '_blank')}"></ClientSideEvents>
+                <ClientSideEvents Click="function (s, e) {window.open('../../Help/Report/salessummary.aspx', '_blank')}"></ClientSideEvents>
                 <Image Height="20px" Width="20px">
                 </Image>
                 <BackgroundImage ImageUrl="~/image/transback.png"></BackgroundImage>

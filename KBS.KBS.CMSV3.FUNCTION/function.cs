@@ -1299,7 +1299,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
                 cmd.CommandText =
-                    "select KDSCMSSASS.SASSSITEID as SITE, KDSCMSSITE.SITESITENAME, COUNT(KDSCMSSASS.SASSITEMID) as \"TOTAL STORE\" " +
+                    "select KDSCMSSASS.SASSSITEID as SITE, KDSCMSSITE.SITESITENAME \"SITE NAME\", COUNT(KDSCMSSASS.SASSITEMID) as \"TOTAL STORE\" " +
                     "from KDSCMSSASS " +
                     "inner join KDSCMSSITE on KDSCMSSASS.SASSSITEID = KDSCMSSITE.SITESITE " +
                     "WHERE not exists(select 1 from Kdscmsprofsitelink where prstsite = KDSCMSSASS.SASSSITEID and Kdscmsprofsitelink.Prststprof = :SiteProfile) ";
