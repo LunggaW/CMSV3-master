@@ -11,7 +11,7 @@ using KBS.KBS.CMSV3.FUNCTION;
 
 namespace KBS.KBS.CMSV3.Administration.Interface
 {
-    public partial class InterfaceItem : System.Web.UI.Page
+    public partial class InterfaceDN : System.Web.UI.Page
     {
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
@@ -34,9 +34,9 @@ namespace KBS.KBS.CMSV3.Administration.Interface
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            DTInterface = CMSfunction.GetInterfaceItem();
+            DTInterface = CMSfunction.GetInterfaceDN();
             ASPxGridViewHeader.DataSource = DTInterface;
-            ASPxGridViewHeader.KeyFieldName = "ITEM ID EXTERNAL";
+            ASPxGridViewHeader.KeyFieldName = "CMS ID";
             ASPxGridViewHeader.DataBind();
 
             ASPxGridViewHeader.Columns["ROWID"].Visible = false;
@@ -92,7 +92,7 @@ namespace KBS.KBS.CMSV3.Administration.Interface
 
         protected void Upload_Click(object sender, EventArgs e)
         {
-            if (FileUploadItem.HasFile == false)
+            if (FileUploadDN.HasFile == false)
             {
                 // No file uploaded!
                 //UploadDetails.Text = "Please first select a file to upload...";
@@ -107,13 +107,13 @@ namespace KBS.KBS.CMSV3.Administration.Interface
                     //Server.MapPath(CMSfunction.getIncomingDirectory() + FileUploadSite.FileName);
 
 
-                    filePath = CMSfunction.getIncomingDirectory() + FileUploadItem.FileName;
+                    filePath = CMSfunction.getIncomingDirectory() + FileUploadDN.FileName;
 
-                    FileUploadItem.SaveAs(filePath);
+                    FileUploadDN.SaveAs(filePath);
 
                     OutputMessage message = new OutputMessage();
 
-                    message = CMSfunction.ExecuteSPImportItemFile(FileUploadItem.FileName);
+                    message = CMSfunction.ExecuteSPImportDNFile(FileUploadDN.FileName);
                 }
                 catch (Exception ex)
                 {
@@ -137,12 +137,12 @@ namespace KBS.KBS.CMSV3.Administration.Interface
 
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
-            Session["InterfaceItemRowID"] = ASPxGridViewHeader.GetRowValues(Convert.ToInt32(e.Parameters), "ROWID").ToString();
+            Session["InterfaceDNRowID"] = ASPxGridViewHeader.GetRowValues(Convert.ToInt32(e.Parameters), "ROWID").ToString();
 
             if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("InterfaceItemDetail.aspx");
+                ASPxWebControl.RedirectOnCallback("InterfaceDNDetail.aspx");
             else
-                Response.Redirect("InterfaceItemDetail.aspx");
+                Response.Redirect("InterfaceDNDetail.aspx");
         }
     }
 }
