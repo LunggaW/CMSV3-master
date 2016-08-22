@@ -119,12 +119,8 @@
     <Content Include="Administration\AccessManagement\AccessProfileDetail.aspx" />
     <Content Include="Administration\ChangePassword\ChangePassword.aspx" />
     <Content Include="Administration\Interface\InterfaceItem.aspx" />
-    <Content Include="Administration\Interface\InterfaceBarcodeDetail.aspx" />
-    <Content Include="Administration\Interface\InterfaceBarcode.aspx" />
     <Content Include="Administration\Interface\InterfacePrice.aspx" />
-    <Content Include="Administration\Interface\InterfacePriceDetail.aspx" />
     <Content Include="Administration\Interface\InterfaceItemDetail.aspx" />
-    <Content Include="Administration\Interface\InterfaceVariantDetail.aspx" />
     <Content Include="Administration\Interface\InterfaceVariant.aspx" />
     <Content Include="Administration\Interface\InterfaceSiteDetail.aspx" />
     <Content Include="Administration\Interface\InterfaceSite.aspx" />
@@ -787,20 +783,6 @@
     <Compile Include="Administration\Interface\InterfaceItem.aspx.designer.cs">
       <DependentUpon>InterfaceItem.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Administration\Interface\InterfaceBarcodeDetail.aspx.cs">
-      <DependentUpon>InterfaceBarcodeDetail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Administration\Interface\InterfaceBarcodeDetail.aspx.designer.cs">
-      <DependentUpon>InterfaceBarcodeDetail.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Administration\Interface\InterfaceBarcode.aspx.cs">
-      <DependentUpon>InterfaceBarcode.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Administration\Interface\InterfaceBarcode.aspx.designer.cs">
-      <DependentUpon>InterfaceBarcode.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Administration\Interface\InterfacePrice.aspx.cs">
       <DependentUpon>InterfacePrice.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -808,26 +790,12 @@
     <Compile Include="Administration\Interface\InterfacePrice.aspx.designer.cs">
       <DependentUpon>InterfacePrice.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Administration\Interface\InterfacePriceDetail.aspx.cs">
-      <DependentUpon>InterfacePriceDetail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Administration\Interface\InterfacePriceDetail.aspx.designer.cs">
-      <DependentUpon>InterfacePriceDetail.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Administration\Interface\InterfaceItemDetail.aspx.cs">
       <DependentUpon>InterfaceItemDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Administration\Interface\InterfaceItemDetail.aspx.designer.cs">
       <DependentUpon>InterfaceItemDetail.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Administration\Interface\InterfaceVariantDetail.aspx.cs">
-      <DependentUpon>InterfaceVariantDetail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Administration\Interface\InterfaceVariantDetail.aspx.designer.cs">
-      <DependentUpon>InterfaceVariantDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administration\Interface\InterfaceVariant.aspx.cs">
       <DependentUpon>InterfaceVariant.aspx</DependentUpon>
