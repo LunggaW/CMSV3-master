@@ -35,13 +35,13 @@ namespace KBS.KBS.CMSV3.Administration.Interface
         protected void Page_Load(object sender, EventArgs e)
         {
             DTInterface = CMSfunction.GetInterfaceBarcode();
-            /*
+            
             ASPxGridViewHeader.DataSource = DTInterface;
             ASPxGridViewHeader.KeyFieldName = "BARCODE";
             ASPxGridViewHeader.DataBind();
 
             ASPxGridViewHeader.Columns["ROWID"].Visible = false;
-            */
+            
         }
 
 
@@ -74,10 +74,10 @@ namespace KBS.KBS.CMSV3.Administration.Interface
             }
             masterNav.DataBind();
         }
-        /*
+
         protected void tbCurrentPassword_TextChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         protected void Execute_Click(object sender, EventArgs e)
@@ -89,12 +89,12 @@ namespace KBS.KBS.CMSV3.Administration.Interface
         {
 
         }
-        
-        */
+
+
 
         protected void Upload_Click(object sender, EventArgs e)
         {
-            /*
+
             if (FileUploadBarcode.HasFile == false)
             {
                 // No file uploaded!
@@ -120,7 +120,7 @@ namespace KBS.KBS.CMSV3.Administration.Interface
                 }
                 catch (Exception ex)
                 {
-                    logger.Error("Error Mesage : "+ex.Message);
+                    logger.Error("Error Mesage : " + ex.Message);
                     logger.Error("Inner Exception : " + ex.InnerException);
                     throw;
                 }
@@ -134,20 +134,22 @@ namespace KBS.KBS.CMSV3.Administration.Interface
                 //          UploadTest.PostedFile.ContentType);
 
                 //// Save the file
-               
-            }
-            */
-        }
-        /*
-            protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
-            {
-                Session["InterfaceBarcodeRowID"] = ASPxGridViewHeader.GetRowValues(Convert.ToInt32(e.Parameters), "ROWID").ToString();
 
-                if (Page.IsCallback)
-                    ASPxWebControl.RedirectOnCallback("InterfaceBarcodeDetail.aspx");
-                else
-                    Response.Redirect("InterfaceBarcodeDetail.aspx");
             }
-            */
+
+        }
+
+
+
+        protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
+        {
+            Session["InterfaceBarcodeRowID"] = ASPxGridViewHeader.GetRowValues(Convert.ToInt32(e.Parameters), "ROWID").ToString();
+
+            if (Page.IsCallback)
+                ASPxWebControl.RedirectOnCallback("InterfaceBarcodeDetail.aspx");
+            else
+                Response.Redirect("InterfaceBarcodeDetail.aspx");
+        }
+        
     }
 }
