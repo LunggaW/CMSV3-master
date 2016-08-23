@@ -2577,20 +2577,19 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
 
-                cmd.CommandText = "SELECT ROWID, " +
-                                  "INTITEMITEMIDX as \"ITEM ID\", " +
-                                  "INTITEMTYPE as \"ITEM TYPE\", " +
+                cmd.CommandText = "SELECT ROWID,  " +
+                                  "INTITEMITEMIDX AS \"ITEM ID EXTERNAL\", " +
+                                  "INTITEMTYPE AS \"TYPE\", " +
                                   "INTITEMSDESC AS \"SHORT DESC\", " +
                                   "INTITEMLDESC AS \"LONG DESC\", " +
-                                  "INTITEMBRNDID AS \"BRAND ID\", " +
-                                  "INTITEMBRNDDESC AS \"BRAND DESC\", " +
-                                  "INTFILENAME AS \"FILENAME\", " +
-                                  "INTERRMESS AS \"ERR MESSAGE\", " +
-                                  "INTDCRE AS \"CREATED DATE\", " +
-                                  "INTDMAJ AS \"MODIFIED DATE\", " +
-                                  "INTUTIL AS \"CREATED BY\" " +
-                                  "FROM KDSCMSINTITEM " +
-                                  "WHERE INTTRT < 0";
+                                  "INTITEMBRNDID AS \"BRAND\", " +
+                                  "INTITEMCDAT AS \"CREATED DATE\", " +
+                                  "INTITEMMDAT AS \"MODIFIED DATE\", " +
+                                  "INTITEMCRBY AS \"CREATED BY\", " +
+                                  "INTITEMMOBY AS \"MODIFIED BY\", " +
+                                  "INTITEMMSG AS \"MESSAGE\" " +
+                                  "FROM KDSCMSINTMSTITEM " +
+                                  "WHERE INTITEMINTF < 0 ";
 
 
                 logger.Debug(cmd.CommandText);
@@ -2651,6 +2650,48 @@ namespace KBS.KBS.CMSV3.FUNCTION
             catch (Exception e)
             {
                 logger.Error("GetInterfaceVariant Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
+        public DataTable GetInterfaceDN()
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = "SELECT ROWID, " +
+                                  "CMSID AS \"CMS ID\", " +
+                                  "CMSITEMID AS \"ITEM ID\", " +
+                                  "CMSBARCODE AS \"BARCODE\", " +
+                                  "CMSDESC AS \"DESCRIPTION\", " +
+                                  "CMSQTY AS \"QTY\", " +
+                                  "CMSPRICE AS \"PRICE\", " +
+                                  "CMSSTORE AS \"STORE\", " +
+                                  "CMSUSERID AS \"USER ID\", " +
+                                  "CMSDATE AS \"CREATED DATE\" " +
+                                  "FROM KDSCMSDN_INT " +
+                                  "WHERE CMSFLAG < 0 ";
+
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+                DataTable DT = new DataTable();
+                DT.Load(dr);
+                this.Close();
+                return DT;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetInterfaceDN Function");
                 logger.Error(e.Message);
                 this.Close();
                 return null;
@@ -8404,13 +8445,12 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 this.Connect();
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "SELECT " +
-                                  "INTITEMITEMIDX, " +
+                cmd.CommandText = "SELECT INTITEMITEMIDX, " +
                                   "INTITEMTYPE, " +
                                   "INTITEMSDESC, " +
                                   "INTITEMLDESC, " +
                                   "INTITEMBRNDID " +
-                                  "FROM KDSCMSINTITEM " +
+                                  "FROM KDSCMSINTMSTITEM " +
                                   "where ROWID = :ROWIDITEM";
 
 
@@ -8539,6 +8579,64 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
                 this.Close();
                 return variantMaster;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetVariantIntFromRowID Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
+        public DeliveryNote GetDNIntFromRowID(String ROWID)
+        {
+
+            DeliveryNote DN = new DeliveryNote();
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT " +
+                                  "CMSID, " +
+                                  "CMSITEMID, " +
+                                  "CMSBARCODE, " +
+                                  "CMSDESC, " +
+                                  "CMSQTY, " +
+                                  "CMSPRICE, " +
+                                  "CMSSTORE, " +
+                                  "CMSDATE," +
+                                  "CMSUSERID  " +
+                                  "FROM KDSCMSDN_INT " +
+                                  "where ROWID = :ROWIDDN";
+
+
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new OracleParameter(":ROWIDDN", OracleDbType.Varchar2)).Value = ROWID;
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+
+                    DN.CMSId = dr["CMSID"].ToString();
+                    DN.ItemID = dr["CMSITEMID"].ToString();
+                    DN.Barcode= dr["CMSBARCODE"].ToString();
+                    DN.Description = dr["CMSDESC"].ToString();
+                    DN.Qty = Int32.Parse(dr["CMSQTY"].ToString());
+                    DN.Price = decimal.Parse(dr["CMSPRICE"].ToString());
+                    DN.Store = dr["CMSSTORE"].ToString();
+                    DN.Date = DateTime.Parse(dr["CMSDATE"].ToString());
+                    DN.UserID = dr["CMSUSERID"].ToString();
+                    //siteMaster.Enable = Int32.Parse(dr["sitesiteflag"].ToString());
+                }
+
+                this.Close();
+                return DN;
             }
             catch (Exception e)
             {
@@ -12860,6 +12958,71 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 return null;
             }
         }
+        public OutputMessage updateIntDN(DeliveryNote DN, String ROWID)
+        {
+
+
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+                //PCMSID NUMBER,
+                //     PCMSITEMID  VARCHAR2,
+                //    PCMSBARCODE VARCHAR2,
+                //    PCMSDESC    VARCHAR2,
+                //    PCMSQTY NUMBER,
+                //    PCMSPRICE   NUMBER,
+                //    PCMSSTORE VARCHAR2,
+                //    PCMSUSERID  VARCHAR2,
+                //    PCMSDATE DATE,
+                //    PCMSDNROWID VARCHAR,
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "PKKDSCMSDN_INT.UPD_DATA";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.Add("PCMSID", OracleDbType.Int32).Value = DN.CMSId;
+                cmd.Parameters.Add("PCMSITEMID", OracleDbType.Int32, 50).Value = DN.ItemID;
+                cmd.Parameters.Add("PCMSBARCODE", OracleDbType.Varchar2, 50).Value = DN.Barcode;
+                cmd.Parameters.Add("PCMSDESC", OracleDbType.Varchar2, 250).Value = DN.Description;
+                cmd.Parameters.Add("PCMSQTY", OracleDbType.Int32, 18).Value = DN.Qty;
+                cmd.Parameters.Add("PCMSPRICE", OracleDbType.Int32, 18).Value = DN.Price;
+                cmd.Parameters.Add("PCMSSTORE", OracleDbType.Varchar2, 100).Value = DN.Store;
+                cmd.Parameters.Add("PCMSUSERID", OracleDbType.Varchar2, 100).Value = DN.UserID;
+                cmd.Parameters.Add("PCMSDATE", OracleDbType.Date).Value = DN.Date;
+                cmd.Parameters.Add("PCMSDNROWID", OracleDbType.Varchar2).Value = ROWID;
+                cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                cmd.ExecuteNonQuery();
+                //OracleDataReader dr = cmd.ExecuteReader();
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+
+                outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["POUTRSNMSG"].Value.ToString();
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("updateIntDN Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
 
         public OutputMessage updateIntBarcode(BarcodeMaster Barcode, String ROWID, String CurrUser)
         {
@@ -13012,7 +13175,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "PKKDSCMSINTITEM.UPD_DATA";
+                cmd.CommandText = "PKKDSCMSINTMSTITEM.UPD_DATA";
                 cmd.CommandType = CommandType.StoredProcedure;
 
 
@@ -13022,7 +13185,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.Parameters.Add("PINTITEMLDESC", OracleDbType.Varchar2, 50).Value = Item.LongDesc;
                 cmd.Parameters.Add("PINTITEMBRNDID", OracleDbType.Varchar2, 3).Value = Item.Brand;
                 //cmd.Parameters.Add("PINTITEMBRNDDESC", OracleDbType.Varchar2, 50).Value = "0";
-                cmd.Parameters.Add("PINTUTIL", OracleDbType.Varchar2, 20).Value = CurrUser;
+                cmd.Parameters.Add("PINTITEMMOBY", OracleDbType.Varchar2, 20).Value = CurrUser;
                 cmd.Parameters.Add("PINTITEMROWID", OracleDbType.Varchar2).Value = ROWID;
                 cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
                 cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
@@ -13157,6 +13320,57 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
         }
 
+        public OutputMessage resetIntDN(String ROWID)
+        {
+
+
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+                //procedure RESET_DATA(PINTSITEROWID VARCHAR2,
+                //    PINTSITESITEMOBY VARCHAR2,
+                //    POUTRSNCODE OUT NUMBER,
+                //    POUTRSNMSG OUT VARCHAR2);
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "PKKDSCMSDN_INT.RESET_DATA";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                cmd.Parameters.Add("PCMSDNROWID", OracleDbType.Varchar2).Value = ROWID;
+
+                cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                cmd.ExecuteNonQuery();
+                //OracleDataReader dr = cmd.ExecuteReader();
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+
+                outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["POUTRSNMSG"].Value.ToString();
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("resetIntDN Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
         public OutputMessage resetIntPrice(String ROWID, String CurrUser)
         {
 
@@ -13278,11 +13492,11 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "PKKDSCMSINTITEM.RESET_DATA";
+                cmd.CommandText = "PKKDSCMSINTMSTITEM.RESET_DATA";
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.Add("PINTITEMROWID", OracleDbType.Varchar2).Value = ROWID;
-                cmd.Parameters.Add("PINTUTIL", OracleDbType.Varchar2, 20).Value = CurrUser;
+                cmd.Parameters.Add("PINTITEMMOBY", OracleDbType.Varchar2, 20).Value = CurrUser;
 
                 cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
                 cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;

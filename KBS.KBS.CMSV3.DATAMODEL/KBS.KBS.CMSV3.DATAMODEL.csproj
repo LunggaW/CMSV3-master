@@ -45,6 +45,7 @@
     <Compile Include="AssortmentMaster.cs" />
     <Compile Include="BarcodeMaster.cs" />
     <Compile Include="BrandGroup.cs" />
+    <Compile Include="DeliveryNote.cs" />
     <Compile Include="Exporting_Exporting .cs" />
     <Compile Include="License.cs" />
     <Compile Include="Stock.cs" />
