@@ -206,14 +206,14 @@
         <table class="tableTop">
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxComboBox runat="server" ReadOnly="true" Caption="SKU" ID="SKUBOX" Enabled="false" ReadOnly="true">
+                    <dx:ASPxComboBox runat="server" ReadOnly="true" Caption="SKU" ID="SKUBOX" Enabled="false">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
                     </dx:ASPxComboBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxComboBox runat="server" ReadOnly="true" Caption="SITE" ID="SITEBOX" Enabled="false" ReadOnly="true">
+                    <dx:ASPxComboBox runat="server" ReadOnly="true" Caption="SITE" ID="SITEBOX" Enabled="false" >
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>
@@ -222,7 +222,7 @@
             </tr>
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxComboBox runat="server" ReadOnly="true" Caption="BRAND" ID="BRANDBOX" Enabled="false" ReadOnly="true">
+                    <dx:ASPxComboBox runat="server" ReadOnly="true" Caption="BRAND" ID="BRANDBOX" Enabled="false">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>

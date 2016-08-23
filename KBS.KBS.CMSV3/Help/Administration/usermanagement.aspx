@@ -56,8 +56,10 @@ h1
         <p>
         <span style="text-decoration: underline">Definition</span></p>
         <p>
-            Menu User management adalah menu kewenangan Administrator dalam mengidentifikasi dan mengontrol user yang masuk ke dalam CMS.<br />
-            Dalam menu ini, administrator dapat membuat, mengedit, menentukan masa berlaku, menentukan status, menentukan akses menu dan profile user, menghapussehingga user akan sesuai dengan functionalitynya dalam menjalankan CMS.
+            Menu User management adalah menu kewenangan Administrator dalam mengidentifikasi dan mengontrol user yang masuk ke dalam CMS.<br />  
+Dalam menu ini, Administrator dapat membuat, mengedit, menghapus,menentukan masa berlaku, menentukan status user.<br />
+Selain itu Administrator juga dapat , menentukan akses profile, site profile dan menu profile user,sehingga user akan sesuai dengan functionalitynya dalam menjalankan CMS.  <br />
+User Management bisa saja disebut dengan Profile Management.
         </p>
         <h4><span style="mso-bidi-language:AR-SA;mso-no-proof:yes">Akses menu User management:<o:p></o:p></span></h4>
         <p>
@@ -74,6 +76,11 @@ h1
             Keterangan Kolom-kolom yang terdapat dalam user header :</p>
         <p>
             <asp:Image ID="Image6" runat="server" ImageUrl="~/Help/Images/keteranganusermanagement.png" />
+        </p>
+        <p>
+            Diagram Alur.</p>
+        <p>
+            <asp:Image ID="Image12" runat="server" ImageUrl="~/Help/Images/diagramusermanagement.png" />
         </p>
         <h3><a name="_Toc456613669">Navigasi User Management</a><o:p></o:p></h3>
         <p>
