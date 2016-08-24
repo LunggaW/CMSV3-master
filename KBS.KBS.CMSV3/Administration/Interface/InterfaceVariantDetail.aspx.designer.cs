@@ -166,40 +166,58 @@ namespace KBS.KBS.CMSV3.Administration.Interface {
         protected global::DevExpress.Web.ASPxTextBox TextBoxIntVariantID;
         
         /// <summary>
-        /// TextBoxIntVariantIDExt control.
+        /// TextBoxIntSizeGroup control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxIntVariantIDExt;
+        protected global::DevExpress.Web.ASPxTextBox TextBoxIntSizeGroup;
         
         /// <summary>
-        /// TextBoxIntSDesc control.
+        /// TextBoxIntSize control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxIntSDesc;
+        protected global::DevExpress.Web.ASPxTextBox TextBoxIntSize;
         
         /// <summary>
-        /// TextBoxIntLDesc control.
+        /// TextBoxIntColorGrp control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxIntLDesc;
+        protected global::DevExpress.Web.ASPxTextBox TextBoxIntColorGrp;
         
         /// <summary>
-        /// TextBoxIntStatus control.
+        /// TextBoxIntColor control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxIntStatus;
+        protected global::DevExpress.Web.ASPxTextBox TextBoxIntColor;
+        
+        /// <summary>
+        /// TextBoxIntStyleGrp control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox TextBoxIntStyleGrp;
+        
+        /// <summary>
+        /// TextBoxIntStyle control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox TextBoxIntStyle;
         
         /// <summary>
         /// ButtonReset control.

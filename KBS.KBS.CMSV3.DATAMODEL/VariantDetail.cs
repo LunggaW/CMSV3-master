@@ -15,5 +15,7 @@ namespace KBS.KBS.CMSV3.DATAMODEL
         public string SizeGroup { get; set; }
         public string SizeDetail { get; set; }
 
+        public string ItemID { get; set; }
+
     }
 }

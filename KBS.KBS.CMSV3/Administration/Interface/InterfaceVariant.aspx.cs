@@ -36,7 +36,7 @@ namespace KBS.KBS.CMSV3.Administration.Interface
         {
             DTInterface = CMSfunction.GetInterfaceVariant();
             ASPxGridViewHeader.DataSource = DTInterface;
-            ASPxGridViewHeader.KeyFieldName = "ITEM ID";
+            ASPxGridViewHeader.KeyFieldName = "VARIANT";
             ASPxGridViewHeader.DataBind();
 
             ASPxGridViewHeader.Columns["ROWID"].Visible = false;

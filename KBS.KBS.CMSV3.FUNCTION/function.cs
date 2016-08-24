@@ -2620,21 +2620,22 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
 
-                cmd.CommandText = "SELECT " +
-                                  "ROWID, " +
-                                  "INTVRNTITEMID as \"ITEM ID\", " +
-                                  "INTVRNTVRNTID as \"VARIANT ID\", " +
-                                  "INTVRNTVRNTIDX AS \"VARIANT ID EXTERNAL\", " +
-                                  "INTVRNTSDESC AS \"SHORT DESC\", " +
-                                  "INTVRNTLDESC AS \"LONG DESC\", " +
-                                  "INTVRNTSTAT AS STATUS, " +
-                                  "INTVRNTMSG AS MESSAGE, " +
-                                  "INTVRNTCDAT AS \"CREATED DATE\", " +
-                                  "INTVRNTMDAT AS \"MODIFIED DATE\", " +
-                                  "INTVRNTCRBY AS \"CREATED BY\", " +
-                                  "INTVRNTMOBY AS \"MODIFIED BY\" " +
-                                  "FROM KDSCMSINTMSTVRNT " +
-                                  "WHERE INTVRNTDINTF < 0";
+                cmd.CommandText = "SELECT ROWID, " +
+                                  "INTDTLVRNTVRNTID as \"VARIANT\", " +
+                                  "INTDTLVRNTITMID as  \"ITEM ID\", " +
+                                  "INTDTLVRNTSZGID as \"SIZE GROUP\", " +
+                                  "INTDTLVRNTSZID as \"SIZE\", " +
+                                  "INTDTLVRNTCOGID as \"COLOR GROUP\", " +
+                                  "INTDTLVRNTCOLID as \"COLOR\", " +
+                                  "INTDTLVRNTSTGID as \"STYLE GROUP\", " +
+                                  "INTDTLVRNTSTYLID as \"STYLE\", " +
+                                  "INTDTLVRNTCDAT as \"CREATED DATE\", " +
+                                  "INTDTLVRNTMDAT as \"MODIFIED DATE\", " +
+                                  "INTDTLVRNTCRBY as \"CREATED BY\", " +
+                                  "INTDTLVRNTMOBY as \"MODIFIED BY\", " +
+                                  "INTDTLVRNTMSG as \"MESSAGE\" " +
+                                  "FROM KDSCMSINTDTLVRNT " +
+                                  "where INTDTLVRNTDINTF < 0 ";
 
 
                 logger.Debug(cmd.CommandText);
@@ -8540,21 +8541,23 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
         }
 
-        public VariantMaster GetVariantIntFromRowID(String ROWID)
+        public VariantDetail GetVariantIntFromRowID(String ROWID)
         {
-            VariantMaster variantMaster = new VariantMaster();
+            VariantDetail variantDetail = new VariantDetail();
             try
             {
                 this.Connect();
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "SELECT INTVRNTITEMID, " +
-                                  "INTVRNTVRNTID, " +
-                                  "INTVRNTVRNTIDX, " +
-                                  "INTVRNTSDESC, " +
-                                  "INTVRNTLDESC, " +
-                                  "INTVRNTSTAT " +
-                                  "FROM KDSCMSINTMSTVRNT " +
+                cmd.CommandText = "SELECT INTDTLVRNTITMID, " +
+                                  "INTDTLVRNTVRNTID, " +
+                                  "INTDTLVRNTSZGID, " +
+                                  "INTDTLVRNTSZID, " +
+                                  "INTDTLVRNTCOGID, " +
+                                  "INTDTLVRNTCOLID, " +
+                                  "INTDTLVRNTSTGID, " +
+                                  "INTDTLVRNTSTYLID " +
+                                  "FROM KDSCMSINTDTLVRNT " +
                                   "where ROWID = :ROWIDVARIANT";
 
 
@@ -8567,18 +8570,20 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
                 while (dr.Read())
                 {
-                    
-                    variantMaster.ItemID = dr["INTVRNTITEMID"].ToString();
-                    variantMaster.VariantID = dr["INTVRNTVRNTID"].ToString();
-                    variantMaster.VariantIDExternal = dr["INTVRNTVRNTIDX"].ToString();
-                    variantMaster.ShortDesc = dr["INTVRNTSDESC"].ToString();
-                    variantMaster.LongDesc = dr["INTVRNTLDESC"].ToString();
-                    variantMaster.Status = dr["INTVRNTSTAT"].ToString();
+
+                    variantDetail.ItemID = dr["INTDTLVRNTITMID"].ToString();
+                    variantDetail.VariantID = dr["INTDTLVRNTVRNTID"].ToString();
+                    variantDetail.SizeGroup = dr["INTDTLVRNTSZGID"].ToString();
+                    variantDetail.SizeDetail = dr["INTDTLVRNTSZID"].ToString();
+                    variantDetail.ColorGroup = dr["INTDTLVRNTCOGID"].ToString();
+                    variantDetail.ColorDetail = dr["INTDTLVRNTCOLID"].ToString();
+                    variantDetail.StyleGroup = dr["INTDTLVRNTSTGID"].ToString();
+                    variantDetail.StyleDetail = dr["INTDTLVRNTSTYLID"].ToString();
                     //siteMaster.Enable = Int32.Parse(dr["sitesiteflag"].ToString());
                 }
 
                 this.Close();
-                return variantMaster;
+                return variantDetail;
             }
             catch (Exception e)
             {
@@ -12895,7 +12900,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
         }
 
-        public OutputMessage updateIntVariant(VariantMaster Variant, String ROWID, String CurrUser)
+        public OutputMessage updateIntVariant(VariantDetail VariantDtl, String ROWID, String CurrUser)
         {
 
 
@@ -12905,31 +12910,35 @@ namespace KBS.KBS.CMSV3.FUNCTION
             try
             {
 
-                //PINTVRNTITEMID NUMBER, 
-                //PINTVRNTVRNTID NUMBER,
-                //PINTVRNTVRNTIDX VARCHAR, 
-                //    PINTVRNTSDESC VARCHAR,
-                //    PINTVRNTLDESC VARCHAR, 
-                //    PINTVRNTSTAT NUMBER,
-                //    PINTVRNTMOBY VARCHAR,  
-                //    PINTVRNTROWID VARCHAR2,
+                //PINTDTLVRNTVRNTID NUMBER,
+                //PINTDTLVRNTITMID VARCHAR2,
+                //    PINTDTLVRNTSZGID VARCHAR2,
+                //    PINTDTLVRNTSZID VARCHAR2,
+                //    PINTDTLVRNTCOGID VARCHAR2,
+                //    PINTDTLVRNTCOLID VARCHAR2,
+                //    PINTDTLVRNTSTGID VARCHAR2,
+                //    PINTDTLVRNTSTYLID VARCHAR2,
+                //    PINTDTLVRNTMOBY VARCHAR2,
+                //    PINTDTLVRNTROWID VARCHAR2,
                 //    POUTRSNCODE OUT NUMBER,
                 //    POUTRSNMSG OUT VARCHAR2
 
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "PKKDSCMSINTMSTVRNT.UPD_DATA";
+                cmd.CommandText = "PKKDSCMSINTDTLVRNT.UPD_DATA";
                 cmd.CommandType = CommandType.StoredProcedure;
 
 
-                cmd.Parameters.Add("PINTVRNTITEMID", OracleDbType.Int32, 10).Value = Variant.ItemID;
-                cmd.Parameters.Add("PINTVRNTVRNTID", OracleDbType.Int32, 10).Value = Variant.VariantID;
-                cmd.Parameters.Add("PINTVRNTVRNTIDX", OracleDbType.Varchar2, 20).Value = Variant.VariantIDExternal;
-                cmd.Parameters.Add("PINTVRNTSDESC", OracleDbType.Varchar2, 30).Value = Variant.ShortDesc;
-                cmd.Parameters.Add("PINTVRNTLDESC", OracleDbType.Varchar2, 50).Value = Variant.LongDesc;
-                cmd.Parameters.Add("PINTVRNTSTAT", OracleDbType.Int32, 1).Value = Variant.Status;
-                cmd.Parameters.Add("PINTVRNTMOBY", OracleDbType.Varchar2, 20).Value = CurrUser;
-                cmd.Parameters.Add("PINTVRNTROWID", OracleDbType.Varchar2).Value = ROWID;
+                cmd.Parameters.Add("PINTDTLVRNTVRNTID", OracleDbType.Int32, 10).Value = VariantDtl.VariantID;
+                cmd.Parameters.Add("PINTDTLVRNTITMID", OracleDbType.Varchar2, 10).Value = VariantDtl.ItemID;
+                cmd.Parameters.Add("PINTDTLVRNTSZGID", OracleDbType.Varchar2, 20).Value = VariantDtl.SizeGroup;
+                cmd.Parameters.Add("PINTDTLVRNTSZID", OracleDbType.Varchar2, 20).Value = VariantDtl.SizeDetail;
+                cmd.Parameters.Add("PINTDTLVRNTCOGID", OracleDbType.Varchar2, 20).Value = VariantDtl.ColorGroup;
+                cmd.Parameters.Add("PINTDTLVRNTCOLID", OracleDbType.Varchar2, 20).Value = VariantDtl.ColorDetail;
+                cmd.Parameters.Add("PINTDTLVRNTSTGID", OracleDbType.Varchar2, 20).Value = VariantDtl.StyleGroup;
+                cmd.Parameters.Add("PINTDTLVRNTSTYLID", OracleDbType.Varchar2, 20).Value = VariantDtl.StyleDetail;
+                cmd.Parameters.Add("PINTDTLVRNTMOBY", OracleDbType.Varchar2, 20).Value = CurrUser;
+                cmd.Parameters.Add("PINTDTLVRNTROWID", OracleDbType.Varchar2).Value = ROWID;
                 cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
                 cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
 
@@ -13285,11 +13294,11 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "PKKDSCMSINTMSTVRNT.RESET_DATA";
+                cmd.CommandText = "PKKDSCMSINTDTLVRNT.RESET_DATA";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add("PINTVRNTROWID", OracleDbType.Varchar2).Value = ROWID;
-                cmd.Parameters.Add("PINTVRNTMOBY", OracleDbType.Varchar2, 20).Value = CurrUser;
+                cmd.Parameters.Add("PINTDTLVRNTROWID", OracleDbType.Varchar2).Value = ROWID;
+                cmd.Parameters.Add("PINTDTLVRNTMOBY", OracleDbType.Varchar2, 20).Value = CurrUser;
 
                 cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
                 cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
