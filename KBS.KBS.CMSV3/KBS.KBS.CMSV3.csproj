@@ -126,7 +126,6 @@
     <Content Include="Administration\Interface\InterfaceDN.aspx" />
     <Content Include="Administration\Interface\InterfaceDNDetail.aspx" />
     <Content Include="Administration\Interface\InterfacePriceDetail.aspx" />
-    <Content Include="Administration\Interface\InterfaceVariantDetail.aspx" />
     <Content Include="Administration\Interface\InterfaceVariant.aspx" />
     <Content Include="Administration\Interface\InterfaceSiteDetail.aspx" />
     <Content Include="Administration\Interface\InterfaceSite.aspx" />
@@ -837,13 +836,6 @@
     </Compile>
     <Compile Include="Administration\Interface\InterfacePriceDetail.aspx.designer.cs">
       <DependentUpon>InterfacePriceDetail.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Administration\Interface\InterfaceVariantDetail.aspx.cs">
-      <DependentUpon>InterfaceVariantDetail.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Administration\Interface\InterfaceVariantDetail.aspx.designer.cs">
-      <DependentUpon>InterfaceVariantDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administration\Interface\InterfaceVariant.aspx.cs">
       <DependentUpon>InterfaceVariant.aspx</DependentUpon>

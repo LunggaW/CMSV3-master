@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Add - Color Management Detail</title>
+    <title>Add - Transfer Order Creation Detail</title>
     <style type="text/css">
 
 h1
@@ -46,26 +46,31 @@ h1
     </style>
 </head>
 <body>
-    <form id="addcolormanagementdetail" runat="server">
+    <form id="addtrfordercreationdetail" runat="server">
     <p>
        <asp:Image ID="Image3" runat="server" Height="54px" ImageUrl="~/Help/Images/KDS.png" Width="58px" />
        <strong>PT. KAHAR DUTA SARANA</strong> </p>
        <div style="text-align:center; border-top:solid ; border-top-color:blue">
-       <h1><a name="_Toc456613665"><strong>COLOR MANAGEMENT DETAIL - ADD</strong></a><o:p></o:p></h1>
+       <h1><a name="_Toc456613665"><strong>TRANSFER ORDER CREATION DETAIL - ADD</strong></a><o:p></o:p></h1>
     </div>
         <p>
-            Screen Add color management detail.</p>
+            Screen Add Transfer order creation detail.</p>
         <p>
-            <asp:Image ID="Image5" runat="server" Height="314px" ImageUrl="~/Help/Images/colormanagementDetailAdd.png" Width="829px" />
+            <asp:Image ID="Image5" runat="server" Height="314px" ImageUrl="~/Help/Images/tocreationDetailAdd.png" Width="829px" />
         </p>
         <p>
             Isi kolom tersebut, sebagai contoh :</p>
         <p>
-            <asp:Image ID="Image2" runat="server" Height="314px" ImageUrl="~/Help/Images/colormanagementDetailAddProses.png" Width="829px" />
+            <asp:Image ID="Image7" runat="server" ImageUrl="~/Help/Images/keterangantocreationDetailAdd.png" />
         <p>
-            Lakukan Validasi <asp:Image ID="Image1" runat="server" Height="23px" ImageUrl="~/Help/Images/navigasiValidasi.png" Width="31px" />, jika berhasil, maka color detail baru akan terbentuk</p>
+            <asp:Image ID="Image8" runat="server" ImageUrl="~/Help/Images/keterangantocreationDetailAddProses.png" />
         <p>
-            <asp:Image ID="Image6" runat="server" Height="314px" ImageUrl="~/Help/Images/colormanagementDetailAddDone.png" Width="829px" />
+            Contoh tampilan TO creation detail yang telah di isi.<p>
+            <asp:Image ID="Image9" runat="server" Height="314px" ImageUrl="~/Help/Images/tocreationDetailAddDone.png" Width="829px" />
+        <p>
+            Lakukan Validasi <asp:Image ID="Image1" runat="server" Height="23px" ImageUrl="~/Help/Images/navigasiValidasi.png" Width="31px" />, jika berhasil, maka to creation detail baru akan terbentuk</p>
+        <p>
+            <asp:Image ID="Image6" runat="server" Height="314px" ImageUrl="~/Help/Images/tocreationDetailAddDone1.png" Width="829px" />
         </p>
         <p style="border-bottom:solid; border-bottom-color:blue;text-align:right">
            <strong>PT. KAHAR DUTA SARANA</strong></p>

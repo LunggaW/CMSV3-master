@@ -94,6 +94,18 @@ Pre-requisites dalam pembuatan artikel baru:<br />
         <p>
             <asp:Image ID="Image6" runat="server" ImageUrl="~/Help/Images/keteranganitemmanagement.png" />
         </p>
+        <p>
+            <strong>Diagram Alur</strong></p>
+        <p>
+            Common</p>
+        <p>
+            <asp:Image ID="Image12" runat="server" ImageUrl="~/Help/Images/diagramitemmanagement(common).png" />
+        </p>
+        <p>
+            Variant</p>
+        <p>
+            <asp:Image ID="Image13" runat="server" ImageUrl="~/Help/Images/diagramitemmanagement(Variant).png" />
+        </p>
         <h3><a name="_Toc456613669">Navigasi Item Management</a><o:p></o:p></h3>
         <p>
             <asp:Image ID="Image7" runat="server" ImageUrl="~/Help/Images/navigasi.png" />

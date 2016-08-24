@@ -78,7 +78,7 @@ User Management bisa saja disebut dengan Profile Management.
             <asp:Image ID="Image6" runat="server" ImageUrl="~/Help/Images/keteranganusermanagement.png" />
         </p>
         <p>
-            Diagram Alur.</p>
+            <strong>Diagram Alur</strong></p>
         <p>
             <asp:Image ID="Image12" runat="server" ImageUrl="~/Help/Images/diagramusermanagement.png" />
         </p>
