@@ -1302,7 +1302,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                     "select KDSCMSSASS.SASSSITEID as SITE, KDSCMSSITE.SITESITENAME \"SITE NAME\", COUNT(KDSCMSSASS.SASSITEMID) as \"TOTAL STORE\" " +
                     "from KDSCMSSASS " +
                     "inner join KDSCMSSITE on KDSCMSSASS.SASSSITEID = KDSCMSSITE.SITESITE " +
-                    "WHERE not exists(select 1 from Kdscmsprofsitelink where prstsite = KDSCMSSASS.SASSSITEID and Kdscmsprofsitelink.Prststprof = :SiteProfile) ";
+                    "WHERE exists(select 1 from Kdscmsprofsitelink where prstsite = KDSCMSSASS.SASSSITEID and Kdscmsprofsitelink.Prststprof = :SiteProfile) ";
                     
                 cmd.CommandType = CommandType.Text;
 
@@ -3461,7 +3461,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.Connection = con;
                 cmd.CommandText = " select VRNTVRNTID as VALUE, VRNTVRNTIDX as DESCRIPTION from KDSCMSSASS, KDSCMSMSTVRNT " +
                                   " where SASSITEMID = VRNTITEMID AND SASSVRNT = VRNTVRNTID " +
-                                  " AND SASSCDAT <= SYSDATE AND SASSMDAT >= SYSDATE AND VRNTITEMID = '" + Itemid + "' " +
+                                  " AND SASSCDAT <= SYSDATE  AND VRNTITEMID = '" + Itemid + "' " +
                                   " AND SASSSITEID = '" + SITE + "' GROUP BY VRNTVRNTID, VRNTVRNTIDX ";
 
                 cmd.CommandType = CommandType.Text;
@@ -3493,7 +3493,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
                 cmd.CommandText = "select ITEMITEMID as VALUE, ITEMITEMIDX as DESCRIPTION from KDSCMSSASS, KDSCMSMSTITEM  " +
-                                  " where SASSITEMID = ITEMITEMID AND SASSCDAT <= SYSDATE AND SASSMDAT >= SYSDATE AND SASSSITEID = '" + SITE + "' " +
+                                  " where SASSITEMID = ITEMITEMID AND SASSCDAT <= SYSDATE  AND SASSSITEID = '" + SITE + "' " +
                                   " GROUP BY ITEMITEMID, ITEMITEMIDX " ;
 
                 cmd.CommandType = CommandType.Text;
@@ -3527,7 +3527,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.Connection = con;
                 cmd.CommandText = " select VRNTVRNTID as VALUE, VRNTVRNTIDX as DESCRIPTION from KDSCMSSASS, KDSCMSMSTVRNT " +
                                   " where SASSITEMID = VRNTITEMID AND SASSVRNT = VRNTVRNTID " +
-                                  " AND SASSCDAT <= SYSDATE AND SASSMDAT >= SYSDATE AND VRNTITEMID = '" + Itemid + "' " +
+                                  " AND SASSCDAT <= SYSDATE  AND VRNTITEMID = '" + Itemid + "' " +
                                   " AND SASSSITEID  in ('" + SITE + "','" + SITE2 + "')  GROUP BY VRNTVRNTID, VRNTVRNTIDX ";
 
                 cmd.CommandType = CommandType.Text;
@@ -3559,7 +3559,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
                 cmd.CommandText = "select ITEMITEMID as VALUE, ITEMITEMIDX as DESCRIPTION from KDSCMSSASS, KDSCMSMSTITEM  " +
-                                  " where SASSITEMID = ITEMITEMID AND SASSCDAT <= SYSDATE AND SASSMDAT >= SYSDATE AND SASSSITEID in ('" + SITE + "','" + SITE2 + "') " +
+                                  " where SASSITEMID = ITEMITEMID AND SASSCDAT <= SYSDATE  AND SASSSITEID in ('" + SITE + "','" + SITE2 + "') " +
                                   " GROUP BY ITEMITEMID, ITEMITEMIDX ";
 
                 cmd.CommandType = CommandType.Text;
