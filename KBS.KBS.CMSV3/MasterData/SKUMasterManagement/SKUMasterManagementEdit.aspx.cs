@@ -54,10 +54,7 @@ namespace KBS.KBS.CMSV3.MasterData.SKUMasterManagement
                 EDATE.Text = Session["SKUEDATEforUpdate"].ToString();
                 EDATE.Date = Convert.ToDateTime(Session["SKUEDATEforUpdate"].ToString());
                 SDATE.Date = Convert.ToDateTime(Session["SKUSDATEforUpdate"].ToString());
-        
-                
-
-                
+                                        
             }
 
 

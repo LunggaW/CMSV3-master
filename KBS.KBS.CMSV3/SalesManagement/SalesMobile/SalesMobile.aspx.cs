@@ -13,37 +13,31 @@ using KBS.KBS.CMSV3.FUNCTION;
 using Menu = KBS.KBS.CMSV3.DATAMODEL.Menu;
 using KBS.KBS.CMSV3.Administration;
 
-namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
+
+namespace KBS.KBS.CMSV3.SalesManagement.SalesMobile
 {
-    public partial class SalesDetailInputEdit : System.Web.UI.Page
+    public partial class SalesMobile : System.Web.UI.Page
     {
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
-        OutputMessage message = new OutputMessage();
         private DataTable DTDetailInput = new DataTable();
+        OutputMessage message = new OutputMessage();
 
         protected override void OnInit(EventArgs e)
         {
-
-            if (Session["INPUTLINE"] == null || Session["INPUTSALESID"] == null || Session["INPUTSALESID"] == null)
-            {
-                Response.Redirect("SalesDetailInput.aspx");
-            }
-            else if (Session["UserID"] == null)
-            {
-                Response.Redirect("~/Account/Logins.aspx");
-
-            }
-            else
-            {
-                loadNavBar();
-            }
-
+                if (Session["UserID"] == null)
+                {
+                    Response.Redirect("~/Account/Logins.aspx");
+                }
+                else
+                {
+                    loadNavBar();
+                }
+           
         }
-
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            
 
             if (!IsPostBack)
             {
@@ -54,49 +48,17 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
                 ITEMBOX.ValueType = typeof(string);
                 ITEMBOX.TextField = "DESCRIPTION";
                 ITEMBOX.DataBind();
-
-                
-
-                SalesInputDetail salesinputdetail = new SalesInputDetail();
-                salesinputdetail.SALESID = Session["INPUTSALESID"].ToString();
-                salesinputdetail.IID = Session["INPUTIID"].ToString();
-                salesinputdetail.NOTA = Session["INPUTNOTA"].ToString();
-                salesinputdetail.RECEIPTID = Session["INPUTRECEIPTID"].ToString();
-                salesinputdetail.LINE = Session["INPUTLINE"].ToString();
-                salesinputdetail = CMSfunction.GetSalesInputDetailUpdate(salesinputdetail);
-
-                ITEMTXT.Text = salesinputdetail.ITEMID;
-                VID.Text = salesinputdetail.VARIANTID;
-                BARCODETXT.Text = salesinputdetail.BARCODE;
-                QTYTXT.Text = salesinputdetail.SALESQTY;
-                PRICETXT.Text = salesinputdetail.SALESPRICE;
-                COMMENTXT.Text = salesinputdetail.COMMENT;
-
-                ITEMBOX.Value = salesinputdetail.ITEMID;
-                DTDetailInput = new DataTable();
-                DTDetailInput = CMSfunction.GetVariantByAssortment(ITEMBOX.Value.ToString(), Session["DefaultSite"].ToString());
-                VARIANTBOX.DataSource = DTDetailInput;
-                VARIANTBOX.ValueField = "VALUE";
-                VARIANTBOX.ValueType = typeof(string);
-                VARIANTBOX.TextField = "DESCRIPTION";
-                VARIANTBOX.DataBind();
-                VARIANTBOX.Value = salesinputdetail.VARIANTID;
-
-                DTDetailInput = CMSfunction.GetSKULinkBox(Session["DefaultSite"].ToString(), ITEMTXT.Text);
-                SKUBOX.DataSource = DTDetailInput;
-                SKUBOX.ValueField = "VALUE";
-                SKUBOX.ValueType = typeof(string);
-                SKUBOX.TextField = "DESCRIPTION";
-                SKUBOX.DataBind();
-
-                SKUBOX.Value = int.Parse(salesinputdetail.SKUID);
-                SKUBOX.Text = salesinputdetail.NOTA;
-
+               
+               
             }
             
-
         }
 
+        protected void Search(object sender, EventArgs e)
+        {
+            Session["SearchRedirect"] = "SalesDetailInputNew.aspx";
+            Response.Redirect("SearchItemMaster.aspx");
+        }
 
         private void loadNavBar()
         {
@@ -129,19 +91,29 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
         }
 
 
-        protected void SearchBtn_Click(object sender, EventArgs e)
-        {
-           
-        }
 
         protected void ClearBtn_Click(object sender, EventArgs e)
         {
-           
+
+            ITEMTXT.Text = "";
+            VID.Text = "";
+            BARCODETXT.Text = "";
+            QTYTXT.Text = "";
+            ITEMBOX.SelectedIndex = -1;
+            DTDetailInput = new DataTable();
+            DTDetailInput = CMSfunction.GetVariantByAssortment(ITEMBOX.Value.ToString(), Session["DefaultSite"].ToString());
+            VARIANTBOX.DataSource = DTDetailInput;
+            VARIANTBOX.ValueField = "VALUE";
+            VARIANTBOX.ValueType = typeof(string);
+            VARIANTBOX.TextField = "DESCRIPTION";
+            VARIANTBOX.DataBind();
+
+
         }
 
         protected void BackhomeBtn_Click(object sender, EventArgs e)
         {
-            Session.Remove("ParamHeaderIDforUpdate");
+            //Session.Remove("ParamHeaderIDforUpdate");
 
             if (Page.IsCallback)
                 ASPxWebControl.RedirectOnCallback("SalesDetailInput.aspx");
@@ -153,26 +125,85 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
 
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
-            ProcessUpdate();
+            ProcessInsert();
 
+            ASPxLabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
 
-            LabelMessage.Visible = true;
-            LabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
-
-            LabelMessage.Text = message.Message;
-        }
-
-        protected void AddBtn_Click(object sender, EventArgs e)
-        {
-            
+            ASPxLabelMessage.Visible = true;
+            ASPxLabelMessage.Text = message.Message;
         }
 
         protected void ValidateBtn_Click(object sender, EventArgs e)
         {
-            ProcessUpdate();
-            Response.Redirect("SalesDetailInputEdit.aspx");
+                        
+            ProcessInsert();
+            Response.Redirect("SalesDetailInput.aspx");                       
         }
 
+        private void ProcessInsert()
+        {
+            SalesHeader salesheader = new SalesHeader();
+            salesheader.COMMENT = COMMENTXT.Text;
+            salesheader.DATE = DateTime.Parse(TDATE.Value.ToString());
+            salesheader.NOTA = NOTATXT.Text;
+            salesheader.STATUS = 0; //Created
+            salesheader.FLAG = 1; //Sales
+            salesheader.SITE = Session["DefaultSite"].ToString();
+            salesheader.RECEIPTID = "abc";
+            salesheader.SALESID = "def";
+            salesheader.IID = "98798";
+
+            message = CMSfunction.InsertSalesInputHeader(salesheader, Session["UserID"].ToString());
+
+            SalesInputDetail salesinputdetail = new SalesInputDetail();
+            salesinputdetail.SALESID = Session["INPUTSALESID"].ToString();
+            salesinputdetail.IID = Session["INPUTIID"].ToString();
+            salesinputdetail.NOTA = NOTATXT.Text;
+            salesinputdetail.RECEIPTID = Session["INPUTRECEIPTID"].ToString();
+            salesinputdetail.DATE = DateTime.Parse(TDATE.Value.ToString());
+            salesinputdetail.SITE = Session["DefaultSite"].ToString();
+            salesinputdetail.ITEMID = ITEMBOX.Value.ToString();
+            salesinputdetail.VARIANTID = VARIANTBOX.Value.ToString();
+            salesinputdetail.BARCODE = BARCODETXT.Text;
+            salesinputdetail.SALESQTY= QTYTXT.Text;
+            salesinputdetail.SALESPRICE = PRICETXT.Text;
+            salesinputdetail.COMMENT = COMMENTXT.Text;
+            salesinputdetail.SKUID = SKUBOX.Value.ToString();
+
+            ITEMTXT.Text = "";
+            VID.Text = "";
+            BARCODETXT.Text = "";
+            QTYTXT.Text = "";
+            PRICETXT.Text = "0";
+            SKUBOX.Text = "";
+            SKUBOX.Value = 0;
+
+            Session["SearchVariantforUpdate"] = "";                
+            Session["SearchItemIDforUpdate"] = "";                
+            Session["SearchBarcodeforUpdate"] = "";
+            message = CMSfunction.InsertSalesInputDetail(salesinputdetail, Session["UserID"].ToString());
+
+        }
+
+        protected void ITEMBOX_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            DTDetailInput = new DataTable();
+            DTDetailInput = CMSfunction.GetVariantByAssortment(ITEMBOX.Value.ToString(), Session["DefaultSite"].ToString());
+            VARIANTBOX.DataSource = DTDetailInput;
+            VARIANTBOX.ValueField = "VALUE";
+            VARIANTBOX.ValueType = typeof(string);
+            VARIANTBOX.TextField = "DESCRIPTION";
+            VARIANTBOX.DataBind();
+            DTDetailInput = new DataTable();
+            DTDetailInput = CMSfunction.GetSKULinkBox(Session["DefaultSite"].ToString(), ITEMTXT.Text);
+            SKUBOX.DataSource = DTDetailInput;
+            SKUBOX.ValueField = "VALUE";
+            SKUBOX.ValueType = typeof(string);
+            SKUBOX.TextField = "DESCRIPTION";
+            SKUBOX.DataBind();
+
+
+        }
         protected void BarcodeCek(object sender, EventArgs e)
         {
             TransferOrderDetail transferorderdetail = new TransferOrderDetail();
@@ -198,6 +229,14 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
                 transferorderdetail.ITEMID = ITEMBOX.Value.ToString();
                 transferorderdetail = CMSfunction.GetPriceDetail(transferorderdetail, Session["DefaultSite"].ToString());
                 PRICETXT.Text = transferorderdetail.PRICE;
+
+                DTDetailInput = new DataTable();
+                DTDetailInput = CMSfunction.GetSKULinkBox(Session["DefaultSite"].ToString(), ITEMTXT.Text);
+                SKUBOX.DataSource = DTDetailInput;
+                SKUBOX.ValueField = "VALUE";
+                SKUBOX.ValueType = typeof(string);
+                SKUBOX.TextField = "DESCRIPTION";
+                SKUBOX.DataBind();
             }
             else
             {
@@ -207,25 +246,25 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
 
                 ITEMTXT.Text = "";
                 VID.Text = "";
-
+                
                 ITEMBOX.SelectedIndex = -1;
                 DTDetailInput = new DataTable();
+                
                 DTDetailInput = CMSfunction.GetVariantByAssortment("0", Session["DefaultSite"].ToString());
                 VARIANTBOX.DataSource = DTDetailInput;
                 VARIANTBOX.ValueField = "VALUE";
                 VARIANTBOX.ValueType = typeof(string);
                 VARIANTBOX.TextField = "DESCRIPTION";
                 VARIANTBOX.DataBind();
-
+               
             }
-
         }
         protected void Variant_SelectedIndexChanged(object sender, EventArgs e)
         {
             TransferOrderDetail transferorderdetail = new TransferOrderDetail();
             transferorderdetail.ITEMID = ITEMBOX.Value.ToString();
             transferorderdetail.VARIANT = VARIANTBOX.Value.ToString();
-            transferorderdetail = CMSfunction.GetBarcodeByItemVariant(transferorderdetail);
+            transferorderdetail = CMSfunction.GetBarcodeByItemVariant(transferorderdetail);            
             BARCODETXT.Text = transferorderdetail.BARCODE;
             ITEMTXT.Text = transferorderdetail.ITEMID;
             VID.Text = transferorderdetail.VARIANT;
@@ -237,56 +276,5 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
             PRICETXT.Text = transferorderdetail.PRICE;
 
         }
-        protected void ITEMBOX_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            DTDetailInput = new DataTable();
-            DTDetailInput = CMSfunction.GetVariantByAssortment(ITEMBOX.Value.ToString(), Session["DefaultSite"].ToString());
-            VARIANTBOX.DataSource = DTDetailInput;
-            VARIANTBOX.ValueField = "VALUE";
-            VARIANTBOX.ValueType = typeof(string);
-            VARIANTBOX.TextField = "DESCRIPTION";
-            VARIANTBOX.DataBind();
-
-
-        }
-        protected void Search(object sender, EventArgs e)
-        {
-            Session["SearchRedirect"] = "SalesDetailInputEdit.aspx";
-            Response.Redirect("SearchItemMaster.aspx");
-        }
-        private void ProcessUpdate()
-        {
-
-            SalesInputDetail salesinputdetail = new SalesInputDetail();
-            salesinputdetail.SALESID = Session["INPUTSALESID"].ToString();
-            salesinputdetail.IID = Session["INPUTIID"].ToString();
-            salesinputdetail.NOTA = Session["INPUTNOTA"].ToString();
-            salesinputdetail.LINE = Session["INPUTLINE"].ToString();
-            salesinputdetail.RECEIPTID = Session["INPUTRECEIPTID"].ToString();
-            salesinputdetail.DATE = DateTime.Parse(Session["INPUTDATE"].ToString());
-            salesinputdetail.SITE = Session["INPUTSITE"].ToString();
-            salesinputdetail.ITEMID = ITEMBOX.Value.ToString();
-            salesinputdetail.VARIANTID = VARIANTBOX.Value.ToString();
-            salesinputdetail.BARCODE = BARCODETXT.Text;
-            salesinputdetail.SALESQTY = QTYTXT.Text;
-            salesinputdetail.SALESPRICE = PRICETXT.Text;
-            salesinputdetail.COMMENT = COMMENTXT.Text;
-            salesinputdetail.SKUID = SKUBOX.Value.ToString();
-
-            ITEMTXT.Text = "";
-            VID.Text = "";
-            BARCODETXT.Text = "";
-            QTYTXT.Text = "";
-            PRICETXT.Text = "";
-            SKUBOX.Text = "";
-            SKUBOX.Value = 0;
-
-            Session["SearchVariantforUpdate"] = "";
-            Session["SearchItemIDforUpdate"] = "";
-            Session["SearchBarcodeforUpdate"] = "";
-            message = CMSfunction.UpdateSalesInputDetail(salesinputdetail, Session["UserID"].ToString());
-
-        }
-
     }
 }

@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DevSalesDetailSet" targetNamespace="http://tempuri.org/DevSalesDetailSet.xsd" xmlns:mstns="http://tempuri.org/DevSalesDetailSet.xsd" xmlns="http://tempuri.org/DevSalesDetailSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="Web.config" AppSettingsPropertyName="CMSV3" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="CMSV3 (Web.config)" PropertyReference="AppConfig.System.Configuration.ConfigurationManager.0.ConnectionStrings.CMSV3.ConnectionString" Provider="System.Data.OracleClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="DataTable1TableAdapter" GeneratorDataComponentClassName="DataTable1TableAdapter" Name="DataTable1" UserDataComponentName="DataTable1TableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="CMSV3 (Web.config)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>select  ROWNUM NO,
+SLSDSLID, SLSDSLIDI, SLSDSLNOTA,SLSDSLDATE, SLSDSITE, SLSDLNNUM, ITEMITEMIDX,
+VRNTVRNTIDX, VRNTSDESC, SLSDBRCD, SLSDSLQTY, SLSDSLPRC, SKUHSDES,SLSDTOTPRC, SLSDDISCPC, 
+SLSDDISCPP, SLSDDISCAC, SLSDDISCAP, SLSDMRGNC, SLSDMRGNP, SLSDADMC, SLSDADMP,
+SLSDDISCTOT, SLSDSLTOT, SLSDVAT, SLSDVATV, SLSDVALBY, SLSDREJBY, SLSDRETBY,
+SLSDCOMM, SLSDSTAT, SLSDFLAG, SLSDINTF, SLSDCDAT, SLSDMDAT, SLSDCRBY, SLSDMOBY
+SLSDNMOD, SLSDSLTOTCUS,(SLSDSLTOT - SLSDDISCPP - SLSDDISCAP - SLSDMRGNP - SLSDADMP ) LASTTOT,
+(SLSDDISCPP + SLSDDISCAP + SLSDMRGNP + SLSDADMP) LastPart
+from KDSCMSSLSD, KDSCMSMSTITEM, KDSCMSMSTVRNT, KDSCMSSKUH
+WHERE ITEMITEMID = SLSDITEMID and ITEMITEMID = VRNTITEMID
+and VRNTITEMID = SLSDITEMID and VRNTVRNTID = SLSDVRNTID
+and SKUHSKUID = SLSDSKUID
+</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="SLSDSLID" DataSetColumn="SLSDSLID" />
+              <Mapping SourceColumn="SLSDSLIDI" DataSetColumn="SLSDSLIDI" />
+              <Mapping SourceColumn="SLSDSLNOTA" DataSetColumn="SLSDSLNOTA" />
+              <Mapping SourceColumn="SLSDSLDATE" DataSetColumn="SLSDSLDATE" />
+              <Mapping SourceColumn="SLSDSITE" DataSetColumn="SLSDSITE" />
+              <Mapping SourceColumn="SLSDLNNUM" DataSetColumn="SLSDLNNUM" />
+              <Mapping SourceColumn="ITEMITEMIDX" DataSetColumn="ITEMITEMIDX" />
+              <Mapping SourceColumn="VRNTVRNTIDX" DataSetColumn="VRNTVRNTIDX" />
+              <Mapping SourceColumn="VRNTSDESC" DataSetColumn="VRNTSDESC" />
+              <Mapping SourceColumn="SLSDBRCD" DataSetColumn="SLSDBRCD" />
+              <Mapping SourceColumn="SLSDSLQTY" DataSetColumn="SLSDSLQTY" />
+              <Mapping SourceColumn="SLSDSLPRC" DataSetColumn="SLSDSLPRC" />
+              <Mapping SourceColumn="SKUHSDES" DataSetColumn="SKUHSDES" />
+              <Mapping SourceColumn="SLSDTOTPRC" DataSetColumn="SLSDTOTPRC" />
+              <Mapping SourceColumn="SLSDDISCPC" DataSetColumn="SLSDDISCPC" />
+              <Mapping SourceColumn="SLSDDISCPP" DataSetColumn="SLSDDISCPP" />
+              <Mapping SourceColumn="SLSDDISCAC" DataSetColumn="SLSDDISCAC" />
+              <Mapping SourceColumn="SLSDDISCAP" DataSetColumn="SLSDDISCAP" />
+              <Mapping SourceColumn="SLSDMRGNC" DataSetColumn="SLSDMRGNC" />
+              <Mapping SourceColumn="SLSDMRGNP" DataSetColumn="SLSDMRGNP" />
+              <Mapping SourceColumn="SLSDADMC" DataSetColumn="SLSDADMC" />
+              <Mapping SourceColumn="SLSDADMP" DataSetColumn="SLSDADMP" />
+              <Mapping SourceColumn="SLSDDISCTOT" DataSetColumn="SLSDDISCTOT" />
+              <Mapping SourceColumn="SLSDSLTOT" DataSetColumn="SLSDSLTOT" />
+              <Mapping SourceColumn="SLSDVAT" DataSetColumn="SLSDVAT" />
+              <Mapping SourceColumn="SLSDVATV" DataSetColumn="SLSDVATV" />
+              <Mapping SourceColumn="SLSDVALBY" DataSetColumn="SLSDVALBY" />
+              <Mapping SourceColumn="SLSDREJBY" DataSetColumn="SLSDREJBY" />
+              <Mapping SourceColumn="SLSDRETBY" DataSetColumn="SLSDRETBY" />
+              <Mapping SourceColumn="SLSDCOMM" DataSetColumn="SLSDCOMM" />
+              <Mapping SourceColumn="SLSDSTAT" DataSetColumn="SLSDSTAT" />
+              <Mapping SourceColumn="SLSDFLAG" DataSetColumn="SLSDFLAG" />
+              <Mapping SourceColumn="SLSDINTF" DataSetColumn="SLSDINTF" />
+              <Mapping SourceColumn="SLSDCDAT" DataSetColumn="SLSDCDAT" />
+              <Mapping SourceColumn="SLSDMDAT" DataSetColumn="SLSDMDAT" />
+              <Mapping SourceColumn="SLSDCRBY" DataSetColumn="SLSDCRBY" />
+              <Mapping SourceColumn="SLSDNMOD" DataSetColumn="SLSDNMOD" />
+              <Mapping SourceColumn="SLSDSLTOTCUS" DataSetColumn="SLSDSLTOTCUS" />
+              <Mapping SourceColumn="LASTTOT" DataSetColumn="LASTTOT" />
+              <Mapping SourceColumn="NO" DataSetColumn="NO" />
+              <Mapping SourceColumn="LASTPART" DataSetColumn="LASTPART" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DevSalesDetailSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DevSalesDetailSet" msprop:Generator_UserDSName="DevSalesDetailSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowClassName="DataTable1Row">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="SLSDSLID" msprop:Generator_ColumnVarNameInTable="columnSLSDSLID" msprop:Generator_ColumnPropNameInRow="SLSDSLID" msprop:Generator_ColumnPropNameInTable="SLSDSLIDColumn" msprop:Generator_UserColumnName="SLSDSLID">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SLSDSLIDI" msprop:Generator_ColumnVarNameInTable="columnSLSDSLIDI" msprop:Generator_ColumnPropNameInRow="SLSDSLIDI" msprop:Generator_ColumnPropNameInTable="SLSDSLIDIColumn" msprop:Generator_UserColumnName="SLSDSLIDI" type="xs:decimal" />
+              <xs:element name="SLSDSLNOTA" msprop:Generator_ColumnVarNameInTable="columnSLSDSLNOTA" msprop:Generator_ColumnPropNameInRow="SLSDSLNOTA" msprop:Generator_ColumnPropNameInTable="SLSDSLNOTAColumn" msprop:Generator_UserColumnName="SLSDSLNOTA">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SLSDSLDATE" msprop:Generator_ColumnVarNameInTable="columnSLSDSLDATE" msprop:Generator_ColumnPropNameInRow="SLSDSLDATE" msprop:Generator_ColumnPropNameInTable="SLSDSLDATEColumn" msprop:Generator_UserColumnName="SLSDSLDATE" type="xs:dateTime" />
+              <xs:element name="SLSDSITE" msprop:Generator_ColumnVarNameInTable="columnSLSDSITE" msprop:Generator_ColumnPropNameInRow="SLSDSITE" msprop:Generator_ColumnPropNameInTable="SLSDSITEColumn" msprop:Generator_UserColumnName="SLSDSITE">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SLSDLNNUM" msprop:Generator_ColumnVarNameInTable="columnSLSDLNNUM" msprop:Generator_ColumnPropNameInRow="SLSDLNNUM" msprop:Generator_ColumnPropNameInTable="SLSDLNNUMColumn" msprop:Generator_UserColumnName="SLSDLNNUM" type="xs:decimal" />
+              <xs:element name="ITEMITEMIDX" msprop:Generator_ColumnVarNameInTable="columnITEMITEMIDX" msprop:Generator_ColumnPropNameInRow="ITEMITEMIDX" msprop:Generator_ColumnPropNameInTable="ITEMITEMIDXColumn" msprop:Generator_UserColumnName="ITEMITEMIDX">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VRNTVRNTIDX" msprop:Generator_ColumnVarNameInTable="columnVRNTVRNTIDX" msprop:Generator_ColumnPropNameInRow="VRNTVRNTIDX" msprop:Generator_ColumnPropNameInTable="VRNTVRNTIDXColumn" msprop:Generator_UserColumnName="VRNTVRNTIDX">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="VRNTSDESC" msprop:Generator_ColumnVarNameInTable="columnVRNTSDESC" msprop:Generator_ColumnPropNameInRow="VRNTSDESC" msprop:Generator_ColumnPropNameInTable="VRNTSDESCColumn" msprop:Generator_UserColumnName="VRNTSDESC">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="30" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SLSDBRCD" msprop:Generator_ColumnVarNameInTable="columnSLSDBRCD" msprop:Generator_ColumnPropNameInRow="SLSDBRCD" msprop:Generator_ColumnPropNameInTable="SLSDBRCDColumn" msprop:Generator_UserColumnName="SLSDBRCD">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SLSDSLQTY" msprop:Generator_ColumnVarNameInTable="columnSLSDSLQTY" msprop:Generator_ColumnPropNameInRow="SLSDSLQTY" msprop:Generator_ColumnPropNameInTable="SLSDSLQTYColumn" msprop:Generator_UserColumnName="SLSDSLQTY" type="xs:decimal" />
+              <xs:element name="SLSDSLPRC" msprop:Generator_ColumnVarNameInTable="columnSLSDSLPRC" msprop:Generator_ColumnPropNameInRow="SLSDSLPRC" msprop:Generator_ColumnPropNameInTable="SLSDSLPRCColumn" msprop:Generator_UserColumnName="SLSDSLPRC" type="xs:decimal" />
+              <xs:element name="SKUHSDES" msprop:Generator_ColumnVarNameInTable="columnSKUHSDES" msprop:Generator_ColumnPropNameInRow="SKUHSDES" msprop:Generator_ColumnPropNameInTable="SKUHSDESColumn" msprop:Generator_UserColumnName="SKUHSDES">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SLSDTOTPRC" msprop:Generator_ColumnVarNameInTable="columnSLSDTOTPRC" msprop:Generator_ColumnPropNameInRow="SLSDTOTPRC" msprop:Generator_ColumnPropNameInTable="SLSDTOTPRCColumn" msprop:Generator_UserColumnName="SLSDTOTPRC" type="xs:decimal" />
+              <xs:element name="SLSDDISCPC" msprop:Generator_ColumnVarNameInTable="columnSLSDDISCPC" msprop:Generator_ColumnPropNameInRow="SLSDDISCPC" msprop:Generator_ColumnPropNameInTable="SLSDDISCPCColumn" msprop:Generator_UserColumnName="SLSDDISCPC" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SLSDDISCPP" msprop:Generator_ColumnVarNameInTable="columnSLSDDISCPP" msprop:Generator_ColumnPropNameInRow="SLSDDISCPP" msprop:Generator_ColumnPropNameInTable="SLSDDISCPPColumn" msprop:Generator_UserColumnName="SLSDDISCPP" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SLSDDISCAC" msprop:Generator_ColumnVarNameInTable="columnSLSDDISCAC" msprop:Generator_ColumnPropNameInRow="SLSDDISCAC" msprop:Generator_ColumnPropNameInTable="SLSDDISCACColumn" msprop:Generator_UserColumnName="SLSDDISCAC" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SLSDDISCAP" msprop:Generator_ColumnVarNameInTable="columnSLSDDISCAP" msprop:Generator_ColumnPropNameInRow="SLSDDISCAP" msprop:Generator_ColumnPropNameInTable="SLSDDISCAPColumn" msprop:Generator_UserColumnName="SLSDDISCAP" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SLSDMRGNC" msprop:Generator_ColumnVarNameInTable="columnSLSDMRGNC" msprop:Generator_ColumnPropNameInRow="SLSDMRGNC" msprop:Generator_ColumnPropNameInTable="SLSDMRGNCColumn" msprop:Generator_UserColumnName="SLSDMRGNC" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SLSDMRGNP" msprop:Generator_ColumnVarNameInTable="columnSLSDMRGNP" msprop:Generator_ColumnPropNameInRow="SLSDMRGNP" msprop:Generator_ColumnPropNameInTable="SLSDMRGNPColumn" msprop:Generator_UserColumnName="SLSDMRGNP" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SLSDADMC" msprop:Generator_ColumnVarNameInTable="columnSLSDADMC" msprop:Generator_ColumnPropNameInRow="SLSDADMC" msprop:Generator_ColumnPropNameInTable="SLSDADMCColumn" msprop:Generator_UserColumnName="SLSDADMC" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SLSDADMP" msprop:Generator_ColumnVarNameInTable="columnSLSDADMP" msprop:Generator_ColumnPropNameInRow="SLSDADMP" msprop:Generator_ColumnPropNameInTable="SLSDADMPColumn" msprop:Generator_UserColumnName="SLSDADMP" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SLSDDISCTOT" msprop:Generator_ColumnVarNameInTable="columnSLSDDISCTOT" msprop:Generator_ColumnPropNameInRow="SLSDDISCTOT" msprop:Generator_ColumnPropNameInTable="SLSDDISCTOTColumn" msprop:Generator_UserColumnName="SLSDDISCTOT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SLSDSLTOT" msprop:Generator_ColumnVarNameInTable="columnSLSDSLTOT" msprop:Generator_ColumnPropNameInRow="SLSDSLTOT" msprop:Generator_ColumnPropNameInTable="SLSDSLTOTColumn" msprop:Generator_UserColumnName="SLSDSLTOT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SLSDVAT" msprop:Generator_ColumnVarNameInTable="columnSLSDVAT" msprop:Generator_ColumnPropNameInRow="SLSDVAT" msprop:Generator_ColumnPropNameInTable="SLSDVATColumn" msprop:Generator_UserColumnName="SLSDVAT" type="xs:decimal" />
+              <xs:element name="SLSDVATV" msprop:Generator_ColumnVarNameInTable="columnSLSDVATV" msprop:Generator_ColumnPropNameInRow="SLSDVATV" msprop:Generator_ColumnPropNameInTable="SLSDVATVColumn" msprop:Generator_UserColumnName="SLSDVATV" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SLSDVALBY" msprop:Generator_ColumnVarNameInTable="columnSLSDVALBY" msprop:Generator_ColumnPropNameInRow="SLSDVALBY" msprop:Generator_ColumnPropNameInTable="SLSDVALBYColumn" msprop:Generator_UserColumnName="SLSDVALBY" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SLSDREJBY" msprop:Generator_ColumnVarNameInTable="columnSLSDREJBY" msprop:Generator_ColumnPropNameInRow="SLSDREJBY" msprop:Generator_ColumnPropNameInTable="SLSDREJBYColumn" msprop:Generator_UserColumnName="SLSDREJBY" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SLSDRETBY" msprop:Generator_ColumnVarNameInTable="columnSLSDRETBY" msprop:Generator_ColumnPropNameInRow="SLSDRETBY" msprop:Generator_ColumnPropNameInTable="SLSDRETBYColumn" msprop:Generator_UserColumnName="SLSDRETBY" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="12" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SLSDCOMM" msprop:Generator_ColumnVarNameInTable="columnSLSDCOMM" msprop:Generator_ColumnPropNameInRow="SLSDCOMM" msprop:Generator_ColumnPropNameInTable="SLSDCOMMColumn" msprop:Generator_UserColumnName="SLSDCOMM" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SLSDSTAT" msprop:Generator_ColumnVarNameInTable="columnSLSDSTAT" msprop:Generator_ColumnPropNameInRow="SLSDSTAT" msprop:Generator_ColumnPropNameInTable="SLSDSTATColumn" msprop:Generator_UserColumnName="SLSDSTAT" type="xs:decimal" />
+              <xs:element name="SLSDFLAG" msprop:Generator_ColumnVarNameInTable="columnSLSDFLAG" msprop:Generator_ColumnPropNameInRow="SLSDFLAG" msprop:Generator_ColumnPropNameInTable="SLSDFLAGColumn" msprop:Generator_UserColumnName="SLSDFLAG" type="xs:decimal" />
+              <xs:element name="SLSDINTF" msprop:Generator_ColumnVarNameInTable="columnSLSDINTF" msprop:Generator_ColumnPropNameInRow="SLSDINTF" msprop:Generator_ColumnPropNameInTable="SLSDINTFColumn" msprop:Generator_UserColumnName="SLSDINTF" type="xs:decimal" minOccurs="0" />
+              <xs:element name="SLSDCDAT" msprop:Generator_ColumnVarNameInTable="columnSLSDCDAT" msprop:Generator_ColumnPropNameInRow="SLSDCDAT" msprop:Generator_ColumnPropNameInTable="SLSDCDATColumn" msprop:Generator_UserColumnName="SLSDCDAT" type="xs:dateTime" />
+              <xs:element name="SLSDMDAT" msprop:Generator_ColumnVarNameInTable="columnSLSDMDAT" msprop:Generator_ColumnPropNameInRow="SLSDMDAT" msprop:Generator_ColumnPropNameInTable="SLSDMDATColumn" msprop:Generator_UserColumnName="SLSDMDAT" type="xs:dateTime" />
+              <xs:element name="SLSDCRBY" msprop:Generator_ColumnVarNameInTable="columnSLSDCRBY" msprop:Generator_ColumnPropNameInRow="SLSDCRBY" msprop:Generator_ColumnPropNameInTable="SLSDCRBYColumn" msprop:Generator_UserColumnName="SLSDCRBY">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SLSDNMOD" msprop:Generator_ColumnVarNameInTable="columnSLSDNMOD" msprop:Generator_ColumnPropNameInRow="SLSDNMOD" msprop:Generator_ColumnPropNameInTable="SLSDNMODColumn" msprop:Generator_UserColumnName="SLSDNMOD">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="20" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="SLSDSLTOTCUS" msprop:Generator_ColumnVarNameInTable="columnSLSDSLTOTCUS" msprop:Generator_ColumnPropNameInRow="SLSDSLTOTCUS" msprop:Generator_ColumnPropNameInTable="SLSDSLTOTCUSColumn" msprop:Generator_UserColumnName="SLSDSLTOTCUS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="LASTTOT" msprop:Generator_ColumnVarNameInTable="columnLASTTOT" msprop:Generator_ColumnPropNameInRow="LASTTOT" msprop:Generator_ColumnPropNameInTable="LASTTOTColumn" msprop:Generator_UserColumnName="LASTTOT" type="xs:decimal" minOccurs="0" />
+              <xs:element name="NO" msprop:Generator_ColumnVarNameInTable="columnNO" msprop:Generator_ColumnPropNameInRow="NO" msprop:Generator_ColumnPropNameInTable="NOColumn" msprop:Generator_UserColumnName="NO" type="xs:decimal" minOccurs="0" />
+              <xs:element name="LASTPART" msprop:Generator_ColumnVarNameInTable="columnLASTPART" msprop:Generator_ColumnPropNameInRow="LASTPART" msprop:Generator_ColumnPropNameInTable="LASTPARTColumn" msprop:Generator_UserColumnName="LASTPART" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -155,7 +155,7 @@
     </div>
     <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Visible="False"></asp:Label>
     <dx:ASPxGridView runat="server" ClientInstanceName="detailGridView" CssClass="ASPXGridView"
-        ID="ASPxGridViewDetail" OnCustomCallback="ASPxGridViewDetail_CustomCallback">
+        ID="ASPxGridViewDetail" OnCustomCallback="ASPxGridViewDetail_CustomCallback" Width="95%">
         <ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>
         <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True"></SettingsBehavior>
     </dx:ASPxGridView>

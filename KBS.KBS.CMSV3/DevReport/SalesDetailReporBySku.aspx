@@ -1,20 +1,25 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
-    CodeBehind="ParameterManagementHeader.aspx.cs" Inherits="KBS.KBS.CMSV3.Administration.ParameterManagement.ParameterManagementHeader" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" 
+    MasterPageFile="~/Main.master"
+    CodeBehind="SalesDetailReporBySku.aspx.cs" 
+    Inherits="KBS.KBS.CMSV3.DevReport.SalesDetailReportBySku" %>
+
 
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
+<%@ Register assembly="DevExpress.XtraReports.v15.1.Web, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" namespace="DevExpress.XtraReports.Web" tagprefix="dx" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
-    <link href="../../Content/New.css" rel="stylesheet" type="text/css" />
+    <script src="../../Scripts/PopUp.js" type="text/javascript"></script>
     <script type="text/javascript">
-        function UpdateDetailGrid(s, e)
-        {
-            headerGridView.PerformCallback(e.visibleIndex);
+        function UpdateDetailGrid(s, e) {
+            detailGridView.PerformCallback(e.visibleIndex);
         }
     </script>
+    <link rel="stylesheet" type="text/css" href="../../Content/New.css" />
     <div>
         <span>
             <dx:ASPxButton ID="BackhomeBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/back3.png" ToolTip="Previous Page" BackColor="Transparent" Enabled="False">
+                Image-Url="~/image/back3.png" ToolTip="Previous Page" BackColor="Transparent" Enabled="False"
+                >
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/back3Disable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -44,7 +49,7 @@
         </span><span>
             <dx:ASPxButton ID="ClearBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/clear.png" ToolTip="Clear" BackColor="Transparent" OnClick="ClearBtn_Click">
+                Image-Url="~/image/clear.png" ToolTip="Clear" BackColor="Transparent"  Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/clearDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -54,8 +59,7 @@
         </span><span>
             <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="TRUE"
-                OnClick="SearchBtn_Click">
+                Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -65,7 +69,7 @@
         </span><span>
             <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="True" OnClick="EditBtn_Click">
+                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -75,8 +79,7 @@
         </span><span>
             <dx:ASPxButton ID="AddBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/plus.png" ToolTip="Add" BackColor="Transparent" Enabled="true"
-                OnClick="AddBtn_Click">
+                Image-Url="~/image/plus.png" ToolTip="Add" BackColor="Transparent" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/plusDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -86,19 +89,17 @@
         </span><span>
             <dx:ASPxButton ID="DelBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/min.png" ToolTip="Delete" BackColor="Transparent" Enabled="True"
-                OnClick="DelBtn_Click">
+                Image-Url="~/image/min.png" ToolTip="Delete" BackColor="Transparent" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/minDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
                 </Image>
                 <Border BorderColor="Transparent" />
-                <ClientSideEvents Click="function(s, e) {e.processOnServer = confirm('Are You Sure Want To Delete This Record ?');}" />
             </dx:ASPxButton>
         </span><span>
             <dx:ASPxButton ID="LprevBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/back2.png" BackColor="Transparent" ToolTip="First Page" OnClick="LprevBtn_Click">
+                Image-Url="~/image/back2.png" BackColor="Transparent" ToolTip="First Page" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/back2Disable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -109,7 +110,7 @@
             <dx:ASPxButton ID="PrevBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
                 Image-Url="~/image/back.png" BackColor="Transparent" ToolTip="Previous Page"
-                OnClick="PrevBtn_Click">
+                Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/backDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -119,7 +120,7 @@
         </span><span>
             <dx:ASPxButton ID="NextBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/next.png" BackColor="Transparent" ToolTip="Next Page" OnClick="NextBtn_Click">
+                Image-Url="~/image/next.png" BackColor="Transparent" ToolTip="Next Page" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/nextDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -128,8 +129,8 @@
             </dx:ASPxButton>
         </span><span>
             <dx:ASPxButton ID="LnextBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
-                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/next2.png" BackColor="Transparent" ToolTip="Last Page" OnClick="LnextBtn_Click">
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false"  
+                Image-Url="~/image/next2.png" BackColor="Transparent" ToolTip="Last Page" Enabled="False">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/next2Disable.png">
                 </Image>
                 <Image Height="20px" Width="20px">
@@ -137,52 +138,31 @@
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
         </span><span>
-            <dx:ASPxButton ID="Help" runat="server" EnableTheming="False"
-                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
+            <dx:ASPxButton ID="Help" runat="server" EnableTheming="False" UseSubmitBehavior="false"
+                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png" 
                 Image-Url="~/image/question.png" BackColor="Transparent" ToolTip="Help">
-                <ClientSideEvents Click="function (s, e) {window.open('../../Help/Administration/parametermanagement.aspx', '_blank')}"></ClientSideEvents>
-
+                <ClientSideEvents Click="function (s, e) {window.open('../../Help/Report/salesdetail.aspx', '_blank')}"></ClientSideEvents>
                 <Image Height="20px" Width="20px">
                 </Image>
-
                 <BackgroundImage ImageUrl="~/image/transback.png"></BackgroundImage>
-
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
         </span>
     </div>
-    <div align="center">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Parameter Management"></asp:Label>
-    </div>
-    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Parameter Management"
-        Visible="false"></asp:Label>
-    <div>
-        <table class="tableTop">
-            <tr>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" Caption="ID" ID="ASPxTextBoxHeaderID">
-                    </dx:ASPxTextBox>
-                </td>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Name" ID="ASPxTextBoxHeaderName">
-                    </dx:ASPxTextBox>
-                </td>
-            </tr>
-        </table>
+    <br />
+    <div align="center" class="title">
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Report Sales Detail"></asp:Label>
+        <br />
     </div>
     <br />
-    <dx:ASPxGridView runat="server" ClientInstanceName="headerGridView" CssClass="ASPXGridView"
-        ID="ASPxGridViewHeader" OnCustomCallback="ASPxGridViewHeader_CustomCallback">
-        <ClientSideEvents RowDblClick="UpdateDetailGrid"></ClientSideEvents>
-        <SettingsBehavior AllowFocusedRow="True" ProcessFocusedRowChangedOnServer="True"></SettingsBehavior>
-        <SettingsCookies Enabled="True" />
-    </dx:ASPxGridView>
-    <div align="center">
+    <span>
+        <dx:ASPxLabel ID="ASPxLabelMessage" runat="server" Font-Size="Large" Text="ASPxLabel"
+            Visible="False">
+        </dx:ASPxLabel>
+        <dx:ASPxDocumentViewer ID="ASPxDocumentViewer1" runat="server" ReportTypeName="KBS.KBS.CMSV3.DevReport.DevSalesDetailBySku">
+    </dx:ASPxDocumentViewer>
         <br />
-        <dx:ASPxButton ID="ASPxButtonEntry" runat="server" OnClick="ASPxButtonEntry_Click"
-            Text="Detail" Font-Size="Medium">
-        </dx:ASPxButton>
-        <br />
-    </div>
+    </span>
+    <br />  
     <br />
 </asp:Content>

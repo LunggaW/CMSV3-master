@@ -133,6 +133,8 @@
     <Content Include="Administration\License\ImportLicense.aspx" />
     <Content Include="Dependency\NLog\log.txt" />
     <Content Include="Dependency\NLog\NLog.dll" />
+    <Content Include="DevReport\SalesDetailReporBySku.aspx" />
+    <Content Include="DevReport\SalesDetailReport.aspx" />
     <Content Include="DevReport\SalesDetail.aspx" />
     <Content Include="DevReport\SalesSummary.aspx" />
     <Content Include="DevReport\TransferDetail.aspx" />
@@ -615,6 +617,7 @@
     <Content Include="Report\Sales\SalesHeader.aspx" />
     <Content Include="Report\Sales\SalesSummary.aspx" />
     <Content Include="SalesManagement\SalesInput\SalesInputNewSimple.aspx" />
+    <Content Include="SalesManagement\SalesMobile\SalesMobile.aspx" />
     <Content Include="SalesManagement\SalesReturn\SalesDetailReturn.aspx" />
     <Content Include="SalesManagement\SalesReturn\SalesReturnEdit.aspx" />
     <Content Include="SalesManagement\SalesReturn\SalesReturnHeader.aspx" />
@@ -888,6 +891,23 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataTO.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DevReport\DevSalesDetailBySku.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DevReport\DevSalesDetailBySku.Designer.cs">
+      <DependentUpon>DevSalesDetailBySku.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DevReport\DevSalesDetail.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DevReport\DevSalesDetail.Designer.cs">
+      <DependentUpon>DevSalesDetail.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DevReport\DevSalesDetailSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DevSalesDetailSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DevReport\ReportSales.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -905,6 +925,20 @@
     </Compile>
     <Compile Include="DevReport\ReportTO.Designer.cs">
       <DependentUpon>ReportTO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DevReport\SalesDetailReporBySku.aspx.cs">
+      <DependentUpon>SalesDetailReporBySku.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DevReport\SalesDetailReporBySku.aspx.designer.cs">
+      <DependentUpon>SalesDetailReporBySku.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DevReport\SalesDetailReport.aspx.cs">
+      <DependentUpon>SalesDetailReport.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DevReport\SalesDetailReport.aspx.designer.cs">
+      <DependentUpon>SalesDetailReport.aspx</DependentUpon>
     </Compile>
     <Compile Include="DevReport\SalesDetail.aspx.cs">
       <DependentUpon>SalesDetail.aspx</DependentUpon>
@@ -1946,6 +1980,13 @@
     <Compile Include="SalesManagement\SalesInput\SalesInputNewSimple.aspx.designer.cs">
       <DependentUpon>SalesInputNewSimple.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SalesManagement\SalesMobile\SalesMobile.aspx.cs">
+      <DependentUpon>SalesMobile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalesManagement\SalesMobile\SalesMobile.aspx.designer.cs">
+      <DependentUpon>SalesMobile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SalesManagement\SalesReturn\SalesDetailReturn.aspx.cs">
       <DependentUpon>SalesDetailReturn.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2166,6 +2207,12 @@
     <EmbeddedResource Include="DevExpressWizard\XtraReportSales.resx">
       <DependentUpon>XtraReportSales.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="DevReport\DevSalesDetailBySku.resx">
+      <DependentUpon>DevSalesDetailBySku.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DevReport\DevSalesDetail.resx">
+      <DependentUpon>DevSalesDetail.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="DevReport\ReportSales.resx">
       <DependentUpon>ReportSales.cs</DependentUpon>
     </EmbeddedResource>
@@ -2216,6 +2263,17 @@
     </None>
     <Content Include="DevReport\DataTO.xss">
       <DependentUpon>DataTO.xsd</DependentUpon>
+    </Content>
+    <Content Include="DevReport\DevSalesDetailSet.xsc">
+      <DependentUpon>DevSalesDetailSet.xsd</DependentUpon>
+    </Content>
+    <None Include="DevReport\DevSalesDetailSet.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DevSalesDetailSet.Designer.cs</LastGenOutput>
+    </None>
+    <Content Include="DevReport\DevSalesDetailSet.xss">
+      <DependentUpon>DevSalesDetailSet.xsd</DependentUpon>
     </Content>
     <None Include="DevReport\SumTrn.xsd">
       <SubType>Designer</SubType>
