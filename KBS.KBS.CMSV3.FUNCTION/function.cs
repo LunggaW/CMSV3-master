@@ -3595,7 +3595,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.CommandText = "select SKUHSKUID as VALUE, SKUHSDES as DESCRIPTION " +
                                  "from KDSCMSSKUH  where SKUHEDAT >= CURRENT_DATE " +
                                  "AND SKUHSKUID IN (select distinct SKULINKSKUID from KDSCMSSKULINK, KDSCMSMSTITEM WHERE " +
-                                 " SKULINKSITEID = '" + SITE + "' and KULINKBRNDID = ITEMBRNDID "+
+                                 " SKULINKSITEID = '" + SITE + "' and SKULINKBRNDID = ITEMBRNDID "+
                                  "  and ITEMITEMIDX =  '" + ITEMID + "' )";
 
                 cmd.CommandType = CommandType.Text;
@@ -5099,7 +5099,14 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "PKKDSCMSSLSH.INS_DATA";
+                if (salesheader.RECEIPTID == "Mobile")
+                {
+                    cmd.CommandText = "PKKDSCMSSLSH.INS_DATA_MOBILE";
+                        }
+                else
+                {
+                    cmd.CommandText = "PKKDSCMSSLSH.INS_DATA";
+                }
                 cmd.CommandType = CommandType.StoredProcedure;
 
 

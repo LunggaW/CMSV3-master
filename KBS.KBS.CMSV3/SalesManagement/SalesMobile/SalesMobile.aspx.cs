@@ -12,7 +12,7 @@ using KBS.KBS.CMSV3.DATAMODEL;
 using KBS.KBS.CMSV3.FUNCTION;
 using Menu = KBS.KBS.CMSV3.DATAMODEL.Menu;
 using KBS.KBS.CMSV3.Administration;
-
+using System.Text.RegularExpressions;
 
 namespace KBS.KBS.CMSV3.SalesManagement.SalesMobile
 {
@@ -31,7 +31,7 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesMobile
                 }
                 else
                 {
-                    loadNavBar();
+                  // loadNavBar();
                 }
            
         }
@@ -87,7 +87,9 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesMobile
 
                 }
             }
-            masterNav.DataBind();
+            masterNav.DataBind();                        
+
+
         }
 
 
@@ -127,10 +129,26 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesMobile
         {
             ProcessInsert();
 
-            ASPxLabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+            if (message.Code > 0)
+            {
+                string script = "alert('Save Successfull');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+                COMMENTXT.Text = "";
+                ITEMBOX.SelectedIndex = -1;
+                VARIANTBOX.SelectedIndex = -1;
+                ITEMTXT.Text = "";
+                VID.Text = "";
+                BARCODETXT.Text = "";
+                QTYTXT.Text = "";
+                PRICETXT.Text = "0";
+                
 
-            ASPxLabelMessage.Visible = true;
-            ASPxLabelMessage.Text = message.Message;
+            }
+            else
+            {
+                string script = "alert('Save Failed Please Check Data');";
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
+            }
         }
 
         protected void ValidateBtn_Click(object sender, EventArgs e)
@@ -142,6 +160,11 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesMobile
 
         private void ProcessInsert()
         {
+            string NoDate = DateTime.Now.ToString();
+            Regex re = new Regex("[;\\\\/:*?\"<>|&']");
+            string ResultDate = (Regex.Replace(re.Replace(NoDate, ""), "[^0-9]", "")).Substring(5,4);
+            string SalesIdNota = NOTATXT.Text + ResultDate.ToString();
+
             SalesHeader salesheader = new SalesHeader();
             salesheader.COMMENT = COMMENTXT.Text;
             salesheader.DATE = DateTime.Parse(TDATE.Value.ToString());
@@ -149,17 +172,17 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesMobile
             salesheader.STATUS = 0; //Created
             salesheader.FLAG = 1; //Sales
             salesheader.SITE = Session["DefaultSite"].ToString();
-            salesheader.RECEIPTID = "abc";
-            salesheader.SALESID = "def";
-            salesheader.IID = "98798";
+            salesheader.RECEIPTID = "Mobile";
+            salesheader.SALESID = SalesIdNota; 
+            salesheader.IID = ResultDate; 
 
             message = CMSfunction.InsertSalesInputHeader(salesheader, Session["UserID"].ToString());
 
             SalesInputDetail salesinputdetail = new SalesInputDetail();
-            salesinputdetail.SALESID = Session["INPUTSALESID"].ToString();
-            salesinputdetail.IID = Session["INPUTIID"].ToString();
+            salesinputdetail.SALESID = SalesIdNota;
+            salesinputdetail.IID = ResultDate;
             salesinputdetail.NOTA = NOTATXT.Text;
-            salesinputdetail.RECEIPTID = Session["INPUTRECEIPTID"].ToString();
+            salesinputdetail.RECEIPTID = "Mobile";
             salesinputdetail.DATE = DateTime.Parse(TDATE.Value.ToString());
             salesinputdetail.SITE = Session["DefaultSite"].ToString();
             salesinputdetail.ITEMID = ITEMBOX.Value.ToString();
@@ -170,19 +193,13 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesMobile
             salesinputdetail.COMMENT = COMMENTXT.Text;
             salesinputdetail.SKUID = SKUBOX.Value.ToString();
 
-            ITEMTXT.Text = "";
-            VID.Text = "";
-            BARCODETXT.Text = "";
-            QTYTXT.Text = "";
-            PRICETXT.Text = "0";
-            SKUBOX.Text = "";
-            SKUBOX.Value = 0;
+           
 
             Session["SearchVariantforUpdate"] = "";                
             Session["SearchItemIDforUpdate"] = "";                
             Session["SearchBarcodeforUpdate"] = "";
             message = CMSfunction.InsertSalesInputDetail(salesinputdetail, Session["UserID"].ToString());
-
+            
         }
 
         protected void ITEMBOX_SelectedIndexChanged(object sender, EventArgs e)
@@ -195,7 +212,7 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesMobile
             VARIANTBOX.TextField = "DESCRIPTION";
             VARIANTBOX.DataBind();
             DTDetailInput = new DataTable();
-            DTDetailInput = CMSfunction.GetSKULinkBox(Session["DefaultSite"].ToString(), ITEMTXT.Text);
+            DTDetailInput = CMSfunction.GetSKULinkBox(Session["DefaultSite"].ToString(), ITEMBOX.Text);
             SKUBOX.DataSource = DTDetailInput;
             SKUBOX.ValueField = "VALUE";
             SKUBOX.ValueType = typeof(string);

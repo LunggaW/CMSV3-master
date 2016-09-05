@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/MobileMain.master" AutoEventWireup="true"
  CodeBehind="SalesMobile.aspx.cs" Inherits="KBS.KBS.CMSV3.SalesManagement.SalesMobile.SalesMobile" %>
 
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
@@ -13,271 +13,145 @@
         }
     </script>
 
-    <link rel="stylesheet" type="text/css" href="../../Content/New.css" />
-    <div>
-        <span>
-            <dx:ASPxButton ID="BackhomeBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
-                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/back3.png" ToolTip="Previous Page" BackColor="Transparent"
-                OnClick="BackhomeBtn_Click">
-                <Image Height="20px" Width="20px" UrlDisabled="~/image/back3Disable.png">
-                </Image>
-                <Image Height="20px" Width="20px">
-                </Image>
-                <Border BorderColor="Transparent" />
-            </dx:ASPxButton>
-        </span><span>
-            <dx:ASPxButton ID="ValidateBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
-                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/valid.png" BackColor="Transparent" ToolTip="Valid" OnClick="ValidateBtn_Click">
-                <Image Height="20px" Width="20px" UrlDisabled="~/image/validDisable.png">
-                </Image>
-                <Image Height="20px" Width="20px">
-                </Image>
-                <Border BorderColor="Transparent" />
-            </dx:ASPxButton>
-        </span><span>
-            <dx:ASPxButton ID="SaveBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
-                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/save.png" ToolTip="Save" BackColor="Transparent" OnClick="SaveBtn_Click">
-                <Image Height="20px" Width="20px" UrlDisabled="~/image/saveDisable.png">
-                </Image>
-                <Image Height="20px" Width="20px">
-                </Image>
-                <Border BorderColor="Transparent" />
-            </dx:ASPxButton>
-        </span><span>
-            <dx:ASPxButton ID="ClearBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
-                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/clear.png" ToolTip="Clear" BackColor="Transparent">
-                <Image Height="20px" Width="20px" UrlDisabled="~/image/clearDisable.png">
-                </Image>
-                <Image Height="20px" Width="20px">
-                </Image>
-                <Border BorderColor="Transparent" />
-            </dx:ASPxButton>
-        </span><span>
-            <dx:ASPxButton ID="SearchBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
-                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/search.png" ToolTip="Search" BackColor="Transparent" Enabled="False">
-                <Image Height="20px" Width="20px" UrlDisabled="~/image/searchDisable.png">
-                </Image>
-                <Image Height="20px" Width="20px">
-                </Image>
-                <Border BorderColor="Transparent" />
-            </dx:ASPxButton>
-        </span><span>
-            <dx:ASPxButton ID="EditBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
-                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/edit.png" ToolTip="Edit" BackColor="Transparent" Enabled="False">
-                <Image Height="20px" Width="20px" UrlDisabled="~/image/editDisable.png">
-                </Image>
-                <Image Height="20px" Width="20px">
-                </Image>
-                <Border BorderColor="Transparent" />
-            </dx:ASPxButton>
-        </span><span>
-            <dx:ASPxButton ID="AddBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
-                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/plus.png" ToolTip="Add" BackColor="Transparent" Enabled="False">
-                <Image Height="20px" Width="20px" UrlDisabled="~/image/plusDisable.png">
-                </Image>
-                <Image Height="20px" Width="20px">
-                </Image>
-                <Border BorderColor="Transparent" />
-            </dx:ASPxButton>
-        </span><span>
-            <dx:ASPxButton ID="DelBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
-                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/min.png" ToolTip="Delete" BackColor="Transparent" Enabled="False">
-                <Image Height="20px" Width="20px" UrlDisabled="~/image/minDisable.png">
-                </Image>
-                <Image Height="20px" Width="20px">
-                </Image>
-                <Border BorderColor="Transparent" />
-            </dx:ASPxButton>
-        </span><span>
-            <dx:ASPxButton ID="LprevBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
-                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/back2.png" BackColor="Transparent" ToolTip="First Page" Enabled="False">
-                <Image Height="20px" Width="20px" UrlDisabled="~/image/back2Disable.png">
-                </Image>
-                <Image Height="20px" Width="20px">
-                </Image>
-                <Border BorderColor="Transparent" />
-            </dx:ASPxButton>
-        </span><span>
-            <dx:ASPxButton ID="PrevBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
-                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/back.png" BackColor="Transparent" ToolTip="Previous Page"
-                Enabled="False">
-                <Image Height="20px" Width="20px" UrlDisabled="~/image/backDisable.png">
-                </Image>
-                <Image Height="20px" Width="20px">
-                </Image>
-                <Border BorderColor="Transparent" />
-            </dx:ASPxButton>
-        </span><span>
-            <dx:ASPxButton ID="NextBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
-                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/next.png" BackColor="Transparent" ToolTip="Next Page" Enabled="False">
-                <Image Height="20px" Width="20px" UrlDisabled="~/image/nextDisable.png">
-                </Image>
-                <Image Height="20px" Width="20px">
-                </Image>
-                <Border BorderColor="Transparent" />
-            </dx:ASPxButton>
-        </span><span>
-            <dx:ASPxButton ID="LnextBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
-                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/next2.png" BackColor="Transparent" ToolTip="Last Page" Enabled="False">
-                <Image Height="20px" Width="20px" UrlDisabled="~/image/next2Disable.png">
-                </Image>
-                <Image Height="20px" Width="20px">
-                </Image>
-                <Border BorderColor="Transparent" />
-            </dx:ASPxButton>
-        </span><span>
-            <dx:ASPxButton ID="Help" runat="server" EnableTheming="False"
-                EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/question.png" BackColor="Transparent" ToolTip="Help">
-                <ClientSideEvents Click="function (s, e) {window.open('../../Help/SalesManagement/salesinputdetailAdd.aspx', '_blank')}"></ClientSideEvents>
-                <Image Height="20px" Width="20px">
-                </Image>
-                <BackgroundImage ImageUrl="~/image/transback.png"></BackgroundImage>
-                <Border BorderColor="Transparent" />
-            </dx:ASPxButton>
-        </span>
-    </div>
+    <link rel="stylesheet" type="text/css" href="../../Content/New.css" />    
     <br />
     <div style="text-align: center" class="title">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Sales Input Detail"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="50" Text="Sales Mobile"></asp:Label>
     </div>
     <br />
     <span>
-        <dx:ASPxLabel ID="ASPxLabelMessage" runat="server" Font-Size="Large" Text="ASPxLabel"
+        <dx:ASPxLabel ID="ASPxLabelMessage" runat="server" Font-Size="50" Text="ASPxLabel"
             Visible="False">
         </dx:ASPxLabel>
         <br />
     </span>
     <br />
-    <div>
-        <table class="tableTop">  
-            <tr>  
-            <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="NOTA" ID="NOTATXT">
+    <div style="text-align: center; grid-column-align:center;grid-row-align:center; align-content:center;align-items:center;" class="title">
+        
+    </div>
+    <div >
+        <table style="width:100%;align-content:center;align-items:center;grid-column-align:center;grid-row-align:center" > 
+             <tr>
+               <td  >
+                    <dx:ASPxTextBox runat="server" Width="100%"  ReadOnly="False" Caption="ITEM ID" ID="ITEMTXT" Visible="false" onkeypress="return isNumberKey(event)" >
+                        <CaptionSettings ShowColon="False" Position="Top" HorizontalAlign="Center"></CaptionSettings>
                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
-                        <CaptionCellStyle Width="100px">
-                        </CaptionCellStyle>
-                    </dx:ASPxTextBox>
-                </td>
-            </tr>
-            <tr> 
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxDateEdit runat="server" Caption="TRANSACTION DATE" ID="TDATE">
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <CaptionCellStyle Width="100px">
-                        </CaptionCellStyle>
-                    </dx:ASPxDateEdit>
-                </td> 
-           </tr>
-                
-           <tr>
-               <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="ITEM ID" ID="ITEMTXT" Visible="false" onkeypress="return isNumberKey(event)" >
-                         <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <ReadOnlyStyle BackColor="Silver">
-                        </ReadOnlyStyle>
-                        <CaptionCellStyle Width="100px">
-                        </CaptionCellStyle>
                     </dx:ASPxTextBox>
                  </td>
             </tr>
+            
             <tr> 
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Caption="VARIANT ID" ID="VID" onkeypress="return isNumberKey(event)" Visible="false" >
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <CaptionCellStyle Width="100px">
-                        </CaptionCellStyle>
+                <td >
+                    <dx:ASPxTextBox runat="server" Caption="VARIANT ID" ID="VID" onkeypress="return isNumberKey(event)" Visible="false"  >
+                       <CaptionSettings ShowColon="False" Position="Top" HorizontalAlign="Center"></CaptionSettings> 
+                        
                     </dx:ASPxTextBox>
                 </td>
             </tr>
-            <tr>
-                <td class="tableHeader2Column" colspan="5">
-                 <dx:ASPxComboBox runat="server" Width="170px" ReadOnly="False" Caption="ITEM ID" AutoPostBack="true" ID="ITEMBOX" OnSelectedIndexChanged="ITEMBOX_SelectedIndexChanged">
-                      <CaptionSettings ShowColon="False"></CaptionSettings>   
+            <tr> 
+                <td style="width :100%">
+                    <br />
+                   <asp:Label ID="Label2" runat="server" Font-Size="50" style="margin:auto; text-align:center" Text="TRANSACTION DATE" Width="100%"></asp:Label> 
+                    <dx:ASPxDateEdit runat="server"  ID="TDATE" Width="80%" style="margin:auto" Font-Size="50" >
+                     </dx:ASPxDateEdit>
+                </td> 
+           </tr>  
+            <tr>  
+            <td style="width :100%">
+                <asp:Label ID="Label3" runat="server" Font-Size="50" style="margin:auto; text-align:center" Text="NOTA" Width="100%"></asp:Label> 
+                    <dx:ASPxTextBox runat="server" Width="80%" style="margin:auto" ReadOnly="False" HorizontalAlign="Center"   ID="NOTATXT" Font-Size="50">
+                       
                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
-                        <CaptionCellStyle Width="100px">
-                        </CaptionCellStyle>
+                    </dx:ASPxTextBox>
+                </td>
+            </tr>                          
+         
+            <tr>
+                <td style="width :100%">
+                    <asp:Label ID="Label4" runat="server" Font-Size="50" style="margin:auto; text-align:center" Text="ITEM ID" Width="100%"></asp:Label> 
+                 <dx:ASPxComboBox runat="server" Width="80%" style="margin:auto" ReadOnly="False"  AutoPostBack="true" Font-Size="50" ID="ITEMBOX" OnSelectedIndexChanged="ITEMBOX_SelectedIndexChanged">
+                     
+                        <ReadOnlyStyle BackColor="Silver">
+                        </ReadOnlyStyle>
                  </dx:ASPxComboBox>
                 </td>
             </tr>
             <tr> 
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxComboBox runat="server" Width="170px" ReadOnly="False" Caption="VARIANT" AutoPostBack="true" ID="VARIANTBOX" OnSelectedIndexChanged="Variant_SelectedIndexChanged">
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                <td style="width :100%">
+                    <asp:Label ID="Label5" runat="server" Font-Size="50" style="margin:auto; text-align:center" Text="VARIANT" Width="100%"></asp:Label> 
+                    <dx:ASPxComboBox runat="server" Width="80%" style="margin:auto" ReadOnly="False" AutoPostBack="true" Font-Size="50" ID="VARIANTBOX" OnSelectedIndexChanged="Variant_SelectedIndexChanged">
+                      
                          <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
-                        <CaptionCellStyle Width="100px">
-                        </CaptionCellStyle>
                  </dx:ASPxComboBox>
                 </td>
             </tr>
             
             <tr>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="BARCODE" AutoPostBack="true" OnTextChanged="BarcodeCek" ID="BARCODETXT">
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                <td style="width :100%">
+                    <asp:Label ID="Label6" runat="server" Font-Size="50" style="margin:auto; text-align:center" Text="BARCODE" Width="100%"></asp:Label> 
+                    <dx:ASPxTextBox runat="server" Width="80%" style="margin:auto"  ReadOnly="False"  AutoPostBack="true" Font-Size="50" OnTextChanged="BarcodeCek" ID="BARCODETXT">
+                      
                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
-                        <CaptionCellStyle Width="100px">
-                        </CaptionCellStyle>
                     </dx:ASPxTextBox>
                 </td>
             </tr>
             <tr> 
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxComboBox runat="server" Width="170px" ReadOnly="False" Caption="SKU " AutoPostBack="true" ID="SKUBOX" >
-                         <CaptionSettings ShowColon="False"></CaptionSettings>
+                <td style="width :100%">
+                    <asp:Label ID="Label7" runat="server" Font-Size="50" style="margin:auto; text-align:center" Text="SKU" Width="100%"></asp:Label> 
+                    <dx:ASPxComboBox runat="server" Width="80%" style="margin:auto" ReadOnly="False"  AutoPostBack="true" Font-Size="50" ID="SKUBOX"  >
+                     
                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
-                        <CaptionCellStyle Width="100px">
-                        </CaptionCellStyle>
                     </dx:ASPxComboBox>
                 </td>
             </tr>
             <tr>                
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Caption="QTY" ID="QTYTXT" onkeypress="return isNumberKeyQty(event)">
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <CaptionCellStyle Width="100px">
-                        </CaptionCellStyle>
+                <td style="width :100%">
+                    <asp:Label ID="Label8" runat="server" Font-Size="50" style="margin:auto; text-align:center" Text="QTY" Width="100%"></asp:Label> 
+                    <dx:ASPxTextBox runat="server"  ID="QTYTXT" onkeypress="return isNumberKeyQty(event)" Font-Size="50" style="margin:auto" Width="80%" >
+                       
+                        
                     </dx:ASPxTextBox>
                 </td>
             </tr>
             <tr> 
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Caption="PRICE" ID="PRICETXT" onkeypress="return isNumberKey(event)">
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <CaptionCellStyle Width="100px">
-                        </CaptionCellStyle>
+                <td style="width :100%">
+                    <asp:Label ID="Label9" runat="server" Font-Size="50" style="margin:auto; text-align:center" Text="PRICE" Width="100%"></asp:Label> 
+                    <dx:ASPxTextBox runat="server"  ID="PRICETXT" onkeypress="return isNumberKey(event)" Font-Size="50" style="margin:auto" Width="80%" >
+                       
+                        
                     </dx:ASPxTextBox>
                 </td>
             </tr>            
             <tr>
-             
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxMemo
-                     runat="server" Caption="COMMENT" ID="COMMENTXT" Height="71px" Width="300px"  ReadOnly="False" >
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <CaptionCellStyle Width="100px">
-                        </CaptionCellStyle>
+                
+                <td style="width :100%">
+                <asp:Label ID="Label10" runat="server" Font-Size="50" style="margin:auto; text-align:center" Text="COMMENT" Width="100%"></asp:Label> 
+                <dx:ASPxMemo
+                     runat="server"  ID="COMMENTXT" Height="100px" Width="80%" style="margin:auto"  ReadOnly="False" Font-Size="50" >
+                       
+                        
                     </dx:ASPxMemo>
                 </td>                
             </tr>
+            <tr>
+                <td >
+                    <br />
+                    
+                </td>
+            </tr>
         </table>
+        <div align="center">
+               <dx:ASPxButton ID="SaveBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False" 
+                        EnableViewState="False" Height="50px" Width="500px" UseSubmitBehavior="false"  Text="SAVE" 
+                        Font-Size="50" style="margin-left:auto; margin-right:auto" HorizontalAlign="Center" 
+                        ToolTip="Save" OnClick="SaveBtn_Click">                        
+                    </dx:ASPxButton> 
+            </div>
     </div>
     <br />
 </asp:Content>

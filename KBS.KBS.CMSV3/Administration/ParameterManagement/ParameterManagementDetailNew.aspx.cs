@@ -136,7 +136,14 @@ namespace KBS.KBS.CMSV3.Administration
             parDetail.Entry = ASPxTextBoxDetailEntry.Text;
             parDetail.Char1 = ASPxTextBoxDetailParValChar1.Text;
             parDetail.Char2 = ASPxTextBoxDetailParValChar2.Text;
-            parDetail.Char3 = ASPxTextBoxDetailParValChar3.Text;
+            if (Session["ParamHeaderID"].ToString() == "17")
+            {
+                parDetail.Char3 = ASPxTextBoxDetailParVal3.Text;
+            }
+            else
+            {
+                parDetail.Char3 = ASPxTextBoxDetailParValChar3.Text;
+            }
             parDetail.Comment = ASPxMemoComment.Text;
             parDetail.SiteClass = Session["ParamHeaderSClass"].ToString();
             parDetail.ID = Session["ParamHeaderID"].ToString();
@@ -146,7 +153,7 @@ namespace KBS.KBS.CMSV3.Administration
                 ? (int?) Int32.Parse(ASPxTextBoxDetailParVal1.Text)
                 : null;
 
-            parDetail.Number2 = !string.IsNullOrWhiteSpace(ASPxTextBoxDetailParVal2.Text)
+            parDetail.Number2 = !string.IsNullOrWhiteSpace(ASPxTextBoxDetailParVal2.Text).
                ? (int?)Int32.Parse(ASPxTextBoxDetailParVal2.Text)
                : null;
 
@@ -167,7 +174,7 @@ namespace KBS.KBS.CMSV3.Administration
 
            
             
-            message = CMSfunction.InsertParameterDetail(parDetail, Session["UserID"].ToString(), Session["ParamHeaderCopy"].ToString());
+            message = CMSfunction.InsertParameterDetail(parDetail, Session["UserID"].ToString(), Session["ParamCopy"].ToString());
         }
     }
 }

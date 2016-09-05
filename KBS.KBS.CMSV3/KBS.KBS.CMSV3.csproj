@@ -1332,6 +1332,13 @@
     <Compile Include="InventoryManagement\StockDisplay\StockMovement.aspx.designer.cs">
       <DependentUpon>StockMovement.aspx</DependentUpon>
     </Compile>
+    <Compile Include="MobileMain.master.cs">
+      <DependentUpon>MobileMain.master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="MobileMain.master.designer.cs">
+      <DependentUpon>MobileMain.master</DependentUpon>
+    </Compile>
     <Compile Include="MasterData\Assortment\AssortmentManagementNewItem.aspx.cs">
       <DependentUpon>AssortmentManagementNewItem.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2294,6 +2301,7 @@
     <Content Include="DevReport\Trn.xss">
       <DependentUpon>Trn.xsd</DependentUpon>
     </Content>
+    <Content Include="MobileMain.master" />
     <None Include="Scripts\jquery-2.1.0.min.map" />
   </ItemGroup>
   <ItemGroup>

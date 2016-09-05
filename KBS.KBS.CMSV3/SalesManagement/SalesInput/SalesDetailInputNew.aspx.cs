@@ -213,7 +213,7 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
             VARIANTBOX.TextField = "DESCRIPTION";
             VARIANTBOX.DataBind();
             DTDetailInput = new DataTable();
-            DTDetailInput = CMSfunction.GetSKULinkBox(Session["DefaultSite"].ToString(), ITEMTXT.Text);
+            DTDetailInput = CMSfunction.GetSKULinkBox(Session["DefaultSite"].ToString(), ITEMBOX.Text);
             SKUBOX.DataSource = DTDetailInput;
             SKUBOX.ValueField = "VALUE";
             SKUBOX.ValueType = typeof(string);

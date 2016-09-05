@@ -438,7 +438,7 @@
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell5.DataBindings.AddRange(new DevExpress.XtraReports.UI.XRBinding[] {
-            new DevExpress.XtraReports.UI.XRBinding("Text", null, "DataTable1.SLSDSLPRC", "{0:MM/dd}")});
+            new DevExpress.XtraReports.UI.XRBinding("Text", null, "DataTable1.SLSDSLPRC")});
             this.xrTableCell5.Name = "xrTableCell5";
             this.xrTableCell5.StylePriority.UseBorders = false;
             this.xrTableCell5.StylePriority.UseTextAlignment = false;
@@ -671,7 +671,7 @@
             this.xrLabel1.SizeF = new System.Drawing.SizeF(1001F, 44.58334F);
             this.xrLabel1.StyleName = "TableStyle";
             this.xrLabel1.StylePriority.UseTextAlignment = false;
-            this.xrLabel1.Text = "Sales Detail By Nota";
+            this.xrLabel1.Text = "Sales Detail By Sku";
             this.xrLabel1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // NOTA
