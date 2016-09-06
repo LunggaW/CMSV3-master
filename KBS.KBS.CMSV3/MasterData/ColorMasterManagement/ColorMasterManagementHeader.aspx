@@ -151,9 +151,9 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Color Group"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Color Group Management"></asp:Label>
     </div>
-    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Color Group"
+    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Color Group Management"
         Visible="false"></asp:Label>
     <div>
         <table class="tableTop">
@@ -163,7 +163,7 @@
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Color Desc" ID="ASPxTextBoxHeaderName">
+                    <dx:ASPxTextBox runat="server" Width="170px" Caption="Color Group Desc" ID="ASPxTextBoxHeaderName">
                     </dx:ASPxTextBox>
                 </td>
             </tr>

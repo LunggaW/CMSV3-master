@@ -161,7 +161,7 @@ namespace KBS.KBS.CMSV3.MasterData.SKUMasterManagement
                 skugroupdetail.IDGRP = Session["SKUIDforUpdate"].ToString();
                 skugroupdetail.ID = IDTXT.Text;
                 skugroupdetail.EXID = EXIDTXT.Text;
-                skugroupdetail.NAME = NAMEBOX.Text;
+                skugroupdetail.NAME = NAMEBOX.Value.ToString();
                 skugroupdetail.VALUE = VALUETXT.Text;
                 skugroupdetail.PARTISIPASI = PARTTXT.Text;
                 skugroupdetail.BASEON = BASEBOX.Text;

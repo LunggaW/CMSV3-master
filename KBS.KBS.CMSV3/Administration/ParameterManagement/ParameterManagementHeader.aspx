@@ -152,9 +152,9 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Parameter Header"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Parameter Management"></asp:Label>
     </div>
-    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Parameter Header"
+    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Parameter Management"
         Visible="false"></asp:Label>
     <div>
         <table class="tableTop">
@@ -180,7 +180,7 @@
     <div align="center">
         <br />
         <dx:ASPxButton ID="ASPxButtonEntry" runat="server" OnClick="ASPxButtonEntry_Click"
-            Text="Entry" Font-Size="Medium">
+            Text="Detail" Font-Size="Medium">
         </dx:ASPxButton>
         <br />
     </div>

@@ -42,7 +42,7 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
             {
 
                 ComboSKU.Dispose();
-                DTSku = CMSfunction.GetSKULinkBox(Session["DefaultSite"].ToString());
+                DTSku = CMSfunction.GetSKULinkBox(Session["DefaultSite"].ToString(), " " );
                 ComboSKU.DataSource = DTSku;
                 ComboSKU.ValueField = "VALUE";
                 ComboSKU.ValueType = typeof(string);

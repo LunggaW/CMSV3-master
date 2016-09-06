@@ -20,6 +20,7 @@ namespace KBS.KBS.CMSV3.MasterData.SKUMasterManagement
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
         OutputMessage message = new OutputMessage();
+        private DataTable DTSKUDetail = new DataTable();
 
         protected override void OnInit(EventArgs e)
         {
@@ -44,11 +45,24 @@ namespace KBS.KBS.CMSV3.MasterData.SKUMasterManagement
         {
             if (!IsPostBack)
             {
-                
-                
+                String IDGRP = Session["SKUIDforUpdate"].ToString();
+                DTSKUDetail = CMSfunction.GetNameBox(Session["Class"].ToString(), "17", IDGRP);
+                NAMEBOX.DataSource = DTSKUDetail;
+                NAMEBOX.ValueField = "PARVALUE";
+                NAMEBOX.ValueType = typeof(string);
+                NAMEBOX.TextField = "PARDESCRIPTION";
+                NAMEBOX.DataBind();
+
+                DTSKUDetail = CMSfunction.GetTypeBox(Session["Class"].ToString(), "7");
+                TYPEBOX.DataSource = DTSKUDetail;
+                TYPEBOX.ValueField = "PARVALUE";
+                TYPEBOX.ValueType = typeof(string);
+                TYPEBOX.TextField = "PARDESCRIPTION";
+                TYPEBOX.DataBind();
+
                 IDTXT.Text = Session["SKUDetailIDforUpdate"].ToString();
                 EXIDTXT.Text = Session["SKUDetailEXIDforUpdate"].ToString();
-                NAMEBOX.Text = Session["SKUDetailNAMEforUpdate"].ToString();                
+                NAMEBOX.Value = Session["SKUDetailNAMEforUpdate"].ToString();                
                 VALUETXT.Text = Session["SKUDetailVALUEforUpdate"].ToString();
                 PARTTXT.Text = Session["SKUDetailPARTforUpdate"].ToString();
                 BASEBOX.Text = Session["SKUDetailBASEforUpdate"].ToString();

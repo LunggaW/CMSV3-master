@@ -11,10 +11,10 @@
     <link href="../../Content/New.css" rel="stylesheet" type="text/css" />
    
     <div align="center">
-        <asp:Label ID="LabelTitleSiteProfile" runat="server" Font-Size="Large" Text="License Menu"></asp:Label>
+        <asp:Label ID="LabelTitleSiteProfile" runat="server" Font-Size="Large" Text="License Management"></asp:Label>
     </div>
     <br />
-    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="License Menu"
+    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="License Management"
         Visible="false">
         
     </asp:Label>

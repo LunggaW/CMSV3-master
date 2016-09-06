@@ -57,11 +57,14 @@ h1
         <span style="text-decoration: underline">Definition</span></p>
         <p>
             Menu Master Management adalah sebuah menu yang mengatur tampilan daftar menu utama pada CMS.<br />
-            Pada Menu Master Management, setiap menu yang telah ada atau selesai dibuat di data base, dapat di tampilkan pada menu utama CMS dengan cara menyimpan linknya pada kolom URL di Menu Master Management.<br />
-            Namun untuk Menu baru/ yang akan di buat sebaiknya di bahas terlebih dahulu dengan sangat hati-hati agar menu tersebut tidak mengganggu jalannya bisnis perusahhan  tetap sesuai dengan bisnis proses yang ada.</p>
+Pada Menu Master Management, setiap menu yang telah ada atau selesai dibuat di data base, dapat di tampilkan pada menu utama CMS dengan cara menyimpan linknya pada kolom URL di Menu Master Management. <br />
+Namun untuk Menu baru/ yang akan di buat sebaiknya di bahas terlebih dahulu dengan sangat hati-hati agar menu tersebut tidak mengganggu jalannya bisnis perusahan dan tetap sesuai dengan bisnis proses yang ada.
+</p>
         <p>
-            Penambahan menu hanya dapat dilakukan oleh Development PT.KDSBS.
+            Penambahan menu hanya dapat dilakukan oleh Development PT.KDSBS
+.
         </p>
+        
         <p style="border-bottom:solid; border-bottom-color:blue;text-align:right">
            <strong>PT. KAHAR DUTA SARANA</strong></p>
     </form>

@@ -81,13 +81,7 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
                 //BARCODETXT.Text = Session["SearchBarcodeforUpdate"].ToString();
                 //Session["SearchRedirect"] = null;
             }
-            DTDetailInput = new DataTable();
-            DTDetailInput = CMSfunction.GetSKULinkBox(Session["DefaultSite"].ToString());
-            SKUBOX.DataSource = DTDetailInput;
-            SKUBOX.ValueField = "VALUE";
-            SKUBOX.ValueType = typeof(string);
-            SKUBOX.TextField = "DESCRIPTION";
-            SKUBOX.DataBind();
+            
         }
 
         protected void Search(object sender, EventArgs e)
@@ -218,8 +212,15 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
             VARIANTBOX.ValueType = typeof(string);
             VARIANTBOX.TextField = "DESCRIPTION";
             VARIANTBOX.DataBind();
+            DTDetailInput = new DataTable();
+            DTDetailInput = CMSfunction.GetSKULinkBox(Session["DefaultSite"].ToString(), ITEMBOX.Text);
+            SKUBOX.DataSource = DTDetailInput;
+            SKUBOX.ValueField = "VALUE";
+            SKUBOX.ValueType = typeof(string);
+            SKUBOX.TextField = "DESCRIPTION";
+            SKUBOX.DataBind();
 
-            
+
         }
         protected void BarcodeCek(object sender, EventArgs e)
         {
@@ -246,6 +247,14 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
                 transferorderdetail.ITEMID = ITEMBOX.Value.ToString();
                 transferorderdetail = CMSfunction.GetPriceDetail(transferorderdetail, Session["DefaultSite"].ToString());
                 PRICETXT.Text = transferorderdetail.PRICE;
+
+                DTDetailInput = new DataTable();
+                DTDetailInput = CMSfunction.GetSKULinkBox(Session["DefaultSite"].ToString(), ITEMTXT.Text);
+                SKUBOX.DataSource = DTDetailInput;
+                SKUBOX.ValueField = "VALUE";
+                SKUBOX.ValueType = typeof(string);
+                SKUBOX.TextField = "DESCRIPTION";
+                SKUBOX.DataBind();
             }
             else
             {

@@ -1302,7 +1302,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                     "select KDSCMSSASS.SASSSITEID as SITE, KDSCMSSITE.SITESITENAME \"SITE NAME\", COUNT(KDSCMSSASS.SASSITEMID) as \"TOTAL STORE\" " +
                     "from KDSCMSSASS " +
                     "inner join KDSCMSSITE on KDSCMSSASS.SASSSITEID = KDSCMSSITE.SITESITE " +
-                    "WHERE not exists(select 1 from Kdscmsprofsitelink where prstsite = KDSCMSSASS.SASSSITEID and Kdscmsprofsitelink.Prststprof = :SiteProfile) ";
+                    "WHERE exists(select 1 from Kdscmsprofsitelink where prstsite = KDSCMSSASS.SASSSITEID and Kdscmsprofsitelink.Prststprof = :SiteProfile) ";
                     
                 cmd.CommandType = CommandType.Text;
 
@@ -3461,7 +3461,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.Connection = con;
                 cmd.CommandText = " select VRNTVRNTID as VALUE, VRNTVRNTIDX as DESCRIPTION from KDSCMSSASS, KDSCMSMSTVRNT " +
                                   " where SASSITEMID = VRNTITEMID AND SASSVRNT = VRNTVRNTID " +
-                                  " AND SASSCDAT <= SYSDATE AND SASSMDAT >= SYSDATE AND VRNTITEMID = '" + Itemid + "' " +
+                                  " AND SASSCDAT <= SYSDATE  AND VRNTITEMID = '" + Itemid + "' " +
                                   " AND SASSSITEID = '" + SITE + "' GROUP BY VRNTVRNTID, VRNTVRNTIDX ";
 
                 cmd.CommandType = CommandType.Text;
@@ -3493,7 +3493,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
                 cmd.CommandText = "select ITEMITEMID as VALUE, ITEMITEMIDX as DESCRIPTION from KDSCMSSASS, KDSCMSMSTITEM  " +
-                                  " where SASSITEMID = ITEMITEMID AND SASSCDAT <= SYSDATE AND SASSMDAT >= SYSDATE AND SASSSITEID = '" + SITE + "' " +
+                                  " where SASSITEMID = ITEMITEMID AND SASSCDAT <= SYSDATE  AND SASSSITEID = '" + SITE + "' " +
                                   " GROUP BY ITEMITEMID, ITEMITEMIDX " ;
 
                 cmd.CommandType = CommandType.Text;
@@ -3527,7 +3527,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.Connection = con;
                 cmd.CommandText = " select VRNTVRNTID as VALUE, VRNTVRNTIDX as DESCRIPTION from KDSCMSSASS, KDSCMSMSTVRNT " +
                                   " where SASSITEMID = VRNTITEMID AND SASSVRNT = VRNTVRNTID " +
-                                  " AND SASSCDAT <= SYSDATE AND SASSMDAT >= SYSDATE AND VRNTITEMID = '" + Itemid + "' " +
+                                  " AND SASSCDAT <= SYSDATE  AND VRNTITEMID = '" + Itemid + "' " +
                                   " AND SASSSITEID  in ('" + SITE + "','" + SITE2 + "')  GROUP BY VRNTVRNTID, VRNTVRNTIDX ";
 
                 cmd.CommandType = CommandType.Text;
@@ -3559,7 +3559,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
                 cmd.CommandText = "select ITEMITEMID as VALUE, ITEMITEMIDX as DESCRIPTION from KDSCMSSASS, KDSCMSMSTITEM  " +
-                                  " where SASSITEMID = ITEMITEMID AND SASSCDAT <= SYSDATE AND SASSMDAT >= SYSDATE AND SASSSITEID in ('" + SITE + "','" + SITE2 + "') " +
+                                  " where SASSITEMID = ITEMITEMID AND SASSCDAT <= SYSDATE  AND SASSSITEID in ('" + SITE + "','" + SITE2 + "') " +
                                   " GROUP BY ITEMITEMID, ITEMITEMIDX ";
 
                 cmd.CommandType = CommandType.Text;
@@ -3584,8 +3584,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
         }
 
-
-        public DataTable GetSKULinkBox(String SITE)
+        public DataTable GetSKULinkBoxBox(String SITE)
         {
             try
             {
@@ -3594,7 +3593,43 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.Connection = con;
                 cmd.CommandText = "select SKUHSKUID as VALUE, SKUHSDES as DESCRIPTION " +
                                  "from KDSCMSSKUH  where SKUHEDAT >= CURRENT_DATE " +
-                                 "AND SKUHSKUID IN (select SKULINKSKUID from KDSCMSSKULINK WHERE SKULINKSITEID = '" + SITE + "' )";
+                                 "AND SKUHSKUID IN (select distinct SKULINKSKUID from KDSCMSSKULINK WHERE " +
+                                 " SKULINKSITEID = '" + SITE + "' )";
+
+                cmd.CommandType = CommandType.Text;
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+                DataTable DT = new DataTable();
+                DT.Load(dr);
+                this.Close();
+                return DT;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetAccessProfile Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
+        public DataTable GetSKULinkBox(String SITE, String ITEMID)
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "select SKUHSKUID as VALUE, SKUHSDES as DESCRIPTION " +
+                                 "from KDSCMSSKUH  where SKUHEDAT >= CURRENT_DATE " +
+                                 "AND SKUHSKUID IN (select distinct SKULINKSKUID from KDSCMSSKULINK, KDSCMSMSTITEM WHERE " +
+                                 " SKULINKSITEID = '" + SITE + "' and SKULINKBRNDID = ITEMBRNDID "+
+                                 "  and ITEMITEMIDX =  '" + ITEMID + "' )";
 
                 cmd.CommandType = CommandType.Text;
 
@@ -4350,12 +4385,12 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 this.Connect();
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "select pardetail.Pardldesc as PARVALUE, Pardetail.Pardldesc as PARDESCRIPTION " +
+                cmd.CommandText = "select pardetail.PARDTABENT as PARVALUE, Pardetail.Pardldesc as PARDESCRIPTION " +
                                   "from kdscmsparhtable parHeader inner join kdscmspardtable parDetail on Parheader.Parhtabid = Pardetail.Pardtabid " +
                                   "where parHeader.parhtabid = " + ParameterID + " " +
                                   "and parHeader.parhsclas = " + SiteClass + " " +
                                   "and  Parheader.Parhsclas = Pardetail.Pardsclas " +
-                                  "and parDetail.Pardldesc not in (select SKUDNM from KDSCMSSKUD where SKUDSKUID = " + IDGRP + " ) ";
+                                  "and parDetail.PARDTABENT not in (select SKUDNM from KDSCMSSKUD where SKUDSKUID = " + IDGRP + " ) ";
 
                 cmd.CommandType = CommandType.Text;
 
@@ -4720,12 +4755,12 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.CommandText = "SELECT SKUDSKUID AS \"GROUP ID\", " +
                                   "SKUDSKUIDD AS \"ID\", " +
                                   "SKUDSKUIDDX AS \"ID EXTERNAL\", " +
-                                  "SKUDNM AS \"NAME\", " +
+                                  "(select PARDLDESC FROM KDSCMSPARDTABLE where PARDTABENT = SKUDNM and PARDTABID = 17 and PARDSCLAS = 0 )AS \"NAME\", " +
                                   "SKUDLVL AS \"LEVEL\", " +
                                   "SKUDVAL AS \"VALUE\", " +
                                   "SKUDPART AS \"PARTICIPATION\", " +
                                   "SKUDBSON AS \"BASED ON\", " +
-                                  "SKUDTYPE AS \"TYPE\", " +
+                                  "(select PARDLDESC FROM KDSCMSPARDTABLE WHERE PARDTABID = 7 and PARDSCLAS = 0 and PARDTABENT = SKUDTYPE) AS \"TYPE\", " +
                                   "SKUDNMOD AS \"COUNTER MODIFICATION\" " +
                                   "FROM KDSCMSSKUD " +
                                   "where SKUDSKUID = '" + SKUID + "' ";
@@ -5097,7 +5132,14 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "PKKDSCMSSLSH.INS_DATA";
+                if (salesheader.RECEIPTID == "Mobile")
+                {
+                    cmd.CommandText = "PKKDSCMSSLSH.INS_DATA_MOBILE";
+                        }
+                else
+                {
+                    cmd.CommandText = "PKKDSCMSSLSH.INS_DATA";
+                }
                 cmd.CommandType = CommandType.StoredProcedure;
 
 
@@ -6646,7 +6688,61 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.Parameters.Add("PTRFDVRNTID", OracleDbType.Int32).Value = transferorderdetail.VARIANT;
                 cmd.Parameters.Add("PTRFDBRCD", OracleDbType.Varchar2, 50).Value = transferorderdetail.BARCODE;
                 cmd.Parameters.Add("PTRFDQTY", OracleDbType.Int32).Value = transferorderdetail.QTY;
-                
+                cmd.Parameters.Add("PTRFDCOMM", OracleDbType.Varchar2, 50).Value = transferorderdetail.COMMENT;
+                cmd.Parameters.Add("PTRFDINTF", OracleDbType.Varchar2, 50).Value = 1;
+                cmd.Parameters.Add("PTRFDCRBY", OracleDbType.Varchar2, 50).Value = User;
+                cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
+                cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                cmd.ExecuteNonQuery();
+                //OracleDataReader dr = cmd.ExecuteReader();
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+
+                outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["POUTRSNMSG"].Value.ToString();
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("Login Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+        public OutputMessage UpdateShipmentDetail(TransferOrderDetail transferorderdetail, String User)
+        {
+
+            User user = new User();
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "PKKDSCMSTRFD.UPD_DATA_SHIPMENT";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+
+                cmd.Parameters.Add("PTRFDTRFID", OracleDbType.Varchar2, 50).Value = transferorderdetail.ID;
+                cmd.Parameters.Add("PTRFDTRFIDI", OracleDbType.Int32).Value = transferorderdetail.IID;
+                cmd.Parameters.Add("PTRFDITEMID", OracleDbType.Int32).Value = transferorderdetail.ITEMID;
+                cmd.Parameters.Add("PTRFDVRNTID", OracleDbType.Int32).Value = transferorderdetail.VARIANT;
+                cmd.Parameters.Add("PTRFDBRCD", OracleDbType.Varchar2, 50).Value = transferorderdetail.BARCODE;
+                cmd.Parameters.Add("PTRFDQTY", OracleDbType.Int32).Value = transferorderdetail.QTY;
+                cmd.Parameters.Add("PTRFDSHPQTY", OracleDbType.Int32).Value = transferorderdetail.SHIP;
                 cmd.Parameters.Add("PTRFDCOMM", OracleDbType.Varchar2, 50).Value = transferorderdetail.COMMENT;
                 cmd.Parameters.Add("PTRFDINTF", OracleDbType.Varchar2, 50).Value = 1;
                 cmd.Parameters.Add("PTRFDCRBY", OracleDbType.Varchar2, 50).Value = User;
@@ -10627,7 +10723,6 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.Parameters.Add("PCOPY", OracleDbType.Int32).Value = Copy;
                 cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
                 cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
-
 
                 logger.Debug("Execute Command");
                 logger.Debug(cmd.CommandText.ToString());

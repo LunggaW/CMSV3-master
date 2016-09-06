@@ -163,7 +163,7 @@ namespace KBS.KBS.CMSV3.Administration.ParameterManagement
                 Session["ParamNameFilter"] = ASPxTextBoxHeaderName.Text;
                 Session["ParamHeaderID"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
                 Session["ParamHeaderSClass"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
-                Session["ParamHeaderCopy"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COPY").ToString();
+                Session["ParamCopy"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COPY").ToString();
                 Response.Redirect("ParameterManagementDetail.aspx");
             }
             

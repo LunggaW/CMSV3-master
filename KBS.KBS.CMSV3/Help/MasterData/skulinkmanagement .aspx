@@ -71,6 +71,11 @@ h1
         <p>
             <asp:Image ID="Image6" runat="server" ImageUrl="~/Help/Images/keteranganskulinkmanagement.png" />
         </p>
+        <p>
+            <strong>Diagram Alur</strong></p>
+        <p>
+            <asp:Image ID="Image9" runat="server" ImageUrl="~/Help/Images/diagramskulinkmanagement.png" />
+        </p>
         <h3><a name="_Toc456613669">Navigasi SKU Link Management</a><o:p></o:p></h3>
         <p>
             <asp:Image ID="Image7" runat="server" ImageUrl="~/Help/Images/navigasi.png" />

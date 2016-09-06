@@ -43,12 +43,7 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            DTDetailInput = CMSfunction.GetSKULinkBox(Session["DefaultSite"].ToString());
-            SKUBOX.DataSource = DTDetailInput;
-            SKUBOX.ValueField = "VALUE";
-            SKUBOX.ValueType = typeof(string);
-            SKUBOX.TextField = "DESCRIPTION";
-            SKUBOX.DataBind();
+            
 
             if (!IsPostBack)
             {
@@ -86,9 +81,16 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
                 VARIANTBOX.TextField = "DESCRIPTION";
                 VARIANTBOX.DataBind();
                 VARIANTBOX.Value = salesinputdetail.VARIANTID;
+
+                DTDetailInput = CMSfunction.GetSKULinkBox(Session["DefaultSite"].ToString(), ITEMTXT.Text);
+                SKUBOX.DataSource = DTDetailInput;
+                SKUBOX.ValueField = "VALUE";
+                SKUBOX.ValueType = typeof(string);
+                SKUBOX.TextField = "DESCRIPTION";
+                SKUBOX.DataBind();
+
                 SKUBOX.Value = int.Parse(salesinputdetail.SKUID);
                 SKUBOX.Text = salesinputdetail.NOTA;
-                
 
             }
             

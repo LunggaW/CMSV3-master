@@ -257,7 +257,9 @@
             </tr>
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxComboBox runat="server" Caption="BASE ON" ID="BASEBOX">
+                    <dx:ASPxComboBox runat="server" Caption="BASE ON" ID="BASEBOX" ReadOnly="true">
+                         <ReadOnlyStyle BackColor="Silver">
+                        </ReadOnlyStyle>
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <CaptionCellStyle Width="100px">
                         </CaptionCellStyle>

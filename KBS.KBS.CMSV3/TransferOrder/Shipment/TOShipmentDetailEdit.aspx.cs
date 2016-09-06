@@ -160,7 +160,7 @@ namespace KBS.KBS.CMSV3.TransferOrder.TOShipment
             transferorderdetail.SHIP = SHIPTXT.Text;
             transferorderdetail.COMMENT = COMENTEXT.Text;
 
-            message = CMSfunction.UpdateTOShipmentDetail(transferorderdetail, Session["UserID"].ToString());
+            message = CMSfunction.UpdateShipmentDetail(transferorderdetail, Session["UserID"].ToString());
 
         }
 

@@ -122,7 +122,7 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
             salesheader.STATUS = 0; //Created
             salesheader.FLAG = 1; //Sales
             salesheader.SITE = Session["DefaultSite"].ToString();
-            salesheader.RECEIPTID = "abc";
+            salesheader.RECEIPTID = "WebApp";
             salesheader.SALESID = "def";
             salesheader.IID = "98798";
 

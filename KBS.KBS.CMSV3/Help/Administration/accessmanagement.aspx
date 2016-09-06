@@ -75,6 +75,11 @@ h1
             •	Panel bawah: berfungsi untuk menampilkan acces profile yang sudah ada</p>
         <p>
             <asp:Image ID="Image10" runat="server" Height="164px" ImageUrl="~/Help/Images/accessmanagement1.png" Width="829px" /></p>
+        <p>
+            <strong>Diagram Alur</strong></p>
+        <p>
+            <asp:Image ID="Image11" runat="server" ImageUrl="~/Help/Images/diagramaccesmanagement.png" />
+        </p>
         <h3><a name="_Toc456613669">Navigasi Access Management</a><o:p></o:p></h3>
         <p>
             <asp:Image ID="Image7" runat="server" ImageUrl="~/Help/Images/navigasi.png" />

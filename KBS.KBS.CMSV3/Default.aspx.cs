@@ -22,18 +22,18 @@ namespace KBS.KBS.CMSV3
         protected override void OnInit(EventArgs e)
         {
             //user = CMSfunction.SelectUserDataFromUserID(User.Identity.Name);
+          //  string abc = Session["UserID"].ToString();
             
+                if (string.IsNullOrEmpty(Session["UserID"] as string))
+                {                    
+                    Response.Redirect("~/Account/Logins.aspx");
 
-            if (string.IsNullOrEmpty(Session["UserID"] as string))
-            {
-                //The code
-                Response.Redirect("~/Account/Logins.aspx");
-
-            }
-            else
-            {
-                loadNavBar();    
-            }
+                }
+                else
+                {
+                        loadNavBar();
+                 
+                }
             
         }
 
@@ -52,6 +52,7 @@ namespace KBS.KBS.CMSV3
             
             if (!Page.IsPostBack)            
             {
+                
                 DTSite = CMSfunction.GetSiteBySiteProfile(Session["SiteProfile"].ToString());
                 sitestore.DataSource = DTSite;
                 sitestore.ValueField = "SITESITE";

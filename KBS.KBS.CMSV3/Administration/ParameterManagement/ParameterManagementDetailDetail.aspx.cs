@@ -196,7 +196,7 @@ namespace KBS.KBS.CMSV3.Administration.ParameterManagement
 
 
 
-            message = CMSfunction.updateParameterDetail(parDetail, Session["UserID"].ToString(), Session["ParamHeaderCopy"].ToString());
+            message = CMSfunction.updateParameterDetail(parDetail, Session["UserID"].ToString(), Session["ParamCopy"].ToString());
         }
 
 

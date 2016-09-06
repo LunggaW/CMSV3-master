@@ -127,7 +127,7 @@
             <dx:ASPxButton ID="Help" runat="server" EnableTheming="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
                 Image-Url="~/image/question.png" BackColor="Transparent" ToolTip="Help">
-                <ClientSideEvents Click="function (s, e) {window.open('../../Help/Administration/assortmentmanagementDetailView.aspx', '_blank')}"></ClientSideEvents>
+                <ClientSideEvents Click="function (s, e) {window.open('../../Help/MasterData/assortmentmanagementAdd.aspx', '_blank')}"></ClientSideEvents>
                 <Image Height="20px" Width="20px">
                 </Image>
                 <BackgroundImage ImageUrl="~/image/transback.png"></BackgroundImage>

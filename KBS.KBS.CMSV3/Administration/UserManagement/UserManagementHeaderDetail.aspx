@@ -214,14 +214,14 @@
                             <CaptionSettings ShowColon="False"></CaptionSettings>
                             <ReadOnlyStyle BackColor="Silver">
                             </ReadOnlyStyle>
-                            <CaptionCellStyle Width="110px">
+                            <CaptionCellStyle Width="120px">
                             </CaptionCellStyle>
                         </dx:ASPxTextBox>
                     </td>
                     <td class="tableHeader2Column" colspan="5">
                         <dx:ASPxTextBox runat="server" Width="170px" Caption="User Name" ID="ASPxTextBoxUserManagementUserName">
                             <CaptionSettings ShowColon="False"></CaptionSettings>
-                            <CaptionCellStyle Width="110px">
+                            <CaptionCellStyle Width="120px">
                             </CaptionCellStyle>
                         </dx:ASPxTextBox>
                     </td>
@@ -230,14 +230,14 @@
                     <td class="tableHeader2Column" colspan="5">
                         <dx:ASPxTextBox ID="IMEI" runat="server" Caption="IMEI" Width="170px">
                             <CaptionSettings ShowColon="False" />
-                            <CaptionCellStyle Width="110px">
+                            <CaptionCellStyle Width="120px">
                             </CaptionCellStyle>
                         </dx:ASPxTextBox>
                     </td>
                     <td class="tableHeader2Column" colspan="5">
                         <dx:ASPxComboBox runat="server" Caption="User Status" ID="ComboUserStatus">
                             <CaptionSettings ShowColon="False"></CaptionSettings>
-                            <CaptionCellStyle Width="110px">
+                            <CaptionCellStyle Width="120px">
                             </CaptionCellStyle>
                         </dx:ASPxComboBox>
                     </td>
@@ -246,14 +246,14 @@
                     <td class="tableHeader2Column" colspan="5">
                         <dx:ASPxTextBox ID="UserPassword" runat="server" Caption="Password" Width="170px" Password="True">
                             <CaptionSettings ShowColon="False" />
-                            <CaptionCellStyle Width="110px">
+                            <CaptionCellStyle Width="120px">
                             </CaptionCellStyle>
                         </dx:ASPxTextBox>
                     </td>
                     <td class="tableHeader2Column" colspan="5">
                         <dx:ASPxComboBox ID="ComboUserType" runat="server" Caption="User Type">
                             <CaptionSettings ShowColon="False" />
-                            <CaptionCellStyle Width="110px">
+                            <CaptionCellStyle Width="120px">
                             </CaptionCellStyle>
                         </dx:ASPxComboBox>
                     </td>
