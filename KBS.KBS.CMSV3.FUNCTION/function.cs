@@ -3584,6 +3584,39 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
         }
 
+        public DataTable GetSKULinkBoxBox(String SITE)
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "select SKUHSKUID as VALUE, SKUHSDES as DESCRIPTION " +
+                                 "from KDSCMSSKUH  where SKUHEDAT >= CURRENT_DATE " +
+                                 "AND SKUHSKUID IN (select distinct SKULINKSKUID from KDSCMSSKULINK WHERE " +
+                                 " SKULINKSITEID = '" + SITE + "' )";
+
+                cmd.CommandType = CommandType.Text;
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+                DataTable DT = new DataTable();
+                DT.Load(dr);
+                this.Close();
+                return DT;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetAccessProfile Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
 
         public DataTable GetSKULinkBox(String SITE, String ITEMID)
         {
@@ -10690,7 +10723,6 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.Parameters.Add("PCOPY", OracleDbType.Int32).Value = Copy;
                 cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
                 cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
-
 
                 logger.Debug("Execute Command");
                 logger.Debug(cmd.CommandText.ToString());

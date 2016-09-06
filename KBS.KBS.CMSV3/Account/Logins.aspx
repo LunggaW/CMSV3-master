@@ -18,23 +18,21 @@
                              
 
     <div style="float:left;  width:100%" height="100%" margin-left: "300px"; margin-right: "300px">        
-    <div style="float:left;text-align: right;width:60%" height="60%">
+    <div style="float:left;text-align: right;width:75%" height="60%">
+     
         <br />
         <br />
         <br />
         <br />
         <br />
         <br />
-        <br />
-        <br />
-        <asp:Image ID="Background" runat="server" height="260px" width="100%" 
+        <asp:Image ID="Background" runat="server" height="350" width="100%" 
             ImageUrl="~/image/sales.png" ImageAlign="Middle"  />    
     </div>
-    <div style="float:left;text-align: center;width:30% " height="20%">
+    <div style="float:left;text-align: center;width:25% " height="20%">
         
         <br />
         <br />
-        
         <br />
         <br />
         <br />
@@ -46,25 +44,26 @@
         
         <asp:image ID="Logo" runat="server" height="50%" width="50%"  />
         <br />
-        <div style="text-align:left; margin-left:25%; margin-right:25% " >
+        <div style="text-align:left; margin-left:12%; margin-right:25% " >
         <dx:ASPxLabel ID="ASPxLabel1" runat="server" ForeColor="Black" Text="User ID"></dx:ASPxLabel>
          </div>
         
         
     <%--<asp:TextBox ID="UserIDTxt" runat="server" onfocus="javascript:if(this.value == 'User ID') this.value=''" onblur="javascript:if(this.value == '') this.value='User ID'" Text="User ID" width="50%"></asp:TextBox>--%>
-         <asp:TextBox ID="UserIDTxt" runat="server" width="50%"></asp:TextBox>              
-            <div style="text-align:left; margin-left:25%; margin-right:25% " >
-             <dx:ASPxLabel ID="ASPxLabel2" runat="server" ForeColor="Black"   Text="Password"></dx:ASPxLabel>
-            </div>                   
+         <asp:TextBox ID="UserIDTxt" runat="server" width="75%"></asp:TextBox>              
+            
+        <div style="text-align:left; margin-left:12%; margin-right:25% " >
+        <dx:ASPxLabel ID="ASPxLabel2" runat="server" ForeColor="Black"   Text="Password"></dx:ASPxLabel>
+        </div>                   
        
-    <asp:TextBox ID="PasswordTxt" runat="server" OnTextChanged="test"  AutoPostBack="true" width="50%" ToolTip="Password"  TextMode="Password"                        
+    <asp:TextBox ID="PasswordTxt" runat="server" OnTextChanged="test"  AutoPostBack="true" width="75%" ToolTip="Password"  TextMode="Password"                        
             ></asp:TextBox>    <%--
             onfocus="javascript:if(this.value == 'Password') {this.value=''}   if(this.value != 'Password') {this.Type='Password'} " 
             onblur="javascript:if(this.value == '') {this.value='Password'} if(this.value = 'Password') {this.Type='SingleLine'} "--%>
         <br />
         <br />
         <span>
-    <asp:Button ID="LoginBtn" runat="server" Text="Login" height="25%" width="50%" 
+    <asp:Button ID="LoginBtn" runat="server" Text="Login" height="25%" width="75%" 
             onclick="LoginBtn_Click"/>    
     </span>
     <%--<span>
@@ -73,11 +72,8 @@
     </span>--%>
     </div>        
     
-        <br />
     
     </div>
-    <br />
-    <br />
     <br />
     <div style="margin-top: 100px">
             <div style="float:left; color:#DFE4F0; width:100%; margin-top: 10%" height="60%">

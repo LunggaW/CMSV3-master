@@ -131,6 +131,7 @@
     <Content Include="Administration\Interface\InterfaceSite.aspx" />
     <Content Include="Administration\Interface\Interface.aspx" />
     <Content Include="Administration\License\ImportLicense.aspx" />
+    <Content Include="Administration\StockManagement\StockManagement.aspx" />
     <Content Include="Dependency\NLog\log.txt" />
     <Content Include="Dependency\NLog\NLog.dll" />
     <Content Include="DevReport\SalesDetailReporBySku.aspx" />
@@ -616,6 +617,7 @@
     <Content Include="Report\Sales\SalesDetail.aspx" />
     <Content Include="Report\Sales\SalesHeader.aspx" />
     <Content Include="Report\Sales\SalesSummary.aspx" />
+    <Content Include="SalesManagement\SalesInput\SalesInputMobileSimple.aspx" />
     <Content Include="SalesManagement\SalesInput\SalesInputNewSimple.aspx" />
     <Content Include="SalesManagement\SalesMobile\SalesMobile.aspx" />
     <Content Include="SalesManagement\SalesReturn\SalesDetailReturn.aspx" />
@@ -874,6 +876,13 @@
     </Compile>
     <Compile Include="Administration\License\ImportLicense.aspx.designer.cs">
       <DependentUpon>ImportLicense.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\StockManagement\StockManagement.aspx.cs">
+      <DependentUpon>StockManagement.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\StockManagement\StockManagement.aspx.designer.cs">
+      <DependentUpon>StockManagement.aspx</DependentUpon>
     </Compile>
     <Compile Include="DevExpressWizard\SalesHeader.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -1979,6 +1988,13 @@
     </Compile>
     <Compile Include="Root.master.designer.cs">
       <DependentUpon>Root.master</DependentUpon>
+    </Compile>
+    <Compile Include="SalesManagement\SalesInput\SalesInputMobileSimple.aspx.cs">
+      <DependentUpon>SalesInputMobileSimple.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalesManagement\SalesInput\SalesInputMobileSimple.aspx.designer.cs">
+      <DependentUpon>SalesInputMobileSimple.aspx</DependentUpon>
     </Compile>
     <Compile Include="SalesManagement\SalesInput\SalesInputNewSimple.aspx.cs">
       <DependentUpon>SalesInputNewSimple.aspx</DependentUpon>

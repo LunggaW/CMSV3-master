@@ -153,7 +153,7 @@ namespace KBS.KBS.CMSV3.Administration
                 ? (int?) Int32.Parse(ASPxTextBoxDetailParVal1.Text)
                 : null;
 
-            parDetail.Number2 = !string.IsNullOrWhiteSpace(ASPxTextBoxDetailParVal2.Text).
+            parDetail.Number2 = !string.IsNullOrWhiteSpace(ASPxTextBoxDetailParVal2.Text)
                ? (int?)Int32.Parse(ASPxTextBoxDetailParVal2.Text)
                : null;
 

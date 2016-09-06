@@ -28,6 +28,20 @@ namespace KBS.KBS.CMSV3.Account
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            /*
+            if (Request.Browser.IsMobileDevice)
+            {
+                UserIDTxt.Text = "Mobile";
+                PasswordTxt.Text = "Mobile";
+                LoginBtn_Click();
+            }
+            else
+            {
+                UserIDTxt.Text = "Mobile";
+                PasswordTxt.Text = "Mobile";
+                LoginBtn_Click();
+            }
+            */
             int posisi = 1;
             string path = CMSfunction.GetPath(posisi);
 
