@@ -11,7 +11,7 @@
     <script type="text/javascript">
         function UpdateDetailGrid(s, e) {
             detailGridView.PerformCallback(e.visibleIndex);
-        }
+        } 
     </script>
     <link rel="stylesheet" type="text/css" href="../../Content/New.css" />
     <div>
