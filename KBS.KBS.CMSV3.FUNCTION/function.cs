@@ -1184,7 +1184,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 logger.Debug(cmd.CommandText);
 
                 OracleDataReader dr = cmd.ExecuteReader();
-
+               
 
                 DataTable DT = new DataTable();
                 DT.Load(dr);
@@ -3067,7 +3067,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "Import_DN_File";
+                cmd.CommandText = "IMPORT_DN_FILE";
                 cmd.CommandType = CommandType.StoredProcedure;
 
 
@@ -3617,7 +3617,39 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
 
         }
+        public DataTable GetSKULinkBoxNoBrand(String SITE)
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "select SKUHSKUID as VALUE, SKUHSDES as DESCRIPTION " +
+                                 "from KDSCMSSKUH  where SKUHEDAT >= CURRENT_DATE " +
+                                 "AND SKUHSKUID IN (select distinct SKULINKSKUID from KDSCMSSKULINK WHERE " +
+                                 " SKULINKSITEID = '" + SITE + "' )";
 
+                cmd.CommandType = CommandType.Text;
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+                DataTable DT = new DataTable();
+                DT.Load(dr);
+                this.Close();
+                return DT;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetAccessProfile Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
         public DataTable GetSKULinkBox(String SITE, String ITEMID)
         {
             try
@@ -9557,6 +9589,149 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
 
         }
+        public DataTable GetAllTransactionTableHeaderMonitoring(Stock StockDisplay, String SiteProfile)
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "select TRN.CMSTRNSITE as SITE,  " +
+                                    "count(TRN.CMSTRNSITE) as TRANSACTION, " +
+                                    "SUM(TRN.CMSTRNQTY) as QUANTITY,  " +
+                                    "SUM(TRN.CMSTRNAMT) as AMOUNT " +                                   
+                                    "from KDSCMSTRN TRN where CMSTRNSITE = CMSTRNSITE ";
+                cmd.CommandType = CommandType.Text;
+
+                if (!string.IsNullOrWhiteSpace(StockDisplay.Site))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRN.CMSTRNSITE = :Site  ";
+                    cmd.Parameters.Add(new OracleParameter(":Site", OracleDbType.Varchar2)).Value = StockDisplay.Site;
+                }
+                if ((StockDisplay.DateFrom.HasValue))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRN.CMSTRNCDAT >= :Sdate  ";
+                    cmd.Parameters.Add(new OracleParameter(":Sdate", OracleDbType.Date)).Value = StockDisplay.DateFrom;
+                }
+                if (StockDisplay.DateEnd.HasValue)
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRN.CMSTRNCDAT <= :EDate  ";
+                    cmd.Parameters.Add(new OracleParameter(":EDate", OracleDbType.Date)).Value = StockDisplay.DateEnd;
+                }
+
+
+                cmd.CommandText = cmd.CommandText +
+                                     "group By TRN.CMSTRNSITE ";
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+                DataTable DT = new DataTable();
+                DT.Load(dr);
+                this.Close();
+                return DT;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetAllTransactionTableMovementFiltered Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+        public DataTable GetAllTransactionTableMonitoring(Stock StockDisplay, String SiteProfile)
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "select TRN.CMSTRNSITE as SITE,  " +                                    
+                                    "TRN.CMSTRNCDAT as \"TRANSACTION DATE\", " +                                    
+                                    "TRN.CMSTRNBRCD as BARCODE,  " +                                    
+                                    "TRN.CMSTRNQTY as QUANTITY,  " +
+                                    "TRN.CMSTRNAMT as AMOUNT, " +
+                                    "TRN.CMSTRSKU as DISCOUNT, " +
+                                    "CASE WHEN TRN.CMSTRNTYPE = '1' THEN 'Sales' " +
+                                    "WHEN TRN.CMSTRNTYPE = '2' THEN 'Sales Return' " +
+                                    "WHEN TRN.CMSTRNTYPE = '3' THEN 'Movement In' " +
+                                    "ELSE 'Unknown Type' END AS TYPE ," +
+                                     "CASE WHEN TRN.CMSTRNFLAG = '2' THEN 'Succes Interface' " +
+                                    "WHEN TRN.CMSTRNFLAG = '3' THEN 'Error' " +
+                                    "ELSE '' END AS STATUS ," +                                    
+                                    "CASE WHEN TRN.CMSTRSTAT = '1' THEN 'Browser' " +                                    
+                                    "ELSE 'Mobile' END AS InputBy ," +
+                                    "'' AS NOTE " +
+                                    "from KDSCMSTRN TRN where CMSTRNSITE = CMSTRNSITE and TRN.CMSTRSTAT <> 9 ";
+                cmd.CommandType = CommandType.Text;
+
+
+                if ((StockDisplay.DateFrom.HasValue))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and to_date(TRN.CMSTRNCDAT, 'DD-Mon-YY') >= to_date(:Sdate , 'DD-Mon-YY')   ";
+                    cmd.Parameters.Add(new OracleParameter(":Sdate", OracleDbType.Date)).Value = StockDisplay.DateFrom;
+                }
+                if (StockDisplay.DateEnd.HasValue)
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and to_date(TRN.CMSTRNCDAT, 'DD-Mon-YY') <= to_date(:EDate , 'DD-Mon-YY') ";
+                    cmd.Parameters.Add(new OracleParameter(":EDate", OracleDbType.Date)).Value = StockDisplay.DateEnd;
+                }
+
+               
+                if (!string.IsNullOrWhiteSpace(StockDisplay.Barcode))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRN.CMSTRNBRCD like '%' || :Barcode || '%' ";
+                    cmd.Parameters.Add(new OracleParameter(":Barcode", OracleDbType.Varchar2)).Value = StockDisplay.Barcode;
+                }
+
+                if (!string.IsNullOrWhiteSpace(StockDisplay.Site))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRN.CMSTRNSITE = :Site  ";
+                    cmd.Parameters.Add(new OracleParameter(":Site", OracleDbType.Varchar2)).Value = StockDisplay.Site;
+                }
+
+
+                if (!string.IsNullOrWhiteSpace(StockDisplay.TransactionType))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRN.CMSTRNTYPE = '" + StockDisplay.TransactionType + "'  ";
+                }
+
+                if (!string.IsNullOrWhiteSpace(StockDisplay.Nota))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRN.CMSTRSTAT = :Stat  ";
+                    cmd.Parameters.Add(new OracleParameter(":Stat", OracleDbType.Varchar2)).Value = StockDisplay.Nota;
+                }
+
+
+
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+                DataTable DT = new DataTable();
+                DT.Load(dr);
+                this.Close();
+                return DT;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetAllTransactionTableMovementFiltered Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
 
         public DataTable GetAllTransactionTableMovementFiltered(Stock StockDisplay, String SiteProfile)
         {
@@ -14527,7 +14702,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.Parameters.Add("PCMSSALSKU", OracleDbType.Int32).Value = salesInputSimple.SKU;
                 cmd.Parameters.Add("PCMSSALFLAG", OracleDbType.Int32).Value = 1;
                 cmd.Parameters.Add("PCMSSALSTAT", OracleDbType.Int32).Value = 1;
-                cmd.Parameters.Add("PCMSSALCOMM", OracleDbType.Varchar2, 1000).Value = "Comment";
+                cmd.Parameters.Add("PCMSSALCOMM", OracleDbType.Varchar2, 1000).Value = "";
                 cmd.Parameters.Add("PCMSSALCDAT", OracleDbType.Date).Value = DateTime.Now;
                 cmd.Parameters.Add("PCMSSALMDAT", OracleDbType.Date).Value = DateTime.Now;
                 cmd.Parameters.Add("PCMSSALSITE", OracleDbType.Varchar2).Value = Site;
