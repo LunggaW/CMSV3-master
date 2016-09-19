@@ -9657,7 +9657,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                     "TRN.CMSTRNAMT as AMOUNT, " +
                                     "TRN.CMSTRSKU as DISCOUNT, " +
                                     "CASE WHEN TRN.CMSTRNTYPE = '1' THEN 'Sales' " +
-                                    "WHEN TRN.CMSTRNTYPE = '2' THEN 'Sales Return' " +
+                                    "WHEN TRN.CMSTRNTYPE = '2' THEN 'Return' " +
                                     "WHEN TRN.CMSTRNTYPE = '3' THEN 'Movement In' " +
                                     "ELSE 'Unknown Type' END AS TYPE ," +
                                      "CASE WHEN TRN.CMSTRNFLAG = '2' THEN 'Succes Interface' " +
