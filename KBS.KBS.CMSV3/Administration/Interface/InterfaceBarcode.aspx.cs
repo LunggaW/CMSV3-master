@@ -34,14 +34,19 @@ namespace KBS.KBS.CMSV3.Administration.Interface
 
         protected void Page_Load(object sender, EventArgs e)
         {
+
+            LoadDataGrid();
+        }
+
+        private void LoadDataGrid()
+        {
             DTInterface = CMSfunction.GetInterfaceBarcode();
-            
+
             ASPxGridViewHeader.DataSource = DTInterface;
             ASPxGridViewHeader.KeyFieldName = "BARCODE";
             ASPxGridViewHeader.DataBind();
 
             ASPxGridViewHeader.Columns["ROWID"].Visible = false;
-            
         }
 
 
@@ -117,6 +122,8 @@ namespace KBS.KBS.CMSV3.Administration.Interface
                     OutputMessage message = new OutputMessage();
 
                     message = CMSfunction.ExecuteSPImportBarcodeFile(FileUploadBarcode.FileName);
+
+                    LoadDataGrid();
                 }
                 catch (Exception ex)
                 {

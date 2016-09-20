@@ -34,14 +34,18 @@ namespace KBS.KBS.CMSV3.Administration.Interface
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            LoadDataGrid();
+        }
+
+        private void LoadDataGrid()
+        {
             DTInterface = CMSfunction.GetInterfaceVariant();
             ASPxGridViewHeader.DataSource = DTInterface;
             ASPxGridViewHeader.KeyFieldName = "VARIANT";
             ASPxGridViewHeader.DataBind();
-
+            
             ASPxGridViewHeader.Columns["ROWID"].Visible = false;
         }
-
 
         private void loadNavBar()
         {
@@ -114,6 +118,8 @@ namespace KBS.KBS.CMSV3.Administration.Interface
                     OutputMessage message = new OutputMessage();
 
                     message = CMSfunction.ExecuteSPImportVariantFile(FileUploadVariant.FileName);
+
+                    LoadDataGrid();
                 }
                 catch (Exception ex)
                 {

@@ -166,7 +166,7 @@
 
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="NOTA" ID="TextBoxNota" onkeypress="return isNumberKey(event)">
+                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="NOTA" ID="TextBoxNota">
                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="130px">
