@@ -2827,7 +2827,8 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
         }
 
-        public OutputMessage ExecuteSPProcessSite(String FileName)
+
+        public OutputMessage ExecuteSPProcessBarcode()
         {
 
             User user = new User();
@@ -2840,12 +2841,8 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "Import_STORE_File";
+                cmd.CommandText = "KDS_PROCESS_INTERFACE_BARCODE";
                 cmd.CommandType = CommandType.StoredProcedure;
-
-
-                cmd.Parameters.Add("P_FILENAME", OracleDbType.Varchar2).Value = FileName;
-                cmd.Parameters.Add("o_msg", OracleDbType.Varchar2).Direction = ParameterDirection.Output;
 
 
                 logger.Debug("Execute Command");
@@ -2855,8 +2852,83 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 outputMsg = new OutputMessage();
                 cmd.ExecuteNonQuery();
 
-                //outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
-                outputMsg.Message = cmd.Parameters["o_msg"].Value.ToString();
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("ExecuteSPProcessBarcode Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage ExecuteSPProcessSite()
+        {
+
+            User user = new User();
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "KDS_PROCESS_INTERFACE_STORE";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+                cmd.ExecuteNonQuery();
+
+                
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("ExecuteSPProcessSite Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage ExecuteSPProcessVariant()
+        {
+
+            User user = new User();
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "KDS_PROCESS_INTERFACE_VARIANT";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+                cmd.ExecuteNonQuery();
 
 
                 logger.Debug("Start Close Connection");
@@ -2866,7 +2938,124 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
             catch (Exception e)
             {
-                logger.Error("ExecuteSPImportStoreFile Function");
+                logger.Error("ExecuteSPProcessVariant Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage ExecuteSPProcessItem()
+        {
+
+            User user = new User();
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "KDS_PROCESS_INTERFACE_ITEM";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+                cmd.ExecuteNonQuery();
+
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("ExecuteSPProcessItem Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage ExecuteSPProcessDN()
+        {
+
+            User user = new User();
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "KDS_PROCESS_INTERFACE_DN";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+                cmd.ExecuteNonQuery();
+
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("ExecuteSPProcessDN Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage ExecuteSPProcessPrice()
+        {
+
+            User user = new User();
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "KDS_PROCESS_INTERFACE_PRICE";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+                cmd.ExecuteNonQuery();
+
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("ExecuteSPProcessPrice Function");
                 logger.Error(e.Message);
                 this.Close();
                 return null;
@@ -3148,6 +3337,8 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 return null;
             }
         }
+
+
 
         public DataTable GetBrandHeaderDataTable(BrandGroup brandgroup)
         {

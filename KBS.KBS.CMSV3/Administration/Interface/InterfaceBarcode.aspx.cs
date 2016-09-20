@@ -87,7 +87,8 @@ namespace KBS.KBS.CMSV3.Administration.Interface
 
         protected void Execute_Click(object sender, EventArgs e)
         {
-
+            CMSfunction.ExecuteSPProcessBarcode();
+            LoadDataGrid();
         }
 
         protected void Log_Click(object sender, EventArgs e)
