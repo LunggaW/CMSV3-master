@@ -130,6 +130,7 @@
     <Content Include="Administration\Interface\InterfaceSiteDetail.aspx" />
     <Content Include="Administration\Interface\InterfaceSite.aspx" />
     <Content Include="Administration\Interface\Interface.aspx" />
+    <Content Include="Administration\Interface\InterfaceVariantDetail.aspx" />
     <Content Include="Administration\License\ImportLicense.aspx" />
     <Content Include="Administration\StockManagement\StockManagement.aspx" />
     <Content Include="Dependency\NLog\log.txt" />
@@ -871,6 +872,13 @@
     </Compile>
     <Compile Include="Administration\Interface\Interface.aspx.designer.cs">
       <DependentUpon>Interface.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Administration\Interface\InterfaceVariantDetail.aspx.cs">
+      <DependentUpon>InterfaceVariantDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Administration\Interface\InterfaceVariantDetail.aspx.designer.cs">
+      <DependentUpon>InterfaceVariantDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administration\License\ImportLicense.aspx.cs">
       <DependentUpon>ImportLicense.aspx</DependentUpon>

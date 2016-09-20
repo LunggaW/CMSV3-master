@@ -2675,7 +2675,8 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "CMSPRICE AS \"PRICE\", " +
                                   "CMSSTORE AS \"STORE\", " +
                                   "CMSUSERID AS \"USER ID\", " +
-                                  "CMSDATE AS \"CREATED DATE\" " +
+                                  "CMSDATE AS \"CREATED DATE\", " +
+                                  "CMSMSG AS MESSAGE " +
                                   "FROM KDSCMSDN_INT " +
                                   "WHERE CMSFLAG < 0 ";
 
@@ -2720,7 +2721,8 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "INTERRMESS AS \"MESSAGE\", " +
                                   "INTDCRE AS \"CREATED DATE\", " +
                                   "INTDMAJ AS \"MODIFIED DATE\", " +
-                                  "INTUTIL AS \"MODIFIED BY\" " +
+                                  "INTUTIL AS \"MODIFIED BY\", " +
+                                  "INTERRMESS AS MESSAGE "+
                                   "FROM KDSCMSINTSPRICE " +
                                   "WHERE INTTRT < 0 ";
 
@@ -2764,7 +2766,8 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "INTBRCDCDAT AS \"CREATED DATE\", " +
                                   "INTBRCDMDAT AS \"MODIFIED DATE\", " +
                                   "INTBRCDCRBY AS \"CREATED BY\", " +
-                                  "INTBRCDMOBY AS \"MODIFIED BY\" " +
+                                  "INTBRCDMOBY AS \"MODIFIED BY\", "+
+                                  "INTBRCDMSG AS MESSAGE " +
                                   "FROM KDSCMSINTMSTBRCD " +
                                   "WHERE INTBRCDINTF < 0 ";
 
@@ -2822,6 +2825,52 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 return null;
             }
 
+        }
+
+        public OutputMessage ExecuteSPProcessSite(String FileName)
+        {
+
+            User user = new User();
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "Import_STORE_File";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.Add("P_FILENAME", OracleDbType.Varchar2).Value = FileName;
+                cmd.Parameters.Add("o_msg", OracleDbType.Varchar2).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+                cmd.ExecuteNonQuery();
+
+                //outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["o_msg"].Value.ToString();
+
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("ExecuteSPImportStoreFile Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
         }
 
         public OutputMessage ExecuteSPImportStoreFile(String FileName)
