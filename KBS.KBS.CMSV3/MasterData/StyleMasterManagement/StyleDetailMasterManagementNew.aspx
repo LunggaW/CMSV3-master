@@ -193,7 +193,7 @@
     </div>
     <br />
     <div style="text-align: center" class="title">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Style Detail New"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Style Detail Management"></asp:Label>
     </div>
     <br />
     <span>

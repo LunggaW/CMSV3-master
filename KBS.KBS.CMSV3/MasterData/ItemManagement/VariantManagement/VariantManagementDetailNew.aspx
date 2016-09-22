@@ -193,7 +193,7 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Variant Management Detail"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Table Variant Management"></asp:Label>
     </div>
     <br />
     <table class="tableTopLabel">

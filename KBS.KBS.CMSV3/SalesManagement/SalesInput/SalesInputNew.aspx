@@ -148,7 +148,7 @@
     </div>
     <br />
     <div align="center" class="title">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Sales Input Header"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Table Sales Input"></asp:Label>
     </div>
     <br />
     <span>

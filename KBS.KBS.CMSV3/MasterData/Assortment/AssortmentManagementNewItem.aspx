@@ -137,7 +137,7 @@
     </div>
     <div align="center">
         <asp:Label ID="LabelTitle" runat="server" Font-Size="Large"
-            Text="Assortment  New Item"></asp:Label>
+            Text="Assortment Management"></asp:Label>
     </div>
     <br />
     <br />

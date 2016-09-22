@@ -153,7 +153,7 @@
         <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="User Management"></asp:Label>
     </div>
     <br />
-    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Parameter Header"
+    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="User Management"
         Visible="false">
         
     </asp:Label>

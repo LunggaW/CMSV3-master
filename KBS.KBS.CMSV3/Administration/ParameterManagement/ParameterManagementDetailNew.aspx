@@ -195,9 +195,9 @@
         </span>
     </div>
     <div align="center" class="title">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="New Parameter Detail"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Entry Management"></asp:Label>
     </div>
-    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="New Parameter Detail"></asp:Label>
+    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Entry Management"></asp:Label>
     <asp:Panel ID="Panel1" runat="server" ScrollBars="Auto" Width="100%" Height="400"
         Direction="LeftToRight">
         <table class="tableTop">

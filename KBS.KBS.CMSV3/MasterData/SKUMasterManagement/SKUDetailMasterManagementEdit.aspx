@@ -194,7 +194,7 @@
     </div>
     <br />
     <div style="text-align: center" class="title">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="SKU Detail Update"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="SKU Detail Management"></asp:Label>
     </div>
     <br />
     <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Visible="False"></asp:Label>

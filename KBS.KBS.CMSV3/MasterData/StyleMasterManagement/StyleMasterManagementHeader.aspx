@@ -151,7 +151,7 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Style Group"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Style Group Management"></asp:Label>
     </div>
     <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Style Group"
         Visible="false"></asp:Label>

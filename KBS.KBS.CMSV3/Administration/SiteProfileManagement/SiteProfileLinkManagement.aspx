@@ -148,10 +148,10 @@
     </div>
     <div align="center">
         <asp:Label ID="LabelTitleSiteProfile" runat="server" Font-Size="Large"
-            Text="Site Profile Link"></asp:Label>
+            Text=" Site Profile Link Management"></asp:Label>
     </div>
     <br />
-    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Parameter Header"
+    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text=" Site Profile Link Management"
         Visible="false">
         
     </asp:Label>

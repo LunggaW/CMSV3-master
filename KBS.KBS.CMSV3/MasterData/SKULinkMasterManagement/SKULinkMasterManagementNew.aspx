@@ -192,7 +192,7 @@
     </div>
     <br />
     <div align="center" class="title">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="New SKU Link"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="SKU Link Management"></asp:Label>
     </div>
     <br />
     <span>

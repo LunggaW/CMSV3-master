@@ -150,7 +150,7 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="LabelTitle" runat="server" Font-Size="Large" Text="Site Master"></asp:Label>
+        <asp:Label ID="LabelTitle" runat="server" Font-Size="Large" Text="Site Management"></asp:Label>
     </div>
     <br />
     <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Parameter Header"
