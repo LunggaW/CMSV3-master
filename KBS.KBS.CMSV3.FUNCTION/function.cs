@@ -2544,9 +2544,10 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "INTSITESITECRBY as \"CREATED BY\", " +
                                   "INTSITESITEMOBY as \"MODIFIED BY\", " +
                                   "INTSITESITEMSG as MESSAGE, " +
-                                  "INTSITESITEFLAG as FLAG " +
+                                  "INTSITESITEFLAG as FLAG," +
+                                  "INTSITESITEINTF as \"INTERFACE FLAG\" " +
                                   "FROM KDSCMSINTSITE " +
-                                  "where INTSITESITEINTF < 0";
+                                  "where INTSITESITEINTF < 1";
 
 
                 logger.Debug(cmd.CommandText);
@@ -2587,9 +2588,10 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "INTITEMMDAT AS \"MODIFIED DATE\", " +
                                   "INTITEMCRBY AS \"CREATED BY\", " +
                                   "INTITEMMOBY AS \"MODIFIED BY\", " +
-                                  "INTITEMMSG AS \"MESSAGE\" " +
+                                  "INTITEMMSG AS \"MESSAGE\"," +
+                                  "INTITEMINTF AS \"INTERFACE FLAG\" " +
                                   "FROM KDSCMSINTMSTITEM " +
-                                  "WHERE INTITEMINTF < 0 ";
+                                  "WHERE INTITEMINTF < 1 ";
 
 
                 logger.Debug(cmd.CommandText);
@@ -2633,9 +2635,11 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "INTDTLVRNTMDAT as \"MODIFIED DATE\", " +
                                   "INTDTLVRNTCRBY as \"CREATED BY\", " +
                                   "INTDTLVRNTMOBY as \"MODIFIED BY\", " +
-                                  "INTDTLVRNTMSG as \"MESSAGE\" " +
+                                  "INTDTLVRNTMSG as \"MESSAGE\"," +
+                                  "INTDTLVRNTDESC as \"DESCRIPTION\"," +
+                                  "INTDTLVRNTDINTF as  \"INTERFACE FLAG\" " +
                                   "FROM KDSCMSINTDTLVRNT " +
-                                  "where INTDTLVRNTDINTF < 0 ";
+                                  "where INTDTLVRNTDINTF < 1 ";
 
 
                 logger.Debug(cmd.CommandText);
@@ -2676,9 +2680,10 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "CMSSTORE AS \"STORE\", " +
                                   "CMSUSERID AS \"USER ID\", " +
                                   "CMSDATE AS \"CREATED DATE\", " +
-                                  "CMSMSG AS MESSAGE " +
+                                  "CMSMSG AS MESSAGE, " +
+                                  "CMSINTF AS \"INTERFACE FLAG\" " +
                                   "FROM KDSCMSDN_INT " +
-                                  "WHERE CMSFLAG < 0 ";
+                                  "WHERE CMSFLAG < 1 ";
 
 
                 logger.Debug(cmd.CommandText);
@@ -2722,9 +2727,10 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "INTDCRE AS \"CREATED DATE\", " +
                                   "INTDMAJ AS \"MODIFIED DATE\", " +
                                   "INTUTIL AS \"MODIFIED BY\", " +
-                                  "INTERRMESS AS MESSAGE "+
+                                  "INTERRMESS AS MESSAGE," +
+                                  "INTTRT AS  \"INTERFACE FLAG\"" +
                                   "FROM KDSCMSINTSPRICE " +
-                                  "WHERE INTTRT < 0 ";
+                                  "WHERE INTTRT < 1 ";
 
 
                 logger.Debug(cmd.CommandText);
@@ -2767,9 +2773,10 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "INTBRCDMDAT AS \"MODIFIED DATE\", " +
                                   "INTBRCDCRBY AS \"CREATED BY\", " +
                                   "INTBRCDMOBY AS \"MODIFIED BY\", "+
-                                  "INTBRCDMSG AS MESSAGE " +
+                                  "INTBRCDMSG AS MESSAGE," +
+                                  "INTBRCDINTF AS  \"INTERFACE FLAG\" " +
                                   "FROM KDSCMSINTMSTBRCD " +
-                                  "WHERE INTBRCDINTF < 0 ";
+                                  "WHERE INTBRCDINTF < 1 ";
 
 
                 logger.Debug(cmd.CommandText);
