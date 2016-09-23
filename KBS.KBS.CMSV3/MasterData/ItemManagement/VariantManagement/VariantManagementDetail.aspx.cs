@@ -52,7 +52,7 @@ namespace KBS.KBS.CMSV3.MasterData.ItemManagement.VariantManagement
                 ASPxTextBoxItem.Text = Session["ItemIDExManagementVariant"].ToString() + " - " + CMSfunction.GetItemDescByItemID(ItemID);
 
                 variantDetail = new VariantDetail();
-                TextBoxVariantIdx.Text = Session["VariantIDEx"].ToString();
+                TextBoxVariantIdx.Text = Session["VariantIDEx"].ToString() + " " + Session["VariantIDExDESC"].ToString();
                 String VariantID = CMSfunction.GetVarIDByVarIDExandItemID(Session["VariantIDEx"].ToString(), ItemID);
                 TextBoxVariantId.Text = VariantID;
                 

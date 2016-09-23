@@ -2636,7 +2636,8 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "INTDTLVRNTCRBY as \"CREATED BY\", " +
                                   "INTDTLVRNTMOBY as \"MODIFIED BY\", " +
                                   "INTDTLVRNTMSG as \"MESSAGE\"," +
-                                  "INTDTLVRNTDESC as \"DESCRIPTION\"," +
+                                  "INTDTLVRNTSDESC as \"SHORT DESC\"," +
+                                  "INTDTLVRNTLDESC as \"LONG DESC\"," +
                                   "INTDTLVRNTDINTF as  \"INTERFACE FLAG\" " +
                                   "FROM KDSCMSINTDTLVRNT " +
                                   "where INTDTLVRNTDINTF < 1 ";
@@ -7946,7 +7947,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.Connection = con;
                 cmd.CommandText = "SELECT PARHTABID AS \"ID\", " +
                                   "PARHTABNM AS \"NAME\", " +
-                                  "PARHSCLAS AS SCLAS, " +
+                                  "PARHSCLAS AS \"SITE CLASS\", " +
                                   "PARHCOPY AS COPY, " +
                                   "PARHTABCOM AS \"COMMENT\", " +
                                   "PARHTABLOCK AS \"BLOCK\" " +
@@ -9903,14 +9904,14 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                     "TRN.CMSTRNQTY as QUANTITY,  " +
                                     "TRN.CMSTRNAMT as AMOUNT, " +
                                     "TRN.CMSTRSKU as DISCOUNT, " +
-                                    "CASE WHEN TRN.CMSTRNTYPE = '1' THEN 'Sales' " +
-                                    "WHEN TRN.CMSTRNTYPE = '2' THEN 'Return' " +
-                                    "WHEN TRN.CMSTRNTYPE = '3' THEN 'Movement In' " +
+                                    "CASE WHEN TRN.CMSTRSTAT = '1' THEN 'Sales' " +
+                                    "WHEN TRN.CMSTRSTAT = '2' THEN 'Return' " +
+                                    "WHEN TRN.CMSTRSTAT = '3' THEN 'Movement In' " +
                                     "ELSE 'Unknown Type' END AS TYPE ," +
                                      "CASE WHEN TRN.CMSTRNFLAG = '2' THEN 'Succes Interface' " +
                                     "WHEN TRN.CMSTRNFLAG = '3' THEN 'Error' " +
-                                    "ELSE '' END AS STATUS ," +                                    
-                                    "CASE WHEN TRN.CMSTRSTAT = '1' THEN 'Browser' " +                                    
+                                    "ELSE '' END AS STATUS ," +
+                                    "CASE WHEN TRN.CMSTRNTYPE = '1' THEN 'Browser' " +                                    
                                     "ELSE 'Mobile' END AS InputBy ," +
                                     "'' AS NOTE " +
                                     "from KDSCMSTRN TRN where CMSTRNSITE = CMSTRNSITE and TRN.CMSTRSTAT <> 9 ";
@@ -13577,7 +13578,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
 
                 cmd.Parameters.Add("PINTBRCDBRCDID", OracleDbType.Varchar2, 20).Value = Barcode.Barcode;
-                cmd.Parameters.Add("PINTBRCDITEMID", OracleDbType.Int32, 10).Value = Barcode.ItemID;
+                cmd.Parameters.Add("PINTBRCDITEMID", OracleDbType.Varchar2, 10).Value = Barcode.ItemID;
                 cmd.Parameters.Add("PINTBRCDVRNTID", OracleDbType.Int32, 10).Value = Barcode.VariantID;
                 cmd.Parameters.Add("PINTBRCDTYPE", OracleDbType.Int32, 1).Value = Barcode.Type;
                 cmd.Parameters.Add("PINTBRCDSTAT", OracleDbType.Int32, 1).Value = Barcode.Status;
@@ -14948,14 +14949,14 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.Parameters.Add("PCMSSALQTY", OracleDbType.Int32).Value = salesInputSimple.SALESQTY;
                 cmd.Parameters.Add("PCMSSALSKU", OracleDbType.Int32).Value = salesInputSimple.SKU;
                 cmd.Parameters.Add("PCMSSALFLAG", OracleDbType.Int32).Value = 1;
-                cmd.Parameters.Add("PCMSSALSTAT", OracleDbType.Int32).Value = 1;
+                cmd.Parameters.Add("PCMSSALSTAT", OracleDbType.Int32).Value = Int32.Parse(salesInputSimple.SALESQTY) < 0 ? 2 : 1;
                 cmd.Parameters.Add("PCMSSALCOMM", OracleDbType.Varchar2, 1000).Value = "";
                 cmd.Parameters.Add("PCMSSALCDAT", OracleDbType.Date).Value = DateTime.Now;
                 cmd.Parameters.Add("PCMSSALMDAT", OracleDbType.Date).Value = DateTime.Now;
                 cmd.Parameters.Add("PCMSSALSITE", OracleDbType.Varchar2).Value = Site;
                 cmd.Parameters.Add("PCMSSALCRBY", OracleDbType.Varchar2).Value = User;
                 cmd.Parameters.Add("PCMSSALAMT", OracleDbType.Int32).Value = salesInputSimple.AMOUNT;
-                cmd.Parameters.Add("PCMSSALTYPE", OracleDbType.Int32).Value = Int32.Parse(salesInputSimple.SALESQTY) < 0 ? 2 : 1;
+                cmd.Parameters.Add("PCMSSALTYPE", OracleDbType.Int32).Value = 1;
                 cmd.Parameters.Add("PCMSSALTRNDATE", OracleDbType.Date).Value = salesInputSimple.TransDate;
                 cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
                 cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;

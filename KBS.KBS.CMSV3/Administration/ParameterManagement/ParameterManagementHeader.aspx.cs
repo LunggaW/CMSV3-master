@@ -119,7 +119,7 @@ namespace KBS.KBS.CMSV3.Administration.ParameterManagement
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
             Session["ParamHeaderIDforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
-            Session["ParamHeaderSClassforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+            Session["ParamHeaderSClassforUpdate"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SITE CLASS").ToString();
 
 
             Session["ParamIDFilter"] = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderID.Text) ? ASPxTextBoxHeaderID.Text : "";
@@ -162,7 +162,7 @@ namespace KBS.KBS.CMSV3.Administration.ParameterManagement
                 Session["ParamIDFilter"] = ASPxTextBoxHeaderID.Text;
                 Session["ParamNameFilter"] = ASPxTextBoxHeaderName.Text;
                 Session["ParamHeaderID"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
-                Session["ParamHeaderSClass"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+                Session["ParamHeaderSClass"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SITE CLASS").ToString();
                 Session["ParamCopy"] = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COPY").ToString();
                 Response.Redirect("ParameterManagementDetail.aspx");
             }
@@ -184,7 +184,7 @@ namespace KBS.KBS.CMSV3.Administration.ParameterManagement
             if (ASPxGridViewHeader.FocusedRowIndex != -1)
             {
                 String ParamHeaderID = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
-                String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+                String ParamSClas = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SITE CLASS").ToString();
                 String ParamCopy = ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "COPY").ToString();
                 
 

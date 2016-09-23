@@ -221,6 +221,7 @@ namespace KBS.KBS.CMSV3.MasterData.ItemManagement.VariantManagement
             if (ASPxGridViewVariant.FocusedRowIndex != -1)
             {
                 Session["VariantIDEx"] = ASPxGridViewVariant.GetRowValues(ASPxGridViewVariant.FocusedRowIndex, "VARIANT ID").ToString();
+                Session["VariantIDExDESC"] = ASPxGridViewVariant.GetRowValues(ASPxGridViewVariant.FocusedRowIndex, "SHORT DESCRIPTION").ToString();
                 Response.Redirect("VariantManagementDetail.aspx");
             }
         }
