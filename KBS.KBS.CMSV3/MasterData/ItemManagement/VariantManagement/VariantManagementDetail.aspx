@@ -150,7 +150,7 @@
     </div>
     <div align="center">
         <asp:Label ID="LabelTitle" runat="server" Font-Size="Large"
-            Text="Variant Management Detail"></asp:Label>
+            Text="Table Variant Management"></asp:Label>
     </div>
     <br />
     <table class="tableTopLabel">

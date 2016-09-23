@@ -149,10 +149,10 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="LabelTitle" runat="server" Font-Size="Large" Text="Menu Master"></asp:Label>
+        <asp:Label ID="LabelTitle" runat="server" Font-Size="Large" Text="Menu Master Management"></asp:Label>
     </div>
     <br />
-    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Parameter Header"
+    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Menu Master Management"
         Visible="false">
         
     </asp:Label>

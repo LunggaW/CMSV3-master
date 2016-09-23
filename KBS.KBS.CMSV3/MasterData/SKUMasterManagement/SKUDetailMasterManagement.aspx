@@ -151,9 +151,9 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Master SKU Detail"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="SKU Detail Management"></asp:Label>
     </div>
-    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Master SKU Detail"
+    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="SKU Detail Management"
         Visible="false"></asp:Label>
     <div>
         <%--        <table class="tableTop">

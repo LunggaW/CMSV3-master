@@ -192,7 +192,7 @@
     </div>
     <br />
     <div style="text-align: center" class="title">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Color Group Header"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Size Detail Management"></asp:Label>
     </div>
     <br />
     <span>

@@ -149,7 +149,7 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Variant Management Header"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Variant Management"></asp:Label>
     </div>
     <br />
     <table class="tableTopLabel">

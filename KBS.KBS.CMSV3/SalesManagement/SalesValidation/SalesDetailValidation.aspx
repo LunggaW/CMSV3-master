@@ -150,7 +150,7 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Sales Validate"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Table Sales Validate"></asp:Label>
     </div>
     <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Sales Validate"
         Visible="false"></asp:Label>

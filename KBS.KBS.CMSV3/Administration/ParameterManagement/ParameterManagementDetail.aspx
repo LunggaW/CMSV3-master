@@ -151,7 +151,7 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Parameter Detail"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Table Entry"></asp:Label>
     </div>
     <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Visible="False"></asp:Label>
     <dx:ASPxGridView runat="server" ClientInstanceName="detailGridView" CssClass="ASPXGridView"

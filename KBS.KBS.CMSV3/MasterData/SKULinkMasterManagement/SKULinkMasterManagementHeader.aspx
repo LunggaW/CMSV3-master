@@ -150,9 +150,9 @@
             </dx:ASPxButton>
     </div>
     <div align="center">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="SKU Link"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="SKU Link Management"></asp:Label>
     </div>
-    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="SKU Link"
+    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="SKU Link Management"
         Visible="false"></asp:Label>
     <div>
         <%--    <table class="tableTop">

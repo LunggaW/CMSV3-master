@@ -197,7 +197,7 @@
     <br />
     <div align="center" class="title">
         <asp:Label ID="LabelTitle" runat="server" Font-Size="Large" 
-            Text="Variant Management Detail"></asp:Label>
+            Text="Variant Management"></asp:Label>
     </div>
     <br />
     <table class="tableTopLabel">

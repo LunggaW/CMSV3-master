@@ -150,7 +150,7 @@ Inherits="KBS.KBS.CMSV3.MasterData.StyleDetailMasterManagement" %>
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Style Detail"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Style Detail Management"></asp:Label>
     </div>
     <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Style Detail"
         Visible="false"></asp:Label>

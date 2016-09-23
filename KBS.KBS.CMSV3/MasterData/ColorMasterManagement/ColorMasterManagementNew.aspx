@@ -193,7 +193,7 @@
     </div>
     <br />
     <div align="center" class="title">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="New Color Group"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Color Group Management"></asp:Label>
     </div>
     <br />
     <span>

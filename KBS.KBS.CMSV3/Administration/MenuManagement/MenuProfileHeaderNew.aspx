@@ -194,10 +194,10 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="LabelTitleSiteProfile" runat="server" Font-Size="Large" Text="Menu Profile Header"></asp:Label>
+        <asp:Label ID="LabelTitleSiteProfile" runat="server" Font-Size="Large" Text="Table Menu Profile Management"></asp:Label>
     </div>
     <br />
-    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Menu Profile Header"
+    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Table Menu Profile Management"
         Visible="false">
         
     </asp:Label>

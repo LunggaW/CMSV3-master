@@ -206,7 +206,7 @@
         <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="User Management"></asp:Label>
     </div>
     <br />
-    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Message" Visible="False"></asp:Label>
+    <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="User Management" Visible="False"></asp:Label>
     <br />
     <br />
     <asp:Panel ID="Panel1" runat="server" ScrollBars="Auto" Width="100%" Height="400"

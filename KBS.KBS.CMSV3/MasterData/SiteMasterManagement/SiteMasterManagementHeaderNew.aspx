@@ -193,7 +193,7 @@
         </span>
     </div>
     <div align="center" class="title">
-        <asp:Label ID="LabelTitle" runat="server" Font-Size="Large" Text="Site Master Management"></asp:Label>
+        <asp:Label ID="LabelTitle" runat="server" Font-Size="Large" Text="Site Management"></asp:Label>
     </div>
     <br />
     <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Message" Visible="False"></asp:Label>
