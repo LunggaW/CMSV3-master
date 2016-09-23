@@ -10,7 +10,7 @@
 namespace KBS.KBS.CMSV3.Administration.Interface {
     
     
-    public partial class InterfacePriceDetail {
+    public partial class InterfacePriceAssortmentDetail {
         
         /// <summary>
         /// BackhomeBtn control.
@@ -209,6 +209,15 @@ namespace KBS.KBS.CMSV3.Administration.Interface {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxTextBox TextBoxIntVAT;
+        
+        /// <summary>
+        /// TextBoxIntStatus control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox TextBoxIntStatus;
         
         /// <summary>
         /// ButtonReset control.

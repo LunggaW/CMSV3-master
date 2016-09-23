@@ -11,7 +11,7 @@ using KBS.KBS.CMSV3.FUNCTION;
 
 namespace KBS.KBS.CMSV3.Administration.Interface
 {
-    public partial class InterfacePrice : System.Web.UI.Page
+    public partial class InterfacePriceAssortment : System.Web.UI.Page
     {
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
@@ -39,7 +39,7 @@ namespace KBS.KBS.CMSV3.Administration.Interface
 
         private void LoadDataGrid()
         {
-            DTInterface = CMSfunction.GetInterfacePrice();
+            DTInterface = CMSfunction.GetInterfacePriceAssortment();
             ASPxGridViewHeader.DataSource = DTInterface;
             ASPxGridViewHeader.KeyFieldName = "ITEM ID";
             ASPxGridViewHeader.DataBind();
@@ -97,7 +97,7 @@ namespace KBS.KBS.CMSV3.Administration.Interface
 
         protected void Upload_Click(object sender, EventArgs e)
         {
-            if (FileUploadPrice.HasFile == false)
+            if (FileUploadPriceAssortment.HasFile == false)
             {
                 // No file uploaded!
                 //UploadDetails.Text = "Please first select a file to upload...";
@@ -112,13 +112,13 @@ namespace KBS.KBS.CMSV3.Administration.Interface
                     //Server.MapPath(CMSfunction.getIncomingDirectory() + FileUploadSite.FileName);
 
 
-                    filePath = CMSfunction.getIncomingDirectory() + FileUploadPrice.FileName;
+                    filePath = CMSfunction.getIncomingDirectory() + FileUploadPriceAssortment.FileName;
 
-                    FileUploadPrice.SaveAs(filePath);
+                    FileUploadPriceAssortment.SaveAs(filePath);
 
                     OutputMessage message = new OutputMessage();
 
-                    message = CMSfunction.ExecuteSPImportPriceFile(FileUploadPrice.FileName);
+                    message = CMSfunction.ExecuteSPImportPriceAssortmentFile(FileUploadPriceAssortment.FileName);
 
                     LoadDataGrid();
                 }
@@ -144,12 +144,12 @@ namespace KBS.KBS.CMSV3.Administration.Interface
 
         protected void ASPxGridViewHeader_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
-            Session["InterfacePriceRowID"] = ASPxGridViewHeader.GetRowValues(Convert.ToInt32(e.Parameters), "ROWID").ToString();
+            Session["InterfacePriceAssortmentRowID"] = ASPxGridViewHeader.GetRowValues(Convert.ToInt32(e.Parameters), "ROWID").ToString();
 
             if (Page.IsCallback)
-                ASPxWebControl.RedirectOnCallback("InterfacePriceDetail.aspx");
+                ASPxWebControl.RedirectOnCallback("InterfacePriceAssortmentDetail.aspx");
             else
-                Response.Redirect("InterfacePriceDetail.aspx");
+                Response.Redirect("InterfacePriceAssortmentDetail.aspx");
         }
     }
 }

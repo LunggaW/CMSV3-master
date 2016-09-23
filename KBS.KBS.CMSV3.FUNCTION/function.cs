@@ -2514,8 +2514,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 DataTable DT = new DataTable();
                 DT.Load(dr);
                 this.Close();
-                return DT;
-            }
+                return DT;}
             catch (Exception e)
             {
                 logger.Error("GetInterfaceDataTable Function");
@@ -2707,7 +2706,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
         }
 
-        public DataTable GetInterfacePrice()
+        public DataTable GetInterfacePriceAssortment()
         {
             try
             {
@@ -2728,9 +2727,9 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "INTDCRE AS \"CREATED DATE\", " +
                                   "INTDMAJ AS \"MODIFIED DATE\", " +
                                   "INTUTIL AS \"MODIFIED BY\", " +
-                                  "INTERRMESS AS MESSAGE," +
-                                  "INTTRT AS  \"INTERFACE FLAG\"" +
-                                  "FROM KDSCMSINTSPRICE " +
+                                  "INTTRT AS  \"INTERFACE FLAG\"," +
+                                  "INTASSSTAT AS \"ASSORTMENT STATUS\"" +
+                                  "FROM KDSCMSINTSPRICEASS " +
                                   "WHERE INTTRT < 1 ";
 
 
@@ -2746,7 +2745,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
             catch (Exception e)
             {
-                logger.Error("GetInterfacePrice Function");
+                logger.Error("GetInterfacePriceAssortment Function");
                 logger.Error(e.Message);
                 this.Close();
                 return null;
@@ -2793,6 +2792,49 @@ namespace KBS.KBS.CMSV3.FUNCTION
             catch (Exception e)
             {
                 logger.Error("GetInterfaceBarcode Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
+        public DataTable GetInterfaceAssortment()
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText = "SELECT ROWID, " +
+                                  "INTSASSITEMID AS \"ITEM ID\", " +
+                                  "INTSASSSITEID AS \"SITE\"," +
+                                  "INTSASSVRNT AS  \"VARIANT\"," +
+                                  "INTSASSSTAT AS  \"STATUS\"," +
+                                  "INTSASSCDAT AS \"CREATED DATE\", " +
+                                  "INTSASSMDAT AS \"MODIFIED DATE\", " +
+                                  "INTSASSCRBY AS \"CREATED BY\", " +
+                                  "INTSASSMOBY AS \"MODIFIED BY\", " +
+                                  "INTSASSMSG AS MESSAGE," +
+                                  "INTSASSINTF AS  \"INTERFACE FLAG\" " +
+                                  "FROM KDSCMSINTSASS " +
+                                  "WHERE INTSASSINTF < 1 ";
+
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+
+                DataTable DT = new DataTable();
+                DT.Load(dr);
+                this.Close();
+                return DT;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetInterfaceAssortment Function");
                 logger.Error(e.Message);
                 this.Close();
                 return null;
@@ -3254,7 +3296,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
         }
 
-        public OutputMessage ExecuteSPImportPriceFile(String FileName)
+        public OutputMessage ExecuteSPImportAssortmentFile(String FileName)
         {
 
             User user = new User();
@@ -3267,7 +3309,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "Import_PRICE_File";
+                cmd.CommandText = "Import_assortment_File";
                 cmd.CommandType = CommandType.StoredProcedure;
 
 
@@ -3293,7 +3335,53 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
             catch (Exception e)
             {
-                logger.Error("ExecuteSPImportPriceFile Function");
+                logger.Error("ExecuteSPImportAssortmentFile Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
+
+        public OutputMessage ExecuteSPImportPriceAssortmentFile(String FileName)
+        {
+
+            User user = new User();
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+
+
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "Import_PRICE_ASSORTMENT_File";
+                cmd.CommandType = CommandType.StoredProcedure;
+
+
+                cmd.Parameters.Add("P_FILENAME", OracleDbType.Varchar2).Value = FileName;
+                cmd.Parameters.Add("o_msg", OracleDbType.Varchar2).Direction = ParameterDirection.Output;
+
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                logger.Debug("End Execute Command");
+                outputMsg = new OutputMessage();
+                cmd.ExecuteNonQuery();
+
+                //outputMsg.Code = Int32.Parse(cmd.Parameters["POUTRSNCODE"].Value.ToString());
+                outputMsg.Message = cmd.Parameters["o_msg"].Value.ToString();
+
+
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return outputMsg;
+            }
+            catch (Exception e)
+            {
+                logger.Error("ExecuteSPImportPriceAssortmentFile Function");
                 logger.Error(e.Message);
                 this.Close();
                 return null;
@@ -8917,6 +9005,54 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
         }
 
+        public AssortmentMaster GetAssortmentIntFromRowID(String ROWID)
+        {
+            AssortmentMaster assortment = new AssortmentMaster();
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "SELECT INTSASSITEMID, " +
+                                  "INTSASSSITEID, " +
+                                  "INTSASSVRNT, " +
+                                  "INTSASSSTAT, " +
+                                  "FROM KDSCMSINTSASS " +
+                                  "where ROWID = :ROWIDASSORTMENT";
+
+
+                cmd.CommandType = CommandType.Text;
+                cmd.Parameters.Add(new OracleParameter(":ROWIDASSORTMENT", OracleDbType.Varchar2)).Value = ROWID;
+
+                logger.Debug(cmd.CommandText);
+
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+
+                    assortment.VariantID = dr["INTSASSVRNT"].ToString();
+                    assortment.ItemID = dr["INTSASSITEMID"].ToString();
+                    assortment.Site = dr["INTSASSSITEID"].ToString();
+                    assortment.Status = dr["INTSASSSTAT"].ToString();
+
+
+                    //siteMaster.Enable = Int32.Parse(dr["sitesiteflag"].ToString());
+                }
+
+                this.Close();
+                return assortment;
+            }
+            catch (Exception e)
+            {
+                logger.Error("GetAssortmentIntFromRowID Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
         public VariantDetail GetVariantIntFromRowID(String ROWID)
         {
             VariantDetail variantDetail = new VariantDetail();
@@ -9029,7 +9165,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
         }
 
-        public PriceGroup GetPriceIntFromRowID(String ROWID)
+        public PriceGroup GetPriceAssortmentIntFromRowID(String ROWID)
         {
             PriceGroup priceGroup = new PriceGroup();
             try
@@ -9043,8 +9179,9 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "INTSPRCSPRICE, " +
                                   "INTSPRCVAT, " +
                                   "INTSPRCSDAT, " +
-                                  "INTSPRCEDAT " +
-                                  "FROM KDSCMSINTSPRICE " +
+                                  "INTSPRCEDAT," +
+                                  "INTASSSTAT " +
+                                  "FROM KDSCMSINTSPRICEASS " +
                                   "where ROWID = :ROWIDPRICE";
 
 
@@ -9065,6 +9202,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                     priceGroup.VAT = dr["INTSPRCVAT"].ToString();
                     priceGroup.SDate = DateTime.Parse(dr["INTSPRCSDAT"].ToString());
                     priceGroup.Edate = DateTime.Parse(dr["INTSPRCEDAT"].ToString());
+                    priceGroup.AssortmentStatus = dr["INTASSSTAT"].ToString();
 
                     //siteMaster.Enable = Int32.Parse(dr["sitesiteflag"].ToString());
                 }
@@ -9074,7 +9212,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
             catch (Exception e)
             {
-                logger.Error("GetPriceIntFromRowID Function");
+                logger.Error("GetPriceAssortmentIntFromRowID Function");
                 logger.Error(e.Message);
                 this.Close();
                 return null;
@@ -13615,7 +13753,9 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
         }
 
-        public OutputMessage updateIntPrice(PriceGroup Price, String ROWID, String CurrUser)
+        
+
+        public OutputMessage updateIntPriceAssortment(PriceGroup Price, String ROWID, String CurrUser)
         {
 
 
@@ -13637,7 +13777,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "PKKDSCMSINTSPRICE.UPD_DATA";
+                cmd.CommandText = "PKKDSCMSINTSPRICEASS.UPD_DATA";
                 cmd.CommandType = CommandType.StoredProcedure;
 
 
@@ -13649,6 +13789,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.Parameters.Add("PINTSPRCSDAT", OracleDbType.Date).Value = Price.SDate;
                 cmd.Parameters.Add("PINTSPRCEDAT", OracleDbType.Date).Value = Price.Edate;
                 cmd.Parameters.Add("PINTSPRCMOBY", OracleDbType.Varchar2, 20).Value = CurrUser;
+                cmd.Parameters.Add("PINTASSSTAT", OracleDbType.Int32).Value = Price.AssortmentStatus;
                 cmd.Parameters.Add("PINTSPRCROWID", OracleDbType.Varchar2).Value = ROWID;
                 cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
                 cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
@@ -13672,7 +13813,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
             catch (Exception e)
             {
-                logger.Error("updateIntBarcode Function");
+                logger.Error("updateIntPriceAssortment Function");
                 logger.Error(e.Message);
                 this.Close();
                 return null;
@@ -13898,7 +14039,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
             }
         }
 
-        public OutputMessage resetIntPrice(String ROWID, String CurrUser)
+        public OutputMessage resetIntPriceAssortment(String ROWID, String CurrUser)
         {
 
 
@@ -13915,7 +14056,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "PKKDSCMSINTSPRICE.RESET_DATA";
+                cmd.CommandText = "PKKDSCMSINTSPRICEASS.RESET_DATA";
                 cmd.CommandType = CommandType.StoredProcedure;
 
                 cmd.Parameters.Add("PINTSPRCROWID", OracleDbType.Varchar2).Value = ROWID;
@@ -14001,6 +14142,8 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 return null;
             }
         }
+
+        
 
         public OutputMessage resetIntItem(String ROWID, String CurrUser)
         {
