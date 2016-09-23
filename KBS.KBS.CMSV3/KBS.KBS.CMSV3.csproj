@@ -121,11 +121,11 @@
     <Content Include="Administration\Interface\InterfaceBarcode.aspx" />
     <Content Include="Administration\Interface\InterfaceBarcodeDetail.aspx" />
     <Content Include="Administration\Interface\InterfaceItem.aspx" />
-    <Content Include="Administration\Interface\InterfacePrice.aspx" />
+    <Content Include="Administration\Interface\InterfacePriceAssortment.aspx" />
     <Content Include="Administration\Interface\InterfaceItemDetail.aspx" />
     <Content Include="Administration\Interface\InterfaceDN.aspx" />
     <Content Include="Administration\Interface\InterfaceDNDetail.aspx" />
-    <Content Include="Administration\Interface\InterfacePriceDetail.aspx" />
+    <Content Include="Administration\Interface\InterfacePriceAssortmentDetail.aspx" />
     <Content Include="Administration\Interface\InterfaceVariant.aspx" />
     <Content Include="Administration\Interface\InterfaceSiteDetail.aspx" />
     <Content Include="Administration\Interface\InterfaceSite.aspx" />
@@ -810,12 +810,12 @@
     <Compile Include="Administration\Interface\InterfaceItem.aspx.designer.cs">
       <DependentUpon>InterfaceItem.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Administration\Interface\InterfacePrice.aspx.cs">
-      <DependentUpon>InterfacePrice.aspx</DependentUpon>
+    <Compile Include="Administration\Interface\InterfacePriceAssortment.aspx.cs">
+      <DependentUpon>InterfacePriceAssortment.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Administration\Interface\InterfacePrice.aspx.designer.cs">
-      <DependentUpon>InterfacePrice.aspx</DependentUpon>
+    <Compile Include="Administration\Interface\InterfacePriceAssortment.aspx.designer.cs">
+      <DependentUpon>InterfacePriceAssortment.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administration\Interface\InterfaceItemDetail.aspx.cs">
       <DependentUpon>InterfaceItemDetail.aspx</DependentUpon>
@@ -838,12 +838,12 @@
     <Compile Include="Administration\Interface\InterfaceDNDetail.aspx.designer.cs">
       <DependentUpon>InterfaceDNDetail.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Administration\Interface\InterfacePriceDetail.aspx.cs">
-      <DependentUpon>InterfacePriceDetail.aspx</DependentUpon>
+    <Compile Include="Administration\Interface\InterfacePriceAssortmentDetail.aspx.cs">
+      <DependentUpon>InterfacePriceAssortmentDetail.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Administration\Interface\InterfacePriceDetail.aspx.designer.cs">
-      <DependentUpon>InterfacePriceDetail.aspx</DependentUpon>
+    <Compile Include="Administration\Interface\InterfacePriceAssortmentDetail.aspx.designer.cs">
+      <DependentUpon>InterfacePriceAssortmentDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="Administration\Interface\InterfaceVariant.aspx.cs">
       <DependentUpon>InterfaceVariant.aspx</DependentUpon>
@@ -2275,10 +2275,12 @@
     <ProjectReference Include="..\KBS.KBS.CMSV3.DATAMODEL\KBS.KBS.CMSV3.DATAMODEL.csproj">
       <Project>{15DD25A4-047B-4B91-B9F2-5D2AC880F39D}</Project>
       <Name>KBS.KBS.CMSV3.DATAMODEL</Name>
+      <Private>True</Private>
     </ProjectReference>
     <ProjectReference Include="..\KBS.KBS.CMSV3.FUNCTION\KBS.KBS.CMSV3.FUNCTION.csproj">
       <Project>{5F47AE9E-3892-4E85-B2F8-6245E28EA489}</Project>
       <Name>KBS.KBS.CMSV3.FUNCTION</Name>
+      <Private>True</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

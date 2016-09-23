@@ -10,7 +10,7 @@ using KBS.KBS.CMSV3.FUNCTION;
 
 namespace KBS.KBS.CMSV3.Administration.Interface
 {
-    public partial class InterfacePriceDetail : System.Web.UI.Page
+    public partial class InterfacePriceAssortmentDetail : System.Web.UI.Page
     {
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
@@ -25,9 +25,9 @@ namespace KBS.KBS.CMSV3.Administration.Interface
             {
                 Response.Redirect("~/Account/logins.aspx");
             }
-            else if (Session["InterfacePriceRowID"] == null)
+            else if (Session["InterfacePriceAssortmentRowID"] == null)
             {
-                Response.Redirect("InterfacePrice.aspx");
+                Response.Redirect("InterfacePriceAssortment.aspx");
             }
             else
             {
@@ -42,13 +42,14 @@ namespace KBS.KBS.CMSV3.Administration.Interface
             {
                 PriceGroup priceGroup = new PriceGroup();
                 
-                priceGroup = CMSfunction.GetPriceIntFromRowID(Session["InterfacePriceRowID"].ToString());
+                priceGroup = CMSfunction.GetPriceAssortmentIntFromRowID(Session["InterfacePriceAssortmentRowID"].ToString());
 
                 TextBoxIntItemID.Text = priceGroup.ItemID;
                 TextBoxIntVariantID.Text = priceGroup.VariantID;
                 TextBoxIntSite.Text = priceGroup.Site;
                 TextBoxIntVAT.Text = priceGroup.VAT;
                 TextBoxIntPrice.Text = priceGroup.Price;
+                TextBoxIntStatus.Text = priceGroup.AssortmentStatus;
 
                 DateStart.Value = priceGroup.SDate.HasValue ? (object)priceGroup.SDate : "";
                 DateEnd.Value = priceGroup.Edate.HasValue ? (object)priceGroup.Edate : "";
@@ -95,7 +96,7 @@ namespace KBS.KBS.CMSV3.Administration.Interface
 
         protected void ButtonReset_Click(object sender, EventArgs e)
         {
-            message = CMSfunction.resetIntPrice(Session["InterfacePriceRowID"].ToString(), Session["UserID"].ToString());
+            message = CMSfunction.resetIntPriceAssortment(Session["InterfacePriceAssortmentRowID"].ToString(), Session["UserID"].ToString());
 
             LabelMessage.Visible = true;
             LabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
@@ -117,7 +118,7 @@ namespace KBS.KBS.CMSV3.Administration.Interface
         {
             ProcessUpdate();
 
-            Response.Redirect("InterfacePrice.aspx");
+            Response.Redirect("InterfacePriceAssortment.aspx");
         }
 
         private void ProcessUpdate()
@@ -131,15 +132,16 @@ namespace KBS.KBS.CMSV3.Administration.Interface
             price.VAT = TextBoxIntVAT.Text;
             price.SDate = DateStart.Date;
             price.Edate = DateEnd.Date;
-
+            price.AssortmentStatus = TextBoxIntStatus.Text;
+        
             
             //To be Checked Site Flag
-            message = CMSfunction.updateIntPrice(price, Session["InterfacePriceRowID"].ToString(), Session["UserID"].ToString());
+            message = CMSfunction.updateIntPriceAssortment(price, Session["InterfacePriceAssortmentRowID"].ToString(), Session["UserID"].ToString());
         }
 
         protected void BackhomeBtn_Click(object sender, EventArgs e)
         {
-            Response.Redirect("InterfacePrice.aspx");
+            Response.Redirect("InterfacePriceAssortment.aspx");
         }
     }
 }

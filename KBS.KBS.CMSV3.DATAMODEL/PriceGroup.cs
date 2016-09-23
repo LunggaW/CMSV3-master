@@ -13,6 +13,8 @@ namespace KBS.KBS.CMSV3.DATAMODEL
         public string Price { get; set; } 
         public string VAT { get; set; }
         public DateTime? SDate { get; set; }
-        public DateTime? Edate { get; set; }         
+        public DateTime? Edate { get; set; }
+
+        public string AssortmentStatus { get; set; }
     }
 }

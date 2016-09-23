@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
-    CodeBehind="InterfacePriceDetail.aspx.cs" Inherits="KBS.KBS.CMSV3.Administration.Interface.InterfacePriceDetail" %>
+    CodeBehind="InterfacePriceAssortmentDetail.aspx.cs" Inherits="KBS.KBS.CMSV3.Administration.Interface.InterfacePriceAssortmentDetail" %>
 
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
@@ -145,7 +145,7 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="LabelTitleSiteProfile" runat="server" Font-Size="Large" Text="Interface Variant Detail"></asp:Label>
+        <asp:Label ID="LabelTitleSiteProfile" runat="server" Font-Size="Large" Text="Interface Price/Assortment Detail"></asp:Label>
     </div>
     <br />
     <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Interface"
@@ -213,6 +213,16 @@
             <tr>
                 <td class="tableHeader2Column" colspan="5">
                    <dx:ASPxTextBox runat="server" Width="170px" Caption="VAT" ID="TextBoxIntVAT"
+                        ReadOnly="False">
+                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                        <ReadOnlyStyle BackColor="Silver">
+                        </ReadOnlyStyle>
+                        <CaptionCellStyle Width="110px">
+                        </CaptionCellStyle>
+                    </dx:ASPxTextBox>
+                </td>
+                <td class="tableHeader2Column" colspan="5">
+                   <dx:ASPxTextBox runat="server" Width="170px" Caption="Assortment Status" ID="TextBoxIntStatus"
                         ReadOnly="False">
                         <CaptionSettings ShowColon="False"></CaptionSettings>
                         <ReadOnlyStyle BackColor="Silver">

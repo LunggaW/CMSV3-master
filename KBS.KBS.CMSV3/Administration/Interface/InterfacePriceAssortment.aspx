@@ -1,5 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Main.master" AutoEventWireup="true"
-    CodeBehind="InterfacePrice.aspx.cs" Inherits="KBS.KBS.CMSV3.Administration.Interface.InterfacePrice" %>
+    CodeBehind="InterfacePriceAssortment.aspx.cs" Inherits="KBS.KBS.CMSV3.Administration.Interface.InterfacePriceAssortment" %>
 
 <%@ Register TagPrefix="dx" Namespace="DevExpress.Web" Assembly="DevExpress.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" %>
 <asp:Content ID="Content" ContentPlaceHolderID="MainContent" runat="server">
@@ -146,7 +146,7 @@
         </span>
     </div>
     <div align="center">
-        <asp:Label ID="LabelTitleSiteProfile" runat="server" Font-Size="Large" Text="Interface Price"></asp:Label>
+        <asp:Label ID="LabelTitleSiteProfile" runat="server" Font-Size="Large" Text="Interface Price Assortment"></asp:Label>
     </div>
     <br />
     <asp:Label ID="LabelMessage" runat="server" Font-Size="Large" Text="Interface"
@@ -166,7 +166,7 @@
     </div>
 
     <div align="center">
-        <asp:FileUpload ID="FileUploadPrice" runat="server" />
+        <asp:FileUpload ID="FileUploadPriceAssortment" runat="server" />
         <dx:ASPxButton ID="Upload" runat="server"
             Text="Upload" Font-Size="Medium" Width="100px" OnClick="Upload_Click">
         </dx:ASPxButton>

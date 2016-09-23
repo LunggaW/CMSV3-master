@@ -10,7 +10,7 @@
 namespace KBS.KBS.CMSV3.Administration.Interface {
     
     
-    public partial class InterfacePrice {
+    public partial class InterfacePriceAssortment {
         
         /// <summary>
         /// BackhomeBtn control.
@@ -157,13 +157,13 @@ namespace KBS.KBS.CMSV3.Administration.Interface {
         protected global::DevExpress.Web.ASPxGridView ASPxGridViewHeader;
         
         /// <summary>
-        /// FileUploadPrice control.
+        /// FileUploadPriceAssortment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.FileUpload FileUploadPrice;
+        protected global::System.Web.UI.WebControls.FileUpload FileUploadPriceAssortment;
         
         /// <summary>
         /// Upload control.
