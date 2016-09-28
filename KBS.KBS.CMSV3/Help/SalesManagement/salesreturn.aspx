@@ -77,7 +77,7 @@ h1
             <o:p></o:p>
         </p>
         <p>
-            <asp:Image ID="Image8" runat="server" ImageUrl="~/Help/Images/keterangannavigasi.png" />
+            <asp:Image ID="Image8" runat="server" ImageUrl="~/Help/Images/keterangannavigasi3.png" />
             <o:p></o:p>
         </p>
         <p>
@@ -86,7 +86,7 @@ h1
             &nbsp;<asp:Image ID="Image4" runat="server" Height="314px" ImageUrl="~/Help/Images/salesreturnButton.png" Width="829px" />
         <p style="width: 824px">
             •	Return	: berfungsi untuk meretur transaksi yang telah di validasi.<br />
-•	Entry	: berfungsi untuk melihat detail transaksi
+•	Detail	: berfungsi untuk melihat detail transaksi
 
 .<p>
             <o:p><strong>Return Sales Return</strong></o:p></p>

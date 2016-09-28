@@ -32,7 +32,20 @@ namespace KBS.KBS.CMSV3.Administration.License
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            if (!IsPostBack)
+            {
+               // ShowLicense
+                String ResultsFile = CMSfunction.ShowLicense();
+                String ResultLicense = CMSfunction.Decrypt(ResultsFile);
+                string[] values = ResultLicense.Split("|".ToCharArray());
+                message = CMSfunction.License(ResultFile.Text, Session["Username"].ToString());
+                Info.Text = "License For : " + values[0] + "<br>" +
+                                  "Max Store   : " + values[1] + "<br>" +
+                                  "Valid Until : " + values[2] + "<br>" +
+                                  "" + values[3] + "<br>" +
+                                  "" + values[4] + "<br>" +
+                                  "" + values[5];
+            }
         }
 
         protected void UploadButton_Click(object sender, EventArgs e)

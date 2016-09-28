@@ -51,7 +51,7 @@ h1
        <asp:Image ID="Image3" runat="server" Height="54px" ImageUrl="~/Help/Images/KDS.png" Width="58px" />
        <strong>PT. KAHAR DUTA SARANA</strong> </p>
        <div style="text-align:center; border-top:solid ; border-top-color:blue">
-       <h1><a name="_Toc456613665"><strong>MENU MANAGEMENT - EDIT</strong></a><o:p></o:p></h1>
+       <h1><a name="_Toc456613665"><strong>MENU PROFILE MANAGEMENT - EDIT</strong></a><o:p></o:p></h1>
     </div>
         <p>
         <span>Pada level header, yang dapat di edit hanya kolom Description saja,  pada  contoh, deskripsi di ganti dari Manajer Grocery, menjadi manajer Grocery 1</span></p>

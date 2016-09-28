@@ -56,7 +56,10 @@ h1
         <p>
         <span style="text-decoration: underline">Definition</span></p>
         <p>
-            Berfungsi untuk menginput sales dari item agar menjadi transaksi sales di hari itu.
+            Berfungsi untuk menginput sales dari item agar menjadi transaksi sales di hari itu.<br />
+Input sales dilakukan oleh user yang berada di site/store.</p>
+        <p>
+Penginputan sales terbagi atas 2 tahap yaitu input pada level header kemudian input pada level detail.
         </p>
         <h4><span style="mso-bidi-language:AR-SA;mso-no-proof:yes">Akses menu Sales Input:<o:p></o:p></span></h4>
         <p>
@@ -77,7 +80,7 @@ h1
             <o:p></o:p>
         </p>
         <p>
-            <asp:Image ID="Image8" runat="server" ImageUrl="~/Help/Images/keterangannavigasi.png" />
+            <asp:Image ID="Image8" runat="server" ImageUrl="~/Help/Images/keterangannavigasi2.png" />
             <o:p></o:p>
         </p>
         <p>

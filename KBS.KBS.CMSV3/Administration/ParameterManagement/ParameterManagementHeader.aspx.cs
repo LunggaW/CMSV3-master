@@ -276,7 +276,7 @@ namespace KBS.KBS.CMSV3.Administration.ParameterManagement
                 Session["ParamHeaderIDforUpdate"] =
                     ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "ID").ToString();
                 Session["ParamHeaderSClassforUpdate"] =
-                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SCLAS").ToString();
+                    ASPxGridViewHeader.GetRowValues(ASPxGridViewHeader.FocusedRowIndex, "SITE CLASS").ToString();
 
 
                 Session["ParamIDFilter"] = !string.IsNullOrWhiteSpace(ASPxTextBoxHeaderID.Text)

@@ -82,7 +82,7 @@ h1
             <o:p></o:p>
         </p>
         <p>
-            <asp:Image ID="Image8" runat="server" ImageUrl="~/Help/Images/keterangannavigasi.png" />
+            <asp:Image ID="Image8" runat="server" ImageUrl="~/Help/Images/keterangannavigasi1.png" />
             <o:p></o:p>
         </p>
         <p>

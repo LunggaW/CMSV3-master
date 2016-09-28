@@ -149,7 +149,7 @@
     </div>
     <br />
     <div align="center" class="title">
-        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Transfer Order Creation New"></asp:Label>
+        <asp:Label ID="Label1" runat="server" Font-Size="Large" Text="Transfer Order Creation"></asp:Label>
     </div>
     <br />
     <span>

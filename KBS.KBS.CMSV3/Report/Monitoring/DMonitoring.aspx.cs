@@ -47,6 +47,7 @@ namespace KBS.KBS.CMSV3.Report.Monitoring
 
         protected void Page_Load(object sender, EventArgs e)
         {
+           
             DTTransType = CMSfunction.GetParameterValueAndDescbyClassAndTabID(Session["Class"].ToString(), "9");
             ComboTransType.DataSource = DTTransType;
             ComboTransType.ValueField = "PARVALUE";
@@ -81,7 +82,7 @@ namespace KBS.KBS.CMSV3.Report.Monitoring
                
             }
 
-         //   RefreshDataGrid();
+           RefreshDataGrid();
 
 
         }

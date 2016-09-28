@@ -51,7 +51,7 @@ h1
        <asp:Image ID="Image3" runat="server" Height="54px" ImageUrl="~/Help/Images/KDS.png" Width="58px" />
        <strong>PT. KAHAR DUTA SARANA</strong> </p>
        <div style="text-align:center; border-top:solid ; border-top-color:blue">
-       <h1><a name="_Toc456613665"><strong>MENU MANAGEMENT DETAIL - ADD</strong></a><o:p></o:p></h1>
+       <h1><a name="_Toc456613665"><strong>MENU PROFILE MANAGEMENT DETAIL - ADD</strong></a><o:p></o:p></h1>
     </div>
         <p>
             Screen Menu Management Detail pada saat penambahan data</p>

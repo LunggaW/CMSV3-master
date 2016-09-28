@@ -83,15 +83,13 @@ Pada proses pembuatan /creation, maka user harus membuat transfer order level he
             <o:p></o:p>
         </p>
         <p>
-            <asp:Image ID="Image8" runat="server" ImageUrl="~/Help/Images/keterangannavigasi.png" />
+            <asp:Image ID="Image8" runat="server" ImageUrl="~/Help/Images/keterangannavigasi5.png" />
             <o:p></o:p>
         </p>
         <p>
-            <o:p><strong>Delete Transfer Order Creation (Belum Jadi)</strong></o:p></p>
+            <o:p><strong>Delete Transfer Order Creation</strong></o:p></p>
         <p>
-            <o:p>Sebuah Colour Group dapat di hapus apabila belum digunakan/terhubung dengan item.  
-Jika sebuah Colour Group akan di hapus, maka data yang harus di hapus adalah data yang terdapat pada  level detail terlebih dahulu kemudian level header.
-</o:p></p>
+            Untuk menghapus Transfer Order pada level header, maka harus menghapus terlebih dahulu detail nya. Apabila detail nya sudah di hapus, maka header </p>
         <p>
             <o:p>Tekan tombol delete <asp:Image ID="Image1" runat="server" ImageUrl="~/Help/Images/navigasiDelete.png" Height="31px" Width="33px" /></o:p>
         </p>

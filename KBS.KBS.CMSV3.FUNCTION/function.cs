@@ -188,6 +188,44 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 return null;
             }
         }
+        public String ShowLicense()
+        {
+            logger.Debug("Start Connect");
+            this.Connect();
+            logger.Debug("End Connect");
+            try
+            {
+                String Value = "Not Valid";
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+                cmd.CommandText = "select KDSCMSDLDESC as DATA from KDSCMSDL WHERE rownum = 1";
+
+                logger.Debug("Execute Command");
+                logger.Debug(cmd.CommandText.ToString());
+
+                OracleDataReader dr = cmd.ExecuteReader();
+                //OracleDataReader dr = cmd.ExecuteReader();
+                logger.Debug("End Execute Command");
+
+                while (dr.Read())
+                {
+
+                    Value = dr["DATA"].ToString();
+
+                }
+                logger.Debug("Start Close Connection");
+                this.Close();
+                logger.Debug("End Close Connection");
+                return Value;
+            }
+            catch (Exception e)
+            {
+                logger.Error("LicenseCheck");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+        }
         public String LicenseCheck()
         {
             logger.Debug("Start Connect");
@@ -9998,13 +10036,14 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 if ((StockDisplay.DateFrom.HasValue))
                 {
                     cmd.CommandText = cmd.CommandText +
-                                      "and TRN.CMSTRNCDAT >= :Sdate  ";
+                                      " and to_date(TRN.CMSTRNCDAT, 'DD-Mon-YY') >= to_date(:Sdate, 'DD-Mon-YY') ";
                     cmd.Parameters.Add(new OracleParameter(":Sdate", OracleDbType.Date)).Value = StockDisplay.DateFrom;
                 }
                 if (StockDisplay.DateEnd.HasValue)
                 {
                     cmd.CommandText = cmd.CommandText +
-                                      "and TRN.CMSTRNCDAT <= :EDate  ";
+
+                                      " and to_date(TRN.CMSTRNCDAT, 'DD-Mon-YY') <= to_date(:EDate, 'DD-Mon-YY')  ";
                     cmd.Parameters.Add(new OracleParameter(":EDate", OracleDbType.Date)).Value = StockDisplay.DateEnd;
                 }
 
@@ -10036,7 +10075,8 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 this.Connect();
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "select TRN.CMSTRNSITE as SITE,  " +                                    
+                cmd.CommandText = "select TRN.CMSTRNSITE as SITE,  " +
+                                    "TRN.CMSTRNOTA as NOTA, " +
                                     "TRN.CMSTRNCDAT as \"TRANSACTION DATE\", " +                                    
                                     "TRN.CMSTRNBRCD as BARCODE,  " +                                    
                                     "TRN.CMSTRNQTY as QUANTITY,  " +
@@ -13586,7 +13626,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
 
                 cmd.Parameters.Add("PINTDTLVRNTVRNTID", OracleDbType.Int32, 10).Value = VariantDtl.VariantID;
-                cmd.Parameters.Add("PINTDTLVRNTITMID", OracleDbType.Varchar2, 10).Value = VariantDtl.ItemID;
+                cmd.Parameters.Add("PINTDTLVRNTITMID", OracleDbType.Varchar2, 30).Value = VariantDtl.ItemID;
                 cmd.Parameters.Add("PINTDTLVRNTSZGID", OracleDbType.Varchar2, 20).Value = VariantDtl.SizeGroup;
                 cmd.Parameters.Add("PINTDTLVRNTSZID", OracleDbType.Varchar2, 20).Value = VariantDtl.SizeDetail;
                 cmd.Parameters.Add("PINTDTLVRNTCOGID", OracleDbType.Varchar2, 20).Value = VariantDtl.ColorGroup;
@@ -13716,7 +13756,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
 
                 cmd.Parameters.Add("PINTBRCDBRCDID", OracleDbType.Varchar2, 20).Value = Barcode.Barcode;
-                cmd.Parameters.Add("PINTBRCDITEMID", OracleDbType.Varchar2, 10).Value = Barcode.ItemID;
+                cmd.Parameters.Add("PINTBRCDITEMID", OracleDbType.Varchar2, 30).Value = Barcode.ItemID;
                 cmd.Parameters.Add("PINTBRCDVRNTID", OracleDbType.Int32, 10).Value = Barcode.VariantID;
                 cmd.Parameters.Add("PINTBRCDTYPE", OracleDbType.Int32, 1).Value = Barcode.Type;
                 cmd.Parameters.Add("PINTBRCDSTAT", OracleDbType.Int32, 1).Value = Barcode.Status;

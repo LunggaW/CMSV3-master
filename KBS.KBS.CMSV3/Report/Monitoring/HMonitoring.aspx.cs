@@ -64,7 +64,7 @@ namespace KBS.KBS.CMSV3.Report.Monitoring
                 RefreshDataGrid();
                
             }
-            
+            RefreshDataGrid();
 
 
         }

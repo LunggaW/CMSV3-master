@@ -73,8 +73,17 @@ h1
             <o:p></o:p>
         </p>
         <p>
-            <asp:Image ID="Image8" runat="server" ImageUrl="~/Help/Images/keterangannavigasi.png" />
+            <asp:Image ID="Image8" runat="server" ImageUrl="~/Help/Images/keterangannavigasi1.png" />
         </p>
+        <p>
+            <o:p><strong>Delete Transfer Order Creation Detail</strong></o:p></p>
+        <p>
+             <o:p>Tekan tombol delete <asp:Image ID="Image1" runat="server" ImageUrl="~/Help/Images/navigasiDelete.png" Height="31px" Width="33px" /></o:p>
+        </p>
+        <p>
+            <o:p>Maka akan muncul popup untuk validasi, apakah yakin data yang dipilih akan di hapus.</o:p></p>
+        <p>
+            <o:p>Klik OK, maka data akan terhapus.</o:p></p>
         <p style="border-bottom:solid; border-bottom-color:blue;text-align:right">
            <strong>PT. KAHAR DUTA SARANA</strong></p>
     </form>

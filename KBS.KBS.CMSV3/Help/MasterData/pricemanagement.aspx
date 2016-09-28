@@ -51,7 +51,7 @@ h1
        <asp:Image ID="Image3" runat="server" Height="54px" ImageUrl="~/Help/Images/KDS.png" Width="58px" />
        <strong>PT. KAHAR DUTA SARANA</strong> </p>
        <div style="text-align:center; border-top:solid ; border-top-color:blue">
-       <h1><a name="_Toc456613665"><strong>PRICE MANAGEMENT</strong></a><o:p></o:p></h1>
+       <h1>SALES <a name="_Toc456613665"><strong>PRICE MANAGEMENT</strong></a><o:p></o:p></h1>
     </div>
         <p>
         <span style="text-decoration: underline">Definition</span></p>
@@ -82,7 +82,7 @@ h1
             <o:p></o:p>
         </p>
         <p>
-            <asp:Image ID="Image8" runat="server" ImageUrl="~/Help/Images/keterangannavigasi.png" />
+            <asp:Image ID="Image8" runat="server" ImageUrl="~/Help/Images/keterangannavigasi1.png" />
             <o:p></o:p>
         </p>
         <p>

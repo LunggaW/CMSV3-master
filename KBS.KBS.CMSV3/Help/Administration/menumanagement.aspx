@@ -51,21 +51,21 @@ h1
        <asp:Image ID="Image3" runat="server" Height="54px" ImageUrl="~/Help/Images/KDS.png" Width="58px" />
        <strong>PT. KAHAR DUTA SARANA</strong> </p>
        <div style="text-align:center; border-top:solid ; border-top-color:blue">
-       <h1><a name="_Toc456613665"><strong>MENU MANAGEMENT</strong></a><o:p></o:p></h1>
+       <h1><a name="_Toc456613665"><strong>MENU PROFILE MANAGEMENT</strong></a><o:p></o:p></h1>
     </div>
         <p>
         <span style="text-decoration: underline">Definition</span></p>
         <p>
-            Menu management adalah salah satu menu CMS yang mengatur akses profile terhadap menu mana saja yang dapat di akses.
+            Menu profile management adalah salah satu menu CMS yang mengatur akses profile terhadap menu mana saja yang dapat di akses.
         </p>
         <h4><span style="mso-bidi-language:AR-SA;mso-no-proof:yes">Akses menu Menu management:<o:p></o:p></span></h4>
         <p>
-            Administration -> Menu Management</p>
+            Administration -> Menu Profile Management</p>
         <p>
             <asp:Image ID="Image4" runat="server" Height="314px" ImageUrl="~/Help/Images/menumanagement.png" Width="829px" />
         </p>
         <p>
-           Pada screen Menu managgement header terdapat dua buah panel utama yaitu</p>
+           Pada screen Menu profile management header terdapat dua buah panel utama yaitu</p>
         <p>
             • Panel atas: berfungsi sebagai kolom pencarian untuk menu profile yang sudah ada, baik secara nama profile atau deskkripsi  menu profile</p>
         <p>
@@ -89,7 +89,7 @@ h1
             <o:p></o:p>
         </p>
         <p>
-            <o:p><strong>Delete Menu Management</strong></o:p></p>
+            <o:p><strong>Delete Menu Profile Management</strong></o:p></p>
         <p>
             <o:p>Menu profile yang sudah tidak di gunakan, dalam CMS bisa saja di hapus/di delete.<br />
 Untuk menghapus sebuah Menu Profile, maka harus dilakukan penghapusan pada level detail dan header.<br />

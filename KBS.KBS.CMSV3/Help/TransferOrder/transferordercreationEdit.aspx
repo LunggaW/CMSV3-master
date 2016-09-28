@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Edit - Color Management</title>
+    <title>Edit - Transfer Order Creation</title>
     <style type="text/css">
 
 h1
@@ -46,29 +46,28 @@ h1
     </style>
 </head>
 <body>
-    <form id="editcolormanagement" runat="server">
+    <form id="edittocreation" runat="server">
     <p>
        <asp:Image ID="Image3" runat="server" Height="54px" ImageUrl="~/Help/Images/KDS.png" Width="58px" />
        <strong>PT. KAHAR DUTA SARANA</strong> </p>
        <div style="text-align:center; border-top:solid ; border-top-color:blue">
-       <h1><a name="_Toc456613665"><strong>COLOR MANAGEMENT - EDIT</strong></a><o:p></o:p></h1>
+       <h1><a name="_Toc456613665"><strong>TRANSFER ORDER CREATION - EDIT</strong></a><o:p></o:p></h1>
     </div>
         <p>
-        <span><strong>Edit Color</strong></span></p>
+        <span><strong>Edit Transfer Order Creation</strong></span></p>
         <p>
-            Untuk proses edit pada menu Colour Management bisa saja ada pada level header ataupun detail.
+            Untuk proses edit pada menu Transfer order creation bisa saja ada pada level header ataupun detail.
         </p>
         <p>
-            Pada saat klik button edit, maka akan tampil data color yang akan di edit sebagai berikut</p>
+            Screean edit transfer order creation</p>
         <p>
-            <asp:Image ID="Image4" runat="server" Height="314px" ImageUrl="~/Help/Images/colormanagementEdit.png" Width="829px" />
+            <asp:Image ID="Image4" runat="server" Height="314px" ImageUrl="~/Help/Images/tocreationEdit.png" Width="829px" />
         </p>
+        <p>
+            Yang bisa di ubah hanya field store from, store to dan date.</p>
         <p>
             Lakukan Validasi <asp:Image ID="Image1" runat="server" Height="23px" ImageUrl="~/Help/Images/navigasiValidasi.png" Width="31px" />
-            , jika berhasil, maka color akan berubah sesuai dengan yang di edit</p>
-        <p>
-            <asp:Image ID="Image6" runat="server" Height="314px" ImageUrl="~/Help/Images/colormanagementEditDone.png" Width="829px" />
-        </p>
+            , jika berhasil, maka transfer order creation akan berubah sesuai dengan yang di edit.</p>
         <p style="border-bottom:solid; border-bottom-color:blue;text-align:right">
            <strong>PT. KAHAR DUTA SARANA</strong></p>
     </form>

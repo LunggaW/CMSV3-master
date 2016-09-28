@@ -51,7 +51,7 @@ h1
        <asp:Image ID="Image3" runat="server" Height="54px" ImageUrl="~/Help/Images/KDS.png" Width="58px" />
        <strong>PT. KAHAR DUTA SARANA</strong> </p>
        <div style="text-align:center; border-top:solid ; border-top-color:blue">
-       <h1><a name="_Toc456613665"><strong>PRICE MANAGEMENT - ADD</strong></a><o:p></o:p></h1>
+       <h1>SALES <a name="_Toc456613665"><strong>PRICE MANAGEMENT - ADD</strong></a><o:p></o:p></h1>
     </div>
         <p>
             Screen new price management</p>
@@ -60,9 +60,6 @@ h1
         </p>
         <p>
             Isi kolom di atas. sebagai contoh :</p>
-        <p>
-            <asp:Image ID="Image7" runat="server" />
-        </p>
         <p>
             <asp:Image ID="Image5" runat="server" Height="485px" ImageUrl="~/Help/Images/keteranganpricemanagementAdd.png" Width="446px" />
         </p>
