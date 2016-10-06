@@ -10020,11 +10020,22 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 this.Connect();
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "select TRN.CMSTRNSITE as SITE,  " +
-                                    "count(TRN.CMSTRNSITE) as TRANSACTION, " +
-                                    "SUM(TRN.CMSTRNQTY) as QUANTITY,  " +
-                                    "SUM(TRN.CMSTRNAMT) as AMOUNT " +                                   
-                                    "from KDSCMSTRN TRN where CMSTRNSITE = CMSTRNSITE ";
+                cmd.CommandText = "select TRN.CMSTRNSITE as SITE, " +
+                                  "(select SITESITENAME FROM KDSCMSSITE WHERE SITESITE = TRN.CMSTRNSITE) AS \"SITE NAME\", " +
+                                  "count(TRN.CMSTRNSITE) as TRANSACTION, " +
+                                  "SUM(TRN.CMSTRNQTY) as QUANTITY, " +
+                                  "SUM(TRN.CMSFINALPRICE) as AMOUNT, " +
+                                  "CASE " +
+                                  "WHEN TRN.CMSTRSTAT = '1' THEN 'Sales' " +
+                                  "WHEN TRN.CMSTRSTAT = '2' THEN 'Return' " +
+                                  "WHEN TRN.CMSTRSTAT = '3' THEN 'Movement In' " +
+                                  "ELSE 'Unknown Type' END AS STATUS, " +
+                                  "(SELECT COUNT(TRN.CMSTRNSITE) FROM KDSCMSTRN TRN2 WHERE TRN2.CMSTRNSITE = TRN.CMSTRNSITE AND TRN2.CMSTRSTAT = TRN.CMSTRSTAT AND TRN2.CMSTRNFLAG = 1 GROUP BY TRN.CMSTRNSITE, TRN.CMSTRSTAT) " +
+                                  "|| '/' || " +
+                                  "(SELECT COUNT(TRN.CMSTRNSITE) FROM KDSCMSTRN TRN2 WHERE TRN2.CMSTRNSITE = TRN.CMSTRNSITE AND TRN2.CMSTRSTAT = TRN.CMSTRSTAT GROUP BY TRN.CMSTRNSITE, TRN.CMSTRSTAT) AS PROGRESS " +
+                                  "from KDSCMSTRN TRN " +
+                                  "where CMSTRNSITE = CMSTRNSITE ";
+                                  
                 cmd.CommandType = CommandType.Text;
 
                 if (!string.IsNullOrWhiteSpace(StockDisplay.Site))
@@ -10049,8 +10060,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
 
                 cmd.CommandText = cmd.CommandText +
-                                     "group By TRN.CMSTRNSITE ";
-
+                                     "group By TRN.CMSTRNSITE, TRN.CMSTRSTAT, TRN.CMSTRNFLAG";
                 OracleDataReader dr = cmd.ExecuteReader();
 
 
@@ -10080,20 +10090,21 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "TRN.CMSTRNCDAT as \"TRANSACTION DATE\", " +
                                   "TRN.CMSTRNBRCD as BARCODE,  " +
                                   "TRN.CMSTRNQTY as QUANTITY,  " +
-                                  "TRN.CMSTRNAMT as AMOUNT, " +
-                                  "TRN.CMSTRSKU as DISCOUNT, " +
+                                  "TRN.CMSFINALPRICE as AMOUNT, " +
+                                  "TRN.CMSDISCOUNT as DISCOUNT, " +
                                   "CASE "+
                                   "WHEN TRN.CMSTRSTAT = '1' THEN 'Sales' " +
                                   "WHEN TRN.CMSTRSTAT = '2' THEN 'Return' " +
                                   "WHEN TRN.CMSTRSTAT = '3' THEN 'Movement In' " +
                                   "ELSE 'Unknown Type' END AS TYPE , " +
                                   "CASE " +
-                                  "WHEN TRN.CMSTRNFLAG = '2' THEN 'Succes Interface' " +
+                                  "WHEN TRN.CMSTRNFLAG = '1' THEN 'Not Processed' " +
+                                  "WHEN TRN.CMSTRNFLAG = '2' THEN 'Success' " +
                                   "WHEN TRN.CMSTRNFLAG = '3' THEN 'Error' " +
                                   "ELSE '' END AS STATUS , " +
-                                  "CASE WHEN " +
-                                  "TRN.CMSTRNTYPE = '1' THEN 'Browser' " +
-                                  "ELSE 'Mobile' END AS \"Input By\" ,'' AS NOTE, " +
+                                  "CASE WHEN " +"TRN.CMSTRNTYPE = '1' THEN 'Browser' " +
+                                  "ELSE 'Mobile' END AS \"Input By\" ," +
+                                  "'' AS NOTE, " +
                                   "CMSTRNUSR as \"USER\" " +
                                   "from KDSCMSTRN TRN " +
                                   "where CMSTRNSITE = CMSTRNSITE and " +
