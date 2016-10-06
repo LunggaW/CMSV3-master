@@ -239,7 +239,7 @@ namespace KBS.KBS.CMSV3.Report.Monitoring
 
             DTStock = CMSfunction.GetAllTransactionTableMonitoring(StockDisplay, Session["SiteProfile"].ToString());
             GridMonitoring.DataSource = DTStock;
-            GridMonitoring.KeyFieldName = "BARCODE";
+            GridMonitoring.KeyFieldName = "SITE";
             GridMonitoring.DataBind();
 
         }

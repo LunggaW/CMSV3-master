@@ -10075,24 +10075,29 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 this.Connect();
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "select TRN.CMSTRNSITE as SITE,  " +
-                                    "TRN.CMSTRNOTA as NOTA, " +
-                                    "TRN.CMSTRNCDAT as \"TRANSACTION DATE\", " +                                    
-                                    "TRN.CMSTRNBRCD as BARCODE,  " +                                    
-                                    "TRN.CMSTRNQTY as QUANTITY,  " +
-                                    "TRN.CMSTRNAMT as AMOUNT, " +
-                                    "TRN.CMSTRSKU as DISCOUNT, " +
-                                    "CASE WHEN TRN.CMSTRSTAT = '1' THEN 'Sales' " +
-                                    "WHEN TRN.CMSTRSTAT = '2' THEN 'Return' " +
-                                    "WHEN TRN.CMSTRSTAT = '3' THEN 'Movement In' " +
-                                    "ELSE 'Unknown Type' END AS TYPE ," +
-                                     "CASE WHEN TRN.CMSTRNFLAG = '2' THEN 'Succes Interface' " +
-                                    "WHEN TRN.CMSTRNFLAG = '3' THEN 'Error' " +
-                                    "ELSE '' END AS STATUS ," +
-                                    "CASE WHEN TRN.CMSTRNTYPE = '1' THEN 'Browser' " +                                    
-                                    "ELSE 'Mobile' END AS InputBy ," +
-                                    "'' AS NOTE " +
-                                    "from KDSCMSTRN TRN where CMSTRNSITE = CMSTRNSITE and TRN.CMSTRSTAT <> 9 ";
+                cmd.CommandText = "select TRN.CMSTRNSITE as SITE, " +
+                                  //"TRN.CMSTRNOTA as NOTA, " +
+                                  "TRN.CMSTRNCDAT as \"TRANSACTION DATE\", " +
+                                  "TRN.CMSTRNBRCD as BARCODE,  " +
+                                  "TRN.CMSTRNQTY as QUANTITY,  " +
+                                  "TRN.CMSTRNAMT as AMOUNT, " +
+                                  "TRN.CMSTRSKU as DISCOUNT, " +
+                                  "CASE "+
+                                  "WHEN TRN.CMSTRSTAT = '1' THEN 'Sales' " +
+                                  "WHEN TRN.CMSTRSTAT = '2' THEN 'Return' " +
+                                  "WHEN TRN.CMSTRSTAT = '3' THEN 'Movement In' " +
+                                  "ELSE 'Unknown Type' END AS TYPE , " +
+                                  "CASE " +
+                                  "WHEN TRN.CMSTRNFLAG = '2' THEN 'Succes Interface' " +
+                                  "WHEN TRN.CMSTRNFLAG = '3' THEN 'Error' " +
+                                  "ELSE '' END AS STATUS , " +
+                                  "CASE WHEN " +
+                                  "TRN.CMSTRNTYPE = '1' THEN 'Browser' " +
+                                  "ELSE 'Mobile' END AS \"Input By\" ,'' AS NOTE, " +
+                                  "CMSTRNUSR as \"USER\" " +
+                                  "from KDSCMSTRN TRN " +
+                                  "where CMSTRNSITE = CMSTRNSITE and " +
+                                  "TRN.CMSTRSTAT <> 9 ";
                 cmd.CommandType = CommandType.Text;
 
 

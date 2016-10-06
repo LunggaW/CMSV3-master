@@ -203,8 +203,7 @@ namespace KBS.KBS.CMSV3.Report.Monitoring
         {
             Stock StockDisplay = new Stock();
 
-
-
+            
 
            
 
