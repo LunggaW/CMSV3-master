@@ -16,5 +16,11 @@ namespace KBS.KBS.CMSV3.DATAMODEL
 
         public DateTime? TransDate { get; set; }
 
+
+        //Update GAGAN
+        public int DISCOUNT { get; set; }
+        public string NormalPrice { get; set; }
+        public string FinalPrice { get; set; }
+
     }
 }

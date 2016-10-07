@@ -148,24 +148,6 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput {
         protected global::DevExpress.Web.ASPxLabel ASPxLabelMessage;
         
         /// <summary>
-        /// TextBoxNota control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox TextBoxNota;
-        
-        /// <summary>
-        /// ComboSKU control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::DevExpress.Web.ASPxComboBox ComboSKU;
-        
-        /// <summary>
         /// BARCODETXT control.
         /// </summary>
         /// <remarks>
@@ -173,6 +155,15 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::DevExpress.Web.ASPxTextBox BARCODETXT;
+        
+        /// <summary>
+        /// TextBoxNormalPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox TextBoxNormalPrice;
         
         /// <summary>
         /// QTYTXT control.
@@ -184,13 +175,22 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput {
         protected global::DevExpress.Web.ASPxTextBox QTYTXT;
         
         /// <summary>
-        /// ASPxTextBoxAmt control.
+        /// TextBoxDiscount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxTextBox ASPxTextBoxAmt;
+        protected global::DevExpress.Web.ASPxTextBox TextBoxDiscount;
+        
+        /// <summary>
+        /// ASPxTextBoxFinalPrice control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxTextBox ASPxTextBoxFinalPrice;
         
         /// <summary>
         /// ASPxDateEditTransDate control.

@@ -10024,7 +10024,8 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "(select SITESITENAME FROM KDSCMSSITE WHERE SITESITE = TRN.CMSTRNSITE) AS \"SITE NAME\", " +
                                   "count(TRN.CMSTRNSITE) as TRANSACTION, " +
                                   "SUM(TRN.CMSTRNQTY) as QUANTITY, " +
-                                  "SUM(TRN.CMSFINALPRICE) as AMOUNT, " +
+                                  "SUM(TRN.CMSNORMALPRICE) as \"NORMAL PRICE\", " +
+                                  "SUM(TRN.CMSFINALPRICE) as \"FINAL PRICE\", " +
                                   "CASE " +
                                   "WHEN TRN.CMSTRSTAT = '1' THEN 'Sales' " +
                                   "WHEN TRN.CMSTRSTAT = '2' THEN 'Return' " +
@@ -10090,7 +10091,8 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "TRN.CMSTRNCDAT as \"TRANSACTION DATE\", " +
                                   "TRN.CMSTRNBRCD as BARCODE,  " +
                                   "TRN.CMSTRNQTY as QUANTITY,  " +
-                                  "TRN.CMSFINALPRICE as AMOUNT, " +
+                                  "TRN.CMSNORMALPRICE as \"NORMAL PRICE\", " +
+                                  "TRN.CMSFINALPRICE as \"FINAL PRICE\", " +
                                   "TRN.CMSDISCOUNT as DISCOUNT, " +
                                   "CASE "+
                                   "WHEN TRN.CMSTRSTAT = '1' THEN 'Sales' " +
@@ -15137,16 +15139,16 @@ namespace KBS.KBS.CMSV3.FUNCTION
             logger.Debug("End Connect");
             try
             {
-
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
                 cmd.CommandText = "PKKDSCMSSALES_INT.INS_DATA";
                 cmd.CommandType = CommandType.StoredProcedure;
 
-                cmd.Parameters.Add("PCMSSALNOTA", OracleDbType.Varchar2, 20).Value = salesInputSimple.NOTA;
+
+                cmd.Parameters.Add("PCMSSALNOTA", OracleDbType.Varchar2, 20).Value = "WEB";
                 cmd.Parameters.Add("PCMSSALBRCD", OracleDbType.Varchar2, 20).Value = salesInputSimple.BARCODE;
                 cmd.Parameters.Add("PCMSSALQTY", OracleDbType.Int32).Value = salesInputSimple.SALESQTY;
-                cmd.Parameters.Add("PCMSSALSKU", OracleDbType.Int32).Value = salesInputSimple.SKU;
+                cmd.Parameters.Add("PCMSSALSKU", OracleDbType.Int32).Value = salesInputSimple.DISCOUNT;
                 cmd.Parameters.Add("PCMSSALFLAG", OracleDbType.Int32).Value = 1;
                 cmd.Parameters.Add("PCMSSALSTAT", OracleDbType.Int32).Value = Int32.Parse(salesInputSimple.SALESQTY) < 0 ? 2 : 1;
                 cmd.Parameters.Add("PCMSSALCOMM", OracleDbType.Varchar2, 1000).Value = "";
@@ -15157,10 +15159,18 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.Parameters.Add("PCMSSALAMT", OracleDbType.Int32).Value = salesInputSimple.AMOUNT;
                 cmd.Parameters.Add("PCMSSALTYPE", OracleDbType.Int32).Value = 1;
                 cmd.Parameters.Add("PCMSSALTRNDATE", OracleDbType.Date).Value = salesInputSimple.TransDate;
+                
+                //Update GAGAN
+                cmd.Parameters.Add("PCMSDISCOUNT", OracleDbType.Int32).Value = salesInputSimple.DISCOUNT;
+                cmd.Parameters.Add("PCMSFINALPRICE", OracleDbType.Varchar2).Value = salesInputSimple.FinalPrice;
+                cmd.Parameters.Add("PCMSNORMALPRICE", OracleDbType.Varchar2).Value = salesInputSimple.NormalPrice;
+
                 cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
                 cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
 
-               
+
+                
+
 
                     logger.Debug("Execute Command");
                 logger.Debug(cmd.CommandText.ToString());

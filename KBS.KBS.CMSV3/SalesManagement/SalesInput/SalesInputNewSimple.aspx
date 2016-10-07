@@ -166,23 +166,6 @@
 
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="NOTA" ID="TextBoxNota">
-                        <ReadOnlyStyle BackColor="Silver">
-                        </ReadOnlyStyle>
-                        <CaptionCellStyle Width="130px">
-                        </CaptionCellStyle>
-                    </dx:ASPxTextBox>
-                </td>
-                <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxComboBox runat="server" Caption="PROMO" ID="ComboSKU" Width="170px">
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
-                        <CaptionCellStyle Width="130px">
-                        </CaptionCellStyle>
-                    </dx:ASPxComboBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="tableHeader2Column" colspan="5">
                     <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="BARCODE" ID="BARCODETXT">
                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
@@ -191,8 +174,9 @@
                     </dx:ASPxTextBox>
                 </td>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Caption="QTY" ID="QTYTXT" onkeypress="return isNumberKeyQty(event)" Width="170px">
-                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="NORMAL PRICE" ID="TextBoxNormalPrice">
+                        <ReadOnlyStyle BackColor="Silver">
+                        </ReadOnlyStyle>
                         <CaptionCellStyle Width="130px">
                         </CaptionCellStyle>
                     </dx:ASPxTextBox>
@@ -200,7 +184,24 @@
             </tr>
             <tr>
                 <td class="tableHeader2Column" colspan="5">
-                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="AMOUNT" ID="ASPxTextBoxAmt" onkeypress="return isNumberKey(event)">
+                    <dx:ASPxTextBox runat="server" Caption="QTY" ID="QTYTXT" onkeypress="return isNumberKeyQty(event)" Width="170px">
+                        <CaptionSettings ShowColon="False"></CaptionSettings>
+                        <CaptionCellStyle Width="130px">
+                        </CaptionCellStyle>
+                    </dx:ASPxTextBox>
+                </td>
+                <td class="tableHeader2Column" colspan="5">
+                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="DISCOUNT" ID="TextBoxDiscount">
+                        <ReadOnlyStyle BackColor="Silver">
+                        </ReadOnlyStyle>
+                        <CaptionCellStyle Width="130px">
+                        </CaptionCellStyle>
+                    </dx:ASPxTextBox>
+                </td>
+            </tr>
+            <tr>
+                <td class="tableHeader2Column" colspan="5">
+                    <dx:ASPxTextBox runat="server" Width="170px" ReadOnly="False" Caption="FINAL PRICE" ID="ASPxTextBoxFinalPrice" onkeypress="return isNumberKey(event)">
                         <ReadOnlyStyle BackColor="Silver">
                         </ReadOnlyStyle>
                         <CaptionCellStyle Width="130px">

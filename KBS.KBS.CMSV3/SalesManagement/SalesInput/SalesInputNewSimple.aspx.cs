@@ -41,13 +41,13 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
             if (!IsPostBack)
             {
 
-                ComboSKU.Dispose();
-                DTSku = CMSfunction.GetSKULinkBoxNoBrand(Session["DefaultSite"].ToString() );
-                ComboSKU.DataSource = DTSku;
-                ComboSKU.ValueField = "VALUE";
-                ComboSKU.ValueType = typeof(string);
-                ComboSKU.TextField = "DESCRIPTION";
-                ComboSKU.DataBind();
+                //ComboSKU.Dispose();
+                //DTSku = CMSfunction.GetSKULinkBoxNoBrand(Session["DefaultSite"].ToString() );
+                //ComboSKU.DataSource = DTSku;
+                //ComboSKU.ValueField = "VALUE";
+                //ComboSKU.ValueType = typeof(string);
+                //ComboSKU.TextField = "DESCRIPTION";
+                //ComboSKU.DataBind();
             }
         }
 
@@ -91,7 +91,7 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
         protected void ClearBtn_Click(object sender, EventArgs e)
         {
 
-            TextBoxNota.Text = "";
+            TextBoxNormalPrice.Text = "";
             BARCODETXT.Text = "";
             QTYTXT.Text = "";
             
@@ -122,17 +122,20 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
             
             SalesInputSimple salesInputSimple = new SalesInputSimple();
 
-            salesInputSimple.NOTA = TextBoxNota.Text;
+            salesInputSimple.NormalPrice = TextBoxNormalPrice.Text;
             salesInputSimple.BARCODE = BARCODETXT.Text;
-            salesInputSimple.SKU = (ComboSKU.Value != null) ? ComboSKU.Value.ToString() : "";
+            //salesInputSimple.SKU = (ComboSKU.Value != null) ? ComboSKU.Value.ToString() : "";
             salesInputSimple.SALESQTY = QTYTXT.Text;
-            salesInputSimple.AMOUNT = ASPxTextBoxAmt.Text;
+            salesInputSimple.FinalPrice = ASPxTextBoxFinalPrice.Text;
+            salesInputSimple.DISCOUNT = Int32.Parse(TextBoxDiscount.Text);
             salesInputSimple.TransDate = ASPxDateEditTransDate.Date;
 
-            TextBoxNota.Text = "";
+            TextBoxNormalPrice.Text = "";
             BARCODETXT.Text = "";
             QTYTXT.Text = "";
-            ASPxTextBoxAmt.Text = "";
+            ASPxTextBoxFinalPrice.Text = "";
+            TextBoxDiscount.Text = "";
+            TextBoxNormalPrice.Text = "";
 
             message = CMSfunction.InsertSalesInputSimple(salesInputSimple, Session["UserID"].ToString(), Session["DefaultSite"].ToString());
 
