@@ -10143,21 +10143,20 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 }
 
 
+                if (!string.IsNullOrWhiteSpace(StockDisplay.InputType))
+                {
+                    cmd.CommandText = cmd.CommandText +
+                                      "and TRN.CMSTRNTYPE = '" + StockDisplay.InputType + "'  ";
+                }
+
                 if (!string.IsNullOrWhiteSpace(StockDisplay.TransactionType))
                 {
                     cmd.CommandText = cmd.CommandText +
-                                      "and TRN.CMSTRNTYPE = '" + StockDisplay.TransactionType + "'  ";
-                }
-
-                if (!string.IsNullOrWhiteSpace(StockDisplay.Nota))
-                {
-                    cmd.CommandText = cmd.CommandText +
                                       "and TRN.CMSTRSTAT = :Stat  ";
-                    cmd.Parameters.Add(new OracleParameter(":Stat", OracleDbType.Varchar2)).Value = StockDisplay.Nota;
+                    cmd.Parameters.Add(new OracleParameter(":Stat", OracleDbType.Varchar2)).Value = StockDisplay.TransactionType;
                 }
 
-
-
+                
 
                 OracleDataReader dr = cmd.ExecuteReader();
 

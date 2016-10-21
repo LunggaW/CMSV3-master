@@ -51,6 +51,10 @@
     <Reference Include="DevExpress.Charts.v15.1.Core, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Data.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.DataAccess.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.ExpressApp.Web.v15.1, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\DevExpress 15.1\Components\Bin\Framework\DevExpress.ExpressApp.Web.v15.1.dll</HintPath>
+    </Reference>
     <Reference Include="DevExpress.Office.v15.1.Core, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.PivotGrid.v15.1.Core, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v15.1.Core, Version=15.1.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />

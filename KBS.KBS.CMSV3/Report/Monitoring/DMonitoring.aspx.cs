@@ -234,7 +234,7 @@ namespace KBS.KBS.CMSV3.Report.Monitoring
             StockDisplay.DateEnd = DateEnd.Date != DateTime.MinValue ? (DateTime?)DateEnd.Date : null;
             StockDisplay.Site = (ComboSite.Value != null) ? ComboSite.Value.ToString() : "";
             StockDisplay.TransactionType = (ComboTransType.Value != null) ? ComboTransType.Value.ToString() : "";
-            StockDisplay.Nota = (ComboInput.Value != null) ? ComboInput.Value.ToString() : "";
+            StockDisplay.InputType = (ComboInput.Value != null) ? ComboInput.Value.ToString() : "";
 
 
             DTStock = CMSfunction.GetAllTransactionTableMonitoring(StockDisplay, Session["SiteProfile"].ToString());

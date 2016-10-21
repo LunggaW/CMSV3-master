@@ -13,6 +13,7 @@ namespace KBS.KBS.CMSV3.DATAMODEL
             public string ItemID { get; set; }
             public string Barcode { get; set; }
             public string TransactionType { get; set; }
+            public string InputType { get; set; }
             public string Site { get; set; }
             public DateTime? DateEnd { get; set; }
             public DateTime? DateFrom { get; set; }
