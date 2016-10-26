@@ -135,9 +135,9 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
             QTYTXT.Text = "";
             ASPxTextBoxAmt.Text = "";
 
-            message = CMSfunction.InsertSalesInputSimple(salesInputSimple, Session["UserID"].ToString(), Session["DefaultSite"].ToString());
+            message = CMSfunction.InsertSalesSimple(salesInputSimple, Session["UserID"].ToString(), Session["DefaultSite"].ToString(), 1);
 
-        }
+            }
 
     }
 }

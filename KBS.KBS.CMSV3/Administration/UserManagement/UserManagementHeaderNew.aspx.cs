@@ -175,7 +175,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
                     LabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
                     if (message.Code < 0)
                     {
-                        string script = "alert('Record already detail , please delete color detail');";
+                        string script = "alert('Error inserting data');";
                         ClientScript.RegisterClientScriptBlock(this.GetType(), "Alert", script, true);
                     }
                     LabelMessage.Text = message.Message;
@@ -243,7 +243,6 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
 
 
                 message = CMSfunction.insertUser(user, Session["UserID"].ToString());
-            
         }
 
         protected void Help_Click(object sender, EventArgs e)

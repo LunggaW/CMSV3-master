@@ -626,6 +626,7 @@
     <Content Include="Report\Sales\SalesHeader.aspx" />
     <Content Include="Report\Sales\SalesSummary.aspx" />
     <Content Include="SalesManagement\SalesInput\SalesInputMobileSimple.aspx" />
+    <Content Include="SalesManagement\SalesInput\SalesReturnNewSimple.aspx" />
     <Content Include="SalesManagement\SalesInput\SalesInputNewSimple.aspx" />
     <Content Include="SalesManagement\SalesMobile\SalesMobile.aspx" />
     <Content Include="SalesManagement\SalesReturn\SalesDetailReturn.aspx" />
@@ -2024,6 +2025,13 @@
     </Compile>
     <Compile Include="SalesManagement\SalesInput\SalesInputMobileSimple.aspx.designer.cs">
       <DependentUpon>SalesInputMobileSimple.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SalesManagement\SalesInput\SalesReturnNewSimple.aspx.cs">
+      <DependentUpon>SalesReturnNewSimple.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SalesManagement\SalesInput\SalesReturnNewSimple.aspx.designer.cs">
+      <DependentUpon>SalesReturnNewSimple.aspx</DependentUpon>
     </Compile>
     <Compile Include="SalesManagement\SalesInput\SalesInputNewSimple.aspx.cs">
       <DependentUpon>SalesInputNewSimple.aspx</DependentUpon>

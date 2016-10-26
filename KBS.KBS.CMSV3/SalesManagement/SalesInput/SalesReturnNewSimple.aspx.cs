@@ -16,7 +16,7 @@ using KBS.KBS.CMSV3.Administration;
 
 namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
 {
-    public partial class SalesInputNewSimple : System.Web.UI.Page
+    public partial class SalesReturnNewSimple : System.Web.UI.Page
     {
         private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
         private function CMSfunction = new function();
@@ -137,9 +137,9 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
             TextBoxDiscount.Text = "";
             TextBoxNormalPrice.Text = "";
 
-            message = CMSfunction.InsertSalesSimple(salesInputSimple, Session["UserID"].ToString(), Session["DefaultSite"].ToString(), 1);
+            message = CMSfunction.InsertSalesSimple(salesInputSimple, Session["UserID"].ToString(), Session["DefaultSite"].ToString(), 2);
 
-        }
+            }
 
     }
 }

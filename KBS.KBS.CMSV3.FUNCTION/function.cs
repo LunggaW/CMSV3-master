@@ -13124,24 +13124,24 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.CommandType = CommandType.StoredProcedure;
 
 
-                cmd.Parameters.Add("PUSERUSID", OracleDbType.Varchar2, 50).Value = user.UserID;
-                cmd.Parameters.Add("PUSERUSNM", OracleDbType.Varchar2, 50).Value = user.Username;
-                cmd.Parameters.Add("PUSERPASW", OracleDbType.Varchar2, 50).Value = user.Password;
+                cmd.Parameters.Add("PUSERUSID", OracleDbType.Varchar2, 20).Value = user.UserID;
+                cmd.Parameters.Add("PUSERUSNM", OracleDbType.Varchar2, 20).Value = user.Username;
+                cmd.Parameters.Add("PUSERPASW", OracleDbType.Varchar2, 20).Value = user.Password;
                 cmd.Parameters.Add("PUSERUSDSC", OracleDbType.Varchar2, 50).Value = user.Description;
                 cmd.Parameters.Add("PUSERSTAT", OracleDbType.Int32).Value = user.Status;
                 cmd.Parameters.Add("PUSERSDAT", OracleDbType.Date).Value = user.StartDate;
                 cmd.Parameters.Add("PUSEREDAT", OracleDbType.Date).Value = user.EndDate;
                 cmd.Parameters.Add("PUSERTYPE", OracleDbType.Int32).Value = user.UserType;
-                cmd.Parameters.Add("PUSERIMEI", OracleDbType.Varchar2, 50).Value = user.IMEI;
-                cmd.Parameters.Add("PUSERACPROF", OracleDbType.Varchar2, 50).Value = user.AccessProfile;
-                cmd.Parameters.Add("PUSERMEPROF", OracleDbType.Varchar2, 50).Value = user.MenuProfile;
-                cmd.Parameters.Add("PUSERSTPROF", OracleDbType.Varchar2, 50).Value = user.SiteProfile;
-                cmd.Parameters.Add("PUSERINTF", OracleDbType.Varchar2, 50).Value = "0";
-                cmd.Parameters.Add("PUSERCRBY", OracleDbType.Varchar2, 50).Value = CurrUser;
+                cmd.Parameters.Add("PUSERIMEI", OracleDbType.Varchar2, 20).Value = user.IMEI;
+                cmd.Parameters.Add("PUSERACPROF", OracleDbType.Varchar2, 20).Value = user.AccessProfile;
+                cmd.Parameters.Add("PUSERMEPROF", OracleDbType.Varchar2, 20).Value = user.MenuProfile;
+                cmd.Parameters.Add("PUSERSTPROF", OracleDbType.Varchar2, 20).Value = user.SiteProfile;
+                cmd.Parameters.Add("PUSERINTF", OracleDbType.Varchar2, 1).Value = "0";
+                cmd.Parameters.Add("PUSERCRBY", OracleDbType.Varchar2, 20).Value = CurrUser;
                 cmd.Parameters.Add("POUTRSNCODE", OracleDbType.Int32).Direction = ParameterDirection.Output;
                 cmd.Parameters.Add("POUTRSNMSG", OracleDbType.Varchar2, 2000).Direction = ParameterDirection.Output;
 
-
+                
                 logger.Debug("Execute Command");
                 logger.Debug(cmd.CommandText.ToString());
 
@@ -15130,7 +15130,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
         }
 
-        public OutputMessage InsertSalesInputSimple(SalesInputSimple salesInputSimple, String User, String Site)
+        public OutputMessage InsertSalesSimple(SalesInputSimple salesInputSimple, String User, String Site, int Type)
         {
             User user = new User();
             logger.Debug("Start Connect");
@@ -15149,7 +15149,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 cmd.Parameters.Add("PCMSSALQTY", OracleDbType.Int32).Value = salesInputSimple.SALESQTY;
                 cmd.Parameters.Add("PCMSSALSKU", OracleDbType.Int32).Value = salesInputSimple.DISCOUNT;
                 cmd.Parameters.Add("PCMSSALFLAG", OracleDbType.Int32).Value = 1;
-                cmd.Parameters.Add("PCMSSALSTAT", OracleDbType.Int32).Value = Int32.Parse(salesInputSimple.SALESQTY) < 0 ? 2 : 1;
+                cmd.Parameters.Add("PCMSSALSTAT", OracleDbType.Int32).Value = Type;
                 cmd.Parameters.Add("PCMSSALCOMM", OracleDbType.Varchar2, 1000).Value = "";
                 cmd.Parameters.Add("PCMSSALCDAT", OracleDbType.Date).Value = DateTime.Now;
                 cmd.Parameters.Add("PCMSSALMDAT", OracleDbType.Date).Value = DateTime.Now;
@@ -15195,6 +15195,8 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 return null;
             }
         }
+
+        
     }
 
 
