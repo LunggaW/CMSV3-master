@@ -2915,6 +2915,41 @@ namespace KBS.KBS.CMSV3.FUNCTION
 
         }
 
+        public string getSiteMasterDirectory()
+        {
+            try
+            {
+                this.Connect();
+                OracleCommand cmd = new OracleCommand();
+                cmd.Connection = con;
+
+                cmd.CommandText =
+                                 "select DIRECTORY_PATH from ALL_DIRECTORIES where DIRECTORY_NAME = 'SITE_MASTER_DIR'";
+
+                logger.Debug(cmd.CommandText);
+                OracleDataReader dr = cmd.ExecuteReader();
+
+                string Result = "";
+
+                while (dr.Read())
+                {
+
+                    Result = dr["DIRECTORY_PATH"].ToString();
+
+                }
+                return Result;
+
+            }
+            catch (Exception e)
+            {
+                logger.Error("getIncomingDirectory Function");
+                logger.Error(e.Message);
+                this.Close();
+                return null;
+            }
+
+        }
+
 
         public OutputMessage ExecuteSPProcessBarcode()
         {
@@ -10041,9 +10076,13 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "WHERE TRN2.CMSTRNSITE = TRN.CMSTRNSITE " +
                                   "AND TRN2.CMSTRSTAT = TRN.CMSTRSTAT " +
                                   "AND TRN2.CMSTRNFLAG = 1 " +
-                                  "AND to_date(TRN2.CMSTRNCDAT, 'DD-Mon-YY') >= to_date(:Sdate1, 'DD-Mon-YY') " +
-                                  "AND to_date(TRN2.CMSTRNCDAT, 'DD-Mon-YY') <= to_date(:EDate1, 'DD-Mon-YY') " +
-                                  "AND TRN2.CMSTRNSITE = DECODE(:Site11, '', TRN2.CMSTRNSITE, :Site12) " +
+                                  "AND to_date(TRN2.CMSTRNCDAT, 'DD-Mon-YY') >= to_date('" +
+                                  StockDisplay.DateFrom.GetValueOrDefault().ToString("dd-MMM-yy") + "', 'DD-Mon-YY') " +
+                                  "AND to_date(TRN2.CMSTRNCDAT, 'DD-Mon-YY') <= to_date('" +
+                                  StockDisplay.DateEnd.GetValueOrDefault().ToString("dd-MMM-yy") + "', 'DD-Mon-YY') " +
+                                  "AND EXISTS(select 1 from KDSCMSPROFSITELINK where PRSTSTPROF = :SiteProfile1 and PRSTSITE = TRN2.CMSTRNSITE) " +
+                                  "AND TRN2.CMSTRNSITE = DECODE('" + StockDisplay.Site + "', '', TRN2.CMSTRNSITE, '" +
+                                  StockDisplay.Site + "') " +
                                   "GROUP BY TRN2.CMSTRNSITE, " +
                                   "  TRN2.CMSTRSTAT " +
                                   ") " +
@@ -10053,9 +10092,13 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "FROM KDSCMSTRN TRN2 " +
                                   "WHERE TRN2.CMSTRNSITE = TRN.CMSTRNSITE " +
                                   "AND TRN2.CMSTRSTAT = TRN.CMSTRSTAT " +
-                                  "AND to_date(TRN2.CMSTRNCDAT, 'DD-Mon-YY') >= to_date(:Sdate2, 'DD-Mon-YY') " +
-                                  "AND to_date(TRN2.CMSTRNCDAT, 'DD-Mon-YY') <= to_date(:EDate2, 'DD-Mon-YY') " +
-                                  "AND TRN2.CMSTRNSITE = DECODE(:Site21, '', TRN2.CMSTRNSITE, :Site22) " +
+                                  "AND to_date(TRN2.CMSTRNCDAT, 'DD-Mon-YY') >= to_date('" +
+                                  StockDisplay.DateFrom.GetValueOrDefault().ToString("dd-MMM-yy") + "', 'DD-Mon-YY') " +
+                                  "AND to_date(TRN2.CMSTRNCDAT, 'DD-Mon-YY') <= to_date('" +
+                                  StockDisplay.DateEnd.GetValueOrDefault().ToString("dd-MMM-yy") + "', 'DD-Mon-YY') " +
+                                  "AND EXISTS(select 1 from KDSCMSPROFSITELINK where PRSTSTPROF = :SiteProfile2 and PRSTSITE = TRN2.CMSTRNSITE) " +
+                                  "AND TRN2.CMSTRNSITE = DECODE('" + StockDisplay.Site + "', '', TRN2.CMSTRNSITE, '" +
+                                  StockDisplay.Site + "') " +
                                   "GROUP BY TRN2.CMSTRNSITE, " +
                                   "  TRN2.CMSTRSTAT " +
                                   ") AS PROGRESS " +
@@ -10063,27 +10106,34 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "LEFT OUTER JOIN KDSCMSTRN TRN " +
                                   "ON SITE.SITESITE = TRN.CMSTRNSITE " +
                                   "AND SITE.SITESITE IS NOT NULL " +
-                                  "AND to_date(TRN.CMSTRNCDAT, 'DD-Mon-YY') >= to_date(:Sdate3, 'DD-Mon-YY') " +
-                                  "AND to_date(TRN.CMSTRNCDAT, 'DD-Mon-YY') <= to_date(:EDate3, 'DD-Mon-YY') " +
-                                  "WHERE SITE.SITESITE = DECODE(:Site31, '', SITE.SITESITE, :Site32) " +
+                                  "AND to_date(TRN.CMSTRNCDAT, 'DD-Mon-YY') >= to_date('" +
+                                  StockDisplay.DateFrom.GetValueOrDefault().ToString("dd-MMM-yy") + "', 'DD-Mon-YY') " +
+                                  "AND to_date(TRN.CMSTRNCDAT, 'DD-Mon-YY') <= to_date('" +
+                                  StockDisplay.DateEnd.GetValueOrDefault().ToString("dd-MMM-yy") + "', 'DD-Mon-YY') " +
+                                  "WHERE SITE.SITESITE = DECODE('" + StockDisplay.Site + "', '', SITE.SITESITE, '" +
+                                  StockDisplay.Site + "') " +
+                                  "AND EXISTS(select 1 from KDSCMSPROFSITELINK where PRSTSTPROF = :SiteProfile3 and PRSTSITE = SITE.SITESITE) " +
                                   "GROUP BY SITE.SITESITE, " +
                                   "  TRN.CMSTRNSITE, " +
                                   "  TRN.CMSTRSTAT, " +
                                   "  TRN.CMSTRNFLAG ";
 
 
-                cmd.Parameters.Add(new OracleParameter(":Sdate1", OracleDbType.Date)).Value = StockDisplay.DateFrom;
-                cmd.Parameters.Add(new OracleParameter(":Sdate2", OracleDbType.Date)).Value = StockDisplay.DateFrom;
-                cmd.Parameters.Add(new OracleParameter(":Sdate3", OracleDbType.Date)).Value = StockDisplay.DateFrom;
-                cmd.Parameters.Add(new OracleParameter(":EDate1", OracleDbType.Date)).Value = StockDisplay.DateEnd;
-                cmd.Parameters.Add(new OracleParameter(":EDate2", OracleDbType.Date)).Value = StockDisplay.DateEnd;
-                cmd.Parameters.Add(new OracleParameter(":EDate3", OracleDbType.Date)).Value = StockDisplay.DateEnd;
-                cmd.Parameters.Add(new OracleParameter(":Site11", OracleDbType.Varchar2)).Value = StockDisplay.Site;
-                cmd.Parameters.Add(new OracleParameter(":Site12", OracleDbType.Varchar2)).Value = StockDisplay.Site;
-                cmd.Parameters.Add(new OracleParameter(":Site21", OracleDbType.Varchar2)).Value = StockDisplay.Site;
-                cmd.Parameters.Add(new OracleParameter(":Site22", OracleDbType.Varchar2)).Value = StockDisplay.Site;
-                cmd.Parameters.Add(new OracleParameter(":Site31", OracleDbType.Varchar2)).Value = StockDisplay.Site;
-                cmd.Parameters.Add(new OracleParameter(":Site32", OracleDbType.Varchar2)).Value = StockDisplay.Site;
+                cmd.Parameters.Add(new OracleParameter(":SiteProfile1", OracleDbType.Varchar2)).Value = SiteProfile;
+                cmd.Parameters.Add(new OracleParameter(":SiteProfile2", OracleDbType.Varchar2)).Value = SiteProfile;
+                cmd.Parameters.Add(new OracleParameter(":SiteProfile3", OracleDbType.Varchar2)).Value = SiteProfile;
+                //cmd.Parameters.Add(new OracleParameter(":Sdate2", OracleDbType.Date)).Value = StockDisplay.DateFrom;
+                //cmd.Parameters.Add(new OracleParameter(":Sdate3", OracleDbType.Date)).Value = StockDisplay.DateFrom;
+                //cmd.Parameters.Add(new OracleParameter(":EDate1", OracleDbType.Date)).Value = StockDisplay.DateEnd;
+                //cmd.Parameters.Add(new OracleParameter(":EDate2", OracleDbType.Date)).Value = StockDisplay.DateEnd;
+                //cmd.Parameters.Add(new OracleParameter(":EDate3", OracleDbType.Date)).Value = StockDisplay.DateEnd;
+                //cmd.Parameters.Add(new OracleParameter(":Site11", OracleDbType.Varchar2)).Value = StockDisplay.Site;
+                //cmd.Parameters.Add(new OracleParameter(":Site12", OracleDbType.Varchar2)).Value = StockDisplay.Site;
+                //cmd.Parameters.Add(new OracleParameter(":Site21", OracleDbType.Varchar2)).Value = StockDisplay.Site;
+                //cmd.Parameters.Add(new OracleParameter(":Site22", OracleDbType.Varchar2)).Value = StockDisplay.Site;
+                //cmd.Parameters.Add(new OracleParameter(":Site31", OracleDbType.Varchar2)).Value = StockDisplay.Site;
+                //cmd.Parameters.Add(new OracleParameter(":Site32", OracleDbType.Varchar2)).Value = StockDisplay.Site;
+
 
 
                 cmd.CommandType = CommandType.Text;
@@ -10113,6 +10163,8 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
                 cmd.CommandText = "select TRN.CMSTRNSITE as SITE, " +
+                                  "(SELECT SITESITENAME FROM KDSCMSSITE WHERE SITESITE = TRN.CMSTRNSITE " +
+                                  ")                               AS \"SITE NAME\", " +
                                   //"TRN.CMSTRNOTA as NOTA, " +
                                   "TRN.CMSTRNCDAT as \"TRANSACTION DATE\", " +
                                   "TRN.CMSTRNBRCD as BARCODE,  " +
@@ -10120,7 +10172,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "TRN.CMSNORMALPRICE as \"NORMAL PRICE\", " +
                                   "TRN.CMSFINALPRICE as \"FINAL PRICE\", " +
                                   "TRN.CMSDISCOUNT as DISCOUNT, " +
-                                  "CASE "+
+                                  "CASE " +
                                   "WHEN TRN.CMSTRSTAT = '1' THEN 'Sales' " +
                                   "WHEN TRN.CMSTRSTAT = '2' THEN 'Return' " +
                                   "WHEN TRN.CMSTRSTAT = '3' THEN 'Movement In' " +
@@ -10130,7 +10182,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "WHEN TRN.CMSTRNFLAG = '2' THEN 'Success' " +
                                   "WHEN TRN.CMSTRNFLAG = '3' THEN 'Error' " +
                                   "ELSE '' END AS STATUS , " +
-                                  "CASE WHEN " +"TRN.CMSTRNTYPE = '1' THEN 'Browser' " +
+                                  "CASE WHEN " + "TRN.CMSTRNTYPE = '1' THEN 'Browser' " +
                                   "ELSE 'Mobile' END AS \"Input By\" ," +
                                   "'' AS NOTE, " +
                                   "CMSTRNUSR as \"USER\" " +

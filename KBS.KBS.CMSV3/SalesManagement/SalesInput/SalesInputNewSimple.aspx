@@ -15,8 +15,7 @@
 
     <link rel="stylesheet" type="text/css" href="../../Content/New.css" />
     <div>
-        <span>
-            <dx:ASPxButton ID="BackhomeBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
+        <span><dx:ASPxButton ID="BackhomeBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
                 Image-Url="~/image/back3.png" ToolTip="Previous Page" BackColor="Transparent" Enabled="False"
                 OnClick="BackhomeBtn_Click">

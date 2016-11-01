@@ -76,6 +76,7 @@ namespace KBS.KBS.CMSV3.Report.Monitoring
                     DateFrom.Text = Session["FromMonitoring"].ToString();
                     DateEnd.Text = Session["EndMonitoring"].ToString();
                     ComboSite.Value = Session["SiteMonitoring"].ToString();
+                    ComboTransType.Value = Session["TransTypeMonitoring"].ToString();
                     Session["Filter"] = "DMonitoring";
                 }
                 RefreshDataGrid();

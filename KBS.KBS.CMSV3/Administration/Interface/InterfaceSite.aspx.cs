@@ -112,7 +112,7 @@ namespace KBS.KBS.CMSV3.Administration.Interface
                     //Server.MapPath(CMSfunction.getIncomingDirectory() + FileUploadSite.FileName);
 
 
-                    filePath = CMSfunction.getIncomingDirectory() + FileUploadSite.FileName;
+                    filePath = CMSfunction.getSiteMasterDirectory() + FileUploadSite.FileName;
 
                     FileUploadSite.SaveAs(filePath);
 
