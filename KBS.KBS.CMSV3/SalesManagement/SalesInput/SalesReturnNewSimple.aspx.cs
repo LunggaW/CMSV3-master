@@ -95,7 +95,7 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
             BARCODETXT.Text = "";
             QTYTXT.Text = "";
             
-        }
+            }
 
         protected void BackhomeBtn_Click(object sender, EventArgs e)
         {
@@ -103,12 +103,24 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
 
         protected void SaveBtn_Click(object sender, EventArgs e)
         {
-            ProcessInsert();
+            if (String.IsNullOrWhiteSpace(BARCODETXT.Text) || String.IsNullOrWhiteSpace(QTYTXT.Text))
+            {
+                ASPxLabelMessage.ForeColor =  Color.Red;
 
-            ASPxLabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+                ASPxLabelMessage.Visible = true;
+                ASPxLabelMessage.Text = "Quantity and Barcode is empty";
+            }
+            else
+            {
+                ProcessInsert();
 
-            ASPxLabelMessage.Visible = true;
-            ASPxLabelMessage.Text = message.Message;
+                ASPxLabelMessage.ForeColor = message.Code < 0 ? Color.Red : Color.Black;
+
+                ASPxLabelMessage.Visible = true;
+                ASPxLabelMessage.Text = message.Message;
+            }
+
+            
         }
 
         protected void ValidateBtn_Click(object sender, EventArgs e)
@@ -122,13 +134,13 @@ namespace KBS.KBS.CMSV3.SalesManagement.SalesInput
             
             SalesInputSimple salesInputSimple = new SalesInputSimple();
 
-            salesInputSimple.NormalPrice = TextBoxNormalPrice.Text;
+            salesInputSimple.NormalPrice = (!String.IsNullOrWhiteSpace(TextBoxNormalPrice.Text)) ? TextBoxNormalPrice.Text : "0";
             salesInputSimple.BARCODE = BARCODETXT.Text;
             //salesInputSimple.SKU = (ComboSKU.Value != null) ? ComboSKU.Value.ToString() : "";
             salesInputSimple.SALESQTY = QTYTXT.Text;
-            salesInputSimple.FinalPrice = ASPxTextBoxFinalPrice.Text;
-            salesInputSimple.DISCOUNT = Int32.Parse(TextBoxDiscount.Text);
-            salesInputSimple.TransDate = ASPxDateEditTransDate.Date;
+            salesInputSimple.FinalPrice = (!String.IsNullOrWhiteSpace(ASPxTextBoxFinalPrice.Text)) ? ASPxTextBoxFinalPrice.Text : "0";
+            salesInputSimple.DISCOUNT = (!String.IsNullOrWhiteSpace(TextBoxDiscount.Text)) ? Int32.Parse(TextBoxDiscount.Text) : 0;
+            salesInputSimple.TransDate = (!String.IsNullOrWhiteSpace(ASPxDateEditTransDate.Date.ToLongDateString())) ? ASPxDateEditTransDate.Date : DateTime.Now;
 
             TextBoxNormalPrice.Text = "";
             BARCODETXT.Text = "";

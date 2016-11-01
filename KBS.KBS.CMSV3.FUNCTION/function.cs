@@ -10020,51 +10020,77 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 this.Connect();
                 OracleCommand cmd = new OracleCommand();
                 cmd.Connection = con;
-                cmd.CommandText = "select TRN.CMSTRNSITE as SITE, " +
-                                  "(select SITESITENAME FROM KDSCMSSITE WHERE SITESITE = TRN.CMSTRNSITE) AS \"SITE NAME\", " +
-                                  "count(TRN.CMSTRNSITE) as TRANSACTION, " +
-                                  "SUM(TRN.CMSTRNQTY) as QUANTITY, " +
-                                  "SUM(TRN.CMSNORMALPRICE) as \"NORMAL PRICE\", " +
-                                  "SUM(TRN.CMSFINALPRICE) as \"FINAL PRICE\", " +
+                cmd.CommandText = "SELECT SITE.SITESITE AS SITE , " +
+                                  "(SELECT SITESITENAME FROM KDSCMSSITE WHERE SITESITE = SITE.SITESITE " +
+                                  ")                               AS \"SITE NAME\", " +
+                                  "COUNT(TRN.CMSTRNSITE)           AS TRANSACTION, " +
+                                  "NVL(SUM(TRN.CMSTRNQTY), 0)      AS QUANTITY, " +
+                                  "NVL(SUM(TRN.CMSNORMALPRICE), 0) AS \"NORMAL PRICE\", " +
+                                  "NVL(SUM(TRN.CMSFINALPRICE), 0)  AS \"FINAL PRICE\", " +
                                   "CASE " +
-                                  "WHEN TRN.CMSTRSTAT = '1' THEN 'Sales' " +
-                                  "WHEN TRN.CMSTRSTAT = '2' THEN 'Return' " +
-                                  "WHEN TRN.CMSTRSTAT = '3' THEN 'Movement In' " +
-                                  "ELSE 'Unknown Type' END AS STATUS, " +
-                                  "(SELECT COUNT(TRN.CMSTRNSITE) FROM KDSCMSTRN TRN2 WHERE TRN2.CMSTRNSITE = TRN.CMSTRNSITE AND TRN2.CMSTRSTAT = TRN.CMSTRSTAT AND TRN2.CMSTRNFLAG = 1 GROUP BY TRN.CMSTRNSITE, TRN.CMSTRSTAT) " +
-                                  "|| '/' || " +
-                                  "(SELECT COUNT(TRN.CMSTRNSITE) FROM KDSCMSTRN TRN2 WHERE TRN2.CMSTRNSITE = TRN.CMSTRNSITE AND TRN2.CMSTRSTAT = TRN.CMSTRSTAT GROUP BY TRN.CMSTRNSITE, TRN.CMSTRSTAT) AS PROGRESS " +
-                                  "from KDSCMSTRN TRN " +
-                                  "where CMSTRNSITE = CMSTRNSITE ";
-                                  
+                                  "  WHEN TRN.CMSTRSTAT = '1' " +
+                                  "  THEN 'Sales' " +
+                                  "  WHEN TRN.CMSTRSTAT = '2' " +
+                                  "  THEN 'Return' " +
+                                  "  WHEN TRN.CMSTRSTAT = '3' " +
+                                  "  THEN 'Movement In' " +
+                                  "  ELSE 'Unknown Type' " +
+                                  "END AS STATUS, " +
+                                  "(SELECT NVL(MAX(COUNT(TRN2.CMSTRNSITE)), 0) " +
+                                  "FROM KDSCMSTRN TRN2 " +
+                                  "WHERE TRN2.CMSTRNSITE = TRN.CMSTRNSITE " +
+                                  "AND TRN2.CMSTRSTAT = TRN.CMSTRSTAT " +
+                                  "AND TRN2.CMSTRNFLAG = 1 " +
+                                  "AND to_date(TRN2.CMSTRNCDAT, 'DD-Mon-YY') >= to_date(:Sdate1, 'DD-Mon-YY') " +
+                                  "AND to_date(TRN2.CMSTRNCDAT, 'DD-Mon-YY') <= to_date(:EDate1, 'DD-Mon-YY') " +
+                                  "AND TRN2.CMSTRNSITE = DECODE(:Site11, '', TRN2.CMSTRNSITE, :Site12) " +
+                                  "GROUP BY TRN2.CMSTRNSITE, " +
+                                  "  TRN2.CMSTRSTAT " +
+                                  ") " +
+                                  "|| '/' " +
+                                  "|| " +
+                                  "(SELECT NVL(MAX(COUNT(TRN2.CMSTRNSITE)), 0) " +
+                                  "FROM KDSCMSTRN TRN2 " +
+                                  "WHERE TRN2.CMSTRNSITE = TRN.CMSTRNSITE " +
+                                  "AND TRN2.CMSTRSTAT = TRN.CMSTRSTAT " +
+                                  "AND to_date(TRN2.CMSTRNCDAT, 'DD-Mon-YY') >= to_date(:Sdate2, 'DD-Mon-YY') " +
+                                  "AND to_date(TRN2.CMSTRNCDAT, 'DD-Mon-YY') <= to_date(:EDate2, 'DD-Mon-YY') " +
+                                  "AND TRN2.CMSTRNSITE = DECODE(:Site21, '', TRN2.CMSTRNSITE, :Site22) " +
+                                  "GROUP BY TRN2.CMSTRNSITE, " +
+                                  "  TRN2.CMSTRSTAT " +
+                                  ") AS PROGRESS " +
+                                  "FROM KDSCMSSITE SITE " +
+                                  "LEFT OUTER JOIN KDSCMSTRN TRN " +
+                                  "ON SITE.SITESITE = TRN.CMSTRNSITE " +
+                                  "AND SITE.SITESITE IS NOT NULL " +
+                                  "AND to_date(TRN.CMSTRNCDAT, 'DD-Mon-YY') >= to_date(:Sdate3, 'DD-Mon-YY') " +
+                                  "AND to_date(TRN.CMSTRNCDAT, 'DD-Mon-YY') <= to_date(:EDate3, 'DD-Mon-YY') " +
+                                  "WHERE SITE.SITESITE = DECODE(:Site31, '', SITE.SITESITE, :Site32) " +
+                                  "GROUP BY SITE.SITESITE, " +
+                                  "  TRN.CMSTRNSITE, " +
+                                  "  TRN.CMSTRSTAT, " +
+                                  "  TRN.CMSTRNFLAG ";
+
+
+                cmd.Parameters.Add(new OracleParameter(":Sdate1", OracleDbType.Date)).Value = StockDisplay.DateFrom;
+                cmd.Parameters.Add(new OracleParameter(":Sdate2", OracleDbType.Date)).Value = StockDisplay.DateFrom;
+                cmd.Parameters.Add(new OracleParameter(":Sdate3", OracleDbType.Date)).Value = StockDisplay.DateFrom;
+                cmd.Parameters.Add(new OracleParameter(":EDate1", OracleDbType.Date)).Value = StockDisplay.DateEnd;
+                cmd.Parameters.Add(new OracleParameter(":EDate2", OracleDbType.Date)).Value = StockDisplay.DateEnd;
+                cmd.Parameters.Add(new OracleParameter(":EDate3", OracleDbType.Date)).Value = StockDisplay.DateEnd;
+                cmd.Parameters.Add(new OracleParameter(":Site11", OracleDbType.Varchar2)).Value = StockDisplay.Site;
+                cmd.Parameters.Add(new OracleParameter(":Site12", OracleDbType.Varchar2)).Value = StockDisplay.Site;
+                cmd.Parameters.Add(new OracleParameter(":Site21", OracleDbType.Varchar2)).Value = StockDisplay.Site;
+                cmd.Parameters.Add(new OracleParameter(":Site22", OracleDbType.Varchar2)).Value = StockDisplay.Site;
+                cmd.Parameters.Add(new OracleParameter(":Site31", OracleDbType.Varchar2)).Value = StockDisplay.Site;
+                cmd.Parameters.Add(new OracleParameter(":Site32", OracleDbType.Varchar2)).Value = StockDisplay.Site;
+
+
                 cmd.CommandType = CommandType.Text;
-
-                if (!string.IsNullOrWhiteSpace(StockDisplay.Site))
-                {
-                    cmd.CommandText = cmd.CommandText +
-                                      "and TRN.CMSTRNSITE = :Site  ";
-                    cmd.Parameters.Add(new OracleParameter(":Site", OracleDbType.Varchar2)).Value = StockDisplay.Site;
-                }
-                if ((StockDisplay.DateFrom.HasValue))
-                {
-                    cmd.CommandText = cmd.CommandText +
-                                      " and to_date(TRN.CMSTRNCDAT, 'DD-Mon-YY') >= to_date(:Sdate, 'DD-Mon-YY') ";
-                    cmd.Parameters.Add(new OracleParameter(":Sdate", OracleDbType.Date)).Value = StockDisplay.DateFrom;
-                }
-                if (StockDisplay.DateEnd.HasValue)
-                {
-                    cmd.CommandText = cmd.CommandText +
-
-                                      " and to_date(TRN.CMSTRNCDAT, 'DD-Mon-YY') <= to_date(:EDate, 'DD-Mon-YY')  ";
-                    cmd.Parameters.Add(new OracleParameter(":EDate", OracleDbType.Date)).Value = StockDisplay.DateEnd;
-                }
-
-
-                cmd.CommandText = cmd.CommandText +
-                                     "group By TRN.CMSTRNSITE, TRN.CMSTRSTAT, TRN.CMSTRNFLAG";
+                
                 OracleDataReader dr = cmd.ExecuteReader();
 
-
+                
                 DataTable DT = new DataTable();
                 DT.Load(dr);
                 this.Close();
@@ -15171,7 +15197,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                 
 
 
-                    logger.Debug("Execute Command");
+                logger.Debug("Execute Command");
                 logger.Debug(cmd.CommandText.ToString());
 
                 cmd.ExecuteNonQuery();

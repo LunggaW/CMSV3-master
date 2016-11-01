@@ -17,8 +17,7 @@
                 Image-Url="~/image/back3.png" ToolTip="Previous Page" BackColor="Transparent"
                 OnClick="BackhomeBtn_Click" Enabled="false">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/back3Disable.png">
-                </Image>
-                <Image Height="20px" Width="20px">
+                </Image><Image Height="20px" Width="20px">
                 </Image>
                 <Border BorderColor="Transparent" />
             </dx:ASPxButton>
