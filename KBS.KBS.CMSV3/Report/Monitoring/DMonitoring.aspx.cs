@@ -244,6 +244,10 @@ namespace KBS.KBS.CMSV3.Report.Monitoring
             GridMonitoring.DataBind();
 
         }
-        
+
+        protected void ASPxButtonChangeFlag_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

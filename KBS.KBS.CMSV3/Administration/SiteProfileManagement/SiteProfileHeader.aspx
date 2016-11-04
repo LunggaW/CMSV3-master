@@ -45,7 +45,7 @@
         </span><span>
             <dx:ASPxButton ID="ClearBtn" runat="server" EnableTheming="False" EnableDefaultAppearance="False"
                 EnableViewState="False" Height="20px" Width="20px" BackgroundImage-ImageUrl="~/image/transback.png"   UseSubmitBehavior="false" 
-                Image-Url="~/image/clear.png" ToolTip="Clear" BackColor="Transparent" Enabled="False">
+                Image-Url="~/image/clear.png" ToolTip="Clear" BackColor="Transparent" Enabled="True">
                 <Image Height="20px" Width="20px" UrlDisabled="~/image/clearDisable.png">
                 </Image>
                 <Image Height="20px" Width="20px">

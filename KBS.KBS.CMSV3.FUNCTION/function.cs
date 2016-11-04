@@ -10070,7 +10070,7 @@ namespace KBS.KBS.CMSV3.FUNCTION
                                   "  WHEN TRN.CMSTRSTAT = '3' " +
                                   "  THEN 'Movement In' " +
                                   "  ELSE 'Unknown Type' " +
-                                  "END AS STATUS, " +
+                                  "END AS TYPE, " +
                                   "(SELECT NVL(MAX(COUNT(TRN2.CMSTRNSITE)), 0) " +
                                   "FROM KDSCMSTRN TRN2 " +
                                   "WHERE TRN2.CMSTRNSITE = TRN.CMSTRNSITE " +

@@ -214,6 +214,13 @@
             <SettingsCookies Enabled="True" />
         </dx:ASPxGridView>
         <br />
+        <div align="center">
+            <br />
+            <dx:ASPxButton ID="ASPxButtonChangeFlag" runat="server"
+                Text="Change Flag" Font-Size="Medium" OnClick="ASPxButtonChangeFlag_Click">
+            </dx:ASPxButton>
+            <br />
+        </div>
         
     </div>
 </asp:Content>

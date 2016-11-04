@@ -166,8 +166,7 @@ namespace KBS.KBS.CMSV3.Administration.UserManagement
 
         protected void SearchBtn_Click(object sender, EventArgs e)
         {
-
-        }
+            RefreshDataGrid();}
 
         protected void ASPxGridViewUser_CustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {

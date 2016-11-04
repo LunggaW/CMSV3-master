@@ -196,7 +196,7 @@ namespace KBS.KBS.CMSV3.Report.Monitoring
                 Session["EndMonitoring"] = DateEnd.Text;
 
                 Session["TransTypeMonitoring"] =
-                    HeaderGridView.GetRowValues(HeaderGridView.FocusedRowIndex, "STATUS").ToString() == "Sales"
+                    HeaderGridView.GetRowValues(HeaderGridView.FocusedRowIndex, "TYPE").ToString() == "Sales"
                         ? '1'
                         : '2';
                 Response.Redirect("DMonitoring.aspx");
